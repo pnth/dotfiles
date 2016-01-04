@@ -41,6 +41,7 @@ urxvt&
 redshift&
 #~/.dropbox-dist/dropboxd&
 xcompmgr -c &
+udiskie -2 &
 DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 exec xmonad
 #exec i3

@@ -9,8 +9,8 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="note tmux.conf vimrc wallpaper xinitrc xmobarrc xmonad Xresources zshrc zprofile "    
-
+files="note tmux.conf vimrc wallpaper xinitrc xmobarrc xmonad Xresources zshrc zprofile "
+dirs="local/share/luakit config/luakit"
 ##########
 
 # create dotfiles_old in homedir
@@ -26,7 +26,21 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file ~/$olddir/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+for d in $dirs; do
+    echo "Moving any existing dotfiles from ~ to $olddir"
+		path=`dirname $d`
+		fname=`basename $d`
+		mkdir -p $olddir/$path
+		rm -fr $olddir/$d
+    mv ~/.$d $olddir/$path/
+
+    echo "Creating symlink to $file in home directory."
+		mkdir -p $dir/$path
+    ln -s $dir/$d ~/.$d
+done
+
