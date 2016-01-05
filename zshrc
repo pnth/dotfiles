@@ -14,7 +14,7 @@ compinit
 
 alias ls='ls --color=auto'
 export VISUAL="vim"
-alias vim="vim --servername VIM"
+#alias vim="vim --servername VIM"
 setopt PROMPT_SUBST
 PROMPT='%F{cyan}%c%#%f '
 #PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
