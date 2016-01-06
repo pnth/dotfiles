@@ -1,37 +1,39 @@
 call plug#begin('~/.vim/plugged')
+
 Plug '~/.vim/manually/personal'
-Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
-Plug 'LucHermitte/lh-vim-lib'
-Plug 'LucHermitte/lh-tags'
-Plug 'LucHermitte/lh-dev'
+Plug 'Yggdroot/indentLine'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'LucHermitte/lh-brackets'
-Plug 'LucHermitte/searchInRuntime'
-Plug 'LucHermitte/mu-template'
 Plug 'LucHermitte/lh-cpp'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'LucHermitte/lh-dev'
+Plug 'LucHermitte/lh-tags'
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'Superbil/llvm.vim'
+Plug 'LucHermitte/mu-template'
+Plug 'scrooloose/nerdtree'
+Plug 'jalvesaq/R-Vim-runtime'
+Plug 'vim-scripts/screen.vim'
+Plug 'LucHermitte/searchInRuntime'
+Plug 'majutsushi/tagbar'
 Plug 'tomtom/tcomment_vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'junegunn/vim-easy-align'
 Plug 'xolox/vim-easytags'
+Plug 'gabrielelana/vim-markdown'
 Plug 'xolox/vim-misc'
 Plug 'jcfaria/Vim-R-plugin'
-Plug 'vim-scripts/screen.vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'majutsushi/tagbar'
-Plug 'Superbil/llvm.vim'
-Plug 'https://github.com/Yggdroot/indentLine'
-Plug 'jalvesaq/R-Vim-runtime'
+Plug 'jpalardy/vim-slime'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'vim-scripts/Conque-GDB'
 Plug 'yuratomo/w3m.vim'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'vim-scripts/Conque-GDB'
 " Plug 'plasticboy/vim-markdown'
-Plug 'gabrielelana/vim-markdown'
 " Plug 'godlygeek/tabular'
-Plug 'junegunn/vim-easy-align'
 " Plug 'klen/python-mode'
-Plug 'carlhuda/janus'
-Plug 'scrooloose/nerdtree'
-Plug 'ivanov/vim-ipython'
-
+" Plug 'carlhuda/janus'
+" Plug 'ivanov/vim-ipython'
 " Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'gilligan/vim-lldb'
 "Plug 'rhysd/vim-clang-format'
@@ -96,47 +98,33 @@ vnoremap <C-@> <Esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""VIM-R-PLUGIN
 let r_indent_op_pattern = '\(+\|-\|\*\|/\|=\|\~\|%\)$'
-autocmd FileType R map <F3> :!tmux select-layout even-horizontal &&
+autocmd FileType R map <buffer> <F3> :!tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 80 <cr><cr>
-autocmd FileType R imap ,< <space>%<>%<space>
-autocmd FileType R imap ,> <space>%>%<space>
-autocmd FileType c,cpp,java,python map <F3> :!tmux split-window && tmux select-layout
+autocmd FileType R imap <buffer> ,< <space>%<>%<space>
+autocmd FileType R imap <buffer> ,> <space>%>%<space>
+autocmd FileType c,cpp,java,python map <buffer> <F3> :!tmux split-window && tmux select-layout
       \ even-horizontal && tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
       \ <cr><cr>
-
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_key_invoke_completion = '<C-c>'
 
 let g:marker_select_empty_marks=0
 imap ,m      <Plug>MarkersJumpF
 map ,m      <Plug>MarkersJumpF
-" imap <C-J>      <Plug>MarkersJumpF
-" map <C-J>      <Plug>MarkersJumpF
-"imap <C-K>      <Plug>MarkersJumpB
-"map <C-K>      <Plug>MarkersJumpB
-"imap <C-<>      <Plug>MarkersMark
-"nmap <C-<>      <Plug>MarkersMark
-"xmap <C-<>      <Plug>MarkersMark
-autocmd FileType c,cpp,java,scala noremap <c-e>f :YcmCompleter FixIt<cr>
-autocmd FileType c,cpp,java,scala noremap <c-e><c-f> :YcmCompleter FixIt<cr>
-autocmd FileType c,cpp,objc nnoremap <c-e>B :w<cr>:!tmux send-keys -t 2
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B :w<cr>:!tmux send-keys -t 2
       \ ':qa' Enter 'clear && make main' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <c-e>b :w<cr>:!tmux send-keys -t 2
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b :w<cr>:!tmux send-keys -t 2
       \ ':qa' Enter 'clear && make %:r' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <c-e>R :!tmux send-keys -t 2 ':qa'
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R :!tmux send-keys -t 2 ':qa'
       \ Enter 'clear && ./main' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <c-e>r :!tmux send-keys -t 2 ':qa'
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r :!tmux send-keys -t 2 ':qa'
       \ Enter 'clear && ./%:r' Enter<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <c-e><c-d> :!tmux send-keys -t 2 ':qa'
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 2 ':qa'
 " \Enter 'clear && vim `drmem -- ./main 2>&1 \| tail -1 \| rev \| cut -d: -f1
 " \ \| rev`' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <c-e><c-d> :!tmux send-keys -t 2 ':qa'
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 2 ':qa'
       \ Enter 'clear && drmem -- ./%:r' Enter<cr><cr>
 
 nnoremap <silent> ] :lnext<CR>
 nnoremap <silent> [ :lprev<CR>
-nnoremap <silent> <c-e><c-e> :YcmDiags<CR> :!ctags -R .<cr><cr>,aa<cr>
 nnoremap <silent> <c-e><c-w> :lclose<CR>
 " nnoremap <silent> <c-e><c-]> :lclose<CR>
 " "map <f12> :!ctags -R .<cr><cr>,aa<cr>
@@ -188,7 +176,7 @@ let g:ConqueGdb_SrcSplit = 'left'
 nnoremap <F10> :ConqueGdb %:r<CR><esc><c-w><c-h>
 nnoremap <silent> <Leader>Y :ConqueGdbCommand y<CR>
 nnoremap <silent> <Leader>N :ConqueGdbCommand n<CR>
-autocmd FileType c,cpp,objc nnoremap ,q :ConqueGdbCommand
+autocmd FileType c,cpp,objc nnoremap <buffer> ,q :ConqueGdbCommand
       \ quit<cr>:ConqueGdbCommand quit<cr><c-w><c-o><cr>
 
 " map <C-I> :pyf ~/bin/clang-format.py<CR>
@@ -218,9 +206,9 @@ au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 inoremap <C-_> <space>%>%<space>
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
-autocmd FileType R noremap <silent> <LocalLeader>t :call RAction("tail")<CR>
-autocmd FileType R noremap <silent> <LocalLeader>h :call RAction("head")<CR>
-autocmd FileType R noremap <silent> <LocalLeader>q
+autocmd FileType R noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
+autocmd FileType R noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
+autocmd FileType R noremap <buffer> <silent> <LocalLeader>q
       \ :call g:SendCmdToR("quit(save=\"no\")")<cr>
 
 
@@ -254,3 +242,24 @@ nmap ga <Plug>(EasyAlign)
 
 """ NERDTREE
 map ,t :NERDTreeToggle<CR>
+
+
+""" YCM
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_invoke_completion = '<C-c>'
+autocmd FileType c,cpp,java,scala noremap <buffer> <c-e>f :YcmCompleter FixIt<cr>
+autocmd FileType c,cpp,java,scala noremap <buffer> <c-e><c-f> :YcmCompleter FixIt<cr>
+autocmd FileType c,cpp,java,scala nnoremap <buffer> <silent> <c-e><c-e> :YcmDiags<CR> :!ctags -R .<cr><cr>,aa<cr>
+
+"""vim-slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
+let g:slime_dont_ask_default = 1
+let g:slime_python_ipython = 1
+let g:slime_no_mappings = 1
+xmap <leader>s <Plug>SlimeRegionSend
+nmap <leader>s <Plug>SlimeMotionSend
+nmap <leader>ss <Plug>SlimeLineSend
+nmap <leader>sp <Plug>SlimeParagraphSend
+
