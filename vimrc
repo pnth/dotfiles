@@ -1,53 +1,37 @@
 call plug#begin('~/.vim/plugged')
 
-Plug '~/.vim/manually/personal'
+" Plug 'LucHermitte/lh-cpp'
+" Plug 'LucHermitte/mu-template'
+" Plug 'LucHermitte/searchInRuntime'
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'davidhalter/jedi'
+Plug 'gabrielelana/vim-markdown'
+Plug 'hdima/python-syntax'
+Plug 'jalvesaq/R-Vim-runtime'
+Plug 'jcfaria/Vim-R-plugin'
+Plug 'jpalardy/vim-slime'
+Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
-Plug 'Yggdroot/indentLine'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'LucHermitte/lh-brackets'
-Plug 'LucHermitte/lh-cpp'
 Plug 'LucHermitte/lh-dev'
 Plug 'LucHermitte/lh-tags'
 Plug 'LucHermitte/lh-vim-lib'
-Plug 'Superbil/llvm.vim'
-Plug 'LucHermitte/mu-template'
-Plug 'scrooloose/nerdtree'
-Plug 'jalvesaq/R-Vim-runtime'
-Plug 'vim-scripts/screen.vim'
-Plug 'LucHermitte/searchInRuntime'
 Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 Plug 'tomtom/tcomment_vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'junegunn/vim-easy-align'
+Plug 'vim-scripts/screen.vim'
 Plug 'xolox/vim-easytags'
-Plug 'gabrielelana/vim-markdown'
 Plug 'xolox/vim-misc'
-Plug 'jcfaria/Vim-R-plugin'
-Plug 'jpalardy/vim-slime'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'yuratomo/w3m.vim'
-Plug 'Valloric/YouCompleteMe'
-" Plug 'vim-scripts/Conque-GDB'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'godlygeek/tabular'
-" Plug 'klen/python-mode'
-" Plug 'carlhuda/janus'
-" Plug 'ivanov/vim-ipython'
-" Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'gilligan/vim-lldb'
-"Plug 'rhysd/vim-clang-format'
-"Plug 'tacahiroy/ctrlp-funky'
-"Plug 'tomtom/stakeholders_vim'
-"Plug '~/.vim/manually/pyclewn-vmb'
+Plug 'Yggdroot/indentLine'
+Plug '~/.vim/manually/personal'
 call plug#end()
-
-" ~/.vim/manually/personal/after/unmap.vim
 
 let maplocalleader = ","
 let mapleader = ","
 set autowriteall
-" set clipboard=unnamedplus
 set clipboard=unnamed
 set number
 set autoindent
@@ -61,9 +45,6 @@ set incsearch
 set nocompatible
 set ruler
 syntax enable
-" let g:solarized_termcolors = 256
-let g:solarized_contrast = "low"
-" "normal" "high" or "low"
 colorscheme solarized
 set background=dark
 set noswapfile
@@ -79,10 +60,6 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
-" nmap <c-h> <esc><c-w>h
-" nmap <c-l> <esc><c-w>l
-" nmap <c-h> <esc>:w<esc><c-w>h
-" nmap <c-l> <esc>:w<esc><c-w>l
 set wmw=0
 set tw=78
 set wrap
@@ -95,49 +72,57 @@ inoremap <C-Space> <Esc>
 inoremap <C-@> <Esc>
 vnoremap <C-@> <Esc>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""VIM-R-PLUGIN
-let r_indent_op_pattern = '\(+\|-\|\*\|/\|=\|\~\|%\)$'
-autocmd FileType R map <buffer> <F3> :!tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 80 <cr><cr>
-autocmd FileType R imap <buffer> ,< <space>%<>%<space>
-autocmd FileType R imap <buffer> ,> <space>%>%<space>
+""" TAGBAR
+nmap <silent> <c-e><c-t> :TagbarOpen fj<CR><c-w>=
+nmap <silent> <c-e><c-y> :TagbarClose<CR>
+let g:tagbar_left = 1
+let g:tagbar_width = 18
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+
+""" VIM-TMUX-NAVIGATOR
+let g:tmux_navigator_save_on_switch = 1
+
+"""vim-slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
+let g:slime_dont_ask_default = 1
+let g:slime_python_ipython = 1
+let g:slime_no_mappings = 1
+xmap <leader>s <Plug>SlimeRegionSend
+nmap <leader>s <Plug>SlimeMotionSend
+nmap <leader>ss <Plug>SlimeLineSend
+nmap <space> <Plug>SlimeLineSend<cr>
+nmap <leader>sp <Plug>SlimeParagraphSend
 autocmd FileType c,cpp,java,python map <buffer> <F3> :!tmux split-window && tmux select-layout
       \ even-horizontal && tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
       \ <cr><cr>
 
+""" EASY-ALIGN
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+""" NERDTREE
+map ,t :NERDTreeToggle<CR>
+
+""" INDENT-LINE
+let g:indentLine_color_term = 10
+let g:indentLine_color_tty_dark = 10
+
+""" LH-BRACKET
 let g:marker_select_empty_marks=0
 imap ,m      <Plug>MarkersJumpF
 map ,m      <Plug>MarkersJumpF
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B :w<cr>:!tmux send-keys -t 2
-      \ ':qa' Enter 'clear && make main' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b :w<cr>:!tmux send-keys -t 2
-      \ ':qa' Enter 'clear && make %:r' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R :!tmux send-keys -t 2 ':qa'
-      \ Enter 'clear && ./main' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r :!tmux send-keys -t 2 ':qa'
-      \ Enter 'clear && ./%:r' Enter<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 2 ':qa'
-" \Enter 'clear && vim `drmem -- ./main 2>&1 \| tail -1 \| rev \| cut -d: -f1
-" \ \| rev`' Enter<cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 2 ':qa'
-      \ Enter 'clear && drmem -- ./%:r' Enter<cr><cr>
 
-nnoremap <silent> ] :lnext<CR>
-nnoremap <silent> [ :lprev<CR>
-nnoremap <silent> <c-e><c-w> :lclose<CR>
-" nnoremap <silent> <c-e><c-]> :lclose<CR>
-" "map <f12> :!ctags -R .<cr><cr>,aa<cr>
-
-"set ts=8
-"set ft=help
-"set norl
-
-" vim-easytags options
-set tags=./.tags;
-let g:easytags_dynamic_files = 2
-
-" noremap <c-e><c-j> :call Pjump()<cr><cr>
+""" MINE
 noremap gd :call Pjump()<cr><cr>
 function! Pjump()
 	:WincmdTag
@@ -157,53 +142,19 @@ function! Pjump()
     :exe "normal \<c-]>"
     :norm z.
 endfunction
-" function! Pjump()
-" 	:WincmdTag
-" 	:norm ma
-" 	if winnr() == winnr("$")
-" 		execute (winnr("$") - 1) . "WincmdW"
-" 	else
-" 		execute winnr("$") . "WincmdW"
-" 	endif
-" 	:norm `a
-" 	:norm <C-]>
-" 	execute ":tag " . expand("<cword>")
-" 	:norm z.
-" 	:norm 10^E
-" endfunction
 
-let g:ConqueGdb_SrcSplit = 'left'
-nnoremap <F10> :ConqueGdb %:r<CR><esc><c-w><c-h>
-nnoremap <silent> <Leader>Y :ConqueGdbCommand y<CR>
-nnoremap <silent> <Leader>N :ConqueGdbCommand n<CR>
-autocmd FileType c,cpp,objc nnoremap <buffer> ,q :ConqueGdbCommand
-      \ quit<cr>:ConqueGdbCommand quit<cr><c-w><c-o><cr>
 
-" map <C-I> :pyf ~/bin/clang-format.py<CR>
-" imap <C-I> <ESC>:pyf ~/bin/clang-format.py<CR>i
-autocmd FileType c,cpp,objc map <buffer> = :pyf ~/bin/clang-format.py<CR>
-autocmd FileType c,cpp,objc map <buffer> ,=
-      \ <ESC>ma<ESC>ggVG:pyf ~/bin/clang-format.py<CR>'az.
-
-let vimrplugin_applescript = 0
-let vimrplugin_screenplugin = 0
-let g:ScreenImpl = 'Tmux'
-let vimrplugin_screenvsplit = 1 " For vertical tmux split
-let g:ScreenShellInitialFocus = 'shell'
-let g:vimrplugin_noscreenrc = 1
-let g:vimrplugin_screenplugin = 1
-let vimrplugin_conqueplugin = 1
-let g:vimrplugin_map_r = 1
-let vimrplugin_vimpager = "no"
-map <F2> <Plug>RStart
-imap <F2> <Plug>RStart
-vmap <F2> <Plug>RStart
-vmap <Space> <Plug>RDSendSelection
-nmap <Space> <Plug>RDSendLine
-set completeopt-=preview
-
+""" R
 au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
+autocmd FileType R map <buffer> <F2> <Plug>RStart
+autocmd FileType R imap <buffer> <F2> <Plug>RStart
+autocmd FileType R vmap <buffer> <F2> <Plug>RStart
+autocmd FileType R map <buffer> <F3> :!tmux select-layout even-horizontal &&
+      \ tmux resize-pane -t 2 -x 80 <cr><cr>
+autocmd FileType R vmap <buffer> <Space> <Plug>RDSendSelection
+autocmd FileType R nmap <buffer> <Space> <Plug>RDSendLine
+set completeopt-=preview
 inoremap <C-_> <space>%>%<space>
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
 autocmd FileType R noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
@@ -211,55 +162,4 @@ autocmd FileType R noremap <buffer> <silent> <LocalLeader>h :call RAction("head"
 autocmd FileType R noremap <buffer> <silent> <LocalLeader>q
       \ :call g:SendCmdToR("quit(save=\"no\")")<cr>
 
-
-""" TAGBAR
-nmap <silent> <c-e><c-t> :TagbarOpen fj<CR><c-w>=
-nmap <silent> <c-e><c-y> :TagbarClose<CR>
-let g:tagbar_left = 1
-let g:tagbar_width = 18
-let g:tagbar_type_r = {
-    \ 'ctagstype' : 'r',
-    \ 'kinds'     : [
-        \ 'f:Functions',
-        \ 'g:GlobalVariables',
-        \ 'v:FunctionVariables',
-    \ ]
-\ }
-
-""" VIM-TMUX-NAVIGATOR
-let g:tmux_navigator_save_on_switch = 1
-
-
-""" VIM W3M
-nmap <silent> ,W :W3m google 
-
-
-""" EASY-ALIGN
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-""" NERDTREE
-map ,t :NERDTreeToggle<CR>
-
-
-""" YCM
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_key_invoke_completion = '<C-c>'
-autocmd FileType c,cpp,java,scala noremap <buffer> <c-e>f :YcmCompleter FixIt<cr>
-autocmd FileType c,cpp,java,scala noremap <buffer> <c-e><c-f> :YcmCompleter FixIt<cr>
-autocmd FileType c,cpp,java,scala nnoremap <buffer> <silent> <c-e><c-e> :YcmDiags<CR> :!ctags -R .<cr><cr>,aa<cr>
-
-"""vim-slime
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
-let g:slime_dont_ask_default = 1
-let g:slime_python_ipython = 1
-let g:slime_no_mappings = 1
-xmap <leader>s <Plug>SlimeRegionSend
-nmap <leader>s <Plug>SlimeMotionSend
-nmap <leader>ss <Plug>SlimeLineSend
-nmap <leader>sp <Plug>SlimeParagraphSend
 
