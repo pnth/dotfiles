@@ -4,7 +4,8 @@ alias ls="ls -FGh"
 alias vim="vim -O"
 alias w3m="w3m -M"
 alias gg="surfraw -browser=\"w3m -M\" google"
-=EXECUTABLE
+alias tmh="tmux select-layout even-horizontal"
+alias tmv="tmux select-layout even-vertical"
 export PS1="\W\$ "
 export VISUAL=vim
 export EDITOR="$VISUAL"
