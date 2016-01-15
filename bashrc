@@ -3,9 +3,12 @@ set -o vi
 alias ls="ls -FGh"
 alias vim="vim -O"
 alias w3m="w3m -M"
-alias gg="surfraw -browser=\"w3m -M\" google"
+alias gg="surfraw -browser=\"w3m -num\" google"
 alias tmh="tmux select-layout even-horizontal"
 alias tmv="tmux select-layout even-vertical"
+alias tmh1="tmux select-layout main-horizontal"
+alias tmv1="tmux select-layout main-vertical"
+alias tmt="tmux select-layout tiled"
 export PS1="\W\$ "
 export VISUAL=vim
 export EDITOR="$VISUAL"
