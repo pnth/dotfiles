@@ -39,10 +39,12 @@ filetype plugin indent on
 let g:tmux_navigator_no_mappings = 1
 let mapleader = ","
 let maplocalleader = ","
-nmap gh :bN<cr>
-nmap gl :bn<cr>
-nmap gW :bd<cr>:syn on<cr>
-nmap gw :bN<cr>:bd #<cr>
+nnoremap gh :bN<cr>
+nnoremap gl :bn<cr>
+nnoremap gW :bd<cr>:syn on<cr>
+nnoremap gw :bN<cr>:bd #<cr>
+nnoremap ' `
+nnoremap ` '
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
@@ -54,7 +56,7 @@ set background=dark
 set backspace=2
 set clipboard=unnamed
 set foldmethod=syntax
-set foldnestmax=1      "deepest fold is 10 levels
+set foldnestmax=1
 set formatoptions+=t
 set hlsearch
 set incsearch
@@ -71,8 +73,8 @@ set wrap
 syntax on
 
 """ Case-insensive search
-set ignorecase
-set smartcase
+" set ignorecase
+" set smartcase
 
 """ ESC keys
 nnoremap <C-Space> i
@@ -155,25 +157,26 @@ function! Pjump()
     :norm z.
 endfunction
 
-imap ,<space> <esc>:call PJumpMaker()<cr>
-function! PJumpMaker()
-	let str=getline('.')
-  if str =~ "«»"
-		echo "jump"
-		:norm ,m
-	else
-		:execute "normal! a,\<esc>a\<space>"
-  endif
-	:call feedkeys('a','n')
-endfunction
+" map ,<space> <esc>:call PJumpMaker()<cr>
+" function! PJumpMaker()
+" 	let str=getline('.')
+"   if str =~ "«»"
+" 		echo "jump"
+" 		:norm ,m
+" 	else
+" 		:execute "normal! a,\<esc>a\<space>"
+"   endif
+" 	:call feedkeys('a','n')
+" endfunction
 
 
 """ VIM-R-PLUGIN
 let r_syntax_folding = 1
 set nofoldenable
+let vimrplugin_assign = 1
 au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
-autocmd FileType R map <buffer> <f2> <Plug>RStart <cr> 
+autocmd FileType R map <buffer> <f2> <Plug>RStart <cr>
 			\ :!tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 78 <cr><cr>
 autocmd FileType R imap <buffer> <f2> <Plug>RStart
@@ -183,11 +186,11 @@ autocmd FileType R map <buffer> <f3> :!tmux select-layout even-horizontal &&
 autocmd FileType R vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType R nmap <buffer> <Space> <Plug>RDSendLine
 set completeopt-=preview
-autocmd FileType R imap <buffer> <C-_> <space>%>%<space>
-autocmd FileType R imap <buffer> ,> <space>%>%<space>
-autocmd FileType R imap <buffer> ,= <space>%<>%<space>
-autocmd FileType R imap <buffer> ,< <space>%T>%<space>
-autocmd FileType R imap <buffer> ,$ <space>%$%<space>
+autocmd FileType R imap <buffer> ,> <space><esc>ciw<space>%>%<space>
+autocmd FileType R imap <buffer> ,> <space><esc>ciw<space>%>%<space>
+autocmd FileType R imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
+autocmd FileType R imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
+autocmd FileType R imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
 autocmd FileType R noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
 autocmd FileType R noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
@@ -219,9 +222,56 @@ endfunction
 nmap ,en :call ToggleNerdtreeTagbar()<CR>
 
 """ CTRLP
-let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp']
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile']
+let g:ctrlp_working_path_mode = 'r'
 
 """ YCM YOUCOMPLETEME
 let g:ycm_confirm_extra_conf = 0
+
+
+""" REMOVE TRAILING SPACES
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+fun! <SID>StripTrailingWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+endfun
+" let _s=@/ let @/
+
+""" CPP
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
+			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+			\ "send-keys -t 3 ':qa' Enter 'clear && make %:r' Enter "
+			\ "send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter "<cr><cr>
+
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
+			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+			\ "send-keys -t 3 ':qa' Enter 'clear && make main' Enter "
+			\ "send-keys -t 2 ':qa' Enter 'clear && make main' Enter "<cr><cr>
+
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
+			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "
+			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
+
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R
+			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+			\ "send-keys -t 3 ':qa' Enter 'clear && ./main' Enter "
+			\ "send-keys -t 2 ':qa' Enter 'clear && ./main' Enter "<cr><cr>
+
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>d
+			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "
+			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
+
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
+			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./main' Enter "
+			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter "<cr><cr>
+
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 3 ':qa'
+" \Enter 'clear && vim `drmem -- ./main 2>&1 \| tail -1 \| rev \| cut -d: -f1
+" \ \| rev`' Enter<cr><cr>
+
 
