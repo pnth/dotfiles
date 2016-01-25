@@ -1,11 +1,12 @@
 # ########## history navigation ##########
-keymap L NULL
-keymap H NULL
-keymap L NEXT
-keymap H PREV
-keymap B NULL  # BACK
+# keymap L NULL
+# keymap H NULL
+# keymap L NEXT
+# keymap H PREV
+# keymap B NULL  # BACK
+# keymap :h HELP
 # keymap :h SELECT_MENU
-# #keymap :h HISTORY
+#keymap :h HISTORY
 
 # ########## scrolling ##########
 keymap C-f NULL  # cusor left
@@ -47,17 +48,18 @@ keymap C-p PREV_LINK
 #
 # # reload
 # C-r               Incremental search backward (ISEARCH_BACK)
-keymap r   NULL 
-keymap C-r NULL 
+keymap r   NULL
+keymap C-r NULL
 keymap r RELOAD
 
 #
-# # save/load 
+# # save/load
 # ESC-s             Save document source to file (DOWNLOAD)
 # S                 Save buffer to file (PRINT)
 # E                 Edit current document (EDIT)
 # keymap e NULL
-keymap :e EDIT_SCREEN  #ESC-e 
+keymap : NULL
+keymap :e EDIT_SCREEN  #ESC-e
 keymap :w SAVE
 keymap :W PRINT
 keymap o NULL
@@ -72,7 +74,7 @@ keymap o GOTO  # o, ESC-o: Option setting panel (OPTIONS)
 keymap y PEEK
 # keymap gC-g INFO
 # =                 View info of current document (INFO)
-# keymap C-g LINE_INFO # the same 
+# keymap C-g LINE_INFO # the same
 keymap gf VIEW
 
 #
@@ -114,7 +116,7 @@ keymap t TAB_LINK
 
 #
 # ########## quit ##########
-# keymap :q QUIT 
+# keymap :q QUIT
 # keymap ZZ QUIT
 # keymap ZQ EXIT
 

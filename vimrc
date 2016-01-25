@@ -178,7 +178,9 @@ au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 autocmd FileType R map <buffer> <f2> <Plug>RStart <cr>
 			\ :!tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 78 <cr><cr>
+      \ tmux resize-pane -t 2 -x 78 &&
+      \ tmux split-window -t 2 -d &&
+      \ tmux select-pane -t 1 <cr><cr>
 autocmd FileType R imap <buffer> <f2> <Plug>RStart
 autocmd FileType R vmap <buffer> <f2> <Plug>RStart
 autocmd FileType R map <buffer> <f3> :!tmux select-layout even-horizontal &&
@@ -219,7 +221,7 @@ function! ToggleNerdtreeTagbar()
 	endif
 
 endfunction
-nmap ,en :call ToggleNerdtreeTagbar()<CR>
+nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
 
 """ CTRLP
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile']
@@ -242,36 +244,47 @@ endfun
 """ CPP
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 3 ':qa' Enter 'clear && make %:r' Enter "
-			\ "send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter "<cr><cr>
+			\ "send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter "
+			\ "send-keys -t 3 ':qa' Enter 'clear && make %:r' Enter "<cr><cr>
 
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 3 ':qa' Enter 'clear && make main' Enter "
-			\ "send-keys -t 2 ':qa' Enter 'clear && make main' Enter "<cr><cr>
+			\ "send-keys -t 2 ':qa' Enter 'clear && make main' Enter "
+			\ "send-keys -t 3 ':qa' Enter 'clear && make main' Enter "<cr><cr>
 
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "
-			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
+			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "
+			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
 
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R
 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 3 ':qa' Enter 'clear && ./main' Enter "
-			\ "send-keys -t 2 ':qa' Enter 'clear && ./main' Enter "<cr><cr>
+			\ "send-keys -t 2 ':qa' Enter 'clear && ./main' Enter "
+			\ "send-keys -t 3 ':qa' Enter 'clear && ./main' Enter "<cr><cr>
 
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>d
 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "
-			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
+			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter "
+			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./%:r' Enter "<cr><cr>
 
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./main' Enter "
-			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter "<cr><cr>
+			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter "
+			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./main' Enter "<cr><cr>
 
 " autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 3 ':qa'
 " \Enter 'clear && vim `drmem -- ./main 2>&1 \| tail -1 \| rev \| cut -d: -f1
 " \ \| rev`' Enter<cr><cr>
 
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
