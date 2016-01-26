@@ -6,39 +6,50 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-URxvt.scrollBar: false
-URxvt*loginShell: true
-#URxvt.font: xft:monaco:size=10
-URxvt.letterSpace: -1
-URxvt*font:                 xft:Ubuntu Mono:regular:size=13
-URxvt*imFont:               xft:Ubuntu Mono:regular:size=13
 URxvt*boldFont:             xft:Ubuntu Mono:bold:size=13
-URxvt*italicFont:           xft:Ubuntu Mono:italic:size=13
 URxvt*boldItalicFont:       xft:Ubuntu Mono:bold:italic:size=13
-#URxvt.perl-ext-common: default,matcher,tabbed,resize-font
-URxvt.perl-ext-common: default,matcher,resize-font
-URxvt.url-launcher: /usr/bin/firefox
-URxvt.matcher.button: 1
+URxvt*depth: 32
+URxvt*font:                 xft:Ubuntu Mono:regular:size=13
+URxvt*geometry: 240x84
+URxvt*imFont:               xft:Ubuntu Mono:regular:size=13
+URxvt*iso14755: false
+URxvt*iso14755_52: false
+URxvt*italicFont:           xft:Ubuntu Mono:italic:size=13
+URxvt*letterSpace: -1
+URxvt*loginShell: true
+URxvt*matcher.button: 1
+URxvt*perl-ext-common: default,matcher,resize-font
+URxvt*resize-font.bigger: C-Up
+URxvt*resize-font.smaller: C-Down
+URxvt*scrollBar: false
+URxvt*scrollBar_floating: false
+URxvt*scrollBar_right: false
+URxvt*scrollColor: #777777
+URxvt*scrollTtyKeypress: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*scrollstyle: plain
+URxvt*secondaryScreen: true
+URxvt*secondaryScroll: true
+URxvt*skipScroll: true
+URxvt*termName: rxvt-unicode-256color
+! URxvt*termName: rxvt-256color
+URxvt*url-launcher: /usr/bin/firefox
+URxvt*scrollTtyKeypress:  true
+URxvt*scrollTtyOutput:  false
+URxvt*skipScroll:  true
+URxvt*scrollWithBuffer:  false
+URxvt*visualBell:  true
 
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
 
-#URxvt.tabbed.tabbar-fg: 2
-#URxvt.tabbed.tabbar-bg: 0
-#URxvt.tabbed.tab-fg: 3
-#URxvt.tabbed.tab-bg: 0
-
-URxvt.iso14755: False
-
-URxvt.depth: 32
 !Light
 !URxvt*background: rgba:fd00/f600/e300/0000
+!
 !Dark
-#URxvt*background: rgba:0000/2b00/3600/cccc
-URxvt*background: rgba:0000/2000/3000/cccc
-!#define S_base03        #002b36
-!blurRadius
-!fading
+URxvt*background: rgba:0000/1000/2000/cccc
+!URxvt*background: rgba:0000/2b00/3600/cccc
+! URxvt*background: rgba:0000/2000/3000/cccc
+
 
 ! Solarized color scheme for the X Window System
 !

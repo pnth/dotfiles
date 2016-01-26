@@ -1,12 +1,13 @@
+import Control.Monad
+import System.Exit
+import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
-import System.IO
 import XMonad.Util.Dmenu
-import System.Exit
-import Control.Monad
+import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.Run(spawnPipe)
 
 main = do
     xmproc <- spawnPipe "/usr/bin/xmobar /home/phuoc/.xmobarrc"
@@ -19,6 +20,7 @@ main = do
                         }
 				, terminal = "urxvt"
         , modMask = mod1Mask     
+	, handleEventHook    = fullscreenEventHook
         } `additionalKeys`
         [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")

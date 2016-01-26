@@ -12,12 +12,21 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+alias gg="surfraw -browser=\"w3m -num\" google"
+alias ls="ls -FGh"
 alias ls='ls --color=auto'
+alias ranger='python3 /usr/bin/ranger'
+alias tmh1="tmux select-layout main-horizontal"
+alias tmh="tmux select-layout even-horizontal"
+alias tmt="tmux select-layout tiled"
+alias tmv1="tmux select-layout main-vertical"
+alias tmv="tmux select-layout even-vertical"
+alias vim="vim -O"
+alias w3m="w3m -M"
+export EDITOR="$VISUAL"
+export PATH=$HOME/bin:${PATH}
+export PS1="\W\$ "
 export VISUAL="vim"
-#alias vim="vim --servername VIM"
-setopt PROMPT_SUBST
+export VISUAL=vim
 PROMPT='%F{cyan}%c%#%f '
-#PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} %(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
-#PROMPT=$'%{\e[0;35m%}%B┌─[%b%{\e[0;34m%}%n%{\e[0m%}@%{\e[0;34m%}%m%{\e[0;35m%}%B]%b%{\e[1;35m%}[%b%{\e[0;34m%}%~%{\e[0;35m%}%B]
-#%{\e[0;35m%}%B└─╼%b%{\e[1;30m%}%{\e[0m%} '
-
+setopt PROMPT_SUBST
