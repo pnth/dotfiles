@@ -1,29 +1,50 @@
 # ########## history navigation ##########
-# keymap L NULL
-# keymap H NULL
-# keymap L NEXT
-# keymap H PREV
+keymap L   NULL
+keymap H   NULL
+keymap L   NEXT
+keymap H   PREV
 # keymap B NULL  # BACK
-# keymap :h HELP
+keymap ?   HELP
 # keymap :h SELECT_MENU
 #keymap :h HISTORY
 
 # ########## scrolling ##########
-keymap C-f NULL  # cusor left
-keymap C-b NULL  # cursor forward
+keymap C-f NULL        # cusor left
+keymap C-b NULL        # cursor forward
 keymap C-f NEXT_PAGE
 keymap C-b PREV_PAGE
+keymap g   NULL
+keymap gg  BEGIN
+keymap gn  NEW_TAB
+keymap gc  CLOSE_TAB
 # keymap zz CENTER_V
+keymap K   NULL        # Scroll down one line (DOWN)
+keymap J   NULL        # Scroll up one line (UP)
+keymap C-e UP
+keymap C-y DOWN
+
+
+keymap J NEXT_DOWN
+keymap K NEXT_UP
+
+# Move to next right link (NEXT_RIGHT)
+# Move to next left link (NEXT_LEFT)
+# Move to next downward link (NEXT_DOWN)
+# Move to next upward link (NEXT_UP)
+# Move to next right (or downward) link (NEXT_RIGHT_DOWN)
+# Move to next left (or upward) link (NEXT_LEFT_UP)
+# Cancel the last cursor movement (UNDO)
+# Cancel the last undo (REDO)
 
 # ########## cursor ##########
-keymap 0 NULL
-keymap $ NULL
-keymap w NULL
-keymap b NULL  # PREV_PAGE
-keymap 0 LINE_BEGIN
-keymap $ LINE_END
-keymap w NEXT_WORD
-keymap b PREV_WORD
+keymap 0   NULL
+keymap $   NULL
+keymap w   NULL
+keymap b   NULL        # PREV_PAGE
+keymap 0   LINE_BEGIN
+keymap $   LINE_END
+keymap w   NEXT_WORD
+keymap b   PREV_WORD
 
 # ########## cursor history ##########
 # (                 Cancel the last cursor movement (UNDO)
@@ -50,7 +71,7 @@ keymap C-p PREV_LINK
 # C-r               Incremental search backward (ISEARCH_BACK)
 keymap r   NULL
 keymap C-r NULL
-keymap r RELOAD
+keymap r   RELOAD
 
 #
 # # save/load
@@ -58,12 +79,12 @@ keymap r RELOAD
 # S                 Save buffer to file (PRINT)
 # E                 Edit current document (EDIT)
 # keymap e NULL
-keymap : NULL
-keymap :e EDIT_SCREEN  #ESC-e
-keymap :w SAVE
-keymap :W PRINT
-keymap o NULL
-keymap o GOTO  # o, ESC-o: Option setting panel (OPTIONS)
+keymap :   NULL
+keymap :e  EDIT_SCREEN #ESC-e
+keymap :w  SAVE
+keymap :W  PRINT
+keymap o   NULL
+keymap o   GOTO        # o, ESC-o: Option setting panel (OPTIONS)
 # keymap :e LOAD
 
 
@@ -71,11 +92,11 @@ keymap o GOTO  # o, ESC-o: Option setting panel (OPTIONS)
 # c                 Peek current URL (PEEK)
 # u                 Peek link URL (PEEK_LINK)
 # i                 Peek image URL (PEEK_IMG)
-keymap y PEEK
+keymap y   PEEK
 # keymap gC-g INFO
 # =                 View info of current document (INFO)
 # keymap C-g LINE_INFO # the same
-keymap gf VIEW
+keymap gf  VIEW
 
 #
 # ########## search ##########
@@ -100,11 +121,11 @@ keymap gf VIEW
 # keymap gh GOTO http://www.google.com/en
 # keymap gH TAB_GOTO http://www.google.com/en
 # keymap C-t NEW_TAB
-keymap gt NEXT_TAB
-keymap gT PREV_TAB
+keymap gt  NEXT_TAB
+keymap gT  PREV_TAB
 # keymap C-wL TAB_RIGHT
 # keymap C-wH TAB_LEFT
-keymap t TAB_LINK
+keymap t   TAB_LINK
 # keymap T TAB_MENU
 #
 # # jump

@@ -62,7 +62,8 @@ bgextviewer 1
 extbrowser3
 extbrowser2
 #extbrowser /usr/bin/firefox
-extbrowser /usr/bin/open
+#extbrowser /usr/bin/open
+extbrowser sh -c 'printf %s "$0" | xclip -selection CLIPBOARD'
 mailer
 editor vim
 urimethodmap ~/.w3m//urimethodmap, /etc/w3m/urimethodmap
@@ -129,9 +130,9 @@ dictcommand file:///$LIB/w3mdict.cgi
 use_dictcommand 0
 dirlist_cmd file:///$LIB/dirlist.cgi
 ext_dirlist 1
-display_lineinfo 0
+display_lineinfo 1
 decode_url 0
-display_link 0
+display_link 1
 open_tab_dl_list 0
 open_tab_blank 1
 target_self 0

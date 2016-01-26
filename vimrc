@@ -1,12 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
+" Plug 'davidhalter/jedi'
+" Plug 'gabrielelana/vim-markdown'
 " Plug 'LucHermitte/mu-template'
 " Plug 'LucHermitte/searchInRuntime'
 " Plug 'vim-scripts/winmanager'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chrisbra/csv.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'davidhalter/jedi'
-Plug 'gabrielelana/vim-markdown'
 Plug 'hdima/python-syntax'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'jalvesaq/R-Vim-runtime'
@@ -21,6 +22,7 @@ Plug 'LucHermitte/lh-dev'
 Plug 'LucHermitte/lh-tags'
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'majutsushi/tagbar'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tomtom/tcomment_vim'
@@ -30,7 +32,6 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
 Plug '~/.vim/manually/personal'
-Plug 'chrisbra/csv.vim'
 
 call plug#end()
 
@@ -224,7 +225,7 @@ endfunction
 nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
 
 """ CTRLP
-let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile']
+let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
 let g:ctrlp_working_path_mode = 'r'
 
 """ YCM YOUCOMPLETEME

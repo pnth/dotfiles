@@ -15,4 +15,8 @@ export EDITOR="$VISUAL"
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 export PATH=/usr/local/bin:/usr/local/opt/llvm/bin:$HOME/bin:$PATH
 source ~/git-completion.bash
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
 
