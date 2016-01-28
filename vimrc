@@ -9,6 +9,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'chrisbra/csv.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'hdima/python-syntax'
+Plug 'hynek/vim-python-pep8-indent'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'jalvesaq/R-Vim-runtime'
 Plug 'jcfaria/Vim-R-plugin'
@@ -38,8 +39,8 @@ call plug#end()
 colorscheme solarized
 filetype plugin indent on
 let g:tmux_navigator_no_mappings = 1
-let mapleader = ","
 let maplocalleader = ","
+let mapleader = ","
 nnoremap gh :bN<cr>
 nnoremap gl :bn<cr>
 nnoremap gW :bd<cr>:syn on<cr>
@@ -106,13 +107,15 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
-autocmd FileType python xmap <buffer> <leader>r <Plug>SlimeRegionSend
-autocmd FileType python nmap <buffer> <leader>r <Plug>SlimeMotionSend
-autocmd FileType python nmap <buffer> <leader>rr <Plug>SlimeLineSend
+au BufNewFile,BufRead *.py set filetype=python
+autocmd FileType python xmap <buffer> ,r <Plug>SlimeRegionSend
+autocmd FileType python nmap <buffer> ,r <Plug>SlimeMotionSend
+autocmd FileType python nmap <buffer> ,rr <Plug>SlimeLineSend
 autocmd FileType python nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-autocmd FileType python nmap <buffer> <leader>rp <Plug>SlimeParagraphSend
-autocmd FileType c,cpp,java,python map <buffer> <f3> :!tmux split-window && tmux select-layout
-      \ even-horizontal && tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
+autocmd FileType python nmap <buffer> ,rp <Plug>SlimeParagraphSend
+autocmd FileType c,cpp,java,python map <buffer> <f3> :!tmux split-window &&
+			\ tmux select-layout even-horizontal &&
+			\ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
       \ <cr><cr>
 
 """ EASY-ALIGN
