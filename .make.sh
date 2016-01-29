@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="note tmux.conf vimrc wallpaper xinitrc xmobarrc xmonad Xresources zshrc zprofile inputrc"
+files="surfraw.conf note tmux.conf vimrc wallpaper xinitrc xmobarrc xmonad Xresources zshrc zprofile inputrc"
 ##########
 
 # create dotfiles_old in homedir
@@ -29,6 +29,11 @@ for file in $files; do
   echo "Creating symlink to $file in home directory."
   ln -sf $dir/$file ~/.$file
 done
+
+# Manual
+mkdir ~/.w3m
+ln -s ~/dotfiles/w3m/config ~/.w3m/config
+ln -s ~/dotfiles/w3m/keymap ~/.w3m/keymap
 
 # for d in $dirs; do
 #   echo "Moving any existing dotfiles from ~ to $olddir"
