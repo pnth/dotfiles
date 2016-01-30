@@ -35,6 +35,10 @@ mkdir ~/.w3m
 ln -s ~/dotfiles/w3m/config ~/.w3m/config
 ln -s ~/dotfiles/w3m/keymap ~/.w3m/keymap
 
+#bluetooth
+sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
+sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
+cp ~/dotfiles/bt.sh ~/bin/
 # for d in $dirs; do
 #   echo "Moving any existing dotfiles from ~ to $olddir"
 #   path=`dirname $d`

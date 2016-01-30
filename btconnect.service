@@ -1,0 +1,11 @@
+[Unit]
+Description=bluetooth connect
+After=bluetooth.target
+Requires=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/phuoc/bin/bt.sh
+
+[Install]
+WantedBy=bluetooth.target
