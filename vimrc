@@ -202,6 +202,8 @@ autocmd FileType R noremap <buffer> <silent> <LocalLeader>t :call RAction("tail"
 autocmd FileType R noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 autocmd FileType R noremap <buffer> <silent> <LocalLeader>q
       \ :call g:SendCmdToR("quit(save=\"no\")")<cr>
+			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
+
 let vimrplugin_args_in_stline = 1
 " imap <C-A> <Plug>RCompleteArgs
 autocmd FileType R imap <buffer> <silent> <LocalLeader>ra <Plug>RCompleteArgs
@@ -291,4 +293,15 @@ function! TwiddleCase(str)
   return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+
+
+function! RSendSubLine()
+	let line=getline('.')
+	let line=split(line, '%>%')[0]
+	let line=split(line, '%$%')[0]
+	let line=split(line, '->')[0]
+	call g:SendCmdToR(line)
+endfunction
+autocmd FileType R nnoremap <buffer> ,r<space> :call RSendSubLine()<CR>
+
 

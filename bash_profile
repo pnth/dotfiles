@@ -2,14 +2,12 @@
 export ARCHFLAGS="-arch x86_64"
 # Ensure user-installed binaries take precedence
 export PATH=/usr/local/bin:/usr/local/opt/llvm/bin:$HOME/bin:$PATH
-export PS1="\W\$ "
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 # Load .bashrc if it exists
 test -f ~/.bashrc && source ~/.bashrc
-alias tn='tmux new bash' 
-alias ps1='export PS1="\W\$ "' 
+alias tn='tmux new bash'
 
 # ryan 256 color support
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
