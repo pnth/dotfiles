@@ -25,8 +25,11 @@ alias vim="vim -O"
 alias w3m="w3m -M"
 export EDITOR="$VISUAL"
 export PATH=$HOME/bin:${PATH}
-export PS1="\W\$ "
+export PS1="\W \$((`pstree -p $$ | grep ranger | wc -l`)) "
 export VISUAL="vim"
 export VISUAL=vim
+export C_INCLUDE_PATH=/usr/local/include
+export CPLUS_INCLUDE_PATH=/usr/local/include
 PROMPT='%F{cyan}%c%#%f '
 setopt PROMPT_SUBST
+
