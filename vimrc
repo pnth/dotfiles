@@ -5,7 +5,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'ivalkeen/nerdtree-execute'
-" Plug 'jalvesaq/R-Vim-runtime'
+Plug 'jalvesaq/R-Vim-runtime'
 Plug 'jcfaria/Vim-R-plugin'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/vim-easy-align'
@@ -31,6 +31,8 @@ Plug '~/.vim/manually/personal'
 call plug#end()
 
 colorscheme solarized
+" or normal high
+" let g:solarized_contrast  =   "low"
 filetype plugin indent on
 let g:tmux_navigator_no_mappings = 1
 let maplocalleader = ","
@@ -84,13 +86,13 @@ nmap <silent> <c-e><c-y> :TagbarClose<CR>
 let g:tagbar_left = 1
 let g:tagbar_width = 18
 let g:tagbar_type_r = {
-    \ 'ctagstype' : 'r',
-    \ 'kinds'     : [
-        \ 'f:Functions',
-        \ 'g:GlobalVariables',
-        \ 'v:FunctionVariables',
-    \ ]
-\ }
+			\ 'ctagstype' : 'r',
+			\ 'kinds'     : [
+			\ 'f:Functions',
+			\ 'g:GlobalVariables',
+			\ 'v:FunctionVariables',
+			\ ]
+			\ }
 
 """ VIM-TMUX-NAVIGATOR
 let g:tmux_navigator_save_on_switch = 1
@@ -110,7 +112,7 @@ autocmd FileType python nmap <buffer> ,rp <Plug>SlimeParagraphSend
 autocmd FileType c,cpp,java,python map <buffer> <f3> :!tmux split-window &&
 			\ tmux select-layout even-horizontal &&
 			\ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
-      \ <cr><cr>
+			\ <cr><cr>
 
 """ EASY-ALIGN
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -129,10 +131,17 @@ let NERDTreeMapJumpPrevSibling=',k'
 let g:indentLine_color_term = 10
 let g:indentLine_color_tty_dark = 10
 map ,ei :IndentLinesToggle<cr>
+let g:indentLine_enabled = 0
+
 """ LH-BRACKET
 let g:marker_select_empty_marks=0
 imap ,m      <Plug>MarkersJumpF
 map ,m      <Plug>MarkersJumpF
+nmap ,ap      <Plug>PreviewWord
+nmap ,ac      <Plug>ClosePreviewWindow
+imap ,ap      <Plug>PreviewWord
+imap ,ac      <Plug>ClosePreviewWindow
+imap ,ai      <Plug>OpenIncludes
 
 """ MINE
 noremap gd :call Pjump()<cr><cr>
@@ -176,13 +185,13 @@ au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
 			\ :!tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 78 &&
-      \ tmux split-window -t 2 -d &&
-      \ tmux select-pane -t 1 <cr><cr>
+			\ tmux resize-pane -t 2 -x 78 &&
+			\ tmux split-window -t 2 -d &&
+			\ tmux select-pane -t 1 <cr><cr>
 autocmd FileType r imap <buffer> <f2> <Plug>RStart
 autocmd FileType r vmap <buffer> <f2> <Plug>RStart
 autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 78 <cr><cr>
+			\ tmux resize-pane -t 2 -x 78 <cr><cr>
 autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 set completeopt-=preview
@@ -190,12 +199,13 @@ autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
 autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
 autocmd FileType r imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
 autocmd FileType r imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
+autocmd FileType r imap <buffer> ,t <space><esc>ciw<space>%T>%<space>
 autocmd FileType r imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>q
-      \ :call g:SendCmdToR("quit(save=\"no\")")<cr>
+			\ :call g:SendCmdToR("quit(save=\"no\")")<cr>
 			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
 let vimrplugin_args_in_stline = 1
@@ -277,14 +287,14 @@ autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
 " \ \| rev`' Enter<cr><cr>
 
 function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
+	if a:str ==# toupper(a:str)
+		let result = tolower(a:str)
+	elseif a:str ==# tolower(a:str)
+		let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+	else
+		let result = toupper(a:str)
+	endif
+	return result
 endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 

@@ -22,7 +22,7 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
   echo "Moving any existing dotfiles from ~ to $olddir"
   mv -f ~/.$file ~/$olddir/
@@ -34,6 +34,9 @@ done
 mkdir ~/.w3m
 ln -s ~/dotfiles/w3m/config ~/.w3m/config
 ln -s ~/dotfiles/w3m/keymap ~/.w3m/keymap
+ln -s ~/dotfiles/ctags .ctags
+ln -s ~/dotfiles/ycm_extra_conf.py .ycm_extra_conf.py
+ln -s ~/dotfiles/vim/manually .vim/manually
 
 #bluetooth
 sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/

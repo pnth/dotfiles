@@ -13,8 +13,7 @@ compinit
 # End of lines added by compinstall
 
 alias gg="surfraw -browser=\"w3m -num\" google"
-alias ls="ls -FGh"
-alias ls='ls --color=auto'
+alias ls="ls -FGh --color=auto"
 alias ranger='python3 /usr/bin/ranger'
 alias tmh1="tmux select-layout main-horizontal"
 alias tmh="tmux select-layout even-horizontal"
@@ -28,8 +27,7 @@ export PATH=$HOME/bin:${PATH}
 export PS1="\W \$((`pstree -p $$ | grep ranger | wc -l`)) "
 export VISUAL="vim"
 export VISUAL=vim
-export C_INCLUDE_PATH=/usr/local/include
-export CPLUS_INCLUDE_PATH=/usr/local/include
+export TERM=rxvt-unicode-256color
 PROMPT='%F{cyan}%c%#%f '
 setopt PROMPT_SUBST
 

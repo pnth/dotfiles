@@ -73,8 +73,7 @@ flags = [
 '-isystem', '/Library/Frameworks/R.framework/Headers',
 '-isystem', '/Library/Frameworks/R.framework/Versions/3.2/Resources/library/Rcpp/include',
 '-isystem', '/Library/Frameworks/R.framework/Versions/3.2/Resources/library/RcppArmadillo/include',
-'-isystem', '/usr/local/Cellar/armadillo/6.200.4/include',
-'-isystem', '/usr/local/Cellar/boost/1.59.0/include',
+'-isystem', '/usr/local/include',
 '-isystem', '.',
 ]
 
