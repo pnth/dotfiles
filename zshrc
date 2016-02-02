@@ -33,3 +33,10 @@ export CPLUS_INCLUDE_PATH=/usr/local/include
 PROMPT='%F{cyan}%c%#%f '
 setopt PROMPT_SUBST
 
+function gitp() {
+	git add .
+	git commit -a -m "$1"
+	git push
+}
+
+}«»
