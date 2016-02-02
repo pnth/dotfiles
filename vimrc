@@ -1,17 +1,11 @@
 call plug#begin('~/.vim/plugged')
-
-" Plug 'davidhalter/jedi'
-" Plug 'gabrielelana/vim-markdown'
-" Plug 'LucHermitte/mu-template'
-" Plug 'LucHermitte/searchInRuntime'
-" Plug 'vim-scripts/winmanager'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chrisbra/csv.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'ivalkeen/nerdtree-execute'
-Plug 'jalvesaq/R-Vim-runtime'
+" Plug 'jalvesaq/R-Vim-runtime'
 Plug 'jcfaria/Vim-R-plugin'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/vim-easy-align'
@@ -180,27 +174,27 @@ set nofoldenable
 let vimrplugin_assign = 1
 au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
-autocmd FileType R map <buffer> <f2> <Plug>RStart <cr>
+autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
 			\ :!tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 78 &&
       \ tmux split-window -t 2 -d &&
       \ tmux select-pane -t 1 <cr><cr>
-autocmd FileType R imap <buffer> <f2> <Plug>RStart
-autocmd FileType R vmap <buffer> <f2> <Plug>RStart
-autocmd FileType R map <buffer> <f3> :!tmux select-layout even-horizontal &&
+autocmd FileType r imap <buffer> <f2> <Plug>RStart
+autocmd FileType r vmap <buffer> <f2> <Plug>RStart
+autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 78 <cr><cr>
-autocmd FileType R vmap <buffer> <Space> <Plug>RDSendSelection
-autocmd FileType R nmap <buffer> <Space> <Plug>RDSendLine
+autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
+autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 set completeopt-=preview
-autocmd FileType R imap <buffer> ,> <space><esc>ciw<space>%>%<space>
-autocmd FileType R imap <buffer> ,> <space><esc>ciw<space>%>%<space>
-autocmd FileType R imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
-autocmd FileType R imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
-autocmd FileType R imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
+autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
+autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
+autocmd FileType r imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
+autocmd FileType r imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
+autocmd FileType r imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
-autocmd FileType R noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
-autocmd FileType R noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
-autocmd FileType R noremap <buffer> <silent> <LocalLeader>q
+autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
+autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
+autocmd FileType r noremap <buffer> <silent> <LocalLeader>q
       \ :call g:SendCmdToR("quit(save=\"no\")")<cr>
 			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
