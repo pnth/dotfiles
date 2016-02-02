@@ -1,5 +1,6 @@
 export SAL_USE_VCLPLUGIN=gen lowriter
 envfile="$HOME/.gnupg/gpg-agent.env"
+
 if [ "$TERM" = "xterm" ] ; then
     if [ -z "$COLORTERM" ] ; then
         if [ -z "$XTERM_VERSION" ] ; then
@@ -67,6 +68,7 @@ if [ -z "$SCREEN_COLORS" ] ; then
 fi
 
 
+TERM=rxvt-unicode-256color
 export GPG_AGENT_INFO  # the env file does not contain the export statement
 export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 export LD_LIBRARY_PATH=/usr/lib/jvm/java-7-openjdk/jre/lib/amd64/server/
