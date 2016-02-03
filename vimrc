@@ -11,11 +11,6 @@ Plug 'jpalardy/vim-slime'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'LucHermitte/lh-brackets'
-Plug 'LucHermitte/lh-cpp'
-Plug 'LucHermitte/lh-dev'
-Plug 'LucHermitte/lh-tags'
-Plug 'LucHermitte/lh-vim-lib'
 Plug 'majutsushi/tagbar'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
@@ -27,6 +22,16 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
 Plug '~/.vim/manually/personal'
+Plug 'AndrewRadev/sideways.vim'
+
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/lh-tags'
+Plug 'LucHermitte/lh-dev'
+Plug 'LucHermitte/lh-brackets'
+Plug 'LucHermitte/searchInRuntime'
+Plug 'LucHermitte/mu-template'
+Plug 'tomtom/stakeholders_vim'
+Plug 'LucHermitte/lh-cpp'
 
 call plug#end()
 
@@ -43,6 +48,11 @@ nnoremap gW :bd<cr>:syn on<cr>
 nnoremap gw :bN<cr>:bd #<cr>
 nnoremap ' `
 nnoremap ` '
+" nnoremap <silent> <c-\> :silent!w<cr> :TmuxNavigatePrevious<cr>
+" nnoremap <silent> <c-h> :silent!w<cr> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <c-j> :silent!w<cr> :TmuxNavigateDown<cr>
+" nnoremap <silent> <c-k> :silent!w<cr> :TmuxNavigateUp<cr>
+" nnoremap <silent> <c-l> :silent!w<cr> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
@@ -142,6 +152,7 @@ nmap ,ac      <Plug>ClosePreviewWindow
 imap ,ap      <Plug>PreviewWord
 imap ,ac      <Plug>ClosePreviewWindow
 imap ,ai      <Plug>OpenIncludes
+let g:mt_IDontWantTemplatesAutomaticallyInserted = 1
 
 """ MINE
 noremap gd :call Pjump()<cr><cr>
@@ -195,12 +206,15 @@ autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
 autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 set completeopt-=preview
+
 autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
 autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
 autocmd FileType r imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
 autocmd FileType r imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
 autocmd FileType r imap <buffer> ,t <space><esc>ciw<space>%T>%<space>
 autocmd FileType r imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
+autocmd FileType r imap <buffer> _ <space><esc>ciw<space><-<space>
+
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
@@ -209,8 +223,13 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>q
 			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
 let vimrplugin_args_in_stline = 1
+set <M-->=^[-
+let vimrplugin_assign_map = "<M-->"
 " imap <C-A> <Plug>RCompleteArgs
 autocmd FileType R imap <buffer> <silent> <LocalLeader>ra <Plug>RCompleteArgs
+" let g:r_hl_roxygen = 1
+let vimrplugin_vimpager = "tabnew"
+
 
 """ WINMANAGE HACK
 function! ToggleNerdtreeTagbar()
@@ -308,4 +327,7 @@ function! RSendSubLine()
 endfunction
 autocmd FileType R nnoremap <buffer> ,r<space> :call RSendSubLine()<CR>
 
+""" SIDEWAYS
+nnoremap ,ah :SidewaysLeft<cr>
+nnoremap ,al :SidewaysRight<cr>
 
