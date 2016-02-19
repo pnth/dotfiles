@@ -38,6 +38,7 @@ call plug#end()
 colorscheme solarized
 " or normal high
 " let g:solarized_contrast  =   "low"
+nnoremap Q <nop>  "Ex mode
 filetype plugin indent on
 let g:tmux_navigator_no_mappings = 1
 let maplocalleader = ","
@@ -58,6 +59,7 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
 set autoindent
 set autowriteall
 set background=dark
@@ -76,8 +78,12 @@ set ruler
 set shiftwidth=2
 set tabstop=2
 set tw=78
+set expandtab
 set wmw=0
 set wrap
+set mouse=a
+
+
 syntax on
 
 """ Case-insensive search
@@ -85,14 +91,15 @@ syntax on
 " set smartcase
 
 """ ESC keys
-nnoremap <C-Space> i
-inoremap <C-Space> <Esc>
-inoremap <C-@> <Esc>
-vnoremap <C-@> <Esc>
+" nnoremap <C-Space> i
+" inoremap <C-Space> <Esc>
+" inoremap <C-@> <Esc>
+" vnoremap <C-@> <Esc>
 
 """ TAGBAR
 nmap <silent> <c-e><c-t> :TagbarOpen fj<CR><c-w>=
 nmap <silent> <c-e><c-y> :TagbarClose<CR>
+set tags=./tags,tags;$HOME
 let g:tagbar_left = 1
 let g:tagbar_width = 18
 let g:tagbar_type_r = {
@@ -107,22 +114,39 @@ let g:tagbar_type_r = {
 """ VIM-TMUX-NAVIGATOR
 let g:tmux_navigator_save_on_switch = 1
 
-"""vim-slime
+""" VIM-SLIME, SH
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
 au BufNewFile,BufRead *.py set filetype=python
-autocmd FileType python xmap <buffer> ,r <Plug>SlimeRegionSend
-autocmd FileType python nmap <buffer> ,r <Plug>SlimeMotionSend
-autocmd FileType python nmap <buffer> ,rr <Plug>SlimeLineSend
-autocmd FileType python nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-autocmd FileType python nmap <buffer> ,rp <Plug>SlimeParagraphSend
-autocmd FileType c,cpp,java,python map <buffer> <f3> :!tmux split-window &&
-			\ tmux select-layout even-horizontal &&
-			\ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
-			\ <cr><cr>
+autocmd FileType python,sh xmap <buffer> <space> <Plug>SlimeRegionSend
+autocmd FileType python,sh nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh nmap <buffer> ,p <Plug>SlimeMotionSend
+autocmd FileType python,sh nmap <buffer> ,pa ,p}}
+autocmd FileType python,sh nmap <buffer> ,rp ve<space>
+" autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
+autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
+      \ <cr><cr>
+autocmd FileType python map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux send-keys -t 2 'source ~/da/venv/bin/activate && ipython' Enter <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 78 -y 8 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+      \ :!tmux send-keys -t 3 'source ~/da/venv/bin/activate' Enter <cr><cr>
+autocmd FileType python noremap <buffer> <silent> ,q
+      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
+
+autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1 <cr><cr>
+autocmd FileType sh noremap <buffer> <silent> ,q
+      \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
+
 
 """ EASY-ALIGN
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -192,6 +216,8 @@ endfunction
 let r_syntax_folding = 1
 set nofoldenable
 let vimrplugin_assign = 1
+" set <M-->=^[-
+" let vimrplugin_assign_map = "<M-->"
 au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
@@ -199,10 +225,17 @@ autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
 			\ tmux resize-pane -t 2 -x 78 &&
 			\ tmux split-window -t 2 -d &&
 			\ tmux select-pane -t 1 <cr><cr>
+			\ :!tmux resize-pane -t 2 -y 8 <cr><cr>
+autocmd FileType r map <buffer> <f3>
+			\ :!tmux resize-pane -t 2 -x 78 <cr><cr>
+			\ :!tmux resize-pane -t 2 -y 8 <cr><cr>
+			\ <c-w>=
+
+" autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
+" 			\ tmux resize-pane -t 2 -x 78 <cr><cr>
+
 autocmd FileType r imap <buffer> <f2> <Plug>RStart
 autocmd FileType r vmap <buffer> <f2> <Plug>RStart
-autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
-			\ tmux resize-pane -t 2 -x 78 <cr><cr>
 autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 set completeopt-=preview
@@ -213,7 +246,7 @@ autocmd FileType r imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
 autocmd FileType r imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
 autocmd FileType r imap <buffer> ,t <space><esc>ciw<space>%T>%<space>
 autocmd FileType r imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
-autocmd FileType r imap <buffer> _ <space><esc>ciw<space><-<space>
+" autocmd FileType r imap <buffer> _ <space><esc>ciw<space><-<space>
 
 "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
@@ -223,12 +256,11 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>q
 			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
 let vimrplugin_args_in_stline = 1
-set <M-->=^[-
-let vimrplugin_assign_map = "<M-->"
 " imap <C-A> <Plug>RCompleteArgs
-autocmd FileType R imap <buffer> <silent> <LocalLeader>ra <Plug>RCompleteArgs
-" let g:r_hl_roxygen = 1
+" autocmd FileType R imap <buffer> <silent> <LocalLeader>ra <Plug>RCompleteArgs
+let g:r_hl_roxygen = 0
 let vimrplugin_vimpager = "tabnew"
+let vimrplugin_args_in_stline = 1
 
 
 """ WINMANAGE HACK
@@ -330,4 +362,17 @@ autocmd FileType R nnoremap <buffer> ,r<space> :call RSendSubLine()<CR>
 """ SIDEWAYS
 nnoremap ,ah :SidewaysLeft<cr>
 nnoremap ,al :SidewaysRight<cr>
+
+
+""" VIM-MARKDOWN
+set conceallevel=1
+let g:vim_markdown_toc_autofit = 1
+" au BufNewFile,BufRead *.md set filetype=md
+" au BufNewFile,BufRead *.mkd set filetype=md
+autocmd FileType markdown map <buffer> <f2> :Toc <cr>
+autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
+      \ --latex-engine=xelatex --filter pandoc-citeproc --bibliography %:r.bib
+      \ -o %:r.docx <cr>
+      \ :!xdg-open %:r.docx & <cr><cr>
+autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.docx <cr><cr>
 

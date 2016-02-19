@@ -30,9 +30,10 @@ export VISUAL=vim
 export TERM=rxvt-unicode-256color
 PROMPT='%F{cyan}%c%#%f '
 setopt PROMPT_SUBST
+xset r rate 250 30
 
 function gitp() {
-	git add .
+	git add *
 	git commit -a -m "$1"
 	git push
 }
