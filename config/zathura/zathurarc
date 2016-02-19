@@ -1,0 +1,56 @@
+# 2
+set recolor true
+set recolor-darkcolor "#93A1A1"
+set recolor-lightcolor "#002B36"
+set statusbar-bg "#000000"
+set statusbar-fg "#CC0000"
+#
+## keybindings
+#map [fullscreen] a adjust_window best-fit
+#map [fullscreen] s adjust_window width
+#map [fullscreen] f follow
+#map [fullscreen] <Tab> toggle_index
+#map [fullscreen] j scroll down
+#map [fullscreen] k scroll up
+#
+#I haven't really been able to do what I want with it yet, which is to have several color
+#native colors and toggle several different predefined color schemes for different lighti
+#fatigue, etc.
+#A keybinding "control+I" to toggle invert colors.
+#A keybinding "control+s" to toggle sepia/parchment type coloration (like a kindle)
+#A keybinding "control+a" (or some other key) to toggle the aqua/blue color scheme above
+
+
+# 1
+## zathurarc
+## colors
+#set default-bg "#f7f4ef"
+#set statusbar-bg "#f7f4ef"
+#set statusbar-fg black
+#set font "monospace normal 12"
+## settings
+#set adjust-open width
+#set zoom-step 20
+##set scroll-step 700
+#set scroll-full-overlap 0.05
+##set scroll-page-aware true
+#set database plain
+## key bindings
+#map w adjust_window width
+#map z adjust_window best-fit
+##map b jumplist
+#map <BackSpace> scroll full-up
+##map d scroll half-down
+#map u scroll half-up
+##map p navigate previous
+##map n navigate next
+#map = zoom in
+#map - zoom out
+##map r reload
+##map <C-r> rotate
+##map <C-f> toggle_fullscreen
+##map <C-s> toggle_statusbar
+##map <C-n> search forward
+
+
+#

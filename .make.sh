@@ -37,13 +37,14 @@ ln -s ~/dotfiles/w3m/keymap ~/.w3m/keymap
 ln -s ~/dotfiles/ctags .ctags
 ln -s ~/dotfiles/ycm_extra_conf.py .ycm_extra_conf.py
 ln -s ~/dotfiles/vim/manually .vim/manually
-mkdir -p ~/dotfiles/config/ranger
+mkdir ~/.config/ranger
 ln -s ~/dotfiles/config/ranger/rifle.conf .config/ranger/rifle.conf
-
+mkdir ~/.config/zathura/
+ln -s ~/dotfiles/config/zathura/zathurarc .config/zathura/zathurarc
 #bluetooth
-sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
-sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
-cp ~/dotfiles/bt.sh ~/bin/
+# sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
+# sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
+# cp ~/dotfiles/bt.sh ~/bin/
 # for d in $dirs; do
 #   echo "Moving any existing dotfiles from ~ to $olddir"
 #   path=`dirname $d`
