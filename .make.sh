@@ -32,16 +32,23 @@ done
 
 # Manual
 mkdir ~/.w3m
-ln -s ~/dotfiles/w3m/config ~/.w3m/config
-ln -s ~/dotfiles/w3m/keymap ~/.w3m/keymap
-ln -s ~/dotfiles/ctags .ctags
-ln -s ~/dotfiles/ycm_extra_conf.py .ycm_extra_conf.py
-ln -s ~/dotfiles/vim/manually .vim/manually
+ln -sf ~/dotfiles/w3m/config ~/.w3m/config
+ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
+ln -sf ~/dotfiles/ctags ~/.ctags
+ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
+ln -sf ~/dotfiles/vim/manually ~/.vim/manually
+ln -sf /usr/bin/python2 ~/bin/python
+ln -sf /usr/bin/python2-config ~/bin/python-config
+
+## Configure
+# cd ~.vim/plugged/YouCompleteMe
+# ./install.py --clang-completer
 
 #bluetooth
-sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
-sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
+# sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
+# sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
 cp ~/dotfiles/bt.sh ~/bin/
+
 # for d in $dirs; do
 #   echo "Moving any existing dotfiles from ~ to $olddir"
 #   path=`dirname $d`
