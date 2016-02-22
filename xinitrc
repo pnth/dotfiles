@@ -33,7 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xsetroot -cursor_name left_ptr
-#setxkbmap -option ctrl:swapcaps
+setxkbmap -option ctrl:swapcaps
 xmodmap -e 'remove Mod1 = Alt_R'
 xmodmap -e 'add Mod3 = Alt_R'
 #setxkbmap -option ctrl:swap_lalt_lctl

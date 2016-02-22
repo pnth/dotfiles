@@ -31,30 +31,26 @@ for file in $files; do
 done
 
 # Manual
-mkdir ~/.w3m
-ln -s ~/dotfiles/w3m/config ~/.w3m/config
-ln -s ~/dotfiles/w3m/keymap ~/.w3m/keymap
-ln -s ~/dotfiles/ctags .ctags
-ln -s ~/dotfiles/ycm_extra_conf.py .ycm_extra_conf.py
-ln -s ~/dotfiles/vim/manually .vim/manually
-mkdir ~/.config/ranger
-ln -s ~/dotfiles/config/ranger/rifle.conf .config/ranger/rifle.conf
-mkdir ~/.config/zathura/
-ln -s ~/dotfiles/config/zathura/zathurarc .config/zathura/zathurarc
+mkdir -p ~/.w3m
+mkdir -p ~/bin
+mkdir -p ~/.vim
+mkdir -p ~/.config/ranger
+mkdir -p ~/.config/zathura/
+ln -sf /usr/bin/python2 ~/bin/python
+ln -sf /usr/bin/python2-config ~/bin/python-config
+ln -sf ~/dotfiles/config/ranger/rifle.conf .config/ranger/rifle.conf
+ln -sf ~/dotfiles/config/zathura/zathurarc .config/zathura/zathurarc
+ln -sf ~/dotfiles/ctags .ctags
+ln -sf ~/dotfiles/ctags ~/.ctags
+ln -sf ~/dotfiles/vim/manually .vim/manually
+ln -sf ~/dotfiles/vim/manually ~/.vim/manually
+ln -sf ~/dotfiles/w3m/config ~/.w3m/config
+ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
+ln -sf ~/dotfiles/ycm_extra_conf.py .ycm_extra_conf.py
+ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
+
 #bluetooth
 # sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
 # sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
-# cp ~/dotfiles/bt.sh ~/bin/
-# for d in $dirs; do
-#   echo "Moving any existing dotfiles from ~ to $olddir"
-#   path=`dirname $d`
-#   fname=`basename $d`
-#   mkdir -p $olddir/$path
-#   rm -fr $olddir/$d
-#   mv -f ~/.$d $olddir/$path/
-#
-#   echo "Creating symlink to $file in home directory."
-#   mkdir -p $dir/$path
-#   ln -s $dir/$d ~/.$d
-# done
+cp ~/dotfiles/bt.sh ~/bin/
 
