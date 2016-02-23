@@ -38,15 +38,12 @@ mkdir -p ~/.config/ranger
 mkdir -p ~/.config/zathura/
 ln -sf /usr/bin/python2 ~/bin/python
 ln -sf /usr/bin/python2-config ~/bin/python-config
-ln -sf ~/dotfiles/config/ranger/rifle.conf .config/ranger/rifle.conf
-ln -sf ~/dotfiles/config/zathura/zathurarc .config/zathura/zathurarc
-ln -sf ~/dotfiles/ctags .ctags
+ln -sf ~/dotfiles/config/ranger/rifle.conf ~/.config/ranger/rifle.conf
+ln -sf ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
 ln -sf ~/dotfiles/ctags ~/.ctags
-ln -sf ~/dotfiles/vim/manually .vim/manually
 ln -sf ~/dotfiles/vim/manually ~/.vim/manually
 ln -sf ~/dotfiles/w3m/config ~/.w3m/config
 ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
-ln -sf ~/dotfiles/ycm_extra_conf.py .ycm_extra_conf.py
 ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
 
 #bluetooth
