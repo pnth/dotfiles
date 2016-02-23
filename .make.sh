@@ -31,7 +31,10 @@ for file in $files; do
 done
 
 # Manual
-mkdir ~/.w3m
+mkdir -p ~/.w3m
+mkdir -p ~/bin
+mkdir -p ~/.vim
+
 ln -sf ~/dotfiles/w3m/config ~/.w3m/config
 ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
 ln -sf ~/dotfiles/ctags ~/.ctags
