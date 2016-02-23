@@ -4,6 +4,8 @@ set recolor-darkcolor "#93A1A1"
 set recolor-lightcolor "#002B36"
 set statusbar-bg "#000000"
 set statusbar-fg "#CC0000"
+set selection-clipboard clipboard
+
 #
 ## keybindings
 #map [fullscreen] a adjust_window best-fit
