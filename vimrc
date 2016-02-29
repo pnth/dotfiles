@@ -24,6 +24,8 @@ Plug 'Yggdroot/indentLine'
 Plug '~/.vim/manually/personal'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'tomtom/checksyntax_vim'
+" Plug 'vim-scripts/math'
+Plug 'chrisbra/unicode.vim'
 
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-tags'
@@ -189,6 +191,16 @@ imap ,ap      <Plug>PreviewWord
 imap ,ac      <Plug>ClosePreviewWindow
 map ,ai      <Plug>OpenIncludes
 let g:mt_IDontWantTemplatesAutomaticallyInserted = 1
+noremap        ,bx         <Plug>DeleteBrackets
+noremap        ,b<del>     <Plug>DeleteBrackets
+noremap        ,b(         <Plug>ChangeToRoundBrackets
+noremap        ,b[         <Plug>ChangeToSquareBrackets
+noremap        ,b{         <Plug>ChangeToCurlyBrackets
+noremap        ,b<         <Plug>ChangeToAngleBrackets
+noremap        ,b\         <Plug>ToggleBackslash
+
+" :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=1 -nl
+
 
 """ MINE
 noremap gd :call Pjump()<cr><cr>
@@ -395,4 +407,28 @@ autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
       \ -o %:r.docx <cr>
       \ :!xdg-open %:r.docx & <cr><cr>
 autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.docx <cr><cr>
+
+
+""" MATH
+imap <silent> m        <c-o>:if &kmp == ""<bar>
+      \set kmp=math<bar>
+      \else<bar>
+      \set kmp=<bar>
+      \endif<bar>
+      \echo "kmp<".&kmp.">"<cr>
+nmap <silent> m        :if &kmp == ""<bar>
+      \set kmp=math<bar>
+      \else<bar>
+      \set kmp=<bar>
+      \endif<bar>
+      \echo "kmp<".&kmp.">"<cr>
+
+
+""" UNICODE
+nmap ga <Plug>(UnicodeGA)
+" imap <C-X><C-u> <Plug>(DigraphComplete)
+" imap *& *<esc>viW<Plug>(MakeDigraph)a
+imap u *<esc>vh<Plug>(MakeDigraph)a
+imap i <esc>vh<Plug>(MakeDigraph)a
+
 
