@@ -23,6 +23,7 @@ Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
 Plug '~/.vim/manually/personal'
 Plug 'AndrewRadev/sideways.vim'
+Plug 'tomtom/checksyntax_vim'
 
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-tags'
@@ -115,17 +116,19 @@ let g:tagbar_type_r = {
 let g:tmux_navigator_save_on_switch = 1
 
 """ VIM-SLIME, SH
+au BufNewFile,BufRead *.py set filetype=python
+au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
+
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
-au BufNewFile,BufRead *.py set filetype=python
-autocmd FileType python,sh xmap <buffer> <space> <Plug>SlimeRegionSend
-autocmd FileType python,sh nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-autocmd FileType python,sh nmap <buffer> ,p <Plug>SlimeMotionSend
-autocmd FileType python,sh nmap <buffer> ,pa ,p}}
-autocmd FileType python,sh nmap <buffer> ,rp ve<space>
+autocmd FileType python,sh,mongoql xmap <buffer> <space> <Plug>SlimeRegionSend
+autocmd FileType python,sh,mongoql nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql nmap <buffer> ,p <Plug>SlimeMotionSend
+autocmd FileType python,sh,mongoql nmap <buffer> ,pa ,p}}
+autocmd FileType python,sh,mongoql nmap <buffer> ,rp ve<space>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -139,6 +142,15 @@ autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-pane -t:.1 <cr><cr>
       \ :!tmux send-keys -t 3 'source ~/da/venv/bin/activate' Enter <cr><cr>
 autocmd FileType python noremap <buffer> <silent> ,q
+      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
+
+autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 78 -y 8 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+      \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
+autocmd FileType mongoql noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 
 autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
@@ -175,7 +187,7 @@ nmap ,ap      <Plug>PreviewWord
 nmap ,ac      <Plug>ClosePreviewWindow
 imap ,ap      <Plug>PreviewWord
 imap ,ac      <Plug>ClosePreviewWindow
-imap ,ai      <Plug>OpenIncludes
+map ,ai      <Plug>OpenIncludes
 let g:mt_IDontWantTemplatesAutomaticallyInserted = 1
 
 """ MINE
@@ -255,12 +267,10 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>q
 			\ :call g:SendCmdToR("quit(save=\"no\")")<cr>
 			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
-let vimrplugin_args_in_stline = 1
-" imap <C-A> <Plug>RCompleteArgs
-" autocmd FileType R imap <buffer> <silent> <LocalLeader>ra <Plug>RCompleteArgs
+let vimrplugin_args_in_stline = 0
+au FileType R imap <buffer> <silent> <LocalLeader>ru <Plug>RCompleteArgs
 let g:r_hl_roxygen = 0
 let vimrplugin_vimpager = "tabnew"
-let vimrplugin_args_in_stline = 1
 
 
 """ WINMANAGE HACK
@@ -288,10 +298,6 @@ nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
 let g:ctrlp_working_path_mode = 'r'
 
-""" YCM YOUCOMPLETEME
-let g:ycm_confirm_extra_conf = 0
-
-
 """ REMOVE TRAILING SPACES
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 fun! <SID>StripTrailingWhitespaces()
@@ -302,36 +308,50 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 " let _s=@/ let @/
 
+""" YCM YOUCOMPLETEME
+let g:ycm_confirm_extra_conf = 0
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>f :YcmCompleter FixIt<CR>
+
+
 """ CPP
+
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
-			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter "
-			\ "send-keys -t 3 ':qa' Enter 'clear && make %:r' Enter "<cr><cr>
-
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
-			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 2 ':qa' Enter 'clear && make main' Enter "
-			\ "send-keys -t 3 ':qa' Enter 'clear && make main' Enter "<cr><cr>
-
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && make main' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
-			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "
-			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
-
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R
-			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 2 ':qa' Enter 'clear && ./main' Enter "
-			\ "send-keys -t 3 ':qa' Enter 'clear && ./main' Enter "<cr><cr>
-
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && ./main' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>d
-			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter "
-			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./%:r' Enter "<cr><cr>
-
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
-			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter "
-			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./main' Enter "<cr><cr>
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter <cr><cr>
+
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
+" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+" 			\ "send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter "
+" 			\ "send-keys -t 3 ':qa' Enter 'clear && make %:r' Enter "<cr><cr>
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
+" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+" 			\ "send-keys -t 2 ':qa' Enter 'clear && make main' Enter "
+" 			\ "send-keys -t 3 ':qa' Enter 'clear && make main' Enter "<cr><cr>
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
+" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+" 			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "
+" 			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R
+" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+" 			\ "send-keys -t 2 ':qa' Enter 'clear && ./main' Enter "
+" 			\ "send-keys -t 3 ':qa' Enter 'clear && ./main' Enter "<cr><cr>
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>d
+" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+" 			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter "
+" 			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./%:r' Enter "<cr><cr>
+" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
+" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
+" 			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter "
+" 			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./main' Enter "<cr><cr>
 
 " autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 3 ':qa'
 " \Enter 'clear && vim `drmem -- ./main 2>&1 \| tail -1 \| rev \| cut -d: -f1

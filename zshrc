@@ -38,3 +38,7 @@ function gitp() {
 	git push
 }
 
+function def() {
+	gg define "$1"
+}
+
