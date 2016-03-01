@@ -191,13 +191,13 @@ imap ,ap      <Plug>PreviewWord
 imap ,ac      <Plug>ClosePreviewWindow
 map ,ai      <Plug>OpenIncludes
 let g:mt_IDontWantTemplatesAutomaticallyInserted = 1
-noremap        ,bx         <Plug>DeleteBrackets
-noremap        ,b<del>     <Plug>DeleteBrackets
-noremap        ,b(         <Plug>ChangeToRoundBrackets
-noremap        ,b[         <Plug>ChangeToSquareBrackets
-noremap        ,b{         <Plug>ChangeToCurlyBrackets
-noremap        ,b<         <Plug>ChangeToAngleBrackets
-noremap        ,b\         <Plug>ToggleBackslash
+nmap        ,bx         <Plug>DeleteBrackets
+nmap        ,b<del>     <Plug>DeleteBrackets
+nmap        ,b(         <Plug>ChangeToRoundBrackets
+nmap        ,b[         <Plug>ChangeToSquareBrackets
+nmap        ,b{         <Plug>ChangeToCurlyBrackets
+nmap        ,b<         <Plug>ChangeToAngleBrackets
+nmap        ,b\         <Plug>ToggleBackslash
 
 " :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=1 -nl
 
