@@ -26,6 +26,7 @@ Plug 'AndrewRadev/sideways.vim'
 Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 Plug 'chrisbra/unicode.vim'
+Plug 'Chiel92/vim-autoformat'
 
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-tags'
@@ -35,7 +36,6 @@ Plug 'LucHermitte/searchInRuntime'
 Plug 'LucHermitte/mu-template'
 Plug 'tomtom/stakeholders_vim'
 Plug 'LucHermitte/lh-cpp'
-
 call plug#end()
 
 colorscheme solarized
@@ -191,6 +191,7 @@ imap ,ap      <Plug>PreviewWord
 imap ,ac      <Plug>ClosePreviewWindow
 map ,ai      <Plug>OpenIncludes
 let g:mt_IDontWantTemplatesAutomaticallyInserted = 1
+let g:cb_want_mode = 0
 nmap        ,bx         <Plug>DeleteBrackets
 nmap        ,b<del>     <Plug>DeleteBrackets
 nmap        ,b(         <Plug>ChangeToRoundBrackets
@@ -322,13 +323,13 @@ endfun
 
 """ YCM YOUCOMPLETEME
 let g:ycm_confirm_extra_conf = 0
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>f :YcmCompleter FixIt<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>F :YcmCompleter FixIt<CR>
 
 
 """ CPP
 
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
-			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter <cr><cr>
+			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'make %:r 2>&1 \| egrep -i "warning\|error"' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && make main' Enter <cr><cr>
 autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
@@ -407,6 +408,17 @@ autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
       \ -o %:r.docx <cr>
       \ :!xdg-open %:r.docx & <cr><cr>
 autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.docx <cr><cr>
+autocmd FileType markdown map <buffer> <f2> :Toc <cr>
+autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
+
+
+""" UNICODE
+" au BufNewFile,BufRead *.md set filetype=md
+nmap ga <Plug>(UnicodeGA)
+" imap <C-X><C-u> <Plug>(DigraphComplete)
+" imap *& *<esc>viW<Plug>(MakeDigraph)a
+autocmd FileType text,markdown imap <buffer> u *<esc>vh<Plug>(MakeDigraph)a
+autocmd FileType text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
 
 
 """ MATH
@@ -424,11 +436,6 @@ nmap <silent> m        :if &kmp == ""<bar>
       \echo "kmp<".&kmp.">"<cr>
 
 
-""" UNICODE
-nmap ga <Plug>(UnicodeGA)
-" imap <C-X><C-u> <Plug>(DigraphComplete)
-" imap *& *<esc>viW<Plug>(MakeDigraph)a
-imap u *<esc>vh<Plug>(MakeDigraph)a
-imap i <esc>vh<Plug>(MakeDigraph)a
-
+""" VIM-AUTOFORMAT
+noremap <c-e>f :Autoformat<CR>
 
