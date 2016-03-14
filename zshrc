@@ -14,7 +14,7 @@ compinit
 
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls="ls -FGh --color=auto"
-alias ranger='python3 /usr/bin/ranger'
+# alias ranger='python3 /usr/bin/ranger'
 alias tmh1="tmux select-layout main-horizontal"
 alias tmh="tmux select-layout even-horizontal"
 alias tmt="tmux select-layout tiled"
@@ -24,19 +24,23 @@ alias vim="vim -O --servername VIM"
 alias w3m="w3m -M"
 export EDITOR="$VISUAL"
 export PATH=$HOME/bin:${PATH}
+CURPROCID=`ps | head -2 | tail -1 | awk '{print $1}'`
+NRANGER=`pstree $CURPROCID | sed 's/ranger/ranger\n/g' | grep -c "ranger"`
+# export PS1="\W \$((`echo \$NRANGER`)) "
 export PS1="\W \$((`pstree -p $$ | grep ranger | wc -l`)) "
 export VISUAL="vim"
 export VISUAL=vim
 export TERM=rxvt-unicode-256color
 PROMPT='%F{cyan}%c%#%f '
 setopt PROMPT_SUBST
+xset r rate 250 30
 
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
 function gitp() {
-	git add .
+	git add *
 	git commit -a -m "$1"
 	git push
 }
@@ -56,5 +60,9 @@ function x() {
 		xrandr --output VGA1 --off
 		xrandr --output LVDS1 --auto
 	fi
+}
+
+function def() {
+	gg define "$1"
 }
 
