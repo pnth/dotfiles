@@ -155,3 +155,5 @@ bar {
         status_command i3status
         tray_output primary
 }
+
+exec --no-startup-id i3-msg 'workspace 3; exec thunar; workspace 2; exec firefox; workspace 1;exec urxvt -e tmux; exec urxvt -e tmux;'

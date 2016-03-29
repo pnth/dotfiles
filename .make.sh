@@ -54,5 +54,5 @@ ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
 #bluetooth
 # sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
 # sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
-cp ~/dotfiles/bt.sh ~/bin/
+#cp ~/dotfiles/bt.sh ~/bin/
 

@@ -1,7 +1,8 @@
 call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'chrisbra/csv.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'ivalkeen/nerdtree-execute'
@@ -22,11 +23,15 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
 Plug '~/.vim/manually/personal'
+"Plug '~/.vim/manually/matlabvimcolours'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 Plug 'chrisbra/unicode.vim'
 Plug 'Chiel92/vim-autoformat'
+Plug 'elmanuelito/vim-matlab-behave'
+
+
 
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-tags'
@@ -38,12 +43,16 @@ Plug 'tomtom/stakeholders_vim'
 Plug 'LucHermitte/lh-cpp'
 call plug#end()
 
-colorscheme solarized
-" or normal high
-" let g:solarized_contrast  =   "low"
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+
 nnoremap Q <nop>  "Ex mode
 filetype plugin indent on
-let g:tmux_navigator_no_mappings = 1
 let maplocalleader = ","
 let mapleader = ","
 nnoremap gh :bN<cr>
@@ -57,15 +66,12 @@ nnoremap ` '
 " nnoremap <silent> <c-j> :silent!w<cr> :TmuxNavigateDown<cr>
 " nnoremap <silent> <c-k> :silent!w<cr> :TmuxNavigateUp<cr>
 " nnoremap <silent> <c-l> :silent!w<cr> :TmuxNavigateRight<cr>
-nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-
+" let g:solarized_contrast  =   "low"
 set autoindent
 set autowriteall
-set background=dark
+syntax enable
+set background=light
+" colorscheme solarized
 set backspace=2
 set clipboard=unnamed
 set foldmethod=syntax
@@ -76,7 +82,7 @@ set incsearch
 set nocompatible
 set nofoldenable
 set noswapfile
-set number
+" set number
 set ruler
 set shiftwidth=2
 set tabstop=2
@@ -87,7 +93,6 @@ set wrap
 set mouse=a
 
 
-syntax on
 
 """ Case-insensive search
 " set ignorecase
@@ -128,28 +133,28 @@ let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
 autocmd FileType python,sh,mongoql xmap <buffer> <space> <Plug>SlimeRegionSend
 autocmd FileType python,sh,mongoql nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql imap <buffer> ,l <Plug>SlimeLineSend<cr>
 autocmd FileType python,sh,mongoql nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql nmap <buffer> ,pa ,p}}
 autocmd FileType python,sh,mongoql nmap <buffer> ,rp ve<space>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1
+      \ tmux resize-pane -t 2 -x 70 && tmux select-pane -t:.1
       \ <cr><cr>
 autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
-      \ :!tmux send-keys -t 2 'source ~/da/venv/bin/activate && ipython' Enter <cr><cr>
+      \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 78 -y 8 &&
+      \ tmux resize-pane -t 3 -x 70 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-      \ :!tmux send-keys -t 3 'source ~/da/venv/bin/activate' Enter <cr><cr>
 autocmd FileType python noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 78 -y 8 &&
+      \ tmux resize-pane -t 3 -x 70 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
       \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
 autocmd FileType mongoql noremap <buffer> <silent> ,q
@@ -157,7 +162,7 @@ autocmd FileType mongoql noremap <buffer> <silent> ,q
 
 autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 78 && tmux select-pane -t:.1 <cr><cr>
+      \ tmux resize-pane -t 2 -x 70 && tmux select-pane -t:.1 <cr><cr>
 autocmd FileType sh noremap <buffer> <silent> ,q
       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
@@ -247,13 +252,13 @@ au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
 			\ :!tmux select-layout even-horizontal &&
-			\ tmux resize-pane -t 2 -x 78 &&
+			\ tmux resize-pane -t 2 -x 70 &&
 			\ tmux split-window -t 2 -d &&
 			\ tmux select-pane -t 1 <cr><cr>
-			\ :!tmux resize-pane -t 2 -y 8 <cr><cr>
+			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 autocmd FileType r map <buffer> <f3>
-			\ :!tmux resize-pane -t 2 -x 78 <cr><cr>
-			\ :!tmux resize-pane -t 2 -y 8 <cr><cr>
+			\ :!tmux resize-pane -t 2 -x 70 <cr><cr>
+			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 			\ <c-w>=
 
 " autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
@@ -305,7 +310,7 @@ function! ToggleNerdtreeTagbar()
 	endif
 
 endfunction
-nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
+nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>
 
 """ CTRLP
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
@@ -408,17 +413,15 @@ autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
       \ -o %:r.docx <cr>
       \ :!xdg-open %:r.docx & <cr><cr>
 autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.docx <cr><cr>
-autocmd FileType markdown map <buffer> <f2> :Toc <cr>
-autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
 
 
 """ UNICODE
-" au BufNewFile,BufRead *.md set filetype=md
-nmap ga <Plug>(UnicodeGA)
-" imap <C-X><C-u> <Plug>(DigraphComplete)
-" imap *& *<esc>viW<Plug>(MakeDigraph)a
-autocmd FileType text,markdown imap <buffer> u *<esc>vh<Plug>(MakeDigraph)a
-autocmd FileType text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
+"" au BufNewFile,BufRead *.md set filetype=md
+"nmap ga <Plug>(UnicodeGA)
+"" imap <C-X><C-u> <Plug>(DigraphComplete)
+"" imap *& *<esc>viW<Plug>(MakeDigraph)a
+"autocmd FileType text,markdown imap <buffer> u *<esc>vh<Plug>(MakeDigraph)a
+"autocmd FileType text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
 
 
 """ MATH

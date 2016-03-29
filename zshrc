@@ -14,13 +14,13 @@ compinit
 
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls="ls -FGh --color=auto"
-# alias ranger='python3 /usr/bin/ranger'
 alias tmh1="tmux select-layout main-horizontal"
 alias tmh="tmux select-layout even-horizontal"
 alias tmt="tmux select-layout tiled"
 alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
-alias vim="vim -O --servername VIM"
+alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
+alias vim="/usr/bin/vim -O --servername VIM"
 alias w3m="w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 export EDITOR="$VISUAL"
