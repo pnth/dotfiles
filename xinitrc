@@ -41,6 +41,15 @@ udiskie -2 &
 # ibus-daemon --xim &
 /usr/bin/VBoxClient-all &
 # urxvt&
+DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
+#exec xmonad
+ibus-daemon --xim &
 exec i3
+ibus-daemon --xim &
+udiskie -2 &
+urxvt&
+xmodmap -e 'add Mod3 = Alt_R'
+xmodmap -e 'remove Mod1 = Alt_R'
+
 
 

@@ -1,8 +1,9 @@
 call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/calendar.vim'
 Plug 'chrisbra/csv.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'ivalkeen/nerdtree-execute'
@@ -30,6 +31,7 @@ Plug 'tomtom/checksyntax_vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elmanuelito/vim-matlab-behave'
+
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/lh-tags'
 Plug 'LucHermitte/lh-dev'
@@ -40,9 +42,19 @@ Plug 'tomtom/stakeholders_vim'
 Plug 'LucHermitte/lh-cpp'
 call plug#end()
 
+colorscheme solarized
+" or normal high
+" let g:solarized_contrast  =   "low"
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+
 nnoremap Q <nop>  "Ex mode
 filetype plugin indent on
-let g:tmux_navigator_no_mappings = 1
 let maplocalleader = ","
 let mapleader = ","
 nnoremap gh :bN<cr>
@@ -56,13 +68,13 @@ nnoremap ` '
 " nnoremap <silent> <c-j> :silent!w<cr> :TmuxNavigateDown<cr>
 " nnoremap <silent> <c-k> :silent!w<cr> :TmuxNavigateUp<cr>
 " nnoremap <silent> <c-l> :silent!w<cr> :TmuxNavigateRight<cr>
+" let g:solarized_contrast  =   "low"
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
-" let g:solarized_contrast  =   "low"
 set autoindent
 set autowriteall
 syntax enable
@@ -132,6 +144,12 @@ autocmd FileType python,sh,mongoql,matlab nmap <buffer> <space> <Plug>SlimeLineS
 autocmd FileType python,sh,mongoql,matlab nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql,matlab nmap <buffer> ,pa ,p}}
 autocmd FileType python,sh,mongoql,matlab nmap <buffer> ,rp ve<space>
+autocmd FileType python,sh,mongoql xmap <buffer> <space> <Plug>SlimeRegionSend
+autocmd FileType python,sh,mongoql nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql imap <buffer> ,l <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql nmap <buffer> ,p <Plug>SlimeMotionSend
+autocmd FileType python,sh,mongoql nmap <buffer> ,pa ,p}}
+autocmd FileType python,sh,mongoql nmap <buffer> ,rp ve<space>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -259,7 +277,7 @@ au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
 			\ :!tmux select-layout even-horizontal &&
-			\ tmux resize-pane -t 2 -x 78 &&
+			\ tmux resize-pane -t 2 -x 70 &&
 			\ tmux split-window -t 2 -d &&
 			\ tmux select-pane -t 1 <cr><cr>
 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
