@@ -14,13 +14,13 @@ compinit
 
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls="ls -FGh --color=auto"
-# alias ranger='python3 /usr/bin/ranger'
 alias tmh1="tmux select-layout main-horizontal"
 alias tmh="tmux select-layout even-horizontal"
 alias tmt="tmux select-layout tiled"
 alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
-alias vim="vim -O --servername VIM"
+alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
+alias vim="/usr/bin/vim -O --servername VIM"
 alias w3m="w3m -M"
 export EDITOR="$VISUAL"
 export PATH=$HOME/bin:${PATH}
@@ -65,4 +65,27 @@ function x() {
 function def() {
 	gg define "$1"
 }
+
+function md2lyx() {
+	pandoc -s "$1.md" -o "$1.tex"
+	tex2lyx "$1.tex"
+}
+
+function lyx2md() {
+	pandoc -s "$1.md" -o "$1.tex"
+	tex2lyx "$1.tex"
+}
+
+function theme() {
+	if [ $1 = "light" ]; then
+    ln -sf ~/dotfiles/Xresources-light ~/.Xresources
+    ln -sf ~/dotfiles/config/zathura/zathurarc-light ~/.config/zathura/zathurarc
+	else
+    ln -sf ~/dotfiles/Xresources ~/.Xresources
+    ln -sf ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
+	fi
+  xrdb ~/.Xresources
+}
+
+
 

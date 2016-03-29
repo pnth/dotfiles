@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="surfraw.conf note tmux.conf vimrc wallpaper xinitrc xmobarrc xmonad Xresources zshrc zprofile inputrc apvlvrc"
+files="surfraw.conf tmux.conf vimrc wallpaper xinitrc Xresources zshrc zprofile inputrc"
 ##########
 
 # create dotfiles_old in homedir
@@ -51,5 +51,5 @@ ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
 #bluetooth
 # sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
 # sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
-cp ~/dotfiles/bt.sh ~/bin/
+#cp ~/dotfiles/bt.sh ~/bin/
 
