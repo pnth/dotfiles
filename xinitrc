@@ -32,21 +32,18 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# setxkbmap -option ctrl:swapcaps
 # redshift  &
 xsetroot -cursor_name left_ptr
-setxkbmap -option ctrl:swapcaps
 xmodmap -e 'remove Mod1 = Alt_R'
 xmodmap -e 'add Mod3 = Alt_R'
-#setxkbmap -option ctrl:swap_lalt_lctl
 #luakit&
 urxvt&
-redshift&
 #~/.dropbox-dist/dropboxd&
 #xcompmgr -c &
 udiskie -2 &
 DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 #exec xmonad
 ibus-daemon --xim &
+/usr/bin/VBoxClient-all&
 exec i3
 

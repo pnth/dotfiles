@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="surfraw.conf note tmux.conf vimrc wallpaper xinitrc xmobarrc xmonad Xresources zshrc zprofile inputrc apvlvrc"
+files="surfraw.conf tmux.conf vimrc wallpaper xinitrc Xresources zshrc zprofile inputrc"
 ##########
 
 # create dotfiles_old in homedir
@@ -37,6 +37,9 @@ mkdir -p ~/.vim
 mkdir -p ~/.config/ranger/
 mkdir -p ~/.config/zathura/
 mkdir -p ~/.config/i3/
+mkdir -p ~/.config/ranger/colorschemes
+echo "set colorscheme solarized" > ~/.config/ranger/rc.conf
+curl https://raw.githubusercontent.com/hut/ranger/master/ranger/colorschemes/solarized.py > ~/.config/ranger/colorschemes/solarized.py
 ln -sf /usr/bin/python2 ~/bin/python
 ln -sf /usr/bin/python2-config ~/bin/python-config
 ln -sf ~/dotfiles/config/ranger/rifle.conf ~/.config/ranger/rifle.conf

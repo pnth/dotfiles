@@ -22,8 +22,13 @@ alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
 alias vim="vim -O --servername VIM"
 alias w3m="w3m -M"
+alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 export EDITOR="$VISUAL"
+export SYSTEMD_EDITOR="vim"
 export PATH=$HOME/bin:${PATH}
+export LD_LIBRARY_PATH=/usr/lib/
+export LD_PRELOAD=/usr/lib/libstdc++.so.6
+#
 CURPROCID=`ps | head -2 | tail -1 | awk '{print $1}'`
 NRANGER=`pstree $CURPROCID | sed 's/ranger/ranger\n/g' | grep -c "ranger"`
 # export PS1="\W \$((`echo \$NRANGER`)) "
@@ -64,5 +69,26 @@ function x() {
 
 function def() {
 	gg define "$1"
+}
+
+function md2lyx() {
+	pandoc -s "$1.md" -o "$1.tex"
+	tex2lyx "$1.tex"
+}
+
+function lyx2md() {
+	pandoc -s "$1.md" -o "$1.tex"
+	tex2lyx "$1.tex"
+}
+
+function theme() {
+	if [ $1 = "light" ]; then
+    ln -sf ~/dotfiles/Xresources-light ~/.Xresources
+    ln -sf ~/dotfiles/config/zathura/zathurarc-light ~/.config/zathura/zathurarc
+	else
+    ln -sf ~/dotfiles/Xresources ~/.Xresources
+    ln -sf ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
+	fi
+  xrdb ~/.Xresources
 }
 
