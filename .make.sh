@@ -38,6 +38,7 @@ mkdir -p ~/.config/ranger/
 mkdir -p ~/.config/zathura/
 mkdir -p ~/.config/i3/
 mkdir -p ~/.config/ranger/colorschemes
+mkdir -p ~/.local/share/applications
 echo "set colorscheme solarized" > ~/.config/ranger/rc.conf
 curl https://raw.githubusercontent.com/hut/ranger/master/ranger/colorschemes/solarized.py > ~/.config/ranger/colorschemes/solarized.py
 ln -sf /usr/bin/python2 ~/bin/python
@@ -52,6 +53,9 @@ ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
 ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
 ln -sf ~/dotfiles/conkyrc ~/.conkyrc
 ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
+ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
+ln -sf ~/dotfiles/local/share/applications ~/.local/share/
+xdg-mime default vim.desktop $(grep '^text/*' /usr/share/mime/types)
 #bluetooth
 # sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
 # sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/

@@ -4,3 +4,9 @@
 --regex-r=/^"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*<-[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/g,GlobalVars/
 --regex-r=/[ \t]"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*<-[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/v,FunctionVariables/
 
+--langdef=matlab
+--langmap=matlab:.m
+--regex-matlab=/^function[ \t]*([a-zA-Z0-9_]+)[ \t]*=[
+\t]*([a-zA-Z0-9_]+)/\2/f,functions/
+--regex-matlab=/^function[ \t]*([a-zA-Z0-9_]+)[^=]*$/\1/f,functions/
+
