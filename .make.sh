@@ -50,7 +50,8 @@ ln -sf ~/dotfiles/w3m/config ~/.w3m/config
 ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
 ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
 ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
-
+ln -sf ~/dotfiles/conkyrc ~/.conkyrc
+ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
 #bluetooth
 # sudo mv ~/dotfiles/btconnect.service /etc/systemd/system/
 # sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/

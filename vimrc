@@ -42,6 +42,7 @@ Plug 'tomtom/stakeholders_vim'
 Plug 'LucHermitte/lh-cpp'
 call plug#end()
 
+syntax enable
 colorscheme solarized
 " or normal high
 " let g:solarized_contrast  =   "low"
@@ -77,9 +78,6 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 set autoindent
 set autowriteall
-syntax enable
-set background=light
-" colorscheme solarized
 set backspace=2
 set clipboard=unnamed
 set foldmethod=syntax
@@ -90,7 +88,7 @@ set incsearch
 set nocompatible
 set nofoldenable
 set noswapfile
-" set number
+set number
 set ruler
 set shiftwidth=2
 set tabstop=2
@@ -151,6 +149,8 @@ autocmd FileType python,sh,mongoql nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql nmap <buffer> ,pa ,p}}
 autocmd FileType python,sh,mongoql nmap <buffer> ,rp ve<space>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
+autocmd FileType python,mongoql,matlab noremap <buffer> <silent> ,q
+      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 76 && tmux select-pane -t:.1
@@ -173,8 +173,6 @@ autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 76 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python noremap <buffer> <silent> ,q
-      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
@@ -182,8 +180,6 @@ autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux resize-pane -t 3 -x 76 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
       \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
-autocmd FileType mongoql noremap <buffer> <silent> ,q
-      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 
 autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -257,7 +253,7 @@ endfunction
 " map ,<space> <esc>:call PJumpMaker()<cr>
 " function! PJumpMaker()
 " 	let str=getline('.')
-"   if str =~ "«»"
+"   if str =~ "a"
 " 		echo "jump"
 " 		:norm ,m
 " 	else
