@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Vim Text Editor
 Comment=Edit text files
-Exec=vim %F
+Exec=vim
 Terminal=true
 Type=Application
 Icon=vim

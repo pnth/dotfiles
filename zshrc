@@ -23,6 +23,7 @@ alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
 alias vim="/usr/bin/vim -O --servername VIM"
 alias w3m="w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
+export VISUAL=vim
 export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"
 export PATH=$HOME/bin:${PATH}
@@ -33,8 +34,6 @@ CURPROCID=`ps | head -2 | tail -1 | awk '{print $1}'`
 NRANGER=`pstree $CURPROCID | sed 's/ranger/ranger\n/g' | grep -c "ranger"`
 # export PS1="\W \$((`echo \$NRANGER`)) "
 export PS1="\W \$((`pstree -p $$ | grep ranger | wc -l`)) "
-export VISUAL="vim"
-export VISUAL=vim
 export TERM=rxvt-unicode-256color
 PROMPT='%F{cyan}%c%#%f '
 setopt PROMPT_SUBST
@@ -89,6 +88,12 @@ function theme() {
     ln -sf ~/dotfiles/Xresources ~/.Xresources
     ln -sf ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
 	fi
+  xrdb ~/.Xresources
+}
+
+function lyx() {
+  xrdb ~/dotfiles/Xresources-light
+  /usr/bin/lyx "$1"
   xrdb ~/.Xresources
 }
 

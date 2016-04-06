@@ -89,6 +89,7 @@ set nocompatible
 set nofoldenable
 set noswapfile
 set number
+set relativenumber
 set ruler
 set shiftwidth=2
 set tabstop=2
@@ -159,13 +160,13 @@ autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'matlab -nodesktop' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 76 -y 20 &&
+      \ tmux resize-pane -t 3 -x 80 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType python map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 76 -y 20 &&
+      \ tmux resize-pane -t 3 -x 80 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
@@ -431,9 +432,9 @@ let g:vim_markdown_toc_autofit = 1
 autocmd FileType markdown map <buffer> <f2> :Toc <cr>
 autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
       \ --latex-engine=xelatex --filter pandoc-citeproc --bibliography %:r.bib
-      \ -o %:r.docx <cr>
-      \ :!xdg-open %:r.docx & <cr><cr>
-autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.docx <cr><cr>
+      \ -o %:r.pdf <cr>
+      \ :!xdg-open %:r.pdf & <cr><cr>
+autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.pdf <cr><cr>
 
 
 """ UNICODE
@@ -466,4 +467,30 @@ noremap <c-e>f :Autoformat<CR>
 """ CALENDAR
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+
+
+
+" Highlight all instances of word under cursor, when idle.
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
+
 
