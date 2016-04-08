@@ -1,18 +1,17 @@
 call plug#begin('~/.vim/plugged')
+Plug 'jalvesaq/Nvim-R'
 Plug 'christoomey/vim-tmux-navigator'
-
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/calendar.vim'
-Plug 'chrisbra/csv.vim'
+
+Plug 'jalvesaq/colorout'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'ivalkeen/nerdtree-execute'
-Plug 'jalvesaq/R-Vim-runtime'
-Plug 'jcfaria/Vim-R-plugin'
 Plug 'jpalardy/vim-slime'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+" Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'majutsushi/tagbar'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
@@ -24,10 +23,11 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
 Plug '~/.vim/manually/personal'
-"Plug '~/.vim/manually/matlabvimcolours'
+
+Plug '~/.vim/manually/matlabvimcolours'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'tomtom/checksyntax_vim'
-" Plug 'vim-scripts/math'
+Plug 'vim-scripts/math'
 Plug 'chrisbra/unicode.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elmanuelito/vim-matlab-behave'
@@ -37,10 +37,18 @@ Plug 'LucHermitte/lh-tags'
 Plug 'LucHermitte/lh-dev'
 Plug 'LucHermitte/lh-brackets'
 Plug 'LucHermitte/searchInRuntime'
-Plug 'LucHermitte/mu-template'
+" Plug 'LucHermitte/mu-template'
 Plug 'tomtom/stakeholders_vim'
 Plug 'LucHermitte/lh-cpp'
 call plug#end()
+
+let R_in_buffer = 0
+let R_applescript = 0
+let R_tmux_split = 1
+let R_tmux_title = "Nvim-R"
+let R_tmux_title = "automatic"
+let R_tmux_ob = 0
+
 
 syntax enable
 colorscheme solarized
@@ -82,7 +90,7 @@ set backspace=2
 set clipboard=unnamed
 set foldmethod=syntax
 set foldnestmax=1
-set formatoptions+=t
+" set formatoptions+=t
 set hlsearch
 set incsearch
 set nocompatible
@@ -112,8 +120,8 @@ set mouse=a
 " vnoremap <C-@> <Esc>
 
 """ TAGBAR
-nmap <silent> <c-e><c-t> :TagbarOpen fj<CR><c-w>=
-nmap <silent> <c-e><c-y> :TagbarClose<CR>
+" nmap <silent> <c-e><c-t> :TagbarOpen fj<CR><c-w>=
+" nmap <silent> <c-e><c-y> :TagbarClose<CR>
 set tags=./tags,tags;$HOME
 let g:tagbar_left = 1
 let g:tagbar_width = 18
@@ -172,7 +180,7 @@ autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 76 -y 20 &&
+      \ tmux resize-pane -t 3 -x 80 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
@@ -181,11 +189,10 @@ autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux resize-pane -t 3 -x 76 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
       \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
-
-autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
+autocmd FileType sh,perl map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 76 && tmux select-pane -t:.1 <cr><cr>
-autocmd FileType sh noremap <buffer> <silent> ,q
+autocmd FileType sh,perl noremap <buffer> <silent> ,q
       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
 
@@ -273,12 +280,13 @@ let vimrplugin_assign = 1
 au BufNewFile,BufRead *.r set filetype=r
 au BufNewFile,BufRead *.R set filetype=r
 autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
-			\ :!tmux select-layout even-horizontal &&
-			\ tmux resize-pane -t 2 -x 70 &&
+			\ :!tmux select-layout even-horizontal <cr><cr>
+			\ :!tmux resize-pane -t 2 -x 70 &&
 			\ tmux split-window -t 2 -d &&
 			\ tmux select-pane -t 1 <cr><cr>
 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 autocmd FileType r map <buffer> <f3>
+			\ :!tmux select-layout even-horizontal <cr><cr>
 			\ :!tmux resize-pane -t 2 -x 78 <cr><cr>
 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 			\ <c-w>=
@@ -350,52 +358,24 @@ endfun
 
 """ YCM YOUCOMPLETEME
 let g:ycm_confirm_extra_conf = 0
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>F :YcmCompleter FixIt<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer> ,ef :YcmCompleter FixIt<CR>
 
 
 """ CPP
 
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
+autocmd FileType c,cpp,objc nnoremap <buffer> ,eb
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'make %:r 2>&1 \| egrep -i "warning\|error"' Enter <cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
+autocmd FileType c,cpp,objc nnoremap <buffer> ,eB
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && make main' Enter <cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
+autocmd FileType c,cpp,objc nnoremap <buffer> ,er
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter <cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R
+autocmd FileType c,cpp,objc nnoremap <buffer> ,eR
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && ./main' Enter <cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>d
+autocmd FileType c,cpp,objc nnoremap <buffer> ,em
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter <cr><cr>
-autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
+autocmd FileType c,cpp,objc nnoremap <buffer> ,eM
 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter <cr><cr>
 
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>b
-" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-" 			\ "send-keys -t 2 ':qa' Enter 'clear && make %:r' Enter "
-" 			\ "send-keys -t 3 ':qa' Enter 'clear && make %:r' Enter "<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>B
-" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-" 			\ "send-keys -t 2 ':qa' Enter 'clear && make main' Enter "
-" 			\ "send-keys -t 3 ':qa' Enter 'clear && make main' Enter "<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>r
-" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-" 			\ "send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter "
-" 			\ "send-keys -t 3 ':qa' Enter 'clear && ./%:r' Enter "<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>R
-" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-" 			\ "send-keys -t 2 ':qa' Enter 'clear && ./main' Enter "
-" 			\ "send-keys -t 3 ':qa' Enter 'clear && ./main' Enter "<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>d
-" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-" 			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter "
-" 			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./%:r' Enter "<cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e>D
-" 			\ :w<cr>:!tmux if-shell "test \#{window_panes} -gt 2"
-" 			\ "send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter "
-" 			\ "send-keys -t 3 ':qa' Enter 'clear && drmem -- ./main' Enter "<cr><cr>
-
-" autocmd FileType c,cpp,objc nnoremap <buffer> <c-e><c-d> :!tmux send-keys -t 3 ':qa'
-" \Enter 'clear && vim `drmem -- ./main 2>&1 \| tail -1 \| rev \| cut -d: -f1
-" \ \| rev`' Enter<cr><cr>
 
 function! TwiddleCase(str)
 	if a:str ==# toupper(a:str)
@@ -462,7 +442,7 @@ nmap <silent> m        :if &kmp == ""<bar>
 
 
 """ VIM-AUTOFORMAT
-noremap <c-e>f :Autoformat<CR>
+noremap ,ed :Autoformat<CR>
 
 """ CALENDAR
 let g:calendar_google_calendar = 1
@@ -494,3 +474,5 @@ function! AutoHighlightToggle()
 endfunction
 
 
+""" PYTHON
+let b:python_version_2 = 1

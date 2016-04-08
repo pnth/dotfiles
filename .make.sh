@@ -61,3 +61,6 @@ xdg-mime default vim.desktop $(grep '^text/*' /usr/share/mime/types)
 # sudo mv ~/dotfiles/10-local.rules  /etc/udev/rules.d/
 #cp ~/dotfiles/bt.sh ~/bin/
 
+#font
+#sudo pacman -S ttf-liberation ttf-freefont
+
