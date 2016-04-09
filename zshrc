@@ -13,7 +13,11 @@ compinit
 # End of lines added by compinstall
 
 alias gg="surfraw -browser=\"w3m -num\" google"
-alias ls="ls -FGh --color=auto"
+alias ls=" ls -FGh --color=auto"
+alias cd=" cd"
+alias dh=" dh"
+alias dirs=" dirs"
+alias mmv="zmv -U"
 alias tmh1="tmux select-layout main-horizontal"
 alias tmh="tmux select-layout even-horizontal"
 alias tmt="tmux select-layout tiled"
@@ -21,7 +25,7 @@ alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
 alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
 alias vim="/usr/bin/vim -O --servername VIM"
-alias w3m="w3m -M"
+alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -29,6 +33,8 @@ export SYSTEMD_EDITOR="vim"
 export PATH=$HOME/bin:${PATH}
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
+autoload zmv
+
 #
 CURPROCID=`ps | head -2 | tail -1 | awk '{print $1}'`
 NRANGER=`pstree $CURPROCID | sed 's/ranger/ranger\n/g' | grep -c "ranger"`
@@ -43,6 +49,54 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
+setopt HIST_IGNORE_DUPS
+# Search history begin current word
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+
+
+# Alt left/up to change directory
+cdUndoKey() {
+  popd      > /dev/null
+  zle       reset-prompt
+  echo
+  ls
+  echo
+}
+
+cdParentKey() {
+  pushd .. > /dev/null
+  zle      reset-prompt
+  echo
+  ls
+  echo
+}
+
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '^[[1;3A'      cdParentKey
+bindkey '^[[1;3D'      cdUndoKey
+
+
+# Dir stack: dirs -v, cd -<NUM>
+alias dh='dirs -v'
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+fi
+chpwd() {
+  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+DIRSTACKSIZE=20
+setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
+## Remove duplicate entries
+setopt PUSHD_IGNORE_DUPS
+## This reverts the +/- operators.
+setopt PUSHD_MINUS
+
+
+# Phuoc's
 function gitp() {
 	git add *
 	git commit -a -m "$1"

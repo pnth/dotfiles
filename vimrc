@@ -1,8 +1,9 @@
 call plug#begin('~/.vim/plugged')
-Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe'
+Plug 'davidhalter/jedi-vim'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8'
+Plug 'yuratomo/w3m.vim'
+" Plug 'nvie/vim-flake8'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
@@ -20,26 +21,16 @@ Plug '~/.vim/manually/personal'
 " Plug 'jalvesaq/Nvim-R'
 " Plug 'jalvesaq/colorout'
 " Plug 'junegunn/vim-easy-align'
-" " Plug 'LaTeX-Box-Team/LaTeX-Box'
+" Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'vim-scripts/screen.vim'
 " Plug 'Yggdroot/indentLine'
-"
-" Plug '~/.vim/manually/matlabvimcolours'
 " Plug 'AndrewRadev/sideways.vim'
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 " Plug 'chrisbra/unicode.vim'
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'elmanuelito/vim-matlab-behave'
-" Plug 'LucHermitte/lh-vim-lib'
-" Plug 'LucHermitte/lh-tags'
-" Plug 'LucHermitte/lh-dev'
-" Plug 'LucHermitte/lh-brackets'
-" Plug 'LucHermitte/searchInRuntime'
-" " Plug 'LucHermitte/mu-template'
-" Plug 'tomtom/stakeholders_vim'
-" Plug 'LucHermitte/lh-cpp'
 call plug#end()
 
 syntax enable
@@ -81,6 +72,11 @@ let mapleader = ","
 " set background=dark
 colorscheme solarized
 
+map gm :call cursor(0, virtcol('$')/2)<CR>
+
+""" W3m
+let g:w3m#command = '/usr/bin/w3m'
+
 
 """ Tmux
 let g:tmux_navigator_no_mappings = 1
@@ -108,11 +104,11 @@ let g:AutoPairsShortcutBackInsert = ',b'
 
 
 """ Python
-let g:ycm_auto_trigger = 1
-let g:ycm_autoclose_preview_window_after_completion=1	
+" let g:ycm_auto_trigger = 1
+" let g:ycm_autoclose_preview_window_after_completion=0
 let python_highlight_all=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-let g:ycm_python_binary_path = '/usr/bin/python3'
+" let g:ycm_python_binary_path = '/usr/bin/python2'
 " let b:python_version_2 = 1
 
 
@@ -162,6 +158,9 @@ augroup PreviewOnBottom
     autocmd InsertLeave * set splitbelow!
 augroup END
 
+""" Syntastic
+let g:syntastic_python_python_exec = '/usr/bin/python2'
+
 
 " let R_in_buffer = 0
 " let R_applescript = 0
@@ -175,65 +174,81 @@ augroup END
 "
 "
 "
-" """ VIM-SLIME, SH
-" au BufNewFile,BufRead *.py set filetype=python
-" au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
-"
-" let g:slime_target = "tmux"
-" let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
-" let g:slime_dont_ask_default = 1
-" let g:slime_python_ipython = 1
-" let g:slime_no_mappings = 1
-" autocmd FileType python,sh,mongoql,matlab xmap <buffer> <space> <Plug>SlimeRegionSend
-" autocmd FileType python,sh,mongoql,matlab nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-" autocmd FileType python,sh,mongoql,matlab nmap <buffer> ,p <Plug>SlimeMotionSend
-" autocmd FileType python,sh,mongoql,matlab nmap <buffer> ,pa ,p}}
-" autocmd FileType python,sh,mongoql,matlab nmap <buffer> ,rp ve<space>
-" autocmd FileType python,sh,mongoql xmap <buffer> <space> <Plug>SlimeRegionSend
-" autocmd FileType python,sh,mongoql nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-" autocmd FileType python,sh,mongoql imap <buffer> ,l <Plug>SlimeLineSend<cr>
-" autocmd FileType python,sh,mongoql nmap <buffer> ,p <Plug>SlimeMotionSend
-" autocmd FileType python,sh,mongoql nmap <buffer> ,pa ,p}}
-" autocmd FileType python,sh,mongoql nmap <buffer> ,rp ve<space>
-" " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
-" autocmd FileType python,mongoql,matlab noremap <buffer> <silent> ,q
-"       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
-" autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal &&
-"       \ tmux resize-pane -t 2 -x 76 && tmux select-pane -t:.1
-"       \ <cr><cr>
-" autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal <cr><cr>
-"       \ :!tmux send-keys -t 2 'matlab -nodesktop' Enter <cr><cr>
-"       \ :!tmux split-window -d -t 2 &&
-"       \ tmux resize-pane -t 3 -x 80 -y 20 &&
-"       \ tmux select-pane -t:.1 <cr><cr>
-" autocmd FileType python map <buffer> <f3> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal <cr><cr>
-"       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
-"       \ :!tmux split-window -d -t 2 &&
-"       \ tmux resize-pane -t 3 -x 80 -y 20 &&
-"       \ tmux select-pane -t:.1 <cr><cr>
-" autocmd FileType python map <buffer> <f2> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal <cr><cr>
-"       \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
-"       \ :!tmux split-window -d -t 2 &&
-"       \ tmux resize-pane -t 3 -x 80 -y 20 &&
-"       \ tmux select-pane -t:.1 <cr><cr>
-"
-" autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal <cr><cr>
-"       \ :!tmux split-window -d -t 2 &&
-"       \ tmux resize-pane -t 3 -x 76 -y 20 &&
-"       \ tmux select-pane -t:.1 <cr><cr>
-"       \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
-" autocmd FileType sh,perl map <buffer> <f2> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal &&
-"       \ tmux resize-pane -t 2 -x 76 && tmux select-pane -t:.1 <cr><cr>
-" autocmd FileType sh,perl noremap <buffer> <silent> ,q
-"       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
-"
-"
+""" VIM-SLIME, SH
+au BufNewFile,BufRead *.py set filetype=python
+au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
+
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
+let g:slime_dont_ask_default = 1
+let g:slime_python_ipython = 1
+let g:slime_no_mappings = 1
+autocmd FileType python,sh,mongoql,matlab,w3m xmap <buffer> <space> <Plug>SlimeRegionSend
+autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> ,p <Plug>SlimeMotionSend
+autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> ,pa ,p}}
+autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> ,rp ve<space>
+autocmd FileType python,sh,mongoql,matlab,w3m imap <buffer> ,l <Plug>SlimeLineSend<cr>
+" autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
+autocmd FileType python,mongoql,matlab noremap <buffer> <silent> ,q
+      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
+autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux resize-pane -t 2 -x 75 && tmux select-pane -t:.1
+      \ <cr><cr>
+autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux send-keys -t 2 'matlab -nodesktop' Enter <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+autocmd FileType python map <buffer> <f3> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+autocmd FileType python,w3m map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+
+autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+      \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
+autocmd FileType sh,perl map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux resize-pane -t 2 -x 75 && tmux select-pane -t:.1 <cr><cr>
+autocmd FileType sh,perl noremap <buffer> <silent> ,q
+      \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
+
+
+""" YCM YOUCOMPLETEME
+let g:ycm_confirm_extra_conf = 0
+autocmd FileType c,cpp,objc nnoremap <buffer> ,ef :YcmCompleter FixIt<CR>
+
+
+""" CTRLP
+let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
+let g:ctrlp_working_path_mode = 'r'
+
+""" REMOVE TRAILING SPACES
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+fun! <SID>StripTrailingWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+endfun
+" let _s=@/ let @/
+
+
+
 " """ EASY-ALIGN
 " " Start interactive EasyAlign in visual mode (e.g. vipga)
 " xmap ga <Plug>(EasyAlign)
@@ -246,28 +261,7 @@ augroup END
 " map ,ei :IndentLinesToggle<cr>
 " let g:indentLine_enabled = 0
 "
-" """ LH-BRACKET
-" let g:marker_select_empty_marks=0
-" imap ,m      <Plug>MarkersJumpF
-" map ,m      <Plug>MarkersJumpF
-" nmap ,ap      <Plug>PreviewWord
-" nmap ,ac      <Plug>ClosePreviewWindow
-" imap ,ap      <Plug>PreviewWord
-" imap ,ac      <Plug>ClosePreviewWindow
-" map ,ai      <Plug>OpenIncludes
-" let g:mt_IDontWantTemplatesAutomaticallyInserted = 1
-" let g:cb_want_mode = 0
-" nmap        ,bx         <Plug>DeleteBrackets
-" nmap        ,b<del>     <Plug>DeleteBrackets
-" nmap        ,b(         <Plug>ChangeToRoundBrackets
-" nmap        ,b[         <Plug>ChangeToSquareBrackets
-" nmap        ,b{         <Plug>ChangeToCurlyBrackets
-" nmap        ,b<         <Plug>ChangeToAngleBrackets
-" nmap        ,b\         <Plug>ToggleBackslash
-"
-" " :Brackets < > -open=function('lh#cpp#brackets#lt') -visual=1 -nl
-"
-"
+
 " """ MINE
 " noremap gd :call Pjump()<cr><cr>
 " function! Pjump()
@@ -289,18 +283,6 @@ augroup END
 "     :norm z.
 " endfunction
 "
-" " map ,<space> <esc>:call PJumpMaker()<cr>
-" " function! PJumpMaker()
-" " 	let str=getline('.')
-" "   if str =~ "a"
-" " 		echo "jump"
-" " 		:norm ,m
-" " 	else
-" " 		:execute "normal! a,\<esc>a\<space>"
-" "   endif
-" " 	:call feedkeys('a','n')
-" " endfunction
-"
 "
 " """ VIM-R-PLUGIN
 " let r_syntax_folding = 1
@@ -318,12 +300,12 @@ augroup END
 " 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 " autocmd FileType r map <buffer> <f3>
 " 			\ :!tmux select-layout even-horizontal <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -x 78 <cr><cr>
+" 			\ :!tmux resize-pane -t 2 -x 75 <cr><cr>
 " 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 " 			\ <c-w>=
 "
 " " autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
-" " 			\ tmux resize-pane -t 2 -x 78 <cr><cr>
+" " 			\ tmux resize-pane -t 2 -x 75 <cr><cr>
 "
 " autocmd FileType r imap <buffer> <f2> <Plug>RStart
 " autocmd FileType r vmap <buffer> <f2> <Plug>RStart
@@ -351,25 +333,6 @@ augroup END
 " let g:r_hl_roxygen = 0
 " let vimrplugin_vimpager = "tabnew"
 "
-"
-"
-" """ CTRLP
-" let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
-" let g:ctrlp_working_path_mode = 'r'
-"
-" """ REMOVE TRAILING SPACES
-" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-" fun! <SID>StripTrailingWhitespaces()
-" 	let l = line(".")
-" 	let c = col(".")
-" 	%s/\s\+$//e
-" 	call cursor(l, c)
-" endfun
-" " let _s=@/ let @/
-"
-" """ YCM YOUCOMPLETEME
-" let g:ycm_confirm_extra_conf = 0
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,ef :YcmCompleter FixIt<CR>
 "
 "
 " """ CPP
