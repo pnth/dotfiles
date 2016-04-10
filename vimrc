@@ -1,9 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'davidhalter/jedi-vim'
-" Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'yuratomo/w3m.vim'
-" Plug 'nvie/vim-flake8'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
@@ -17,7 +15,9 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'tomtom/tcomment_vim'
 Plug '~/.vim/manually/personal'
-
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'nvie/vim-flake8'
+" Plug 'Chiel92/vim-autoformat'
 " Plug 'jalvesaq/Nvim-R'
 " Plug 'jalvesaq/colorout'
 " Plug 'junegunn/vim-easy-align'
@@ -29,7 +29,6 @@ Plug '~/.vim/manually/personal'
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 " Plug 'chrisbra/unicode.vim'
-" Plug 'Chiel92/vim-autoformat'
 " Plug 'elmanuelito/vim-matlab-behave'
 call plug#end()
 
@@ -194,36 +193,36 @@ autocmd FileType python,mongoql,matlab noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 75 && tmux select-pane -t:.1
+      \ tmux resize-pane -t 2 -x 64 && tmux select-pane -t:.1
       \ <cr><cr>
 autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'matlab -nodesktop' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType python map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType python,w3m map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
       \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 75 -y 20 &&
+      \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
       \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
 autocmd FileType sh,perl map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 75 && tmux select-pane -t:.1 <cr><cr>
+      \ tmux resize-pane -t 2 -x 64 && tmux select-pane -t:.1 <cr><cr>
 autocmd FileType sh,perl noremap <buffer> <silent> ,q
       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
@@ -237,6 +236,7 @@ autocmd FileType c,cpp,objc nnoremap <buffer> ,ef :YcmCompleter FixIt<CR>
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
 let g:ctrlp_working_path_mode = 'r'
 
+
 """ REMOVE TRAILING SPACES
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 fun! <SID>StripTrailingWhitespaces()
@@ -246,6 +246,11 @@ fun! <SID>StripTrailingWhitespaces()
 	call cursor(l, c)
 endfun
 " let _s=@/ let @/
+
+
+""" VIM-AUTOFORMAT
+noremap ,ed :Autoformat<CR>
+
 
 
 
@@ -294,18 +299,18 @@ endfun
 " au BufNewFile,BufRead *.R set filetype=r
 " autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
 " 			\ :!tmux select-layout even-horizontal <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -x 70 &&
+" 			\ :!tmux resize-pane -t 2 -x 64 &&
 " 			\ tmux split-window -t 2 -d &&
 " 			\ tmux select-pane -t 1 <cr><cr>
 " 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 " autocmd FileType r map <buffer> <f3>
 " 			\ :!tmux select-layout even-horizontal <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -x 75 <cr><cr>
+" 			\ :!tmux resize-pane -t 2 -x 64 <cr><cr>
 " 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
 " 			\ <c-w>=
 "
 " " autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
-" " 			\ tmux resize-pane -t 2 -x 75 <cr><cr>
+ " 			\ tmux resize-pane -t 2 -x 64 <cr><cr>
 "
 " autocmd FileType r imap <buffer> <f2> <Plug>RStart
 " autocmd FileType r vmap <buffer> <f2> <Plug>RStart
@@ -413,10 +418,6 @@ endfun
 "       \set kmp=<bar>
 "       \endif<bar>
 "       \echo "kmp<".&kmp.">"<cr>
-"
-"
-" """ VIM-AUTOFORMAT
-" noremap ,ed :Autoformat<CR>
 "
 "
 "

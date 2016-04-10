@@ -81,19 +81,28 @@ bindkey '^[[1;3D'      cdUndoKey
 # Dir stack: dirs -v, cd -<NUM>
 alias dh='dirs -v'
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+DIRSTACKSIZE=9
+# if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+#   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+#   [[ -d $dirstack[1] ]] && cd $dirstack[1]
+# fi
+# chpwd() {
+#   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+# }
+# DIRSTACKSIZE=20
+# setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
+# ## Remove duplicate entries
+# setopt PUSHD_IGNORE_DUPS
+# ## This reverts the +/- operators.
+# setopt PUSHD_MINUS
+# Christian Neukirchen
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
 fi
 chpwd() {
   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
-DIRSTACKSIZE=20
-setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
-## Remove duplicate entries
-setopt PUSHD_IGNORE_DUPS
-## This reverts the +/- operators.
-setopt PUSHD_MINUS
 
 
 # Phuoc's
