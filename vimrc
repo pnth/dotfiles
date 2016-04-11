@@ -17,10 +17,10 @@ Plug 'tomtom/tcomment_vim'
 Plug '~/.vim/manually/personal'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'nvie/vim-flake8'
+Plug 'jalvesaq/Nvim-R'
+Plug 'junegunn/vim-easy-align'
+
 " Plug 'Chiel92/vim-autoformat'
-" Plug 'jalvesaq/Nvim-R'
-" Plug 'jalvesaq/colorout'
-" Plug 'junegunn/vim-easy-align'
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'vim-scripts/screen.vim'
@@ -29,7 +29,6 @@ Plug 'nvie/vim-flake8'
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 " Plug 'chrisbra/unicode.vim'
-" Plug 'elmanuelito/vim-matlab-behave'
 call plug#end()
 
 syntax enable
@@ -64,7 +63,8 @@ set wrap
 nnoremap Q <nop>  "Ex mode
 nnoremap ' `
 nnoremap ` '
-
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
 let maplocalleader = ","
 let mapleader = ","
 
@@ -161,18 +161,47 @@ augroup END
 let g:syntastic_python_python_exec = '/usr/bin/python2'
 
 
-" let R_in_buffer = 0
-" let R_applescript = 0
-" let R_tmux_split = 1
-" let R_tmux_title = "Nvim-R"
-" let R_tmux_title = "automatic"
-" let R_tmux_ob = 0
-"
-" """ Case-insensive search
-"
-"
-"
-"
+""" Nvim-R
+au BufNewFile,BufRead *.R set filetype=r
+au BufNewFile,BufRead *.r set filetype=r
+let R_tmux_split = 1
+let R_in_buffer = 0
+let R_applescript = 0
+let R_tmux_title = "Nvim-R"
+let R_tmux_title = "automatic"
+let R_tmux_ob = 0
+"" VIM-R-PLUGIN
+let r_syntax_folding = 1
+let vimrplugin_assign = 1
+let vimrplugin_args_in_stline = 0
+au FileType R imap <buffer> <silent> <LocalLeader>ru <Plug>RCompleteArgs
+let g:r_hl_roxygen = 0
+let vimrplugin_vimpager = "tabnew"
+set completeopt-=preview
+autocmd FileType r map <buffer> <f2> <Plug>RStart
+			\ :!tmux select-layout even-horizontal <cr>
+            \ :!tmux split-window -t 2 -d <cr>
+			\ :!tmux resize-pane -t 2 -x 64 <cr>
+			\ :!tmux resize-pane -t 2 -y 20 <cr>
+			\ <c-w>=
+autocmd FileType r map <buffer> <f3>
+			\ :!tmux select-layout even-horizontal <cr>
+            \ :!tmux split-window -t 2 -d <cr>
+			\ :!tmux resize-pane -t 2 -x 64 <cr>
+			\ :!tmux resize-pane -t 2 -y 20 <cr>
+			\ <c-w>=
+autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
+autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
+autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
+autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
+autocmd FileType r imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
+autocmd FileType r imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
+autocmd FileType r imap <buffer> ,t <space><esc>ciw<space>%T>%<space>
+autocmd FileType r imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
+autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
+autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
+
+
 """ VIM-SLIME, SH
 au BufNewFile,BufRead *.py set filetype=python
 au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
@@ -182,14 +211,14 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
-autocmd FileType python,sh,mongoql,matlab,w3m xmap <buffer> <space> <Plug>SlimeRegionSend
-autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> ,p <Plug>SlimeMotionSend
-autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> ,pa ,p}}
-autocmd FileType python,sh,mongoql,matlab,w3m nmap <buffer> ,rp ve<space>
-autocmd FileType python,sh,mongoql,matlab,w3m imap <buffer> ,l <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl xmap <buffer> <space> <Plug>SlimeRegionSend
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp ve<space>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> ,l <Plug>SlimeLineSend<cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
-autocmd FileType python,mongoql,matlab noremap <buffer> <silent> ,q
+autocmd FileType python,mongoql,matlab,perl,r noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -220,10 +249,15 @@ autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
       \ :!tmux send-keys -t 2 'mongo' Enter <cr><cr>
-autocmd FileType sh,perl map <buffer> <f2> :!tmux split-window &&
-      \ tmux select-layout even-horizontal &&
-      \ tmux resize-pane -t 2 -x 64 && tmux select-pane -t:.1 <cr><cr>
-autocmd FileType sh,perl noremap <buffer> <silent> ,q
+
+autocmd FileType perl map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux send-keys -t 2 're.pl' Enter <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 64 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+
+autocmd FileType sh noremap <buffer> <silent> ,q
       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
 
 
@@ -288,55 +322,6 @@ noremap ,ed :Autoformat<CR>
 "     :norm z.
 " endfunction
 "
-"
-" """ VIM-R-PLUGIN
-" let r_syntax_folding = 1
-" set nofoldenable
-" let vimrplugin_assign = 1
-" " set <M-->=^[-
-" " let vimrplugin_assign_map = "<M-->"
-" au BufNewFile,BufRead *.r set filetype=r
-" au BufNewFile,BufRead *.R set filetype=r
-" autocmd FileType r map <buffer> <f2> <Plug>RStart <cr>
-" 			\ :!tmux select-layout even-horizontal <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -x 64 &&
-" 			\ tmux split-window -t 2 -d &&
-" 			\ tmux select-pane -t 1 <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
-" autocmd FileType r map <buffer> <f3>
-" 			\ :!tmux select-layout even-horizontal <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -x 64 <cr><cr>
-" 			\ :!tmux resize-pane -t 2 -y 20 <cr><cr>
-" 			\ <c-w>=
-"
-" " autocmd FileType r map <buffer> <f3> :!tmux select-layout even-horizontal &&
- " 			\ tmux resize-pane -t 2 -x 64 <cr><cr>
-"
-" autocmd FileType r imap <buffer> <f2> <Plug>RStart
-" autocmd FileType r vmap <buffer> <f2> <Plug>RStart
-" autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
-" autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
-" set completeopt-=preview
-"
-" autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
-" autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
-" autocmd FileType r imap <buffer> ,= <space><esc>ciw<space>%<>%<space>
-" autocmd FileType r imap <buffer> ,< <space><esc>ciw<space>%T>%<space>
-" autocmd FileType r imap <buffer> ,t <space><esc>ciw<space>%T>%<space>
-" autocmd FileType r imap <buffer> ,$ <space><esc>ciw<space>%$%<space>
-" " autocmd FileType r imap <buffer> _ <space><esc>ciw<space><-<space>
-"
-" "map <silent> <LocalLeader>rk :call RAction("levels")<CR>
-" autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail")<CR>
-" autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
-" autocmd FileType r noremap <buffer> <silent> <LocalLeader>q
-" 			\ :call g:SendCmdToR("quit(save=\"no\")")<cr>
-" 			\ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
-"
-" let vimrplugin_args_in_stline = 0
-" au FileType R imap <buffer> <silent> <LocalLeader>ru <Plug>RCompleteArgs
-" let g:r_hl_roxygen = 0
-" let vimrplugin_vimpager = "tabnew"
 "
 "
 "
