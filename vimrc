@@ -19,10 +19,11 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/vim-easy-align'
+Plug 'robu3/vimongous'
+Plug 'plasticboy/vim-markdown'
 
 " Plug 'Chiel92/vim-autoformat'
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
-" Plug 'plasticboy/vim-markdown'
 " Plug 'vim-scripts/screen.vim'
 " Plug 'Yggdroot/indentLine'
 " Plug 'AndrewRadev/sideways.vim'
@@ -36,7 +37,6 @@ filetype plugin indent on
 
 set autoindent
 set autowriteall
-set backspace=2
 set clipboard=unnamed
 set cursorline
 set expandtab
@@ -51,11 +51,11 @@ set noswapfile
 set number
 set relativenumber
 set ruler
+set backspace=2
 set shiftwidth=2
-set shiftwidth=4
-set showmatch
+set ts=2
 set tabstop=2
-set ts=4
+set showmatch
 set tw=78
 set wmw=0
 set wrap
@@ -63,6 +63,8 @@ set wrap
 nnoremap Q <nop>  "Ex mode
 nnoremap ' `
 nnoremap ` '
+nnoremap j gj
+nnoremap k gk
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 let maplocalleader = ","
@@ -256,9 +258,13 @@ autocmd FileType perl map <buffer> <f2> :!tmux split-window &&
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
+autocmd FileType perl noremap <buffer> <silent> ,r
+      \ :!tmux send-keys -t 3 'perl %' Enter <cr><cr>
 
 autocmd FileType sh noremap <buffer> <silent> ,q
       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux select-pane -t:.1 <cr><cr>
 
 
 """ YCM YOUCOMPLETEME
