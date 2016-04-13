@@ -15,17 +15,22 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'tomtom/tcomment_vim'
 Plug '~/.vim/manually/personal'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/vim-easy-align'
 Plug 'robu3/vimongous'
 Plug 'plasticboy/vim-markdown'
+Plug 'Yggdroot/indentLine'
+Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-lexical'
+Plug 'reedes/vim-litecorrect'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'Chiel92/vim-autoformat' "autopep8 for python
 
-" Plug 'Chiel92/vim-autoformat'
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'vim-scripts/screen.vim'
-" Plug 'Yggdroot/indentLine'
 " Plug 'AndrewRadev/sideways.vim'
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
@@ -217,8 +222,10 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl xmap <buffer> <space> <Plug>S
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>SlimeLineSend<cr>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp ve<space>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> ,l <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
+      \ :!tmux send-keys -t 3 ./% Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 autocmd FileType python,mongoql,matlab,perl,r noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
@@ -261,6 +268,14 @@ autocmd FileType perl map <buffer> <f2> :!tmux split-window &&
 autocmd FileType perl noremap <buffer> <silent> ,r
       \ :!tmux send-keys -t 3 'perl %' Enter <cr><cr>
 
+autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal <cr><cr>
+      \ :!tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 64 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>
+autocmd FileType perl noremap <buffer> <silent> ,r
+      \ :!tmux send-keys -t 3 'perl %' Enter <cr><cr>
+
 autocmd FileType sh noremap <buffer> <silent> ,q
       \ :!tmux send-keys -t 2 'exit' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
@@ -292,43 +307,42 @@ endfun
 noremap ,ed :Autoformat<CR>
 
 
+""" MINE
+noremap gd :call Pjump()<cr><cr>
+function! Pjump()
+	:WincmdTag
+	if winnr() == winnr("$")
+		execute (winnr("$") - 1) . "WincmdW"
+	else
+		execute winnr("$") . "WincmdW"
+	endif
+	:norm ZZ
+    :exe "normal :vs\<cr>"
+	:WincmdTag
+	if winnr() == winnr("$")
+		execute (winnr("$") - 1) . "WincmdW"
+	else
+		execute winnr("$") . "WincmdW"
+	endif
+    :exe "normal \<c-]>"
+    :norm z.
+endfunction
 
 
-" """ EASY-ALIGN
-" " Start interactive EasyAlign in visual mode (e.g. vipga)
-" xmap ga <Plug>(EasyAlign)
-" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-" nmap ga <Plug>(EasyAlign)
-"
-" """ INDENT-LINE
-" let g:indentLine_color_term = 10
-" let g:indentLine_color_tty_dark = 10
-" map ,ei :IndentLinesToggle<cr>
-" let g:indentLine_enabled = 0
-"
+""" EASY-ALIGN
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
-" """ MINE
-" noremap gd :call Pjump()<cr><cr>
-" function! Pjump()
-" 	:WincmdTag
-" 	if winnr() == winnr("$")
-" 		execute (winnr("$") - 1) . "WincmdW"
-" 	else
-" 		execute winnr("$") . "WincmdW"
-" 	endif
-" 	:norm ZZ
-"     :exe "normal :vs\<cr>"
-" 	:WincmdTag
-" 	if winnr() == winnr("$")
-" 		execute (winnr("$") - 1) . "WincmdW"
-" 	else
-" 		execute winnr("$") . "WincmdW"
-" 	endif
-"     :exe "normal \<c-]>"
-"     :norm z.
-" endfunction
-"
-"
+
+""" INDENT-LINE
+let g:indentLine_color_term = 10
+let g:indentLine_color_tty_dark = 10
+map ,iv :IndentLinesToggle<cr>
+let g:indentLine_enabled = 0
+
+
 "
 "
 " """ CPP
