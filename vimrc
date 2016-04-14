@@ -28,6 +28,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat' "autopep8 for python
+Plug 'dhruvasagar/vim-table-mode'
 
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'vim-scripts/screen.vim'
@@ -273,7 +274,7 @@ autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType perl noremap <buffer> <silent> ,r
+autocmd FileType sh noremap <buffer> <silent> ,r
       \ :!tmux send-keys -t 3 'perl %' Enter <cr><cr>
 
 autocmd FileType sh noremap <buffer> <silent> ,q

@@ -33,17 +33,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xsetroot -cursor_name left_ptr
-# setxkbmap -option ctrl:swapcaps
-# redshift -l -38.2025:144.3115&
+setxkbmap -option ctrl:swapcaps
+redshift -l -38.2025:144.3115&
 xmodmap -e 'remove Mod1 = Alt_R'
 xmodmap -e 'add Mod3 = Alt_R'
 dropbox&
 udiskie -2 &
 sudo ntpd -gq&
-# ibus-daemon --xim &
-/usr/bin/VBoxClient-all &
+# /usr/bin/VBoxClient-all &
 DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
-ibus-daemon --xim &
 exec i3
 
 
