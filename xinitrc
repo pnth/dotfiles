@@ -41,8 +41,5 @@ dropbox&
 udiskie -2 &
 sudo ntpd -gq&
 # /usr/bin/VBoxClient-all &
-DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
+# DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 exec i3
-
-
-
