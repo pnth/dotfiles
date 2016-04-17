@@ -3,6 +3,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/syntastic'
 Plug 'yuratomo/w3m.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'jiangmiao/auto-pairs'
@@ -344,6 +345,11 @@ let g:indentLine_color_tty_dark = 10
 map ,iv :IndentLinesToggle<cr>
 let g:indentLine_enabled = 0
 
+
+""" Ctrlp funky
+nnoremap gp :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 "
 "
