@@ -109,7 +109,8 @@ chpwd() {
 # Phuoc's
 function gitp() {
 	git add *
-	git commit -a -m "$1"
+	# git commit -a -m "$1"
+	git commit -a -m `hostname`
 	git push
 }
 
