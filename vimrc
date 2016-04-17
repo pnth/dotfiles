@@ -29,6 +29,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat' "autopep8 for python
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'vim-scripts/python.vim'
 
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'vim-scripts/screen.vim'
