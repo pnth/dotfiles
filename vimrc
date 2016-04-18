@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/syntastic'
 Plug 'yuratomo/w3m.vim'
@@ -11,7 +12,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/calendar.vim'
 Plug 'ivalkeen/nerdtree-execute'
-Plug 'jpalardy/vim-slime'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'tomtom/tcomment_vim'
@@ -31,7 +31,7 @@ Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat' "autopep8 for python
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-scripts/python.vim'
-
+Plug 'jpalardy/vim-slime'
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'vim-scripts/screen.vim'
 " Plug 'AndrewRadev/sideways.vim'
