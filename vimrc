@@ -67,7 +67,7 @@ set showmatch
 set tw=78
 set wmw=0
 set wrap
-
+map ,nw :set nowrap! <CR>
 nnoremap Q <nop>  "Ex mode
 nnoremap ' `
 nnoremap ` '
@@ -188,18 +188,18 @@ au FileType R imap <buffer> <silent> <LocalLeader>ru <Plug>RCompleteArgs
 let g:r_hl_roxygen = 0
 let vimrplugin_vimpager = "tabnew"
 set completeopt-=preview
-autocmd FileType r map <buffer> <f2> <Plug>RStart
-			\ :!tmux select-layout even-horizontal <cr>
-            \ :!tmux split-window -t 2 -d <cr>
-			\ :!tmux resize-pane -t 2 -x 64 <cr>
-			\ :!tmux resize-pane -t 2 -y 20 <cr>
-			\ <c-w>=
-autocmd FileType r map <buffer> <f3>
-			\ :!tmux select-layout even-horizontal <cr>
-            \ :!tmux split-window -t 2 -d <cr>
-			\ :!tmux resize-pane -t 2 -x 64 <cr>
-			\ :!tmux resize-pane -t 2 -y 20 <cr>
-			\ <c-w>=
+" autocmd FileType r map <buffer> <f2> <Plug>RStart
+			" \ :!tmux select-layout even-horizontal <cr>
+      "       \ :!tmux split-window -t 2 -d <cr>
+			" \ :!tmux resize-pane -t 2 -x 64 <cr>
+			" \ :!tmux resize-pane -t 2 -y 20 <cr>
+			" \ <c-w>=
+" autocmd FileType r map <buffer> <f3>
+" 			\ :!tmux select-layout even-horizontal <cr>
+"             \ :!tmux split-window -t 2 -d <cr>
+" 			\ :!tmux resize-pane -t 2 -x 64 <cr>
+" 			\ :!tmux resize-pane -t 2 -y 20 <cr>
+" 			\ <c-w>=
 autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
@@ -225,9 +225,12 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl xmap <buffer> <space> <Plug>S
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>SlimeLineSend<cr>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
+" autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> ,l <Plug>SlimeLineSend<cr>
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
+autocmd FileType python nmap <buffer> ,r
+      \ :!tmux send-keys -t 3 python % Enter <cr><cr>
+autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
       \ :!tmux send-keys -t 3 ./% Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 autocmd FileType python,mongoql,matlab,perl,r noremap <buffer> <silent> ,q
@@ -242,14 +245,14 @@ autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python map <buffer> <f3> :!tmux split-window &&
-      \ tmux select-layout even-horizontal <cr><cr>
+autocmd FileType python map <buffer> <f3> :!tmux split-window <cr><cr>
+      \ :!tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python,w3m map <buffer> <f2> :!tmux split-window &&
-      \ tmux select-layout even-horizontal <cr><cr>
+autocmd FileType python,w3m map <buffer> <f2> :!tmux split-window <cr><cr>
+      \ :!tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
@@ -343,7 +346,7 @@ nmap ga <Plug>(EasyAlign)
 let g:indentLine_color_term = 10
 let g:indentLine_color_tty_dark = 10
 map ,iv :IndentLinesToggle<cr>
-let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 
 
 """ Ctrlp funky

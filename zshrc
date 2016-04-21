@@ -109,8 +109,12 @@ chpwd() {
 # Phuoc's
 function gitp() {
 	git add *
-	# git commit -a -m "$1"
-	git commit -a -m `hostname`
+  if [ $# -eq 0 ]
+  then
+    git commit -a -m `hostname`
+  else
+    git commit -a -m "$1"
+  fi
 	git push
 }
 
@@ -170,4 +174,7 @@ connect F0:65:DD:BA:37:87
 EOF
 }
 
+function pacup(){
+  sudo pacman -Syu | tee ".log/pacman update `date`.log"
+}
 
