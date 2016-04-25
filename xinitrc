@@ -38,9 +38,8 @@ setxkbmap -option ctrl:swapcaps
 redshift -l -38.2025:144.3115&
 xmodmap -e 'remove Mod1 = Alt_R'
 xmodmap -e 'add Mod3 = Alt_R'
-dropbox&
+# dropbox&
 udiskie -2 &
 sudo ntpd -gq&
-# /usr/bin/VBoxClient-all &
 # DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 exec i3

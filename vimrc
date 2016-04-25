@@ -78,7 +78,7 @@ imap <C-@> <C-Space>
 let maplocalleader = ","
 let mapleader = ","
 
-" set background=dark
+set background=dark
 colorscheme solarized
 
 map gm :call cursor(0, virtcol('$')/2)<CR>
@@ -229,7 +229,7 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> ,l <Plug>SlimeLineSend<cr>
 autocmd FileType python nmap <buffer> ,r
-      \ :!tmux send-keys -t 3 python % Enter <cr><cr>
+      \ :!tmux send-keys -t 3 'python  ' % Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
       \ :!tmux send-keys -t 3 ./% Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
@@ -353,6 +353,11 @@ let g:indentLine_enabled = 1
 nnoremap gp :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+
+""" Easy tags
+:set tags=./tags;
+:let g:easytags_dynamic_files = 2
 
 "
 "

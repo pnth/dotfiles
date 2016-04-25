@@ -4,7 +4,8 @@ sudo ip l set wlan0 up
 sleep 2
 sudo killall wpa_supplicant
 sudo wpa_supplicant -B -i wlan0 -c ~/wpa.conf
+# sudo wpa_supplicant -B -i wlan0 -c ~/example.conf
 sleep 3
 sudo dhcpcd wlan0
-connmanctl enable bluetooth
+sudo connmanctl enable bluetooth
 sudo hciconfig hci0 up
