@@ -31,7 +31,8 @@ alias yano="yaourt --noconfirm -S "
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"
-export PATH=$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export PATH=$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
 autoload zmv
@@ -133,6 +134,10 @@ function x() {
 		xrandr --output VGA1 --off
 		xrandr --output LVDS1 --auto
 	fi
+}
+
+function pdf31(){
+  pdfnup --nup "3x1" --no-landscape --suffix nup "$2"
 }
 
 function def() {

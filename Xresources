@@ -6,14 +6,15 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+! URxvt*geometry: 240x84
+! URxvt*iso14755: false
+! URxvt*iso14755_52: false
+! URxvt*termName: rxvt-256color
 URxvt*boldFont:             xft:Ubuntu Mono:bold:size=11
 URxvt*boldItalicFont:       xft:Ubuntu Mono:bold:italic:size=11
 URxvt*depth: 32
 URxvt*font:                 xft:Ubuntu Mono:regular:size=11
-! URxvt*geometry: 240x84
 URxvt*imFont:               xft:Ubuntu Mono:regular:size=11
-! URxvt*iso14755: false
-! URxvt*iso14755_52: false
 URxvt*italicFont:           xft:Ubuntu Mono:italic:size=11
 URxvt*letterSpace: -2
 URxvt*loginShell: true
@@ -25,22 +26,17 @@ URxvt*scrollBar: false
 URxvt*scrollBar_floating: false
 URxvt*scrollBar_right: false
 URxvt*scrollColor: #777777
-URxvt*scrollTtyKeypress: true
-URxvt*scrollTtyOutput: false
-URxvt*scrollWithBuffer: false
 URxvt*scrollstyle: plain
-URxvt*secondaryScreen: true
-URxvt*secondaryScroll: true
-URxvt*skipScroll: true
-URxvt*termName: rxvt-unicode-256color
-! URxvt*termName: rxvt-256color
-URxvt*url-launcher: /usr/bin/firefox
 URxvt*scrollTtyKeypress:  true
 URxvt*scrollTtyOutput:  false
-URxvt*skipScroll:  true
 URxvt*scrollWithBuffer:  false
+URxvt*secondaryScreen: true
+URxvt*skipScroll: true
+URxvt*termName: rxvt-unicode-256color
+URxvt*url-launcher: /usr/bin/firefox
 URxvt*visualBell:  true
-
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 
 !Light
 !URxvt*background: rgba:fd00/f600/e300/0000

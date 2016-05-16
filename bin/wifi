@@ -9,3 +9,4 @@ sleep 3
 sudo dhcpcd wlan0
 sudo connmanctl enable bluetooth
 sudo hciconfig hci0 up
+dropbox&

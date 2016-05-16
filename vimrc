@@ -14,7 +14,7 @@ Plug 'itchyny/calendar.vim'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug '~/.vim/manually/personal'
 Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
@@ -26,15 +26,22 @@ Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
 Plug 'tmhedberg/SimpylFold'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'Chiel92/vim-autoformat' "autopep8 for python
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-scripts/python.vim'
 Plug 'jpalardy/vim-slime'
+Plug 'AndrewRadev/sideways.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'lervag/vimtex'
+
+Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+
+" Plug 'Chiel92/vim-autoformat' "autopep8 for python
+" Plug 'epeli/slimux'
+" Plug 'tomtom/tcomment_vim'
 " Plug 'LaTeX-Box-Team/LaTeX-Box'
 " Plug 'vim-scripts/screen.vim'
-" Plug 'AndrewRadev/sideways.vim'
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 " Plug 'chrisbra/unicode.vim'
@@ -48,13 +55,11 @@ set autowriteall
 set clipboard=unnamed
 set cursorline
 set expandtab
-set foldmethod=syntax
-set foldnestmax=1
+set fo-=t
 set hlsearch
 set incsearch
 set mouse=a
 set nocompatible
-set nofoldenable
 set noswapfile
 set number
 set relativenumber
@@ -82,6 +87,46 @@ set background=dark
 colorscheme solarized
 
 map gm :call cursor(0, virtcol('$')/2)<CR>
+" map gm 0w :call cursor(0, virtcol('.')/2)<CR>
+autocmd FileType markdown nmap ,h yypv$r-<Esc>0
+autocmd FileType markdown nmap ,H yypv$r=<Esc>0
+autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
+
+""" tmux
+nmap ,tl :!tmux resizep -t 2 -x 30<cr><cr><c-w>=
+nmap ,th :!tmux resizep -t 2 -x 65<cr><cr><c-w>=
+
+
+
+""" folding
+set foldmethod=manual   "fold based on indent
+set nofoldenable        "dont fold by default
+set foldnestmax=1
+set foldlevel=1
+
+" autocmd FileType python setlocal foldmethod=expr foldexpr=getline(v:lnum)=~'^\s*#'
+" set foldmethod=marker
+" set foldmarker='#<,#>'
+
+" set foldmethod=syntax
+" :map f v%zf " manually close a fold
+" :map F zD " manually open a fold
+" :map <F3> zi " toggle open/close folds
+" :map <F4> zn " open all folds
+
+
+""" vimtex
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
+
+""" vim-surround
+nmap '' ysiw'
+nmap "" ysiw""
+nmap ( ysiw)
+nmap [ ysiw]
+
 
 """ W3m
 let g:w3m#command = '/usr/bin/w3m'
@@ -90,7 +135,7 @@ let g:w3m#command = '/usr/bin/w3m'
 """ Tmux
 let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 1
-nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+" nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
@@ -212,6 +257,15 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail"
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 
 
+" """ Slimux
+" map <space> :SlimuxREPLSendLine<CR>j
+" vmap <space> :SlimuxREPLSendSelection<CR>j
+" map <Leader>sa :SlimuxShellLast<CR>
+" map <Leader>sk :SlimuxSendKeysLast<CR>
+" let g:slimux_select_from_current_window = 1
+" " let g:slimux_pane_format
+
+
 """ VIM-SLIME, SH
 au BufNewFile,BufRead *.py set filetype=python
 au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
@@ -227,12 +281,16 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeM
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
-autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> ,l <Plug>SlimeLineSend<cr>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
 autocmd FileType python nmap <buffer> ,r
-      \ :!tmux send-keys -t 3 'python  ' % Enter <cr><cr>
+      \ :!tmux send-keys -t 3 'python ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,R
+      \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
       \ :!tmux send-keys -t 3 ./% Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
+
+
 autocmd FileType python,mongoql,matlab,perl,r noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
@@ -290,13 +348,16 @@ autocmd FileType sh noremap <buffer> <silent> ,q
 
 """ YCM YOUCOMPLETEME
 let g:ycm_confirm_extra_conf = 0
-autocmd FileType c,cpp,objc nnoremap <buffer> ,ef :YcmCompleter FixIt<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
 
 
 """ CTRLP
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
 let g:ctrlp_working_path_mode = 'r'
-
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+" nmap <c-p> :CtrlPBuffer<cr>
+nmap <c-\> :CtrlP<cr>
 
 """ REMOVE TRAILING SPACES
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
@@ -359,10 +420,17 @@ nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 :set tags=./tags;
 :let g:easytags_dynamic_files = 2
 
-"
-"
-" """ CPP
-"
+
+""" SIDEWAYS
+nnoremap ,ah :SidewaysLeft<cr>
+nnoremap ,al :SidewaysRight<cr>
+
+
+""" CPP
+autocmd BufWritePost *.cpp :!tmux send-keys -t 3 'g++ -std=c++14 -O2 -o ' %:r ' ' % Enter
+autocmd BufWritePost *.tex.md :!tmux send-keys -t 2 'pandoc -s ' % ' --latex-engine=xelatex --filter pandoc-citeproc --bibliography ' %:r '.bib -o ' %:r '.pdf' Enter
+autocmd FileType cpp nmap <buffer> ,r :!tmux send-keys -t 3 './'%:r Enter<cr><cr>
+
 " autocmd FileType c,cpp,objc nnoremap <buffer> ,eb
 " 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'make %:r 2>&1 \| egrep -i "warning\|error"' Enter <cr><cr>
 " autocmd FileType c,cpp,objc nnoremap <buffer> ,eB
@@ -398,11 +466,6 @@ nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 " 	call g:SendCmdToR(line)
 " endfunction
 " autocmd FileType R nnoremap <buffer> ,r<space> :call RSendSubLine()<CR>
-"
-" """ SIDEWAYS
-" nnoremap ,ah :SidewaysLeft<cr>
-" nnoremap ,al :SidewaysRight<cr>
-"
 "
 " """ VIM-MARKDOWN
 " set conceallevel=1
