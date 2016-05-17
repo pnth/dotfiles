@@ -72,40 +72,7 @@ cdParentKey() {
   echo
   ls
   echo
-}
-
-zle -N                 cdParentKey
-zle -N                 cdUndoKey
-bindkey '^[[1;3A'      cdParentKey
-bindkey '^[[1;3D'      cdUndoKey
-
-
-# Dir stack: dirs -v, cd -<NUM>
-alias dh='dirs -v'
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-DIRSTACKSIZE=9
-# if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-#   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-#   [[ -d $dirstack[1] ]] && cd $dirstack[1]
-# fi
-# chpwd() {
-#   print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-# }
-# DIRSTACKSIZE=20
-# setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
-# ## Remove duplicate entries
-# setopt PUSHD_IGNORE_DUPS
-# ## This reverts the +/- operators.
-# setopt PUSHD_MINUS
-# Christian Neukirchen
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
-fi
-chpwd() {
-  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
-
+  }
 
 # Phuoc's
 function gitp() {
@@ -140,6 +107,16 @@ function pdf31(){
   pdfnup --nup "3x1" --no-landscape --suffix nup "$2"
 }
 
+function wifi() {
+  sudo killall wpa_supplicant
+	if [ "$1" = "rtc" ]; then
+    sudo wifi-menu
+	else
+    sudo wpa_supplicant -B -i wlp3s0 -c ~/bin/wpa2.conf
+    sudo dhcpcd wlp3s0
+	fi
+}
+
 function def() {
 	gg define "$1"
 }
@@ -155,7 +132,7 @@ function lyx2md() {
 }
 
 function theme() {
-	if [ $1 = "light" ]; then
+	if [ "$1" = "light" ]; then
     ln -sf ~/dotfiles/Xresources-light ~/.Xresources
     ln -sf ~/dotfiles/config/zathura/zathurarc-light ~/.config/zathura/zathurarc
 	else
@@ -181,5 +158,14 @@ EOF
 
 function pacup(){
   sudo pacman -Syu | tee ".log/pacman update `date`.log"
+}
+
+function downgrade(){
+  # python-packaging-16.7-1
+  # python-pyparsing-2.1.4-1
+  # python-setuptools-1:21.0.0-1
+  # python-six-1.10.0-1
+  # python-3.5.1-2
+  # python-pip-8.1.2-1
 }
 

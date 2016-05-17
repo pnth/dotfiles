@@ -34,7 +34,6 @@ done
 mkdir -p ~/.w3m
 mkdir -p ~/bin
 mkdir -p ~/.vim
-mkdir -p ~/.config/ranger/
 mkdir -p ~/.config/zathura/
 mkdir -p ~/.config/i3/
 mkdir -p ~/.config/ranger/colorschemes
