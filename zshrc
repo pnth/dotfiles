@@ -183,3 +183,8 @@ function pacup(){
   sudo pacman -Syu | tee ".log/pacman update `date`.log"
 }
 
+
+function downgrade(){
+  sudo pacman -U /var/cache/pacman/pkg/tmux-2.1-2-x86_64.pkg.tar.xz
+}
+

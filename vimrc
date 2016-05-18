@@ -32,6 +32,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 
 Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
@@ -62,7 +63,7 @@ set mouse=a
 set nocompatible
 set noswapfile
 set number
-set relativenumber
+" set relativenumber
 set ruler
 set backspace=2
 set shiftwidth=2
@@ -80,6 +81,13 @@ nnoremap j gj
 nnoremap k gk
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
+inoremap II <Esc>I
+inoremap AA <Esc>A
+inoremap OO <Esc>O
+inoremap oo <Esc>o
+inoremap CC <Esc>C
+inoremap SS <Esc>S
+inoremap uu <Esc>ui
 let maplocalleader = ","
 let mapleader = ","
 
@@ -285,7 +293,9 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plu
 autocmd FileType python nmap <buffer> ,r
       \ :!tmux send-keys -t 3 'python ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R
-      \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
+      \ :!tmux send-keys -t 3 'python2 ' % Enter <cr><cr>
+" autocmd FileType python nmap <buffer> ,R
+"       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
       \ :!tmux send-keys -t 3 ./% Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
