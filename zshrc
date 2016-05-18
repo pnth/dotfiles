@@ -160,12 +160,8 @@ function pacup(){
   sudo pacman -Syu | tee ".log/pacman update `date`.log"
 }
 
+
 function downgrade(){
-  # python-packaging-16.7-1
-  # python-pyparsing-2.1.4-1
-  # python-setuptools-1:21.0.0-1
-  # python-six-1.10.0-1
-  # python-3.5.1-2
-  # python-pip-8.1.2-1
+  sudo pacman -U /var/cache/pacman/pkg/tmux-2.1-2-x86_64.pkg.tar.xz
 }
 
