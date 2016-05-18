@@ -10,12 +10,12 @@ Xft.rgba: rgb
 ! URxvt*iso14755: false
 ! URxvt*iso14755_52: false
 ! URxvt*termName: rxvt-256color
-URxvt*boldFont:             xft:Ubuntu Mono:bold:size=13
-URxvt*boldItalicFont:       xft:Ubuntu Mono:bold:italic:size=13
+URxvt*boldFont:             xft:Ubuntu Mono:bold:size=11
+URxvt*boldItalicFont:       xft:Ubuntu Mono:bold:italic:size=11
 URxvt*depth: 32
-URxvt*font:                 xft:Ubuntu Mono:regular:size=13
-URxvt*imFont:               xft:Ubuntu Mono:regular:size=13
-URxvt*italicFont:           xft:Ubuntu Mono:italic:size=13
+URxvt*font:                 xft:Ubuntu Mono:regular:size=11
+URxvt*imFont:               xft:Ubuntu Mono:regular:size=11
+URxvt*italicFont:           xft:Ubuntu Mono:italic:size=11
 URxvt*letterSpace: -2
 URxvt*loginShell: true
 URxvt*matcher.button: 1
