@@ -82,12 +82,17 @@ nnoremap k gk
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 inoremap II <Esc>I
+inoremap JJ <Esc>Ja
 inoremap AA <Esc>A
 inoremap OO <Esc>O
 inoremap oo <Esc>o
 inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap uu <Esc>ui
+ino hh <esc>
+cno hh <c-c>
+vno v <esc>
+
 let maplocalleader = ","
 let mapleader = ","
 

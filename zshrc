@@ -114,6 +114,8 @@ function wifi() {
 	else
     sudo wpa_supplicant -B -i wlp3s0 -c ~/bin/wpa2.conf
     sudo dhcpcd wlp3s0
+    sleep 4
+    sudo mount /mnt/share
 	fi
 }
 
