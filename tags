@@ -1,1 +1,99 @@
 !_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+""	/home/phuoc/dotfiles/vimrc	/^nmap "" ysiw""$/;"	m	language:Vim
+'	/home/phuoc/dotfiles/vimrc	/^nnoremap ' `$/;"	m	language:Vim
+''	/home/phuoc/dotfiles/vimrc	/^nmap '' ysiw'$/;"	m	language:Vim
+(	/home/phuoc/dotfiles/vimrc	/^nmap ( ysiw)$/;"	m	language:Vim
+,ah	/home/phuoc/dotfiles/vimrc	/^nnoremap ,ah :SidewaysLeft<cr>$/;"	m	language:Vim
+,al	/home/phuoc/dotfiles/vimrc	/^nnoremap ,al :SidewaysRight<cr>$/;"	m	language:Vim
+,ed	/home/phuoc/dotfiles/vimrc	/^noremap ,ed :Autoformat<CR>$/;"	m	language:Vim
+,en	/home/phuoc/dotfiles/vimrc	/^nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>$/;"	m	language:Vim
+,et	/home/phuoc/dotfiles/vimrc	/^map ,et :NERDTree<CR>$/;"	m	language:Vim
+,iv	/home/phuoc/dotfiles/vimrc	/^map ,iv :IndentLinesToggle<cr>$/;"	m	language:Vim
+,nw	/home/phuoc/dotfiles/vimrc	/^map ,nw :set nowrap! <CR>$/;"	m	language:Vim
+,th	/home/phuoc/dotfiles/vimrc	/^nmap ,th :!tmux resizep -t 2 -x 65<cr><cr><c-w>=$/;"	m	language:Vim
+,tl	/home/phuoc/dotfiles/vimrc	/^nmap ,tl :!tmux resizep -t 2 -x 30<cr><cr><c-w>=$/;"	m	language:Vim
+<C-@>	/home/phuoc/dotfiles/vimrc	/^imap <C-@> <C-Space>$/;"	m	language:Vim
+<C-h>	/home/phuoc/dotfiles/vimrc	/^nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>$/;"	m	language:Vim
+<C-j>	/home/phuoc/dotfiles/vimrc	/^nnoremap <silent> <C-j> :TmuxNavigateDown<cr>$/;"	m	language:Vim
+<C-k>	/home/phuoc/dotfiles/vimrc	/^nnoremap <silent> <C-k> :TmuxNavigateUp<cr>$/;"	m	language:Vim
+<C-l>	/home/phuoc/dotfiles/vimrc	/^nnoremap <silent> <C-l> :TmuxNavigateRight<cr>$/;"	m	language:Vim
+<C-Space>	/home/phuoc/dotfiles/vimrc	/^imap <C-Space> <C-x><C-o>$/;"	m	language:Vim
+<c-\>	/home/phuoc/dotfiles/vimrc	/^nmap <c-\\> :CtrlP<cr>$/;"	m	language:Vim
+AA	/home/phuoc/dotfiles/vimrc	/^inoremap AA <Esc>A$/;"	m	language:Vim
+CC	/home/phuoc/dotfiles/vimrc	/^inoremap CC <Esc>C$/;"	m	language:Vim
+g:AutoPairsFlyMode	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsFlyMode = 1$/;"	v	language:Vim
+g:AutoPairsShortcutBackInsert	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutBackInsert = ',b'$/;"	v	language:Vim
+g:AutoPairsShortcutFastWrap	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutFastWrap = '<C-}>'$/;"	v	language:Vim
+g:AutoPairsShortcutJump	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutJump = ',m'$/;"	v	language:Vim
+g:AutoPairsShortcutToggle	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutToggle = ''$/;"	v	language:Vim
+g:calendar_google_calendar	/home/phuoc/dotfiles/vimrc	/^let g:calendar_google_calendar = 1$/;"	v	language:Vim
+g:calendar_google_task	/home/phuoc/dotfiles/vimrc	/^let g:calendar_google_task = 1$/;"	v	language:Vim
+g:ctrlp_cmd	/home/phuoc/dotfiles/vimrc	/^let g:ctrlp_cmd = 'CtrlPBuffer'$/;"	v	language:Vim
+g:ctrlp_map	/home/phuoc/dotfiles/vimrc	/^let g:ctrlp_map = '<c-p>'$/;"	v	language:Vim
+g:ctrlp_root_markers	/home/phuoc/dotfiles/vimrc	/^let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']$/;"	v	language:Vim
+g:ctrlp_working_path_mode	/home/phuoc/dotfiles/vimrc	/^let g:ctrlp_working_path_mode = 'r'$/;"	v	language:Vim
+g:indentLine_color_term	/home/phuoc/dotfiles/vimrc	/^let g:indentLine_color_term = 10$/;"	v	language:Vim
+g:indentLine_color_tty_dark	/home/phuoc/dotfiles/vimrc	/^let g:indentLine_color_tty_dark = 10$/;"	v	language:Vim
+g:indentLine_enabled	/home/phuoc/dotfiles/vimrc	/^let g:indentLine_enabled = 1$/;"	v	language:Vim
+g:r_hl_roxygen	/home/phuoc/dotfiles/vimrc	/^let g:r_hl_roxygen = 0$/;"	v	language:Vim
+g:slime_default_config	/home/phuoc/dotfiles/vimrc	/^let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}$/;"	v	language:Vim
+g:slime_dont_ask_default	/home/phuoc/dotfiles/vimrc	/^let g:slime_dont_ask_default = 1$/;"	v	language:Vim
+g:slime_no_mappings	/home/phuoc/dotfiles/vimrc	/^let g:slime_no_mappings = 1$/;"	v	language:Vim
+g:slime_python_ipython	/home/phuoc/dotfiles/vimrc	/^let g:slime_python_ipython = 1$/;"	v	language:Vim
+g:slime_target	/home/phuoc/dotfiles/vimrc	/^let g:slime_target = "tmux"$/;"	v	language:Vim
+g:syntastic_python_python_exec	/home/phuoc/dotfiles/vimrc	/^let g:syntastic_python_python_exec = '\/usr\/bin\/python2'$/;"	v	language:Vim
+g:tagbar_left	/home/phuoc/dotfiles/vimrc	/^let g:tagbar_left = 1$/;"	v	language:Vim
+g:tagbar_type_r	/home/phuoc/dotfiles/vimrc	/^let g:tagbar_type_r = {$/;"	v	language:Vim
+g:tagbar_width	/home/phuoc/dotfiles/vimrc	/^let g:tagbar_width = 18$/;"	v	language:Vim
+g:tmux_navigator_no_mappings	/home/phuoc/dotfiles/vimrc	/^let g:tmux_navigator_no_mappings = 1$/;"	v	language:Vim
+g:tmux_navigator_save_on_switch	/home/phuoc/dotfiles/vimrc	/^let g:tmux_navigator_save_on_switch = 1$/;"	v	language:Vim
+g:vimtex_view_general_options	/home/phuoc/dotfiles/vimrc	/^let g:vimtex_view_general_options = '--unique @pdf\\#src:@line@tex'$/;"	v	language:Vim
+g:vimtex_view_general_options_latexmk	/home/phuoc/dotfiles/vimrc	/^let g:vimtex_view_general_options_latexmk = '--unique'$/;"	v	language:Vim
+g:vimtex_view_general_viewer	/home/phuoc/dotfiles/vimrc	/^let g:vimtex_view_general_viewer = 'okular'$/;"	v	language:Vim
+g:w3m#command	/home/phuoc/dotfiles/vimrc	/^let g:w3m#command = '\/usr\/bin\/w3m'$/;"	v	language:Vim
+g:ycm_confirm_extra_conf	/home/phuoc/dotfiles/vimrc	/^let g:ycm_confirm_extra_conf = 0$/;"	v	language:Vim
+ga	/home/phuoc/dotfiles/vimrc	/^nmap ga <Plug>(EasyAlign)$/;"	m	language:Vim
+gd	/home/phuoc/dotfiles/vimrc	/^noremap gd :call Pjump()<cr><cr>$/;"	m	language:Vim
+gh	/home/phuoc/dotfiles/vimrc	/^nnoremap gh :bN<cr>$/;"	m	language:Vim
+gl	/home/phuoc/dotfiles/vimrc	/^nnoremap gl :bn<cr>$/;"	m	language:Vim
+gm	/home/phuoc/dotfiles/vimrc	/^map gm :call cursor(0, virtcol('$')\/2)<CR>$/;"	m	language:Vim
+gp	/home/phuoc/dotfiles/vimrc	/^nnoremap gp :CtrlPFunky<Cr>$/;"	m	language:Vim
+gP	/home/phuoc/dotfiles/vimrc	/^nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>$/;"	m	language:Vim
+gW	/home/phuoc/dotfiles/vimrc	/^nnoremap gW :bd<cr>:syn on<cr>$/;"	m	language:Vim
+gw	/home/phuoc/dotfiles/vimrc	/^nnoremap gw :bN<cr>:bd #<cr>$/;"	m	language:Vim
+hh	/home/phuoc/dotfiles/vimrc	/^cno hh <c-c>$/;"	m	language:Vim
+hh	/home/phuoc/dotfiles/vimrc	/^ino hh <esc>$/;"	m	language:Vim
+II	/home/phuoc/dotfiles/vimrc	/^inoremap II <Esc>I$/;"	m	language:Vim
+j	/home/phuoc/dotfiles/vimrc	/^nnoremap j gj$/;"	m	language:Vim
+JJ	/home/phuoc/dotfiles/vimrc	/^inoremap JJ <Esc>Ja$/;"	m	language:Vim
+k	/home/phuoc/dotfiles/vimrc	/^nnoremap k gk$/;"	m	language:Vim
+mapleader	/home/phuoc/dotfiles/vimrc	/^let mapleader = ","$/;"	v	language:Vim
+maplocalleader	/home/phuoc/dotfiles/vimrc	/^let maplocalleader = ","$/;"	v	language:Vim
+NERDTreeIgnore	/home/phuoc/dotfiles/vimrc	/^let NERDTreeIgnore=['\\.pyc$', '\\~$'] "ignore files in NERDTree$/;"	v	language:Vim
+NERDTreeMapJumpNextSibling	/home/phuoc/dotfiles/vimrc	/^let NERDTreeMapJumpNextSibling=',j'$/;"	v	language:Vim
+NERDTreeMapJumpPrevSibling	/home/phuoc/dotfiles/vimrc	/^let NERDTreeMapJumpPrevSibling=',k'$/;"	v	language:Vim
+NERDTreeWinSize	/home/phuoc/dotfiles/vimrc	/^let NERDTreeWinSize=20$/;"	v	language:Vim
+OO	/home/phuoc/dotfiles/vimrc	/^inoremap OO <Esc>O$/;"	m	language:Vim
+oo	/home/phuoc/dotfiles/vimrc	/^inoremap oo <Esc>o$/;"	m	language:Vim
+Pjump	/home/phuoc/dotfiles/vimrc	/^function! Pjump()$/;"	f	language:Vim
+pp	/home/phuoc/dotfiles/vimrc	/^inoremap pp <c-r>*$/;"	m	language:Vim
+PreviewOnBottom	/home/phuoc/dotfiles/vimrc	/^augroup PreviewOnBottom$/;"	a	language:Vim
+python_highlight_all	/home/phuoc/dotfiles/vimrc	/^let python_highlight_all=1$/;"	v	language:Vim
+Q	/home/phuoc/dotfiles/vimrc	/^nnoremap Q <nop>  "Ex mode$/;"	m	language:Vim
+R_applescript	/home/phuoc/dotfiles/vimrc	/^let R_applescript = 0$/;"	v	language:Vim
+R_in_buffer	/home/phuoc/dotfiles/vimrc	/^let R_in_buffer = 0$/;"	v	language:Vim
+r_syntax_folding	/home/phuoc/dotfiles/vimrc	/^let r_syntax_folding = 1$/;"	v	language:Vim
+R_tmux_ob	/home/phuoc/dotfiles/vimrc	/^let R_tmux_ob = 0$/;"	v	language:Vim
+R_tmux_split	/home/phuoc/dotfiles/vimrc	/^let R_tmux_split = 1$/;"	v	language:Vim
+R_tmux_title	/home/phuoc/dotfiles/vimrc	/^let R_tmux_title = "automatic"$/;"	v	language:Vim
+R_tmux_title	/home/phuoc/dotfiles/vimrc	/^let R_tmux_title = "Nvim-R"$/;"	v	language:Vim
+SS	/home/phuoc/dotfiles/vimrc	/^inoremap SS <Esc>S$/;"	m	language:Vim
+StripTrailingWhitespaces	/home/phuoc/dotfiles/vimrc	/^fun! <SID>StripTrailingWhitespaces()$/;"	f	language:Vim
+ToggleNerdtreeTagbar	/home/phuoc/dotfiles/vimrc	/^function! ToggleNerdtreeTagbar()$/;"	f	language:Vim
+uu	/home/phuoc/dotfiles/vimrc	/^inoremap uu <Esc>ui$/;"	m	language:Vim
+v	/home/phuoc/dotfiles/vimrc	/^vno v <esc>$/;"	m	language:Vim
+vimrplugin_args_in_stline	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_args_in_stline = 0$/;"	v	language:Vim
+vimrplugin_assign	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_assign = 1$/;"	v	language:Vim
+vimrplugin_vimpager	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_vimpager = "tabnew"$/;"	v	language:Vim
+[	/home/phuoc/dotfiles/vimrc	/^nmap [ ysiw]$/;"	m	language:Vim
+`	/home/phuoc/dotfiles/vimrc	/^nnoremap ` '$/;"	m	language:Vim
