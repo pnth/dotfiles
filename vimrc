@@ -88,6 +88,7 @@ inoremap oo <Esc>o
 inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap uu <Esc>ui
+inoremap pp <c-r>*
 let maplocalleader = ","
 let mapleader = ","
 
