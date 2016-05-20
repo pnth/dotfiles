@@ -319,13 +319,13 @@ autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python map <buffer> <f3> :!tmux split-window <cr><cr>
+autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python,w3m map <buffer> <f2> :!tmux split-window <cr><cr>
+autocmd FileType python,w3m map <buffer> <f2> ,en:!tmux split-window <cr><cr>
       \ :!tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
