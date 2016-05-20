@@ -5,9 +5,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ivalkeen/nerdtree-execute'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'tpope/vim-commentary'
 Plug '~/.vim/manually/personal'
 Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-lexical'
@@ -15,10 +12,9 @@ Plug 'reedes/vim-litecorrect'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex'
 call plug#end()
 
+syn off
 set autoindent
 set autowriteall
 set clipboard=unnamed
@@ -65,8 +61,6 @@ vno v <esc>
 let maplocalleader = ","
 let mapleader = ","
 
-set background=dark
-colorscheme solarized
 
 map gm :call cursor(0, virtcol('$')/2)<CR>
 " map gm 0w :call cursor(0, virtcol('.')/2)<CR>
@@ -101,7 +95,7 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap gh :bN<cr>
 nnoremap gl :bn<cr>
-nnoremap gW :bd<cr>:syn on<cr>
+nnoremap gW :bd<cr>
 nnoremap gw :bN<cr>:bd #<cr>
 
 """ Auto-pairs
@@ -161,9 +155,6 @@ augroup PreviewOnBottom
     autocmd InsertEnter * set splitbelow
     autocmd InsertLeave * set splitbelow!
 augroup END
-
-""" Syntastic
-let g:syntastic_python_python_exec = '/usr/bin/python2'
 
 
 """ VIM-SLIME, SH

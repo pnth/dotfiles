@@ -13,7 +13,7 @@ compinit
 # End of lines added by compinstall
 
 alias gg="surfraw -browser=\"w3m -num\" google"
-alias ls=" ls -FGh --color=auto"
+alias ls=" ls -FGh"
 alias cd=" cd"
 alias dh=" dh"
 alias dirs=" dirs"
