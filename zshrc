@@ -114,10 +114,10 @@ function wifi() {
     sudo wifi-menu
   elif [ "$1" = "phone"   ]
   then
-    sudo wpa_supplicant -B -i wlan0 -c ~/bin/wpa-phone.conf
+    sudo wpa_supplicant -B -i wlan0 -c Dropbox/wpa-phone.conf
     sudo dhcpcd wlan0
 	else
-    sudo wpa_supplicant -B -i wlan0 -c ~/bin/wpa-edu.conf
+    sudo wpa_supplicant -B -i wlan0 -c Dropbox/wpa-edu.conf
     sudo dhcpcd wlan0
     sleep 4
     sudo mount /mnt/share
@@ -138,22 +138,25 @@ function lyx2md() {
 	tex2lyx "$1.tex"
 }
 
-function theme() {
-	if [ "$1" = "light" ]; then
-    ln -sf ~/dotfiles/Xresources-light ~/.Xresources
-    ln -sf ~/dotfiles/config/zathura/zathurarc-light ~/.config/zathura/zathurarc
+function theme() { if [ "$1" = "dark" ]; then
+  cat > .Xresources <<- EOM
+#include "./dotfiles/Xresources-450"
+#include "./dotfiles/Xresourcesdark"
+EOM
 	else
-    ln -sf ~/dotfiles/Xresources ~/.Xresources
-    ln -sf ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
+  cat > .Xresources <<- EOM
+#include "./dotfiles/Xresources-450"
+#include "./dotfiles/Xresources"
+EOM
 	fi
   xrdb ~/.Xresources
 }
 
-function lyx() {
-  xrdb ~/dotfiles/Xresources-light
-  /usr/bin/lyx "$1"
-  xrdb ~/.Xresources
-}
+# function lyx() {
+#   xrdb ~/dotfiles/Xresources-light
+#   /usr/bin/lyx "$1"
+#   xrdb ~/.Xresources
+# }
 
 function bt() {
   sleep 4
