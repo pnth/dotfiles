@@ -109,11 +109,16 @@ function pdf31(){
 
 function wifi() {
   sudo killall wpa_supplicant
-	if [ "$1" = "rtc" ]; then
+	if [ "$1" = "rtc" ]
+  then
     sudo wifi-menu
+  elif [ "$1" = "phone"   ]
+  then
+    sudo wpa_supplicant -B -i wlan0 -c ~/bin/wpa-phone.conf
+    sudo dhcpcd wlan0
 	else
-    sudo wpa_supplicant -B -i wlp3s0 -c ~/bin/wpa2.conf
-    sudo dhcpcd wlp3s0
+    sudo wpa_supplicant -B -i wlan0 -c ~/bin/wpa-edu.conf
+    sudo dhcpcd wlan0
     sleep 4
     sudo mount /mnt/share
 	fi

@@ -158,4 +158,4 @@ bar {
 # bar {
 #     status_command $HOME/bin/conky-i3bar
 # }
-exec --no-startup-id i3-msg 'workspace 1; exec thunar; workspace 2; exec firefox; workspace 3; exec thunar; exec thunderbird;  '
+exec --no-startup-id i3-msg 'workspace 1; exec thunar; exec firefox; '
