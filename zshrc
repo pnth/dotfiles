@@ -12,6 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh --color=auto"
 alias cd=" cd"
@@ -114,10 +115,10 @@ function wifi() {
     sudo wifi-menu
   elif [ "$1" = "phone"   ]
   then
-    sudo wpa_supplicant -B -i wlan0 -c Dropbox/wpa-phone.conf
+    sudo wpa_supplicant -B -i wlan0 -c ~/Dropbox/wpa-phone.conf
     sudo dhcpcd wlan0
 	else
-    sudo wpa_supplicant -B -i wlan0 -c Dropbox/wpa-edu.conf
+    sudo wpa_supplicant -B -i wlan0 -c ~/Dropbox/wpa-edu.conf
     sudo dhcpcd wlan0
     sleep 4
     sudo mount /mnt/share
@@ -173,5 +174,10 @@ function pacup(){
 
 function downgrade(){
   sudo pacman -U /var/cache/pacman/pkg/tmux-2.1-2-x86_64.pkg.tar.xz
+}
+
+
+function mkgrub(){
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 

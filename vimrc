@@ -9,7 +9,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'altercation/vim-colors-solarized'
 Plug 'itchyny/calendar.vim'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'xolox/vim-easytags'
@@ -34,9 +33,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
-
-Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
-autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+Plug 'Valloric/YouCompleteMe'
+" , { 'for': 'cpp' }
+" autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 
 " Plug 'Chiel92/vim-autoformat' "autopep8 for python
 " Plug 'epeli/slimux'
@@ -46,10 +45,17 @@ autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable(
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
 " Plug 'chrisbra/unicode.vim'
+
 call plug#end()
 
 syntax enable
 filetype plugin indent on
+
+" set t_Co=256   " This is may or may not needed.
+" set background=light
+" let base16colorspace=256
+" colorscheme PaperColor
+" colorscheme gruvbox
 
 set autoindent
 set autowriteall
@@ -70,7 +76,7 @@ set shiftwidth=2
 set ts=2
 set tabstop=2
 set showmatch
-set tw=78
+set tw=88
 set wmw=0
 set wrap
 map ,nw :set nowrap! <CR>
@@ -85,20 +91,17 @@ inoremap II <Esc>I
 inoremap JJ <Esc>Ja
 inoremap AA <Esc>A
 inoremap OO <Esc>O
-inoremap oo <Esc>o
+inoremap Oo <Esc>o
 inoremap CC <Esc>C
 inoremap SS <Esc>S
-inoremap uu <Esc>ui
-inoremap pp <c-r>*
+inoremap UU <Esc>ui
+inoremap PP <c-r>*
 ino hh <esc>
 cno hh <c-c>
 vno v <esc>
 
 let maplocalleader = ","
 let mapleader = ","
-
-set background=dark
-colorscheme solarized
 
 map gm :call cursor(0, virtcol('$')/2)<CR>
 " map gm 0w :call cursor(0, virtcol('.')/2)<CR>
@@ -271,15 +274,6 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail"
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 
 
-" """ Slimux
-" map <space> :SlimuxREPLSendLine<CR>j
-" vmap <space> :SlimuxREPLSendSelection<CR>j
-" map <Leader>sa :SlimuxShellLast<CR>
-" map <Leader>sk :SlimuxSendKeysLast<CR>
-" let g:slimux_select_from_current_window = 1
-" " let g:slimux_pane_format
-
-
 """ VIM-SLIME, SH
 au BufNewFile,BufRead *.py set filetype=python
 au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
@@ -447,6 +441,23 @@ autocmd BufWritePost *.cpp :!tmux send-keys -t 3 'g++ -std=c++14 -O2 -o ' %:r ' 
 autocmd BufWritePost *.tex.md :!tmux send-keys -t 2 'pandoc -s ' % ' --latex-engine=xelatex --filter pandoc-citeproc --bibliography ' %:r '.bib -o ' %:r '.pdf' Enter
 autocmd FileType cpp nmap <buffer> ,r :!tmux send-keys -t 3 './'%:r Enter<cr><cr>
 
+
+function! TwiddleCase(str)
+	if a:str ==# toupper(a:str)
+    let str2 = tolower(a:str)
+		let result = substitute(str2,'\(\<\w\+\>\)', '\u\1', 'g')
+	elseif a:str ==# tolower(a:str)
+		let result = toupper(a:str)
+	else
+		let result = tolower(a:str)
+	endif
+	return result
+endfunction
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+inoremap ~~ <Esc>viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>a
+nnoremap ~ viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>
+
+
 " autocmd FileType c,cpp,objc nnoremap <buffer> ,eb
 " 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'make %:r 2>&1 \| egrep -i "warning\|error"' Enter <cr><cr>
 " autocmd FileType c,cpp,objc nnoremap <buffer> ,eB
@@ -459,19 +470,6 @@ autocmd FileType cpp nmap <buffer> ,r :!tmux send-keys -t 3 './'%:r Enter<cr><cr
 " 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter <cr><cr>
 " autocmd FileType c,cpp,objc nnoremap <buffer> ,eM
 " 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter <cr><cr>
-"
-"
-" function! TwiddleCase(str)
-" 	if a:str ==# toupper(a:str)
-" 		let result = tolower(a:str)
-" 	elseif a:str ==# tolower(a:str)
-" 		let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-" 	else
-" 		let result = toupper(a:str)
-" 	endif
-" 	return result
-" endfunction
-" vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 "
 "
 " function! RSendSubLine()
