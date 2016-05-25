@@ -18,7 +18,8 @@ Plug '~/.vim/manually/personal'
 Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/vim-easy-align'
-Plug 'robu3/vimongous'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'robu3/vimongous'
 Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
 Plug 'reedes/vim-wordy'
@@ -34,9 +35,16 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
 Plug 'Valloric/YouCompleteMe'
-" , { 'for': 'cpp' }
-" autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
-
+Plug 'vim-scripts/summerfruit256.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'hdima/python-syntax'
+Plug 'NLKNguyen/c-syntax.vim'
+Plug 'guns/xterm-color-table.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-abolish'
+" Plug 'powerline/powerline'
 " Plug 'Chiel92/vim-autoformat' "autopep8 for python
 " Plug 'epeli/slimux'
 " Plug 'tomtom/tcomment_vim'
@@ -51,11 +59,19 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 
-" set t_Co=256   " This is may or may not needed.
-" set background=light
-" let base16colorspace=256
-" colorscheme PaperColor
-" colorscheme gruvbox
+" let g:solarized_contrast="high"
+" call togglebg#map("<F5>")
+" set background=dark
+" let g:solarized_termcolors=256
+" colorscheme solarized
+" colorscheme summerfruit256
+
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+colorscheme PaperColor
+let g:airline_theme='papercolor'
 
 set autoindent
 set autowriteall
@@ -68,7 +84,7 @@ set incsearch
 set mouse=a
 set nocompatible
 set noswapfile
-set number
+" set number
 " set relativenumber
 set ruler
 set backspace=2
@@ -76,7 +92,7 @@ set shiftwidth=2
 set ts=2
 set tabstop=2
 set showmatch
-set tw=88
+set tw=84
 set wmw=0
 set wrap
 map ,nw :set nowrap! <CR>
@@ -110,7 +126,7 @@ autocmd FileType markdown nmap ,H yypv$r=<Esc>0
 autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
 
 """ tmux
-nmap ,tl :!tmux resizep -t 2 -x 30<cr><cr><c-w>=
+nmap ,tl :!tmux resizep -t 2 -x 45<cr><cr><c-w>=
 nmap ,th :!tmux resizep -t 2 -x 65<cr><cr><c-w>=
 
 
@@ -131,6 +147,9 @@ set foldlevel=1
 " :map <F3> zi " toggle open/close folds
 " :map <F4> zn " open all folds
 
+
+""" airline
+let g:airline_section_y = ''
 
 """ vimtex
 let g:vimtex_view_general_viewer = 'okular'
@@ -319,12 +338,12 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python,w3m map <buffer> <f2> ,en:!tmux split-window <cr><cr>
-      \ :!tmux select-layout even-horizontal <cr><cr>
-      \ :!tmux send-keys -t 2 'ipython2' Enter <cr><cr>
-      \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 64 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>
+autocmd FileType python,w3m map <buffer> <f2> ,en:!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux send-keys -t 2 'ipython2' Enter &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 3 -x 30 -y 20 &&
+      \ tmux select-pane -t:.1 <cr><cr>:vs<cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>

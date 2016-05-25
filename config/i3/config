@@ -122,7 +122,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
+# scrot & gimp - root
+bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+# scrot & gimp - select window or rectangle
+bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -156,6 +159,6 @@ bar {
         tray_output primary
 }
 # bar {
-#     status_command $HOME/bin/conky-i3bar
+#     status_command $HOME/Dropbox/bin/conky-i3bar
 # }
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; exec urxvt -e tmux; workspace 2; exec thunar; exec urxvt -e tmux; '

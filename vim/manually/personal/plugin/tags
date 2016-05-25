@@ -1,0 +1,24 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+colour	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>colour(r, g, b)$/;"	f	language:Vim
+g:colors_name	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let g:colors_name = "Tomorrow-Night-Bright"$/;"	v	language:Vim
+grey_colour	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>grey_colour(n)$/;"	f	language:Vim
+grey_level	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>grey_level(n)$/;"	f	language:Vim
+grey_number	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>grey_number(x)$/;"	f	language:Vim
+rgb	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>rgb(rgb)$/;"	f	language:Vim
+rgb_colour	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>rgb_colour(x, y, z)$/;"	f	language:Vim
+rgb_level	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>rgb_level(n)$/;"	f	language:Vim
+rgb_number	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>rgb_number(x)$/;"	f	language:Vim
+s:aqua	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:aqua = "70c0b1"$/;"	v	language:Vim
+s:background	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:background = "000000"$/;"	v	language:Vim
+s:blue	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:blue = "7aa6da"$/;"	v	language:Vim
+s:comment	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:comment = "969896"$/;"	v	language:Vim
+s:foreground	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:foreground = "eaeaea"$/;"	v	language:Vim
+s:green	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:green = "b9ca4a"$/;"	v	language:Vim
+s:line	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:line = "2a2a2a"$/;"	v	language:Vim
+s:orange	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:orange = "e78c45"$/;"	v	language:Vim
+s:purple	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:purple = "c397d8"$/;"	v	language:Vim
+s:red	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:red = "d54e53"$/;"	v	language:Vim
+s:selection	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:selection = "424242"$/;"	v	language:Vim
+s:window	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:window = "4d5057"$/;"	v	language:Vim
+s:yellow	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^let s:yellow = "e7c547"$/;"	v	language:Vim
+X	/home/phuoc/dotfiles/vim/manually/personal/plugin/Tomorrow-Night-Bright.vim	/^	fun <SID>X(group, fg, bg, attr)$/;"	f	language:Vim

@@ -14,7 +14,7 @@ compinit
 
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
-alias ls=" ls -FGh --color=auto"
+alias ls=" ls -FGh "
 alias cd=" cd"
 alias dh=" dh"
 alias dirs=" dirs"
@@ -108,6 +108,10 @@ function pdf31(){
   pdfnup --nup "3x1" --no-landscape --suffix nup "$2"
 }
 
+function pdf22(){
+  pdfnup --nup 2x2 --landscape --suffix nup "$1"
+}
+
 function wifi() {
   sudo killall wpa_supplicant
 	if [ "$1" = "rtc" ]
@@ -179,5 +183,15 @@ function downgrade(){
 
 function mkgrub(){
   sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+
+function xo(){
+  DISPLAY=:$1 xdg-open $2
+}
+
+
+function dvp(){
+  setxkbmap -layout us -variant dvp -option ctrl:swapcaps
 }
 
