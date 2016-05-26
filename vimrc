@@ -409,8 +409,7 @@ noremap ,ed :Autoformat<CR>
 
 """ MINE
 " view in kindle
-vmap <F5> :w! /tmp/ksel.txt<cr>:!DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/ksel.txt"&<cr><cr>
-map <F6> :!killall xterm <cr><cr>
+vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
 
 " mouse block select
 noremap <M-LeftMouse> <4-LeftMouse>

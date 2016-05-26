@@ -123,12 +123,15 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # scrot & gimp - root
-bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
-bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym --release Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym --release Control+Print exec scrot -s -e 'mv $f /tmp/ && DISPLAY=:3 feh -FZ /tmp/$f'
+# bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym XF86MonBrightnessDown exec xbacklight -5
-bindsym F11 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selection primary -o`" | xclip -selection clipboard -i
-bindsym F10 exec xclip -selection clipboard -o > /tmp/xclip.txt && echo "" |  xclip -selection clipboard -i && DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/xclip.txt"
+bindsym --release $mod+F5 exec killall xterm luakit feh
+bindsym $mod+F6 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selection primary -o`" | xclip -selection clipboard -i
+bindsym $mod+F7 exec xclip -selection clipboard -o  | awk 1 ORS='<br>\n' > /tmp/xclip.html && echo "" |  xclip -selection clipboard -i  && DISPLAY=:3 luakit /tmp/xclip.html
+bindsym $mod+F8 exec xclip -selection clipboard -o > /tmp/xclip.txt && echo "" |  xclip -selection clipboard -i && DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/xclip.txt"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
