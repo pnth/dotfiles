@@ -124,8 +124,12 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # scrot & gimp - root
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
-# scrot & gimp - select window or rectangle
 bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessDown exec xbacklight -5
+bindsym F11 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selection primary -o`" | xclip -selection clipboard -i
+bindsym F10 exec xclip -selection clipboard -o > /tmp/xclip.txt && echo "" |  xclip -selection clipboard -i && DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/xclip.txt"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode

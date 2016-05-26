@@ -73,28 +73,32 @@ let g:indentLine_color_dark = 1 " (default: 2)
 colorscheme PaperColor
 let g:airline_theme='papercolor'
 
+" set number
+" set relativenumber
 set autoindent
 set autowriteall
+set backspace=2
 set clipboard=unnamed
 set cursorline
 set expandtab
-set fo-=t
+set formatoptions+=l
+set formatoptions-=t
 set hlsearch
 set incsearch
+set linebreak
 set mouse=a
 set nocompatible
+set nolist  " list disables linebreak
 set noswapfile
-" set number
-" set relativenumber
 set ruler
-set backspace=2
 set shiftwidth=2
-set ts=2
-set tabstop=2
 set showmatch
-set tw=84
+set tabstop=2
+set textwidth=0
 set wmw=0
 set wrap
+set wrapmargin=0
+
 map ,nw :set nowrap! <CR>
 nnoremap Q <nop>  "Ex mode
 nnoremap ' `
@@ -404,6 +408,18 @@ noremap ,ed :Autoformat<CR>
 
 
 """ MINE
+" view in kindle
+vmap <F5> :w! /tmp/ksel.txt<cr>:!DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/ksel.txt"&<cr><cr>
+map <F6> :!killall xterm <cr><cr>
+
+" mouse block select
+noremap <M-LeftMouse> <4-LeftMouse>
+inoremap <M-LeftMouse> <4-LeftMouse>
+onoremap <M-LeftMouse> <C-C><4-LeftMouse>
+noremap <M-LeftDrag> <LeftDrag>
+inoremap <M-LeftDrag> <LeftDrag>
+onoremap <M-LeftDrag> <C-C><LeftDrag>
+
 noremap gd :call Pjump()<cr><cr>
 function! Pjump()
 	:WincmdTag
