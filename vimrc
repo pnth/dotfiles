@@ -18,7 +18,7 @@ Plug '~/.vim/manually/personal'
 Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/vim-easy-align'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " Plug 'robu3/vimongous'
 Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
@@ -61,17 +61,17 @@ filetype plugin indent on
 
 " let g:solarized_contrast="high"
 " call togglebg#map("<F5>")
-" set background=dark
 " let g:solarized_termcolors=256
+" set background=light
 " colorscheme solarized
 " colorscheme summerfruit256
-
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_color_tty_light = 7 " (default: 4)
-let g:indentLine_color_dark = 1 " (default: 2)
 colorscheme PaperColor
 let g:airline_theme='papercolor'
+
+" let g:indentLine_color_term = 239
+" let g:indentLine_color_gui = '#A4E57E'
+" let g:indentLine_color_tty_light = 7 " (default: 4)
+" let g:indentLine_color_dark = 1 " (default: 2)
 
 " set number
 " set relativenumber
@@ -130,8 +130,11 @@ autocmd FileType markdown nmap ,H yypv$r=<Esc>0
 autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
 
 """ tmux
-nmap ,tl :!tmux resizep -t 2 -x 45<cr><cr><c-w>=
-nmap ,th :!tmux resizep -t 2 -x 65<cr><cr><c-w>=
+nmap ,th :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l><C-w>=
+nmap ,tl :TagbarOpenAutoClose<cr>:vertical resize 25<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+nmap ,tj :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l><C-w>=
+nmap ,tk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+
 
 
 
@@ -213,6 +216,7 @@ let NERDTreeWinSize=20
 let NERDTreeMapJumpNextSibling=',j'
 let NERDTreeMapJumpPrevSibling=',k'
 " Winmanage hack
+nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>
 function! ToggleNerdtreeTagbar()
 	" check if NERDTree and Tagbar are opened
 	let NERDTree_close = (bufwinnr('NERD_tree') == -1)
@@ -227,7 +231,6 @@ function! ToggleNerdtreeTagbar()
 		exe 'vertical resize 22'
 	endif
 endfunction
-nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>
 " Tagbar
 set tags=./tags,tags;$HOME
 let g:tagbar_left = 1
@@ -408,9 +411,6 @@ noremap ,ed :Autoformat<CR>
 
 
 """ MINE
-" view in kindle
-vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=:3 xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
-
 " mouse block select
 noremap <M-LeftMouse> <4-LeftMouse>
 inoremap <M-LeftMouse> <4-LeftMouse>
@@ -418,6 +418,11 @@ onoremap <M-LeftMouse> <C-C><4-LeftMouse>
 noremap <M-LeftDrag> <LeftDrag>
 inoremap <M-LeftDrag> <LeftDrag>
 onoremap <M-LeftDrag> <C-C><LeftDrag>
+
+" view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
+" vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=: xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
+:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+
 
 noremap gd :call Pjump()<cr><cr>
 function! Pjump()
