@@ -36,6 +36,7 @@ mkdir -p ~/bin
 mkdir -p ~/.vim
 mkdir -p ~/.config/zathura/
 mkdir -p ~/.config/i3/
+mkdir -p ~/.config/i3status/
 mkdir -p ~/.config/ranger/colorschemes
 mkdir -p ~/.local/share/applications
 echo "set colorscheme solarized" > ~/.config/ranger/rc.conf
@@ -50,6 +51,7 @@ ln -sf ~/dotfiles/w3m/config ~/.w3m/config
 ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
 ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
 ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
+ln -sf ~/dotfiles/config/i3status/config ~/.config/i3status/config
 ln -sf ~/dotfiles/conkyrc ~/.conkyrc
 ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
 ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar

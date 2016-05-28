@@ -130,10 +130,10 @@ autocmd FileType markdown nmap ,H yypv$r=<Esc>0
 autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
 
 """ tmux
-nmap ,th :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l><C-w>=
-nmap ,tl :TagbarOpenAutoClose<cr>:vertical resize 25<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
-nmap ,tj :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l><C-w>=
-nmap ,tk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l><C-w>=
+nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 25<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l><C-w>=
+nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 
 
 
