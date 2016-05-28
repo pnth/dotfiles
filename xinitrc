@@ -41,6 +41,7 @@ xmodmap -e 'add Mod3 = Alt_R'
 dropbox&
 udiskie -2 &
 sudo ntpd -gq&
+# pulseaudio --start
 # DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 # ibus-daemon --xim&
 synclient TouchpadOff=1&
