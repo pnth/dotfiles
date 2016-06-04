@@ -5,8 +5,8 @@ URxvt*font:                 xft:Ubuntu Mono:regular:size=13
 URxvt*imFont:               xft:Ubuntu Mono:regular:size=13
 URxvt*italicFont:           xft:Ubuntu Mono:italic:size=13
 !Xft.dpi: 96
-!Xft.dpi: 120
-Xft.dpi: 144
+Xft.dpi: 120
+!Xft.dpi: 144
 Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull

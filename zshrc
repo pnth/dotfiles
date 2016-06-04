@@ -114,7 +114,7 @@ function pdf22(){
 
 function wifi() {
   sudo killall wpa_supplicant
-	if [ "$1" = "rtc" ]
+	if [ "$1" = "ap" ]
   then
     sudo wifi-menu
   elif [ "$1" = "phone"   ]
@@ -198,3 +198,11 @@ function dvp(){
 function keycode(){
   xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
+
+function memfree(){
+  awk '/MemFree/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
+  awk '/MemAvailable/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
+
+}
+
+

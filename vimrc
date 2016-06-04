@@ -73,7 +73,7 @@ let g:airline_theme='papercolor'
 " let g:indentLine_color_tty_light = 7 " (default: 4)
 " let g:indentLine_color_dark = 1 " (default: 2)
 
-" set number
+set number
 " set relativenumber
 set autoindent
 set autowriteall
@@ -316,7 +316,7 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r
+autocmd FileType python nmap <buffer> ,r :wa<cr>
       \ :!tmux send-keys -t 3 'python ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R
       \ :!tmux send-keys -t 3 'python2 ' % Enter <cr><cr>
@@ -334,9 +334,9 @@ autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux resize-pane -t 2 -x 64 && tmux select-pane -t:.1
       \ <cr><cr>
 autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
-      \ tmux select-layout even-horizontal <cr><cr>
-      \ :!tmux send-keys -t 2 'matlab -nodesktop' Enter <cr><cr>
-      \ :!tmux split-window -d -t 2 &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux send-keys -t 2 'matlab -nodesktop' Enter &&
+      \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
@@ -350,7 +350,7 @@ autocmd FileType python,w3m map <buffer> <f2> ,en:!tmux split-window &&
       \ tmux send-keys -t 2 'ipython2' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 30 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>:vs<cr>
+      \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>:vs<cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
