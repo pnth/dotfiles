@@ -137,6 +137,7 @@ bindsym --release $mod+F5 exec killall xterm luakit feh
 bindsym $mod+F6 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selection primary -o`" | xclip -selection clipboard -i
 bindsym $mod+F7 exec xclip -selection clipboard -o  | awk 1 ORS='<br>\n' > /tmp/xclip.html && echo "" |  xclip -selection clipboard -i  && DISPLAY=:`cat /tmp/kver` luakit /tmp/xclip.html
 bindsym $mod+F8 exec xclip -selection clipboard -o > /tmp/xclip.txt && echo "" |  xclip -selection clipboard -i && DISPLAY=:`cat /tmp/kver` xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/xclip.txt"
+bindsym $mod+F9 exec DISPLAY=:`cat /tmp/kver` luakit `xclip -selection primary -o`
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

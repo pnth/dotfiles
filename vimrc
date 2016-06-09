@@ -34,7 +34,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline'
@@ -424,6 +424,9 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 
 
+noremap <C-LeftMouse> <LeftMouse>:call Pjump()<cr><cr><LeftRelease>
+nnoremap <X1Mouse> <C-O>
+nnoremap <X2Mouse> <C-I>
 noremap gd :call Pjump()<cr><cr>
 function! Pjump()
 	:WincmdTag

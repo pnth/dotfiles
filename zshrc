@@ -57,6 +57,8 @@ setopt HIST_IGNORE_DUPS
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
 
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+stty -ixon
 
 # Alt left/up to change directory
 cdUndoKey() {
@@ -88,9 +90,13 @@ function gitp() {
 }
 
 function batt() {
+	sudo tpacpi-bat -v -s ST 0 40
 	sudo tpacpi-bat -v -s ST 1 40
+	sudo tpacpi-bat -v -s SP 0 80
 	sudo tpacpi-bat -v -s SP 1 80
+	sudo tpacpi-bat -v -g ST 0
 	sudo tpacpi-bat -v -g ST 1
+	sudo tpacpi-bat -v -g SP 0
 	sudo tpacpi-bat -v -g SP 1
 }
 
@@ -168,11 +174,12 @@ function bt() {
   bluetoothctl << EOF
 power on
 connect F0:65:DD:BA:37:87
+connect E7:87:1B:8E:47:4D
 EOF
 }
 
 function pacup(){
-  sudo pacman -Syu | tee ".log/pacman update `date`.log"
+  sudo pacman -Syu | tee ".log/pacman_update_`date`.log"
 }
 
 
