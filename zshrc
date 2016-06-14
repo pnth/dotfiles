@@ -130,8 +130,8 @@ function wifi() {
 	else
     sudo wpa_supplicant -B -i wlan0 -c ~/Dropbox/wpa-edu.conf
     sudo dhcpcd wlan0
-    sleep 4
-    sudo mount /mnt/share
+    # sleep 4
+    # sudo mount /mnt/share
 	fi
 }
 
@@ -209,7 +209,30 @@ function keycode(){
 function memfree(){
   awk '/MemFree/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
   awk '/MemAvailable/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
-
 }
+
+# function bookit(){
+#   mkdir /tmp/pdf
+#   cur_dir=`pwd`
+#   rm -f /tmp/pdf/*
+#   fname=`basename $1 .pdf`
+
+#   # crop
+#   java -jar /usr/share/briss/briss-0.9.jar -s "$1" -d /tmp/pdf/a.pdf
+
+#   cd /tmp/pdf
+
+#   # pad to a4 size
+#   pdfnup --nup 1x1 --a4paper --no-landscape -o a.pdf a.pdf
+
+#   # nup 1x2
+#   pdfnup --nup 2x1 --a4paper --landscape -o a.pdf a.pdf
+
+#   # rotate even/odd pages
+#   pdftk A=a.pdf shuffle Aoddeast Aevenwest output "$cur_dir/${fname}-book.pdf"
+
+#   # mv /tmp/pdf/a.pdf "$cur_dir/${fname}-book.pdf"
+#   cd $cur_dir
+# }
 
 
