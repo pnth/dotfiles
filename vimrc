@@ -129,6 +129,8 @@ autocmd FileType markdown nmap ,h yypv$r-<Esc>0
 autocmd FileType markdown nmap ,H yypv$r=<Esc>0
 autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
 
+let g:jedi#force_py_version = 3
+
 """ tmux
 nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 60<cr>
 nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 25<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
