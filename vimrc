@@ -307,7 +307,7 @@ au BufNewFile,BufRead *.py set filetype=python
 au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
 
 let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": ".3"}
+let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
@@ -352,7 +352,7 @@ autocmd FileType python,w3m map <buffer> <f2> ,en:!tmux split-window &&
       \ tmux send-keys -t 2 'ipython2' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 30 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>:vs<cr>
+      \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
