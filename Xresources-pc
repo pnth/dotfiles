@@ -1,7 +1,0 @@
-URxvt*boldFont:             xft:Ubuntu Mono:bold:size=11
-URxvt*boldItalicFont:       xft:Ubuntu Mono:bold:italic:size=11
-URxvt*depth: 32
-URxvt*font:                 xft:Ubuntu Mono:regular:size=11
-URxvt*imFont:               xft:Ubuntu Mono:regular:size=11
-URxvt*italicFont:           xft:Ubuntu Mono:italic:size=11
-
