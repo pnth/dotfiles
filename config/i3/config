@@ -180,4 +180,4 @@ bar {
 #     status_command $HOME/Dropbox/bin/conky-i3bar
 # }
 # exec --no-startup-id i3-msg 'workspace 2: code; exec thunar; exec firefox; exec urxvt -e tmux; workspace 4: chat; exec skype; workspace 10: file; exec jabref; '
-exec --no-startup-id i3-msg 'workspace 2: code; exec thunar; exec firefox; exec urxvt -e tmux; workspace 4: chat; exec skype; workspace 10: file;'
+exec --no-startup-id i3-msg 'workspace 2: code; exec chromium; exec urxvt -e tmux; '
