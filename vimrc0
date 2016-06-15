@@ -1,0 +1,48 @@
+set noswapfile
+set nocompatible
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+set textwidth=0
+set wrapmargin=0
+set formatoptions-=t
+set formatoptions+=l
+set clipboard=unnamed
+set hlsearch
+set incsearch
+
+"set cursorline
+"set autoindent
+"set autowriteall
+"set expandtab
+"set backspace=2
+"set shiftwidth=2
+"set ts=2
+"set tabstop=2
+"set fo-=t
+"set mouse=a
+"set number
+"" set relativenumber
+"set ruler
+"set showmatch
+""set tw=78
+""set wmw=0
+""set wrap
+"map ,nw :set nowrap! <CR>
+"nnoremap Q <nop>  "Ex mode
+"nnoremap ' `
+"nnoremap ` '
+"nnoremap j gj
+"nnoremap k gk
+"imap <C-Space> <C-x><C-o>
+"imap <C-@> <C-Space>
+"inoremap II <Esc>I
+"inoremap JJ <Esc>Ja
+"inoremap AA <Esc>A
+"inoremap OO <Esc>O
+"inoremap Oo <Esc>o
+"inoremap CC <Esc>C
+"inoremap SS <Esc>S
+"inoremap UU <Esc>ui
+"inoremap PP <c-r>*
+
