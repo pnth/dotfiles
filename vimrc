@@ -218,7 +218,7 @@ let NERDTreeWinSize=20
 let NERDTreeMapJumpNextSibling=',j'
 let NERDTreeMapJumpPrevSibling=',k'
 " Winmanage hack
-nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>
+nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
 function! ToggleNerdtreeTagbar()
 	" check if NERDTree and Tagbar are opened
 	let NERDTree_close = (bufwinnr('NERD_tree') == -1)

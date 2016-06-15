@@ -1,0 +1,11 @@
+[global]
+floatX = float32
+device = cpu
+openmp = True
+base_compiledir = /path/to/base/dir
+
+[nvcc]
+fastmath = True
+
+[blas]
+ldflags = -L/path/to/blas/libs -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -lpthread -lm
