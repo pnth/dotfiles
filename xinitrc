@@ -41,7 +41,12 @@ dropbox&
 udiskie -2 &
 sudo ntpd -gq&
 # DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
-# ibus-daemon --xim&
+# ibus-daemon --xim &
+sudo dhcpcd eth0 &
+if [ `cat /etc/hostname` = "phuoc450" ]; then
+  smount 43.44 &	
+fi
 synclient TouchpadOff=1&
+
 exec i3
 
