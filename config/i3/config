@@ -138,6 +138,7 @@ bindsym $mod+F6 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selecti
 bindsym $mod+F7 exec xclip -selection clipboard -o  | awk 1 ORS='<br>\n' > /tmp/xclip.html && echo "" |  xclip -selection clipboard -i  && DISPLAY=:`cat /tmp/kver` luakit /tmp/xclip.html
 bindsym $mod+F8 exec xclip -selection clipboard -o > /tmp/xclip.txt && echo "" |  xclip -selection clipboard -i && DISPLAY=:`cat /tmp/kver` xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/xclip.txt"
 bindsym $mod+F9 exec DISPLAY=:`cat /tmp/kver` luakit `xclip -selection primary -o`
+bindsym $mod+F12 exec sudo pm-suspend --quirk-dpms-on --quirk-dpms-suspend
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -169,14 +170,14 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # set $ws2  "2:&#xf120;"
 # set $ws2  ""
-bar {
-        status_command i3status
-        font pango:DejaVu Sans Mono, Awesome 9
-        # position top
-        # tray_output primary
-}
 # bar {
-#     status_command $HOME/Dropbox/bin/conky-i3bar
+#         status_command i3status
+#         font pango:DejaVu Sans Mono, Awesome 9
+#         # position top
+#         # tray_output primary
 # }
+bar {
+    status_command $HOME/Dropbox/bin/conky-i3bar
+}
 # exec --no-startup-id i3-msg 'workspace 2: code; exec thunar; exec firefox; exec urxvt -e tmux; workspace 4: chat; exec skype; workspace 10: file; exec jabref; '
 exec --no-startup-id i3-msg 'workspace 2: code; exec thunar; exec firefox; exec urxvt -e tmux; workspace 4: chat; exec skype; workspace 10: file;'
