@@ -423,7 +423,8 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
 " vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=: xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
-:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " urxvt -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 
 
 noremap <C-LeftMouse> <LeftMouse>:call Pjump()<cr><cr><LeftRelease>
