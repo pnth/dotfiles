@@ -90,14 +90,25 @@ function gitp() {
 }
 
 function batt() {
-	sudo tpacpi-bat -v -s ST 0 40
-	sudo tpacpi-bat -v -s ST 1 40
-	sudo tpacpi-bat -v -s SP 0 80
-	sudo tpacpi-bat -v -s SP 1 80
-	sudo tpacpi-bat -v -g ST 0
-	sudo tpacpi-bat -v -g ST 1
-	sudo tpacpi-bat -v -g SP 0
-	sudo tpacpi-bat -v -g SP 1
+  sudo tpacpi-bat -s ST 0 40
+  sudo tpacpi-bat -s ST 1 40
+  sudo tpacpi-bat -s ST 2 40
+  sudo tpacpi-bat -s SP 0 80
+  sudo tpacpi-bat -s SP 1 80
+  sudo tpacpi-bat -s SP 2 80
+
+  sudo tpacpi-bat -g ST 0
+  sudo tpacpi-bat -g ST 1
+  sudo tpacpi-bat -g ST 2
+  sudo tpacpi-bat -g SP 0
+  sudo tpacpi-bat -g SP 1
+  sudo tpacpi-bat -g SP 2
+
+  sleep 1
+  cat /sys/class/power_supply/BAT0/uevent
+  cat /sys/class/power_supply/BAT1/uevent
+  cat /sys/class/power_supply/BAT2/uevent
+  date
 }
 
 function x() {

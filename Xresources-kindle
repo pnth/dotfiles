@@ -18,5 +18,6 @@ URxvt*letterSpace: -2
 
 !xterm*font: 9x15bold
 !xterm*font: -*-profont-*-*-*-*-29 22 17 15-*-*-*-*-*-*-*
-xterm*font: -*-profont-*-*-*-*-17-*-*-*-*-*-*-*
-
+!xterm*font: -*-profont-*-*-*-*-17-*-*-*-*-*-*-*
+!xterm*font: -Misc-Fixed-Bold-R-Normal--18-120-100-100-C-90-ISO10646-1
+xterm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
