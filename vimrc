@@ -329,7 +329,7 @@ autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 
 
-autocmd FileType python,mongoql,matlab,perl,r noremap <buffer> <silent> ,q
+autocmd FileType python,mongoql,matlab,perl,r,sh noremap <buffer> <silent> ,q
       \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -347,7 +347,7 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python,w3m map <buffer> <f2> ,en:!tmux split-window &&
+autocmd FileType python,w3m,sh map <buffer> <f2> ,en:!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux send-keys -t 2 'ipython2' Enter &&
       \ tmux split-window -d -t 2 &&
@@ -368,14 +368,6 @@ autocmd FileType perl map <buffer> <f2> :!tmux split-window &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType perl noremap <buffer> <silent> ,r
-      \ :!tmux send-keys -t 3 'perl %' Enter <cr><cr>
-
-autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
-      \ tmux select-layout even-horizontal <cr><cr>
-      \ :!tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 64 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType sh noremap <buffer> <silent> ,r
       \ :!tmux send-keys -t 3 'perl %' Enter <cr><cr>
 
 autocmd FileType sh noremap <buffer> <silent> ,q
