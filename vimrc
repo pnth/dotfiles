@@ -19,6 +19,7 @@ Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
 Plug 'junegunn/vim-easy-align'
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 " Plug 'robu3/vimongous'
 Plug 'plasticboy/vim-markdown'
 Plug 'Yggdroot/indentLine'
@@ -34,11 +35,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex'
+" Plug 'justinmk/vim-sneak'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'hdima/python-syntax'
 Plug 'NLKNguyen/c-syntax.vim'
 Plug 'guns/xterm-color-table.vim'
@@ -48,7 +51,7 @@ Plug 'tpope/vim-abolish'
 " Plug 'Chiel92/vim-autoformat' "autopep8 for python
 " Plug 'epeli/slimux'
 " Plug 'tomtom/tcomment_vim'
-" Plug 'LaTeX-Box-Team/LaTeX-Box'
+" Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
 " Plug 'vim-scripts/screen.vim'
 " Plug 'tomtom/checksyntax_vim'
 " Plug 'vim-scripts/math'
@@ -59,14 +62,11 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 
-" let g:solarized_contrast="high"
-" call togglebg#map("<F5>")
-" let g:solarized_termcolors=256
-" set background=light
-" colorscheme solarized
-" colorscheme summerfruit256
-colorscheme PaperColor
-let g:airline_theme='papercolor'
+so ~/dotfiles/theme.vim
+
+""" airline
+let g:airline_section_y = ''
+let g:airline_powerline_fonts = 1
 
 " let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
@@ -156,9 +156,6 @@ set foldlevel=1
 " :map <F3> zi " toggle open/close folds
 " :map <F4> zn " open all folds
 
-
-""" airline
-let g:airline_section_y = ''
 
 """ vimtex
 let g:vimtex_view_general_viewer = 'okular'
@@ -415,7 +412,7 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
 " vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=: xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
-:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 " :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " urxvt -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 
 
@@ -579,5 +576,3 @@ nnoremap ~ viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>
 "     return 1
 "   endif
 " endfunction
-"
-"

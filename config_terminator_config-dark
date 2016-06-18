@@ -1,0 +1,41 @@
+[global_config]
+  focus = system
+  title_transmit_bg_color = "#d30102"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = solarized-dark
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#eee8d5"
+    background_image = None
+    cursor_color = "#002b36"
+    font = Monaco 11
+    foreground_color = "#002b36"
+    palette = "#073642:#d30102:#859900:#b58900:#6c71c4:#d33682:#2aa198:#839496:#586e75:#cb4b16:#859900:#b58900:#268bd2:#d33682:#2aa198:#93a1a1"
+    use_system_font = False
+  [[papercolor-light]]
+    background_color = "#EEEEEE"
+    background_image = None
+    cursor_color = "#4D4D4C"
+    foreground_color = "#4D4D4C"
+    palette = "#EDEDED:#D7005F:#718C00:#D75F00:#4271AE:#8959A8:#3E999F:#4D4D4C:#969694:#D7005F:#718C00:#D75F00:#4271AE:#8959A8:#3E999F:#F5F5F5"
+  [[solarized-dark]]
+    background_color = "#002b36"
+    background_image = None
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+  [[solarized-light]]
+    background_color = "#eee8d5"
+    background_image = None
+    cursor_color = "#002b36"
+    foreground_color = "#002b36"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"

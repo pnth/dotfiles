@@ -41,7 +41,7 @@ TEXT
 # JSON for i3bar
 
  [{ "full_text" : "Home ${fs_free /home} free" , "color" : "\#ffffff" },
-  { "full_text" : "E ${execi 0 ip a s eth0 | grep 'inet ' | tr -s ' ' | cut -d ' ' -f 3 | cut -d '/' -f 1} ${execi 0 sudo ethtool eth0 | grep Speed | tr -s ' ' | cut -d ' ' -f 2}" , "color" : "\#ffffff" },
+  { "full_text" : "E ${execi 0 ip a s eth0 | grep 'inet ' | head -n 1 | tr -s ' ' | cut -d ' ' -f 3 | cut -d '/' -f 1} ${execi 0 sudo ethtool eth0 | grep Speed | tr -s ' ' | cut -d ' ' -f 2}" , "color" : "\#ffffff" },
   { "full_text" : "CPU ${execi 0 top -b -n 2 | grep '%Cpu' | tail -n 12 | cut -c10-14 | sort -nr |  sed -e 1b -e '$!d' | tr '\n' ' ' | sed 's/ \+/ /g' }" , "color" : "\#ffffff" },
   { "full_text" : "Temp ${execi 0 sensors | grep -A 5 'Core 0' | cut -c18-19 | sort -nr | head -n1}°C" , "color" : "\#ffffff" },
   { "full_text" : "Mem${execi 0 top -b -n 2 | grep 'GiB Mem' | tail -n 1 | cut -c10-14 }%" , "color" : "\#ffffff" },

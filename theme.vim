@@ -1,0 +1,1 @@
+/home/phuoc/dotfiles/theme-dark.vim

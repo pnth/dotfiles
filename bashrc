@@ -1,25 +1,15 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-HISTCONTROL=ignorespace
-setopt autocd
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/phuoc/.zshrc'
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+#
+# ~/.bashrc
+#
 
-bindkey "\eOc" forward-word
-bindkey "\eOd" backward-word
-bindkey "\e[1;5C" forward-word
-bindkey "\e[1;5D" backward-word
-bindkey "\e[5C" forward-word
-bindkey "\e[5D" backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+shopt -s autocd
+shopt -s checkwinsize
+source /etc/profile.d/autojump.bash
 
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
@@ -27,7 +17,6 @@ alias ls=" ls -FGh "
 alias cd=" cd"
 alias dh=" dh"
 alias dirs=" dirs"
-alias mmv="zmv -U"
 alias tmh1="tmux select-layout main-horizontal"
 alias tmh="tmux select-layout even-horizontal"
 alias tmt="tmux select-layout tiled"
@@ -45,46 +34,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export PATH=$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
-autoload zmv
-
-#
-CURPROCID=`ps | head -2 | tail -1 | awk '{print $1}'`
-NRANGER=`pstree $CURPROCID | sed 's/ranger/ranger\n/g' | grep -c "ranger"`
-# export PS1="\W \$((`echo \$NRANGER`)) "
-export PS1="\W \$((`pstree -p $$ | grep ranger | wc -l`)) "
 export TERM=rxvt-unicode-256color
-PROMPT='%F{cyan}%c%#%f '
-setopt PROMPT_SUBST
-xset r rate 250 30
-
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-
-setopt HIST_IGNORE_DUPS
-# Search history begin current word
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
-
-#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
-stty -ixon
-
-# Alt left/up to change directory
-cdUndoKey() {
-  popd      > /dev/null
-  zle       reset-prompt
-  echo
-  ls
-  echo
-}
-
-cdParentKey() {
-  pushd .. > /dev/null
-  zle      reset-prompt
-  echo
-  ls
-  echo
-  }
 
 # Phuoc's
 function gitp() {

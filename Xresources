@@ -7,6 +7,7 @@ URxvt*matcher.button: 1
 URxvt*perl-ext-common: default,matcher,resize-font
 URxvt*resize-font.bigger: C-Up
 URxvt*resize-font.smaller: C-Down
+URxvt*saveLines:          10000
 URxvt*scrollBar: false
 URxvt*scrollBar_floating: false
 URxvt*scrollBar_right: false
@@ -16,10 +17,28 @@ URxvt*scrollTtyKeypress:  true
 URxvt*scrollTtyOutput:  false
 URxvt*scrollWithBuffer:  false
 URxvt*secondaryScreen: true
+URxvt*selectToClipboard:  true
 URxvt*skipScroll: true
 URxvt*termName: rxvt-unicode-256color
 URxvt*url-launcher: /usr/bin/firefox
 URxvt*visualBell:  true
 URxvt.inputMethod: ibus
+URxvt.internalBorder:     0
+URxvt.matcher.button:     1
 URxvt.preeditType: OverTheSpot
+URxvt.urlLauncher: /usr/bin/chromium
+URxvt.perl-ext-common: default,font-size
+URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.keysym.Control-Up:     font-size:increase
+URxvt.keysym.Control-Down:   font-size:decrease
+URxvt.keysym.Control-Shift-Up:   font-size:incglobal
+URxvt.keysym.Control-Shift-Down: font-size:decglobal
+URxvt.font-size.step: 1
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+!URxvt.keysym.Control-Up:     \033[1;5A
+!URxvt.keysym.Control-Down:   \033[1;5B
+!URxvt.keysym.Control-Left:   \033[1;5D
+!URxvt.keysym.Control-Right:  \033[1;5C
 

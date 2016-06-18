@@ -21,6 +21,7 @@
 <c-\>	/home/phuoc/dotfiles/vimrc	/^nmap <c-\\> :CtrlP<cr>$/;"	m	language:Vim
 AA	/home/phuoc/dotfiles/vimrc	/^inoremap AA <Esc>A$/;"	m	language:Vim
 CC	/home/phuoc/dotfiles/vimrc	/^inoremap CC <Esc>C$/;"	m	language:Vim
+g:airline_theme	/home/phuoc/dotfiles/theme-light.vim	/^let g:airline_theme='papercolor'$/;"	v	language:Vim
 g:AutoPairsFlyMode	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsFlyMode = 1$/;"	v	language:Vim
 g:AutoPairsShortcutBackInsert	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutBackInsert = ',b'$/;"	v	language:Vim
 g:AutoPairsShortcutFastWrap	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutFastWrap = '<C-}>'$/;"	v	language:Vim

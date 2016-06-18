@@ -44,9 +44,8 @@ sudo ntpd -gq&
 # ibus-daemon --xim &
 sudo dhcpcd eth0 &
 if [ `cat /etc/hostname` = "phuoc450" ]; then
-  smount 43.44 &	
+  smount 43.44 &
 fi
 synclient TouchpadOff=1&
 
 exec i3
-
