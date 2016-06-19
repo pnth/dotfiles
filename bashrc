@@ -36,7 +36,7 @@ export PATH=$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HO
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
 export TERM=rxvt-unicode-256color
-export i7='14:dd:a9:e6:2f:37'
+export i7='14:DD:A9:E6:2F:37'
 export xeon='44:39:C4:92:15:C1'
 export i4='50:7B:9D:11:30:13'
 
