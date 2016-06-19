@@ -27,7 +27,6 @@ CC	/home/phuoc/dotfiles/vimrc	/^inoremap CC <Esc>C$/;"	m	language:Vim
 def	/home/phuoc/dotfiles/bashrc	/^function def() {$/;"	f	language:Sh
 downgrade	/home/phuoc/dotfiles/bashrc	/^function downgrade(){$/;"	f	language:Sh
 dvp	/home/phuoc/dotfiles/bashrc	/^function dvp(){$/;"	f	language:Sh
-g:airline_theme	/home/phuoc/dotfiles/theme-light.vim	/^let g:airline_theme='papercolor'$/;"	v	language:Vim
 g:AutoPairsFlyMode	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsFlyMode = 1$/;"	v	language:Vim
 g:AutoPairsShortcutBackInsert	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutBackInsert = ',b'$/;"	v	language:Vim
 g:AutoPairsShortcutFastWrap	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutFastWrap = '<C-}>'$/;"	v	language:Vim
@@ -42,6 +41,7 @@ g:ctrlp_working_path_mode	/home/phuoc/dotfiles/vimrc	/^let g:ctrlp_working_path_
 g:indentLine_color_term	/home/phuoc/dotfiles/vimrc	/^let g:indentLine_color_term = 10$/;"	v	language:Vim
 g:indentLine_color_tty_dark	/home/phuoc/dotfiles/vimrc	/^let g:indentLine_color_tty_dark = 10$/;"	v	language:Vim
 g:indentLine_enabled	/home/phuoc/dotfiles/vimrc	/^let g:indentLine_enabled = 1$/;"	v	language:Vim
+g:lightline	/home/phuoc/dotfiles/theme-light.vim	/^let g:lightline = {'colorscheme': 'gruvbox', }$/;"	v	language:Vim
 g:r_hl_roxygen	/home/phuoc/dotfiles/vimrc	/^let g:r_hl_roxygen = 0$/;"	v	language:Vim
 g:slime_default_config	/home/phuoc/dotfiles/vimrc	/^let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}$/;"	v	language:Vim
 g:slime_dont_ask_default	/home/phuoc/dotfiles/vimrc	/^let g:slime_dont_ask_default = 1$/;"	v	language:Vim

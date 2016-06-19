@@ -67,7 +67,7 @@ so ~/dotfiles/theme.vim
 """ airline
 let g:airline_section_y = ''
 let g:airline_powerline_fonts = 1
-let g:lightline = { 'colorscheme': 'PaperColor' }
+" let g:lightline = { 'colorscheme': 'PaperColor' }
 
 " let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
@@ -99,6 +99,23 @@ set textwidth=0
 set wmw=0
 set wrap
 set wrapmargin=0
+set autoread
+au FocusGained,BufEnter * :silent! !
+au FocusLost,WinLeave * :silent! w
+" set autoread
+augroup checktime
+    au!
+    if !has("gui_running")
+        "silent! necessary otherwise throws errors when using command
+        "line window.
+        autocmd BufEnter        * silent! checktime
+        autocmd CursorHold      * silent! checktime
+        autocmd CursorHoldI     * silent! checktime
+        "these two _may_ slow things down. Remove if they do.
+        autocmd CursorMoved     * silent! checktime
+        autocmd CursorMovedI    * silent! checktime
+    endif
+augroup END
 
 map ,nw :set nowrap! <CR>
 nnoremap Q <nop>  "Ex mode
