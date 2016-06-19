@@ -50,6 +50,7 @@ ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
 ln -sf ~/dotfiles/config/i3status/config ~/.config/i3status/config
 ln -sf ~/dotfiles/conkyrc ~/.conkyrc
 ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
+ln -sf ~/dotfiles/config_Thunar_uca.xml ~/.config/Thunar/uca.xml
 
 # neovim
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}

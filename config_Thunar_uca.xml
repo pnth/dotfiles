@@ -1,0 +1,105 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1463405511858400-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>preferences-system-network-symbolic</icon>
+	<name>Xvnc view 2</name>
+	<unique-id>1464224645382296-4</unique-id>
+	<command> DISPLAY=:2 xdg-open %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>preferences-system-network-symbolic</icon>
+	<name>Xvnc view 3</name>
+	<unique-id>1464224634030963-3</unique-id>
+	<command> DISPLAY=:3 xdg-open %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>preferences-desktop-keyboard-shortcuts-symbolic</icon>
+	<name>pdf22</name>
+	<unique-id>1464075327903386-2</unique-id>
+	<command>pdfnup --nup 2x2 --landscape --suffix nup %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+	<other-files/>
+</action>
+<action>
+	<icon>gtk3-widget-factory-symbolic.symbolic</icon>
+	<name>pdf21</name>
+	<unique-id>1464838525762145-4</unique-id>
+	<command>pdfnup --nup 1x2 --no-landscape --suffix nup %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>utilities-terminal-symbolic</icon>
+	<name>Convert to pdf</name>
+	<unique-id>1464394926430271-3</unique-id>
+	<command>soffice --headless --convert-to pdf %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>accessories-dictionary-symbolic</icon>
+	<name>pdf_book_2</name>
+	<unique-id>1464863687895599-1</unique-id>
+	<command>java -jar /usr/share/briss/briss-0.9.jar -s %f -d %N_crop.pdf &amp;&amp; pdfnup --nup 2x1 --landscape --suffix nup %N_crop.pdf</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>utilities-terminal-symbolic</icon>
+	<name>crop</name>
+	<unique-id>1464863754754662-2</unique-id>
+	<command>java -jar /usr/share/briss/briss-0.9.jar -s %f -d %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>accessories-dictionary-symbolic</icon>
+	<name>bookit</name>
+	<unique-id>1465655974948199-2</unique-id>
+	<command>~/bin/bookit %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>preferences-system-network-symbolic</icon>
+	<name>mount 5820</name>
+	<unique-id>1465988893565269-1</unique-id>
+	<command>smount 43.44</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>
