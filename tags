@@ -20,7 +20,13 @@
 <C-Space>	/home/phuoc/dotfiles/vimrc	/^imap <C-Space> <C-x><C-o>$/;"	m	language:Vim
 <c-\>	/home/phuoc/dotfiles/vimrc	/^nmap <c-\\> :CtrlP<cr>$/;"	m	language:Vim
 AA	/home/phuoc/dotfiles/vimrc	/^inoremap AA <Esc>A$/;"	m	language:Vim
+aaa	/home/phuoc/dotfiles/bashrc	/^function aaa(){$/;"	f	language:Sh
+batt	/home/phuoc/dotfiles/bashrc	/^function batt() {$/;"	f	language:Sh
+bt	/home/phuoc/dotfiles/bashrc	/^function bt() {$/;"	f	language:Sh
 CC	/home/phuoc/dotfiles/vimrc	/^inoremap CC <Esc>C$/;"	m	language:Vim
+def	/home/phuoc/dotfiles/bashrc	/^function def() {$/;"	f	language:Sh
+downgrade	/home/phuoc/dotfiles/bashrc	/^function downgrade(){$/;"	f	language:Sh
+dvp	/home/phuoc/dotfiles/bashrc	/^function dvp(){$/;"	f	language:Sh
 g:airline_theme	/home/phuoc/dotfiles/theme-light.vim	/^let g:airline_theme='papercolor'$/;"	v	language:Vim
 g:AutoPairsFlyMode	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsFlyMode = 1$/;"	v	language:Vim
 g:AutoPairsShortcutBackInsert	/home/phuoc/dotfiles/vimrc	/^let g:AutoPairsShortcutBackInsert = ',b'$/;"	v	language:Vim
@@ -55,7 +61,9 @@ g:w3m#command	/home/phuoc/dotfiles/vimrc	/^let g:w3m#command = '\/usr\/bin\/w3m'
 g:ycm_confirm_extra_conf	/home/phuoc/dotfiles/vimrc	/^let g:ycm_confirm_extra_conf = 0$/;"	v	language:Vim
 ga	/home/phuoc/dotfiles/vimrc	/^nmap ga <Plug>(EasyAlign)$/;"	m	language:Vim
 gd	/home/phuoc/dotfiles/vimrc	/^noremap gd :call Pjump()<cr><cr>$/;"	m	language:Vim
+getip	/home/phuoc/dotfiles/bashrc	/^function getip(){$/;"	f	language:Sh
 gh	/home/phuoc/dotfiles/vimrc	/^nnoremap gh :bN<cr>$/;"	m	language:Vim
+gitp	/home/phuoc/dotfiles/bashrc	/^function gitp() {$/;"	f	language:Sh
 gl	/home/phuoc/dotfiles/vimrc	/^nnoremap gl :bn<cr>$/;"	m	language:Vim
 gm	/home/phuoc/dotfiles/vimrc	/^map gm :call cursor(0, virtcol('$')\/2)<CR>$/;"	m	language:Vim
 gp	/home/phuoc/dotfiles/vimrc	/^nnoremap gp :CtrlPFunky<Cr>$/;"	m	language:Vim
@@ -68,14 +76,22 @@ II	/home/phuoc/dotfiles/vimrc	/^inoremap II <Esc>I$/;"	m	language:Vim
 j	/home/phuoc/dotfiles/vimrc	/^nnoremap j gj$/;"	m	language:Vim
 JJ	/home/phuoc/dotfiles/vimrc	/^inoremap JJ <Esc>Ja$/;"	m	language:Vim
 k	/home/phuoc/dotfiles/vimrc	/^nnoremap k gk$/;"	m	language:Vim
+keycode	/home/phuoc/dotfiles/bashrc	/^function keycode(){$/;"	f	language:Sh
+lyx2md	/home/phuoc/dotfiles/bashrc	/^function lyx2md() {$/;"	f	language:Sh
 mapleader	/home/phuoc/dotfiles/vimrc	/^let mapleader = ","$/;"	v	language:Vim
 maplocalleader	/home/phuoc/dotfiles/vimrc	/^let maplocalleader = ","$/;"	v	language:Vim
+md2lyx	/home/phuoc/dotfiles/bashrc	/^function md2lyx() {$/;"	f	language:Sh
+memfree	/home/phuoc/dotfiles/bashrc	/^function memfree(){$/;"	f	language:Sh
+mkgrub	/home/phuoc/dotfiles/bashrc	/^function mkgrub(){$/;"	f	language:Sh
 NERDTreeIgnore	/home/phuoc/dotfiles/vimrc	/^let NERDTreeIgnore=['\\.pyc$', '\\~$'] "ignore files in NERDTree$/;"	v	language:Vim
 NERDTreeMapJumpNextSibling	/home/phuoc/dotfiles/vimrc	/^let NERDTreeMapJumpNextSibling=',j'$/;"	v	language:Vim
 NERDTreeMapJumpPrevSibling	/home/phuoc/dotfiles/vimrc	/^let NERDTreeMapJumpPrevSibling=',k'$/;"	v	language:Vim
 NERDTreeWinSize	/home/phuoc/dotfiles/vimrc	/^let NERDTreeWinSize=20$/;"	v	language:Vim
 OO	/home/phuoc/dotfiles/vimrc	/^inoremap OO <Esc>O$/;"	m	language:Vim
 oo	/home/phuoc/dotfiles/vimrc	/^inoremap oo <Esc>o$/;"	m	language:Vim
+pacup	/home/phuoc/dotfiles/bashrc	/^function pacup(){$/;"	f	language:Sh
+pdf22	/home/phuoc/dotfiles/bashrc	/^function pdf22(){$/;"	f	language:Sh
+pdf31	/home/phuoc/dotfiles/bashrc	/^function pdf31(){$/;"	f	language:Sh
 Pjump	/home/phuoc/dotfiles/vimrc	/^function! Pjump()$/;"	f	language:Vim
 pp	/home/phuoc/dotfiles/vimrc	/^inoremap pp <c-r>*$/;"	m	language:Vim
 PreviewOnBottom	/home/phuoc/dotfiles/vimrc	/^augroup PreviewOnBottom$/;"	a	language:Vim
@@ -90,11 +106,15 @@ R_tmux_title	/home/phuoc/dotfiles/vimrc	/^let R_tmux_title = "automatic"$/;"	v	l
 R_tmux_title	/home/phuoc/dotfiles/vimrc	/^let R_tmux_title = "Nvim-R"$/;"	v	language:Vim
 SS	/home/phuoc/dotfiles/vimrc	/^inoremap SS <Esc>S$/;"	m	language:Vim
 StripTrailingWhitespaces	/home/phuoc/dotfiles/vimrc	/^fun! <SID>StripTrailingWhitespaces()$/;"	f	language:Vim
+theme	/home/phuoc/dotfiles/bashrc	/^function theme() {$/;"	f	language:Sh
 ToggleNerdtreeTagbar	/home/phuoc/dotfiles/vimrc	/^function! ToggleNerdtreeTagbar()$/;"	f	language:Vim
 uu	/home/phuoc/dotfiles/vimrc	/^inoremap uu <Esc>ui$/;"	m	language:Vim
 v	/home/phuoc/dotfiles/vimrc	/^vno v <esc>$/;"	m	language:Vim
 vimrplugin_args_in_stline	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_args_in_stline = 0$/;"	v	language:Vim
 vimrplugin_assign	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_assign = 1$/;"	v	language:Vim
 vimrplugin_vimpager	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_vimpager = "tabnew"$/;"	v	language:Vim
+wifi	/home/phuoc/dotfiles/bashrc	/^function wifi() {$/;"	f	language:Sh
+x	/home/phuoc/dotfiles/bashrc	/^function x() {$/;"	f	language:Sh
+xo	/home/phuoc/dotfiles/bashrc	/^function xo(){$/;"	f	language:Sh
 [	/home/phuoc/dotfiles/vimrc	/^nmap [ ysiw]$/;"	m	language:Vim
 `	/home/phuoc/dotfiles/vimrc	/^nnoremap ` '$/;"	m	language:Vim

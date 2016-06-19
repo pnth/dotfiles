@@ -36,6 +36,9 @@ export PATH=$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HO
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
 export TERM=rxvt-unicode-256color
+export i7='14:dd:a9:e6:2f:37'
+export xeon='44:39:C4:92:15:C1'
+export i4='50:7B:9D:11:30:13'
 
 # Phuoc's
 function gitp() {
@@ -194,7 +197,9 @@ function memfree(){
 }
 
 function getip(){
-  sudo nmap -sP 10.116.42.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'
+  a=`sudo nmap -sP 10.116.42.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
+  b=`sudo nmap -sP 10.116.43.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
+  echo $a$b
 }
 
 # function bookit(){
