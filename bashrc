@@ -198,8 +198,11 @@ function memfree(){
 
 function getip(){
   a=`sudo nmap -sP 10.116.42.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
-  b=`sudo nmap -sP 10.116.43.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
-  echo $a$b
+  if [ "$a" = "" ]; then
+    a=`sudo nmap -sP 10.116.43.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
+  fi
+  echo $a
+
 }
 
 # function bookit(){
