@@ -229,4 +229,4 @@ function getip(){
 #   cd $cur_dir
 # }
 
-alias smnt="smount `getip $i7` share"
+# alias smnt="smount `getip $i7` share"
