@@ -344,12 +344,12 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python,w3m,sh map <buffer> <f2> ,en:!tmux split-window &&
+autocmd FileType python,w3m,sh map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux send-keys -t 2 'ipython2' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 30 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>
+      \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>,en
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
