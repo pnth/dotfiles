@@ -230,3 +230,4 @@ function getip(){
 # }
 
 # alias smnt="smount `getip $i7` share"
+source '.vim/plugged/gruvbox/gruvbox_256palette.sh'

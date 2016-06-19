@@ -67,6 +67,7 @@ so ~/dotfiles/theme.vim
 """ airline
 let g:airline_section_y = ''
 let g:airline_powerline_fonts = 1
+let g:lightline = { 'colorscheme': 'PaperColor' }
 
 " let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'

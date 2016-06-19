@@ -1,3 +1,2 @@
-colorscheme PaperColor
+colorscheme gruvbox
 set background=light
-let g:airline_theme='papercolor'

@@ -1,1 +1,1 @@
-/home/phuoc/dotfiles/theme-dark.vim
+/home/phuoc/dotfiles/theme-light.vim
