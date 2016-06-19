@@ -51,4 +51,8 @@ ln -sf ~/dotfiles/config/i3status/config ~/.config/i3status/config
 ln -sf ~/dotfiles/conkyrc ~/.conkyrc
 ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
 
+# neovim
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 # Xresources manually
