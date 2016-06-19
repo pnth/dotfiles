@@ -193,6 +193,10 @@ function memfree(){
   awk '/MemAvailable/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
 }
 
+function getip(){
+  sudo nmap -sP 10.116.42.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'
+}
+
 # function bookit(){
 #   mkdir /tmp/pdf
 #   cur_dir=`pwd`
