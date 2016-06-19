@@ -6,7 +6,8 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+# PS1='[\u@\h \W]\$ '
+PS1='\W\$ '
 shopt -s autocd
 shopt -s checkwinsize
 source /etc/profile.d/autojump.bash
@@ -119,22 +120,25 @@ function lyx2md() {
 	tex2lyx "$1.tex"
 }
 
-function theme() { if [ "$1" = "dark" ]; then
-  ln -sf ~/dotfiles/theme-dark.vim ~/dotfiles/theme.vim
-  ln -sf ~/dotfiles/config_terminator_config-dark ~/.config/terminator/config
-  # cat > .Xresources <<- EOM
-# #include "./dotfiles/Xresources-450"
-# #include "./dotfiles/Xresourcesdark"
-# EOM
-	else
-  ln -sf ~/dotfiles/theme-light.vim ~/dotfiles/theme.vim
-  ln -sf ~/dotfiles/config_terminator_config-light ~/.config/terminator/config
-  # cat > .Xresources <<- EOM
-# #include "./dotfiles/Xresources-450"
-# #include "./dotfiles/Xresources"
-# EOM
-	fi
-  xrdb ~/.Xresources
+function theme() {
+  if [ "$1" = "dark" ]; then
+    ln -sf ~/dotfiles/theme-dark.vim ~/dotfiles/theme.vim
+    ln -sf ~/dotfiles/Xresouces-colour-dark ~/.config/Xresouces-colour
+    ln -sf ~/dotfiles/config_terminator_config-dark ~/.config/terminator/config
+    # cat > .Xresources <<- EOM
+  # #include "./dotfiles/Xresources-450"
+  # #include "./dotfiles/Xresourcesdark"
+  # EOM
+    else
+    ln -sf ~/dotfiles/theme-light.vim ~/dotfiles/theme.vim
+    ln -sf ~/dotfiles/Xresouces-colour-light ~/.config/Xresouces-colour
+    ln -sf ~/dotfiles/config_terminator_config-light ~/.config/terminator/config
+    # cat > .Xresources <<- EOM
+  # #include "./dotfiles/Xresources-450"
+  # #include "./dotfiles/Xresources"
+  # EOM
+    fi
+    xrdb ~/.Xresources
 }
 
 # function lyx() {

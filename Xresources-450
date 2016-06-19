@@ -1,11 +1,10 @@
-URxvt*letterSpace: -2
-URxvt*boldFont:             xft:Ubuntu Mono:bold:size=13
-URxvt*boldItalicFont:       xft:Ubuntu Mono:bold:italic:size=13
+URxvt*letterSpace: -1
+URxvt*boldFont:             xft:monaco:bold:size=11
+URxvt*boldItalicFont:       xft:monaco:bold:italic:size=11
 URxvt*depth: 32
-URxvt*font:                 xft:Ubuntu Mono:regular:size=13
-URxvt*imFont:               xft:Ubuntu Mono:regular:size=13
-URxvt*italicFont:           xft:Ubuntu Mono:italic:size=13
-
+URxvt*font:                 xft:monaco:regular:size=11
+URxvt*imFont:               xft:monaco:regular:size=11
+URxvt*italicFont:           xft:monaco:italic:size=11
 !URxvt*boldFont:             xft:Source Code Pro:Semibold:size=11
 !URxvt*boldItalicFont:       xft:Source Code Pro:Semibold:italic:size=11
 !URxvt*depth: 32
@@ -14,13 +13,7 @@ URxvt*italicFont:           xft:Ubuntu Mono:italic:size=13
 !URxvt*italicFont:           xft:Source Code Pro:italic:size=11
 
 Xft.dpi: 96
-!Xft.dpi: 120
-Xft.autohint: 1
-Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
+
 
 
 
