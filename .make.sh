@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="surfraw.conf tmux.conf vimrc wallpaper xinitrc zshrc bashrc zprofile inputrc"
+files="surfraw.conf tmux.conf vimrc wallpaper xinitrc bashrc bash_profile zshrc zprofile inputrc"
 ##########
 
 # create dotfiles_old in homedir
