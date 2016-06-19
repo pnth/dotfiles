@@ -12,6 +12,17 @@ shopt -s autocd
 shopt -s checkwinsize
 source /etc/profile.d/autojump.bash
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export SYSTEMD_EDITOR="vim"
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
+export LD_LIBRARY_PATH=/usr/lib/
+export LD_PRELOAD=/usr/lib/libstdc++.so.6
+export TERM=rxvt-unicode-256color
+export i7='14:DD:A9:E6:2F:37'
+export xeon='44:39:C4:92:15:C1'
+export i4='50:7B:9D:11:30:13'
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
@@ -28,17 +39,6 @@ alias vim="/usr/bin/nvim -O"
 alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
-export VISUAL=vim
-export EDITOR="$VISUAL"
-export SYSTEMD_EDITOR="vim"
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
-export LD_LIBRARY_PATH=/usr/lib/
-export LD_PRELOAD=/usr/lib/libstdc++.so.6
-export TERM=rxvt-unicode-256color
-export i7='14:DD:A9:E6:2F:37'
-export xeon='44:39:C4:92:15:C1'
-export i4='50:7B:9D:11:30:13'
 
 # Phuoc's
 function gitp() {
@@ -229,4 +229,4 @@ function getip(){
 #   cd $cur_dir
 # }
 
-
+alias smnt="smount `getip $i7` share"
