@@ -11,7 +11,7 @@ PS1='\W\$ '
 shopt -s autocd
 shopt -s checkwinsize
 source /etc/profile.d/autojump.bash
-
+xset r rate 260 30
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"
@@ -123,25 +123,42 @@ function lyx2md() {
 	tex2lyx "$1.tex"
 }
 
+function reloadGTK(){
+python2 <<- END
+import gtk
+
+events=gtk.gdk.Event(gtk.gdk.CLIENT_EVENT)
+data=gtk.gdk.atom_intern("_GTK_READ_RCFILES", False)
+events.data_format=8
+events.send_event=True
+events.message_type=data
+events.send_clientmessage_toall()
+
+END
+}
+
 function theme() {
   if [ "$1" = "dark" ]; then
     ln -sf ~/dotfiles/theme-dark.vim ~/dotfiles/theme.vim
     ln -sf ~/dotfiles/Xresources-colour-dark ~/dotfiles/Xresources-colour
     ln -sf ~/dotfiles/config_terminator_config-dark ~/.config/terminator/config
+    sed -i 's/.*gtk-theme-name=.*/gtk-theme-name=DeLorean-Dark-3.18/' $HOME/.config/gtk-3.0/settings.ini
     # cat > .Xresources <<- EOM
   # #include "./dotfiles/Xresources-450"
   # #include "./dotfiles/Xresourcesdark"
   # EOM
-    else
+  else
     ln -sf ~/dotfiles/theme-light.vim ~/dotfiles/theme.vim
     ln -sf ~/dotfiles/Xresources-colour-light ~/dotfiles/Xresources-colour
     ln -sf ~/dotfiles/config_terminator_config-light ~/.config/terminator/config
+    sed -i 's/.*gtk-theme-name=.*/gtk-theme-name=Adwaita/' $HOME/.config/gtk-3.0/settings.ini
     # cat > .Xresources <<- EOM
   # #include "./dotfiles/Xresources-450"
   # #include "./dotfiles/Xresources"
   # EOM
   fi
   xrdb ~/.Xresources
+  # reloadGTK
 }
 
 # function lyx() {
