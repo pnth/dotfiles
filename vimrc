@@ -39,9 +39,9 @@ Plug 'lervag/vimtex'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'hdima/python-syntax'
 Plug 'NLKNguyen/c-syntax.vim'
 Plug 'guns/xterm-color-table.vim'
@@ -67,7 +67,6 @@ so ~/dotfiles/theme.vim
 """ airline
 let g:airline_section_y = ''
 let g:airline_powerline_fonts = 1
-" let g:lightline = { 'colorscheme': 'PaperColor' }
 
 " let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
@@ -430,8 +429,8 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
 " vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=: xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
-" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
-" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " urxvt -e /usr/bin/zsh -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " urxvt -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 
 
 noremap <C-LeftMouse> <LeftMouse>:call Pjump()<cr><cr><LeftRelease>
