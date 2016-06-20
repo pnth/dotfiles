@@ -151,9 +151,12 @@ autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
 let g:jedi#force_py_version = 3
 
 
-""" TexTabulify
+""" Tex Lyx
 vnoremap ,gt :TexTabulify 0<cr>gv:EasyAlign*&<cr>
 vnoremap ,gtt :TexTabulify 1<cr>gv:EasyAlign*&<cr>
+" noremap ,gl :!tex2lyx %
+nnoremap ,gl :w<cr>:!tex2lyx % %:r.lyx<cr><cr>
+
 
 " vnoremap ,ct :call s:TexTabulify(0)
 " vnoremap ,ctt :<line1>,<line2>call s:TexTabulify(1)
