@@ -1,61 +1,61 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'davidhalter/jedi-vim'
-Plug 'scrooloose/syntastic'
-Plug 'yuratomo/w3m.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'Chiel92/vim-autoformat' "autopep8 for python
+" Plug 'chrisbra/unicode.vim'
+" Plug 'epeli/slimux'
+" Plug 'itchyny/lightline.vim'
+" Plug 'justinmk/vim-sneak'
+" Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
+" Plug 'powerline/powerline'
+" Plug 'robu3/vimongous'
+" Plug 'tomtom/checksyntax_vim'
+" Plug 'tomtom/tcomment_vim'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'vim-scripts/math'
+" Plug 'vim-scripts/screen.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'AndrewRadev/sideways.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'davidhalter/jedi-vim'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'guns/xterm-color-table.vim'
+Plug 'hdima/python-syntax'
 Plug 'itchyny/calendar.vim'
 Plug 'ivalkeen/nerdtree-execute'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'tpope/vim-commentary'
-Plug '~/.vim/manually/personal'
-Plug 'nvie/vim-flake8'
 Plug 'jalvesaq/Nvim-R'
+Plug 'jiangmiao/auto-pairs'
+Plug 'jpalardy/vim-slime'
 Plug 'junegunn/vim-easy-align'
-Plug 'altercation/vim-colors-solarized'
+Plug 'kien/ctrlp.vim'
+Plug 'lervag/vimtex'
+Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
-" Plug 'robu3/vimongous'
+Plug 'NLKNguyen/c-syntax.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'nvie/vim-flake8'
 Plug 'plasticboy/vim-markdown'
-Plug 'Yggdroot/indentLine'
-Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
+Plug 'reedes/vim-wordy'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'tmhedberg/SimpylFold'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'vim-scripts/python.vim'
-Plug 'jpalardy/vim-slime'
-Plug 'AndrewRadev/sideways.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex'
-" Plug 'justinmk/vim-sneak'
-" Plug 'Valloric/YouCompleteMe'
-Plug 'vim-scripts/summerfruit256.vim'
-Plug 'NLKNguyen/papercolor-theme'
-" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'hdima/python-syntax'
-Plug 'NLKNguyen/c-syntax.vim'
-Plug 'guns/xterm-color-table.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-abolish'
-" Plug 'powerline/powerline'
-" Plug 'Chiel92/vim-autoformat' "autopep8 for python
-" Plug 'epeli/slimux'
-" Plug 'tomtom/tcomment_vim'
-" Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
-" Plug 'vim-scripts/screen.vim'
-" Plug 'tomtom/checksyntax_vim'
-" Plug 'vim-scripts/math'
-" Plug 'chrisbra/unicode.vim'
+Plug 'vim-scripts/python.vim'
+Plug 'vim-scripts/summerfruit256.vim'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'Yggdroot/indentLine'
+Plug 'yuratomo/w3m.vim'
+Plug '~/.vim/manually/personal'
 
 call plug#end()
 
@@ -149,6 +149,14 @@ autocmd FileType markdown nmap ,H yypv$r=<Esc>0
 autocmd FileType python nmap ,h o#<Esc>60a#<Esc>0
 
 let g:jedi#force_py_version = 3
+
+
+""" TexTabulify
+vnoremap ,gt :TexTabulify 0<cr>gv:EasyAlign*&<cr>
+vnoremap ,gtt :TexTabulify 1<cr>gv:EasyAlign*&<cr>
+
+" vnoremap ,ct :call s:TexTabulify(0)
+" vnoremap ,ctt :<line1>,<line2>call s:TexTabulify(1)
 
 """ tmux
 nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 60<cr>
