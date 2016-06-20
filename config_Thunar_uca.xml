@@ -1,6 +1,17 @@
 <?xml encoding="UTF-8" version="1.0"?>
 <actions>
 <action>
+	<icon>utilities-terminal-symbolic</icon>
+	<name>urxvt tmux here</name>
+	<unique-id>1466396252531253-6</unique-id>
+	<command>exec urxvt -e tmux</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<other-files/>
+</action>
+<action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1463405511858400-1</unique-id>
