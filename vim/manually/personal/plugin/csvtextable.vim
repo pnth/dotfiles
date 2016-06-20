@@ -15,20 +15,20 @@ function! s:TexTabulify(hf) range
 python << EOF
 import re,vim
 def formatline(line):
-    """ Format line to table style
-    """
-    SPACE = re.compile(r'\s+')
-    for ch in '&%$#{}~^\\':
-        line = line.replace(ch, '\\' + ch)
-    if '|' in line:
-        return line.replace('|', ' & ')
-    elif ',' in line:
-        return line.replace(',', ' & ')
-    elif ' ' in line:
-        return SPACE.sub(' & ', line)
-    elif '\t' in line:
-        return SPACE.sub(' & ', line)
-    return line
+  """ Format line to table style
+  """
+  SPACE = re.compile(r'\s+')
+  for ch in '\\&%$#{}~^_':
+    line = line.replace(ch, '\\' + ch)
+  if '|' in line:
+    return line.replace('|', ' & ')
+  elif ',' in line:
+    return line.replace(',', ' & ')
+  elif ' ' in line:
+    return SPACE.sub(' & ', line)
+  elif '\t' in line:
+    return SPACE.sub(' & ', line)
+  return line
 
 rbuf = vim.current.buffer.range(int(vim.eval('a:firstline')), int(vim.eval('a:lastline')))
 for i in range(len(rbuf)):
