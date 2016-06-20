@@ -18,7 +18,7 @@ def formatline(line):
     """ Format line to table style
     """
     SPACE = re.compile(r'\s+')
-    for ch in '&%$#_{}~^\\':
+    for ch in '&%$#{}~^\\':
         line = line.replace(ch, '\\' + ch)
     if '|' in line:
         return line.replace('|', ' & ')
