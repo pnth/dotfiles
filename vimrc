@@ -136,6 +136,8 @@ inoremap PP <c-r>*
 ino hh <esc>
 cno hh <c-c>
 vno v <esc>
+vnoremap y ygv"+y
+
 
 let maplocalleader = ","
 let mapleader = ","
