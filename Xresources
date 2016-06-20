@@ -31,6 +31,10 @@ URxvt.perl-ext-common: default,font-size
 URxvt.keysym.F11: perl:fullscreen:switch
 URxvt.keysym.Control-Up:     font-size:increase
 URxvt.keysym.Control-Down:   font-size:decrease
+!URxvt*mouseWheelScrollPage
+!<C-ScrollWheelDown><C-ScrollWheelUp>
+URxvt.keysym.Control-Up:     font-size:increase
+URxvt.keysym.Control-Down:   font-size:decrease
 URxvt.keysym.Control-Shift-Up:   font-size:incglobal
 URxvt.keysym.Control-Shift-Down: font-size:decglobal
 URxvt.font-size.step: 0.5

@@ -156,6 +156,8 @@ vnoremap ,gt :TexTabulify 0<cr>gv:EasyAlign*&<cr>
 vnoremap ,gtt :TexTabulify 1<cr>gv:EasyAlign*&<cr>
 " noremap ,gl :!tex2lyx %
 nnoremap ,gl :w<cr>:!tex2lyx % %:r.lyx<cr><cr>
+nnoremap <C-ScrollWheelUp> :!xdotool key ctrl+Up<cr><cr>
+nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 
 
 " vnoremap ,ct :call s:TexTabulify(0)
