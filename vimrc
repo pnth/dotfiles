@@ -376,7 +376,7 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ tmux select-pane -t:.1 <cr><cr>
 autocmd FileType python,w3m,sh map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
-      \ tmux send-keys -t 2 'ipython2' Enter &&
+      \ tmux send-keys -t 2 'ipython' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 30 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>,en
