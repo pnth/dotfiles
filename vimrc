@@ -164,8 +164,8 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " vnoremap ,ctt :<line1>,<line2>call s:TexTabulify(1)
 
 """ tmux
-nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 60<cr>
-nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 25<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 60<cr><cr><C-l>:vertical resize 60<cr>
+nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 
