@@ -39,6 +39,7 @@ alias vim="/usr/bin/nvim -O"
 alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
+alias stf="source ~/tensorflow/bin/activate"
 
 # Phuoc's
 function gitp() {
