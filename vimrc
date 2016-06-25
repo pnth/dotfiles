@@ -20,7 +20,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'guns/xterm-color-table.vim'
-Plug 'hdima/python-syntax'
+" Plug 'hdima/python-syntax'
 Plug 'itchyny/calendar.vim'
 Plug 'ivalkeen/nerdtree-execute'
 Plug 'jalvesaq/Nvim-R'
@@ -33,7 +33,7 @@ Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/c-syntax.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'nvie/vim-flake8'
+" Plug 'nvie/vim-flake8'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-lexical'
 Plug 'reedes/vim-litecorrect'
@@ -118,8 +118,8 @@ augroup END
 
 map ,nw :set nowrap! <CR>
 nnoremap Q <nop>  "Ex mode
-nnoremap ' `
-nnoremap ` '
+nnoremap ' "
+nnoremap " '
 nnoremap j gj
 nnoremap k gk
 imap <C-Space> <C-x><C-o>
@@ -137,6 +137,7 @@ ino hh <esc>
 cno hh <c-c>
 vno v <esc>
 vnoremap y ygv"+y
+nnoremap ,wd :windo diffthis<cr>
 
 
 let maplocalleader = ","
@@ -168,8 +169,6 @@ nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 60
 nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
-
-
 
 
 """ folding
@@ -412,9 +411,9 @@ autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
 
 """ CTRLP
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+" let g:ctrlp_cmd = 'CtrlPBuffer'
 " nmap <c-p> :CtrlPBuffer<cr>
 nmap <c-\> :CtrlP<cr>
 

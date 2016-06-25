@@ -132,7 +132,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym --release Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym --release Control+Print exec scrot -s -e "mv $f /tmp/ && DISPLAY=:`cat /tmp/kver` feh -FZ /tmp/$f"
 # bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
-bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessUp exec xbacklight +
 bindsym XF86MonBrightnessDown exec xbacklight -5
 bindsym --release $mod+F5 exec killall xterm luakit feh
 bindsym $mod+F6 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selection primary -o`" | xclip -selection clipboard -i
