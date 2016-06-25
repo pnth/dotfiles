@@ -13,6 +13,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-scripts/math'
 " Plug 'vim-scripts/screen.vim'
+
+Plug 'guns/xterm-color-table.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'AndrewRadev/sideways.vim'
@@ -68,14 +70,16 @@ so ~/dotfiles/theme.vim
 let g:airline_section_y = ''
 let g:airline_powerline_fonts = 1
 
-" let g:indentLine_color_term = 239
+let g:indentLine_char = '┆'
+let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
 " let g:indentLine_color_tty_light = 7 " (default: 4)
 " let g:indentLine_color_dark = 1 " (default: 2)
+let g:indentLine_concealcursor = 'vc'
+" let g:indentLine_conceallevel = 0
 
-set number
-" set relativenumber
 set autoindent
+set autoread
 set autowriteall
 set backspace=2
 set clipboard=unnamed
@@ -90,17 +94,21 @@ set mouse=a
 set nocompatible
 set nolist  " list disables linebreak
 set noswapfile
+set number
 set ruler
 set shiftwidth=2
 set showmatch
+set softtabstop=2
 set tabstop=2
 set textwidth=0
 set wmw=0
 set wrap
 set wrapmargin=0
-set autoread
+
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
+au FileType python setlocal shiftwidth=2 tabstop=2
+
 " set autoread
 augroup checktime
     au!
@@ -444,7 +452,7 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
 " vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=: xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
-:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 " :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " urxvt -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 
 
