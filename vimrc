@@ -107,7 +107,7 @@ set wrapmargin=0
 
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
-au FileType python setlocal shiftwidth=2 tabstop=2
+" au FileType python setlocal shiftwidth=2 tabstop=2
 
 " set autoread
 augroup checktime
