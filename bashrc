@@ -247,5 +247,34 @@ function getip(){
 #   cd $cur_dir
 # }
 
+
+# function slideit(){
+#   mkdir /tmp/pdf
+#   cur_dir=`pwd`
+#   rm -f /tmp/pdf/*
+#   fname=`basename $1 .pdf`
+
+#   cp "$1" /tmp/pdf/a.pdf
+#   # crop
+#   # java -jar /usr/share/briss/briss-0.9.jar -s "$1" -d /tmp/pdf/a.pdf
+
+#   cd /tmp/pdf
+
+#   # pad to a4 size
+#   pdfnup --nup 1x1 --a4paper --landscape -o a.pdf a.pdf
+
+#   # nup 2x2
+#   pdfnup --nup 2x2 --a4paper --landscape -o a.pdf a.pdf
+
+#   if [ "$2" = "print" ]; then
+#     # rotate even/odd pages
+#     pdftk A=a.pdf shuffle Aoddeast Aevenwest output "$cur_dir/${fname}-2x2-print.pdf"
+#   else
+#     cp a.pdf "$cur_dir/${fname}-2x2.pdf"
+#   fi
+
+#   cd $cur_dir
+# }
+
 # alias smnt="smount `getip $i7` share"
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
