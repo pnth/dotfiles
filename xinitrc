@@ -47,5 +47,6 @@ if [ `cat /etc/hostname` = "phuoc450" ]; then
   smount 43.44 &
 fi
 synclient TouchpadOff=1&
+batt&
 
 exec i3
