@@ -146,6 +146,7 @@ cno hh <c-c>
 vno v <esc>
 vnoremap y ygv"+y
 nnoremap ,wd :windo diffthis<cr>
+map <c-s> :wa<cr>
 
 
 let maplocalleader = ","
@@ -478,6 +479,8 @@ function! Pjump()
     :norm z.
 endfunction
 
+
+" let g:jedi#goto_command = <MiddleMouse>
 
 """ EASY-ALIGN
 " Start interactive EasyAlign in visual mode (e.g. vipga)
