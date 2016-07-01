@@ -68,6 +68,7 @@ so ~/dotfiles/theme.vim
 
 """ airline
 let g:airline_section_y = ''
+let g:airline_section_b = ''
 let g:airline_powerline_fonts = 1
 
 let g:indentLine_char = '┆'
@@ -163,7 +164,7 @@ let g:jedi#force_py_version = 3
 
 """ Tex Lyx
 vnoremap ,gt :TexTabulify 0<cr>gv:EasyAlign*&<cr>
-vnoremap ,gtt :TexTabulify 1<cr>gv:EasyAlign*&<cr>
+vnoremap ,gtt :TexTabulify 1<cr>gv:EasyAlign*&<cr>magvj<esc>mb'akV'b:w /tmp/aaa.tex<cr>:!tex2lyx /tmp/aaa.tex<cr><cr>:!xdg-open /tmp/aaa.lyx
 " noremap ,gl :!tex2lyx %
 nnoremap ,gl :w<cr>:!tex2lyx % %:r.lyx<cr><cr>
 nnoremap <C-ScrollWheelUp> :!xdotool key ctrl+Up<cr><cr>
@@ -204,10 +205,10 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 
 """ vim-surround
-nmap '' ysiw'
-nmap "" ysiw""
-nmap ( ysiw)
-nmap [ ysiw]
+" nmap '' ysiw'
+" nmap "" ysiw""
+" nmap ( ysiw)
+" nmap [ ysiw]
 
 
 """ W3m
@@ -389,7 +390,8 @@ autocmd FileType python,w3m,sh map <buffer> <f2> :!tmux split-window &&
       \ tmux send-keys -t 2 'ipython' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 30 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>,en
+      \ tmux select-pane -t:.1 <cr><cr>,en
+      " \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>,en
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
@@ -452,7 +454,7 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
 " vmap <F4> :w! /tmp/kclip.txt<cr>:!DISPLAY=: xterm -e /usr/bin/zsh -c "vim -u ~/.vimrc0 /tmp/kclip.txt"&<cr><cr>
-" :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
+:execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " xterm -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 " :execute "vmap <F4> :w! /tmp/kclip.txt\<cr>:!DISPLAY=:" . system("cat /tmp/kver | tr -d '\n'"). " urxvt -e /bin/bash -c \"vim -u ~/.vimrc0 /tmp/kclip.txt\"&\<cr>\<cr>"
 
 

@@ -52,8 +52,8 @@
 <action>
 	<icon>preferences-desktop-keyboard-shortcuts-symbolic</icon>
 	<name>pdf22</name>
-	<unique-id>1464075327903386-2</unique-id>
-	<command>pdfnup --nup 2x2 --landscape --suffix nup %f</command>
+	<unique-id>1466913965960008-1</unique-id>
+	<command>pdfnup --nup 2x2 --landscape --suffix 2x2 %f</command>
 	<description></description>
 	<patterns>*</patterns>
 	<image-files/>
@@ -112,5 +112,51 @@
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
+</action>
+<action>
+	<icon>accessories-dictionary</icon>
+	<name>code2pdf</name>
+	<unique-id>1466582026653823-2</unique-id>
+	<command>for file in %F; do code2pdf -l -s a4 $file; done</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>preferences-desktop-keyboard-shortcuts-symbolic</icon>
+	<name>slideit print</name>
+	<unique-id>1466915622453961-2</unique-id>
+	<command>for i in %F; do slideit $i print; done</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>accessories-dictionary-symbolic</icon>
+	<name>slideit</name>
+	<unique-id>1466915690457890-3</unique-id>
+	<command>for i in %F; do slideit $i; done</command>
+	<description></description>
+	<patterns>*</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>preferences-system-privacy-symbolic</icon>
+	<name>headview</name>
+	<unique-id>1467264000240306-2</unique-id>
+	<command>headview.sh %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 </actions>
