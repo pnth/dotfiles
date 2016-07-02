@@ -132,8 +132,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym --release Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym --release Control+Print exec scrot -s -e "mv $f /tmp/ && DISPLAY=:`cat /tmp/kver` feh -FZ /tmp/$f"
 # bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
-bindsym XF86MonBrightnessUp exec xbacklight +
-bindsym XF86MonBrightnessDown exec xbacklight -5
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
 bindsym --release $mod+F5 exec killall xterm luakit feh
 bindsym $mod+F6 exec echo -e "`xclip -selection clipboard -o` \n `xclip -selection primary -o`" | xclip -selection clipboard -i
 bindsym $mod+F7 exec xclip -selection clipboard -o  | awk 1 ORS='<br>\n' > /tmp/xclip.html && echo "" |  xclip -selection clipboard -i  && DISPLAY=:`cat /tmp/kver` luakit /tmp/xclip.html
@@ -178,8 +178,13 @@ bindsym $mod+r mode "resize"
 #         # position top
 #         # tray_output primary
 # }
+# bar {
+#     status_command $HOME/dotfiles/conky-i3bar
+# }
 bar {
-    status_command $HOME/dotfiles/conky-i3bar
+    status_command    python $HOME/dotfiles/i3pystatus_rc.py
+    position          bottom
+    workspace_buttons yes
 }
 # exec --no-startup-id i3-msg 'workspace 2: code; exec thunar; exec firefox; exec urxvt -e tmux; workspace 4: chat; exec skype; workspace 10: file; exec jabref; '
 exec --no-startup-id i3-msg 'workspace 2: code; exec chromium; exec sleep 3 && urxvt -e tmux; exec sleep 4 && thunar'
