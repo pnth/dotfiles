@@ -56,12 +56,19 @@ function gitp() {
 }
 
 function batt() {
-  sudo tpacpi-bat -s ST 0 40
-  sudo tpacpi-bat -s ST 1 40
-  sudo tpacpi-bat -s ST 2 40
-  sudo tpacpi-bat -s SP 0 80
-  sudo tpacpi-bat -s SP 1 80
-  sudo tpacpi-bat -s SP 2 80
+	if [ "$1" = "" ]; then
+    a=40
+    b=80
+	else
+    a="$1"
+    b="$2"
+  fi
+  sudo tpacpi-bat -s ST 0 $a
+  sudo tpacpi-bat -s ST 1 $a
+  sudo tpacpi-bat -s ST 2 $a
+  sudo tpacpi-bat -s SP 0 $b
+  sudo tpacpi-bat -s SP 1 $b
+  sudo tpacpi-bat -s SP 2 $b
 
   sudo tpacpi-bat -g ST 0
   sudo tpacpi-bat -g ST 1
