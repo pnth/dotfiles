@@ -129,7 +129,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # scrot & gimp - root
-bindsym --release Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym --release Control+F12 exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym --release Control+Print exec scrot -s -e "mv $f /tmp/ && DISPLAY=:`cat /tmp/kver` feh -FZ /tmp/$f"
 # bindsym $mod+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym XF86MonBrightnessUp exec xbacklight +10
