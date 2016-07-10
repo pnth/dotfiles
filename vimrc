@@ -297,7 +297,7 @@ augroup PreviewOnBottom
 augroup END
 
 """ Syntastic
-let g:syntastic_python_python_exec = '/usr/bin/python2'
+let g:syntastic_python_python_exec = '/usr/bin/python'
 
 
 """ Nvim-R
