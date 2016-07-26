@@ -13,50 +13,50 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-scripts/math'
 " Plug 'vim-scripts/screen.vim'
-
-Plug 'guns/xterm-color-table.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
-Plug 'AndrewRadev/sideways.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'guns/xterm-color-table.vim'
 " Plug 'hdima/python-syntax'
-Plug 'itchyny/calendar.vim'
-Plug 'ivalkeen/nerdtree-execute'
-Plug 'jalvesaq/Nvim-R'
-Plug 'jiangmiao/auto-pairs'
-Plug 'jpalardy/vim-slime'
-Plug 'junegunn/vim-easy-align'
-Plug 'kien/ctrlp.vim'
+" Plug 'nvie/vim-flake8'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'itchyny/calendar.vim'
+
+" Plug 'guns/xterm-color-table.vim'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'AndrewRadev/sideways.vim'
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'dhruvasagar/vim-table-mode'
+" Plug 'guns/xterm-color-table.vim'
+" Plug 'ivalkeen/nerdtree-execute'
+" Plug 'jalvesaq/Nvim-R'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'jpalardy/vim-slime'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/c-syntax.vim'
-Plug 'NLKNguyen/papercolor-theme'
-" Plug 'nvie/vim-flake8'
-Plug 'plasticboy/vim-markdown'
-Plug 'reedes/vim-lexical'
-Plug 'reedes/vim-litecorrect'
-Plug 'reedes/vim-wordy'
+" Plug 'NLKNguyen/c-syntax.vim'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'reedes/vim-lexical'
+" Plug 'reedes/vim-litecorrect'
+" Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'tmhedberg/SimpylFold'
+" Plug 'tacahiroy/ctrlp-funky'
+" Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/python.vim'
-Plug 'vim-scripts/summerfruit256.vim'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'Yggdroot/indentLine'
-Plug 'yuratomo/w3m.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-scripts/python.vim'
+" Plug 'vim-scripts/summerfruit256.vim'
+" Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-misc'
+" Plug 'Yggdroot/indentLine'
+" Plug 'yuratomo/w3m.vim'
 Plug '~/.vim/manually/personal'
 
 call plug#end()
@@ -150,8 +150,8 @@ nnoremap ,wd :windo diffthis<cr>
 map <c-s> :wa<cr>
 
 
-let maplocalleader = ","
 let mapleader = ","
+let maplocalleader = ","
 
 map gm :call cursor(0, virtcol('$')/2)<CR>
 " map gm 0w :call cursor(0, virtcol('.')/2)<CR>
@@ -176,7 +176,7 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 
 """ tmux
 nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
-nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+" nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
 nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 64<cr><cr><C-l>:set nonu<cr><C-l>:set nonu<cr><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
