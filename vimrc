@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'airblade/vim-gitgutter'
 " Plug 'AndrewRadev/sideways.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'ivalkeen/nerdtree-execute'
@@ -49,12 +49,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'vim-scripts/python.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/python.vim'
 " Plug 'vim-scripts/summerfruit256.vim'
-" Plug 'xolox/vim-easytags'
-" Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 " Plug 'Yggdroot/indentLine'
 " Plug 'yuratomo/w3m.vim'
 Plug '~/.vim/manually/personal'
@@ -105,6 +105,8 @@ set textwidth=0
 set wmw=0
 set wrap
 set wrapmargin=0
+set clipboard+=unnamedplus
+" vnoremap y ygv"+y
 
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
@@ -145,7 +147,6 @@ inoremap PP <c-r>*
 ino hh <esc>
 cno hh <c-c>
 vno v <esc>
-vnoremap y ygv"+y
 nnoremap ,wd :windo diffthis<cr>
 map <c-s> :wa<cr>
 
@@ -355,10 +356,9 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>S
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
+" autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r :wa<cr>
-      \ :!tmux send-keys -t 3 'python ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R
       \ :!tmux send-keys -t 4 'python ' % Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
