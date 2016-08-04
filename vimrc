@@ -19,10 +19,10 @@ call plug#begin('~/.vim/plugged')
 " Plug 'itchyny/calendar.vim'
 
 " Plug 'guns/xterm-color-table.vim'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Plug 'AndrewRadev/sideways.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'ivalkeen/nerdtree-execute'
@@ -30,7 +30,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'jpalardy/vim-slime'
 " Plug 'junegunn/vim-easy-align'
-" Plug 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
@@ -49,13 +49,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'vim-scripts/python.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/python.vim'
 " Plug 'vim-scripts/summerfruit256.vim'
-" Plug 'xolox/vim-easytags'
-" Plug 'xolox/vim-misc'
-" Plug 'Yggdroot/indentLine'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'Yggdroot/indentLine'
 " Plug 'yuratomo/w3m.vim'
 Plug '~/.vim/manually/personal'
 
@@ -355,12 +355,10 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>S
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
 autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
+" autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r :wa<cr>
-      \ :!tmux send-keys -t 3 'python ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,R
-      \ :!tmux send-keys -t 4 'python ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 4 'python ' % Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
