@@ -105,6 +105,8 @@ set textwidth=0
 set wmw=0
 set wrap
 set wrapmargin=0
+set clipboard+=unnamedplus
+" vnoremap y ygv"+y
 
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
@@ -145,7 +147,6 @@ inoremap PP <c-r>*
 ino hh <esc>
 cno hh <c-c>
 vno v <esc>
-vnoremap y ygv"+y
 nnoremap ,wd :windo diffthis<cr>
 map <c-s> :wa<cr>
 
