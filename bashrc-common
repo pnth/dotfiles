@@ -2,7 +2,6 @@
 alias ls='ls --color=auto'
 shopt -s autocd
 shopt -s checkwinsize
-xset r rate 260 30
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"

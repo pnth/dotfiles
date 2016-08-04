@@ -38,6 +38,7 @@
 <X2Mouse>	/home/phuoc/dotfiles/vimrc	/^nnoremap <X2Mouse> <C-I>$/;"	m	language:Vim
 AA	/home/phuoc/dotfiles/vimrc	/^inoremap AA <Esc>A$/;"	m	language:Vim
 aaa	/home/phuoc/dotfiles/bashrc	/^function aaa(){$/;"	f	language:Sh
+aaa	/home/phuoc/dotfiles/bashrc-common	/^function aaa(){$/;"	f	language:Sh
 alert	/home/phuoc/dotfiles/i3pystatus.py	/^    alert=True,$/;"	v	language:Python
 alert	/home/phuoc/dotfiles/i3pystatus.py	/^    alert=True,$/;"	v	language:Python
 alert	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    alert=True,$/;"	v	language:Python
@@ -47,12 +48,17 @@ alert_percentage	/home/phuoc/dotfiles/i3pystatus.py	/^    alert_percentage=5,$/;
 alert_percentage	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    alert_percentage=5,$/;"	v	language:Python
 alert_percentage	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    alert_percentage=5,$/;"	v	language:Python
 batt	/home/phuoc/dotfiles/bashrc	/^function batt() {$/;"	f	language:Sh
+batt	/home/phuoc/dotfiles/bashrc-common	/^function batt() {$/;"	f	language:Sh
 bt	/home/phuoc/dotfiles/bashrc	/^function bt() {$/;"	f	language:Sh
+bt	/home/phuoc/dotfiles/bashrc-common	/^function bt() {$/;"	f	language:Sh
 CC	/home/phuoc/dotfiles/vimrc	/^inoremap CC <Esc>C$/;"	m	language:Vim
 checktime	/home/phuoc/dotfiles/vimrc	/^augroup checktime$/;"	a	language:Vim
 def	/home/phuoc/dotfiles/bashrc	/^function def() {$/;"	f	language:Sh
+def	/home/phuoc/dotfiles/bashrc-common	/^function def() {$/;"	f	language:Sh
 downgrade	/home/phuoc/dotfiles/bashrc	/^function downgrade(){$/;"	f	language:Sh
+downgrade	/home/phuoc/dotfiles/bashrc-common	/^function downgrade(){$/;"	f	language:Sh
 dvp	/home/phuoc/dotfiles/bashrc	/^function dvp(){$/;"	f	language:Sh
+dvp	/home/phuoc/dotfiles/bashrc-common	/^function dvp(){$/;"	f	language:Sh
 format	/home/phuoc/dotfiles/i3pystatus.py	/^    format="%a %-d %b %X KW%V",)$/;"	v	language:Python
 format	/home/phuoc/dotfiles/i3pystatus.py	/^    format="{status} {remaining:%E%hh:%Mm}",$/;"	v	language:Python
 format	/home/phuoc/dotfiles/i3pystatus.py	/^    format="{status}\/{consumption:.2f}W {percentage:.2f}% [{percentage_design:.2f}%] {remaining:%E%hh:%Mm}",$/;"	v	language:Python
@@ -112,8 +118,10 @@ g:ycm_confirm_extra_conf	/home/phuoc/dotfiles/vimrc	/^let g:ycm_confirm_extra_co
 ga	/home/phuoc/dotfiles/vimrc	/^nmap ga <Plug>(EasyAlign)$/;"	m	language:Vim
 gd	/home/phuoc/dotfiles/vimrc	/^noremap gd :call Pjump()<cr><cr>$/;"	m	language:Vim
 getip	/home/phuoc/dotfiles/bashrc	/^function getip(){$/;"	f	language:Sh
+getip	/home/phuoc/dotfiles/bashrc-common	/^function getip(){$/;"	f	language:Sh
 gh	/home/phuoc/dotfiles/vimrc	/^nnoremap gh :bN<cr>$/;"	m	language:Vim
 gitp	/home/phuoc/dotfiles/bashrc	/^function gitp() {$/;"	f	language:Sh
+gitp	/home/phuoc/dotfiles/bashrc-common	/^function gitp() {$/;"	f	language:Sh
 gl	/home/phuoc/dotfiles/vimrc	/^nnoremap gl :bn<cr>$/;"	m	language:Vim
 gm	/home/phuoc/dotfiles/vimrc	/^map gm :call cursor(0, virtcol('$')\/2)<CR>$/;"	m	language:Vim
 gp	/home/phuoc/dotfiles/vimrc	/^nnoremap gp :CtrlPFunky<Cr>$/;"	m	language:Vim
@@ -131,12 +139,17 @@ j	/home/phuoc/dotfiles/vimrc	/^nnoremap j gj$/;"	m	language:Vim
 JJ	/home/phuoc/dotfiles/vimrc	/^inoremap JJ <Esc>Ja$/;"	m	language:Vim
 k	/home/phuoc/dotfiles/vimrc	/^nnoremap k gk$/;"	m	language:Vim
 keycode	/home/phuoc/dotfiles/bashrc	/^function keycode(){$/;"	f	language:Sh
+keycode	/home/phuoc/dotfiles/bashrc-common	/^function keycode(){$/;"	f	language:Sh
 lyx2md	/home/phuoc/dotfiles/bashrc	/^function lyx2md() {$/;"	f	language:Sh
+lyx2md	/home/phuoc/dotfiles/bashrc-common	/^function lyx2md() {$/;"	f	language:Sh
 mapleader	/home/phuoc/dotfiles/vimrc	/^let mapleader = ","$/;"	v	language:Vim
 maplocalleader	/home/phuoc/dotfiles/vimrc	/^let maplocalleader = ","$/;"	v	language:Vim
 md2lyx	/home/phuoc/dotfiles/bashrc	/^function md2lyx() {$/;"	f	language:Sh
+md2lyx	/home/phuoc/dotfiles/bashrc-common	/^function md2lyx() {$/;"	f	language:Sh
 memfree	/home/phuoc/dotfiles/bashrc	/^function memfree(){$/;"	f	language:Sh
+memfree	/home/phuoc/dotfiles/bashrc-common	/^function memfree(){$/;"	f	language:Sh
 mkgrub	/home/phuoc/dotfiles/bashrc	/^function mkgrub(){$/;"	f	language:Sh
+mkgrub	/home/phuoc/dotfiles/bashrc-common	/^function mkgrub(){$/;"	f	language:Sh
 name	/home/phuoc/dotfiles/i3pystatus.py	/^    name="DHCP",$/;"	v	language:Python
 name	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    name="DHCP",$/;"	v	language:Python
 NERDTreeIgnore	/home/phuoc/dotfiles/vimrc	/^let NERDTreeIgnore=['\\.pyc$', '\\~$'] "ignore files in NERDTree$/;"	v	language:Vim
@@ -148,17 +161,21 @@ on_rightclick	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    on_rightclick = "chrom
 OO	/home/phuoc/dotfiles/vimrc	/^inoremap OO <Esc>O$/;"	m	language:Vim
 Oo	/home/phuoc/dotfiles/vimrc	/^inoremap Oo <Esc>o$/;"	m	language:Vim
 pacup	/home/phuoc/dotfiles/bashrc	/^function pacup(){$/;"	f	language:Sh
+pacup	/home/phuoc/dotfiles/bashrc-common	/^function pacup(){$/;"	f	language:Sh
 path	/home/phuoc/dotfiles/i3pystatus.py	/^    path="\/",$/;"	v	language:Python
 path	/home/phuoc/dotfiles/i3pystatus.py	/^    path="\/var\/run\/dhclient*.pid",)$/;"	v	language:Python
 path	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    path="\/",$/;"	v	language:Python
 path	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    path="\/var\/run\/dhclient*.pid",)$/;"	v	language:Python
 pdf22	/home/phuoc/dotfiles/bashrc	/^function pdf22(){$/;"	f	language:Sh
+pdf22	/home/phuoc/dotfiles/bashrc-common	/^function pdf22(){$/;"	f	language:Sh
 pdf31	/home/phuoc/dotfiles/bashrc	/^function pdf31(){$/;"	f	language:Sh
+pdf31	/home/phuoc/dotfiles/bashrc-common	/^function pdf31(){$/;"	f	language:Sh
 Pjump	/home/phuoc/dotfiles/vimrc	/^function! Pjump()$/;"	f	language:Vim
 PP	/home/phuoc/dotfiles/vimrc	/^inoremap PP <c-r>*$/;"	m	language:Vim
 PreviewOnBottom	/home/phuoc/dotfiles/vimrc	/^augroup PreviewOnBottom$/;"	a	language:Vim
 python_highlight_all	/home/phuoc/dotfiles/vimrc	/^let python_highlight_all=1$/;"	v	language:Vim
 Q	/home/phuoc/dotfiles/vimrc	/^nnoremap Q <nop>  "Ex mode$/;"	m	language:Vim
+reloadGTK	/home/phuoc/dotfiles/bashrc-common	/^function reloadGTK(){$/;"	f	language:Sh
 R_applescript	/home/phuoc/dotfiles/vimrc	/^let R_applescript = 0$/;"	v	language:Vim
 R_in_buffer	/home/phuoc/dotfiles/vimrc	/^let R_in_buffer = 0$/;"	v	language:Vim
 r_syntax_folding	/home/phuoc/dotfiles/vimrc	/^let r_syntax_folding = 1$/;"	v	language:Vim
@@ -180,6 +197,7 @@ status	/home/phuoc/dotfiles/i3pystatus_rc.py	/^status = Status()$/;"	v	language:
 StripTrailingWhitespaces	/home/phuoc/dotfiles/vimrc	/^fun! <SID>StripTrailingWhitespaces()$/;"	f	language:Vim
 text	/home/phuoc/dotfiles/i3pystatus_rc.py	/^    text = "Launcher?",$/;"	v	language:Python
 theme	/home/phuoc/dotfiles/bashrc	/^function theme() {$/;"	f	language:Sh
+theme	/home/phuoc/dotfiles/bashrc-common	/^function theme() {$/;"	f	language:Sh
 ToggleNerdtreeTagbar	/home/phuoc/dotfiles/vimrc	/^function! ToggleNerdtreeTagbar()$/;"	f	language:Vim
 TwiddleCase	/home/phuoc/dotfiles/vimrc	/^function! TwiddleCase(str)$/;"	f	language:Vim
 UU	/home/phuoc/dotfiles/vimrc	/^inoremap UU <Esc>ui$/;"	m	language:Vim
@@ -188,8 +206,11 @@ vimrplugin_args_in_stline	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_args_in_st
 vimrplugin_assign	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_assign = 1$/;"	v	language:Vim
 vimrplugin_vimpager	/home/phuoc/dotfiles/vimrc	/^let vimrplugin_vimpager = "tabnew"$/;"	v	language:Vim
 wifi	/home/phuoc/dotfiles/bashrc	/^function wifi() {$/;"	f	language:Sh
+wifi	/home/phuoc/dotfiles/bashrc-common	/^function wifi() {$/;"	f	language:Sh
 x	/home/phuoc/dotfiles/bashrc	/^function x() {$/;"	f	language:Sh
+x	/home/phuoc/dotfiles/bashrc-common	/^function x() {$/;"	f	language:Sh
 xo	/home/phuoc/dotfiles/bashrc	/^function xo(){$/;"	f	language:Sh
+xo	/home/phuoc/dotfiles/bashrc-common	/^function xo(){$/;"	f	language:Sh
 ~	/home/phuoc/dotfiles/vimrc	/^nnoremap ~ viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>$/;"	m	language:Vim
 ~	/home/phuoc/dotfiles/vimrc	/^vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv$/;"	m	language:Vim
 ~~	/home/phuoc/dotfiles/vimrc	/^inoremap ~~ <Esc>viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>a$/;"	m	language:Vim
