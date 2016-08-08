@@ -28,7 +28,7 @@ Plug 'davidhalter/jedi-vim'
 " Plug 'ivalkeen/nerdtree-execute'
 " Plug 'jalvesaq/Nvim-R'
 " Plug 'jiangmiao/auto-pairs'
-" Plug 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime'
 " Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
@@ -42,7 +42,7 @@ Plug 'morhetz/gruvbox'
 " Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-" Plug 'tacahiroy/ctrlp-funky'
+Plug 'tacahiroy/ctrlp-funky'
 " Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -358,7 +358,7 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 4 'python ' % Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
