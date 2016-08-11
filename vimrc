@@ -359,15 +359,8 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-<<<<<<< HEAD
-autocmd FileType python nmap <buffer> ,r :wa<cr>
-      \ :!tmux send-keys -t 3 'python ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,R
-      \ :!tmux send-keys -t 3 'python2 ' % Enter <cr><cr>
-=======
 autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python main.py' Enter <cr><cr>
->>>>>>> 512662652a7e70fca8e2dee53291396d23d30bc4
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
