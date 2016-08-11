@@ -445,12 +445,16 @@ noremap ,ed :Autoformat<CR>
 
 """ MINE
 " mouse block select
-noremap <M-LeftMouse> <4-LeftMouse>
-inoremap <M-LeftMouse> <4-LeftMouse>
-onoremap <M-LeftMouse> <C-C><4-LeftMouse>
+" noremap <M-LeftMouse> <4-LeftMouse>
+" inoremap <M-LeftMouse> <4-LeftMouse>
+" onoremap <M-LeftMouse> <C-C><4-LeftMouse>
+" noremap <M-LeftDrag> <LeftDrag>
+" inoremap <M-LeftDrag> <LeftDrag>
+" onoremap <M-LeftDrag> <C-C><LeftDrag>
+
+noremap <M-LeftMouse> <LeftMouse><Esc><C-V>
 noremap <M-LeftDrag> <LeftDrag>
-inoremap <M-LeftDrag> <LeftDrag>
-onoremap <M-LeftDrag> <C-C><LeftDrag>
+
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
 vmap <F4> :w! /tmp/kclip.txt<cr>:!kview_clip
