@@ -23,6 +23,7 @@ export TERM=rxvt-unicode-256color
 export i7='14:DD:A9:E6:2F:37'
 export xeon='44:39:C4:92:15:C1'
 export i4='50:7B:9D:11:30:13'
+export devmac='4c:25:78:ec:01:fa'
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
@@ -229,6 +230,10 @@ function getip(){
     a=`sudo nmap -sP 10.116.43.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
   fi
   echo $a
+}
+
+function kmount(){
+  sshfs root@192.168.0.8:/mnt/onboard ~/kobo
 }
 
 
