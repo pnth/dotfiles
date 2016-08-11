@@ -221,4 +221,8 @@ function getip(){
   echo $a
 }
 
+function kmount(){
+  sshfs root@192.168.0.8:/mnt/onboard ~/kobo
+}
+
 
