@@ -27,9 +27,11 @@ alias vim="/usr/bin/nvim -O"
 alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
-alias stf="source ~/tensorflow/bin/activate"
+alias tf="source ~/tensorflow3.5/bin/activate"
+alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
 alias mountn='sudo mount -t cifs //fst-shareg/FST ~/N -o username=ngphuoc,noexec'
-
+alias mountp='sudo mount -t cifs //fst-shareg/FST/ResearchGroups/PRaDA/ngphuoc/ ~/ngphuoc -o username=ngphuoc,noexec'
+alias vim='nvim'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
 # Phuoc's
@@ -218,5 +220,9 @@ function getip(){
     a=`sudo nmap -sP 10.116.43.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
   fi
   echo $a
+}
+
+function kmount(){
+  sshfs root@192.168.0.8:/mnt/onboard ~/kobo
 }
 

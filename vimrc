@@ -28,8 +28,8 @@ Plug 'davidhalter/jedi-vim'
 " Plug 'ivalkeen/nerdtree-execute'
 " Plug 'jalvesaq/Nvim-R'
 " Plug 'jiangmiao/auto-pairs'
-" Plug 'jpalardy/vim-slime'
-" Plug 'junegunn/vim-easy-align'
+Plug 'jpalardy/vim-slime'
+Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
@@ -42,7 +42,7 @@ Plug 'morhetz/gruvbox'
 " Plug 'reedes/vim-wordy'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-" Plug 'tacahiroy/ctrlp-funky'
+Plug 'tacahiroy/ctrlp-funky'
 " Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -83,7 +83,6 @@ set autoindent
 set autoread
 set autowriteall
 set backspace=2
-set clipboard=unnamed
 set cursorline
 set expandtab
 set formatoptions+=l
@@ -105,7 +104,8 @@ set textwidth=0
 set wmw=0
 set wrap
 set wrapmargin=0
-set clipboard+=unnamedplus
+" set clipboard=unnamed
+" set clipboard+=unnamedplus
 " vnoremap y ygv"+y
 
 au FocusGained,BufEnter * :silent! !
@@ -176,7 +176,8 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " vnoremap ,ctt :<line1>,<line2>call s:TexTabulify(1)
 
 """ tmux
-nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
+nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 80<cr><cr><C-l><C-w>=<C-l>
+" nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
 " nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
 nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 64<cr><cr><C-l>:set nonu<cr><C-l>:set nonu<cr><C-w>=
@@ -358,8 +359,8 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 4 'python ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python main.py' Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
@@ -535,6 +536,7 @@ endfunction
 vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 inoremap ~~ <Esc>viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>a
 nnoremap ~ viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>
+
 
 
 " autocmd FileType c,cpp,objc nnoremap <buffer> ,eb
