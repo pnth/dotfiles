@@ -143,7 +143,7 @@ inoremap Oo <Esc>o
 inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap UU <Esc>ui
-inoremap PP <c-r>*
+inoremap PP <c-r>"
 ino hh <esc>
 cno hh <c-c>
 vno v <esc>

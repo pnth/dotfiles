@@ -30,7 +30,6 @@ alias yano="yaourt --noconfirm -S "
 alias tf="source ~/tensorflow3.5/bin/activate"
 alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
 alias mountn='sudo mount -t cifs //fst-shareg/FST ~/N -o username=ngphuoc,noexec'
-alias mountp='sudo mount -t cifs //fst-shareg/FST/ResearchGroups/PRaDA/ngphuoc/ ~/ngphuoc -o username=ngphuoc,noexec'
 alias vim='nvim'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
