@@ -69,9 +69,10 @@ so ~/dotfiles/theme.vim
 """ airline
 let g:airline_section_y = ''
 let g:airline_section_b = ''
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
-let g:indentLine_char = '┆'
+" │ ┆
+let g:indentLine_char = '¦'
 let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
 " let g:indentLine_color_tty_light = 7 " (default: 4)
@@ -359,8 +360,8 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python main.py' Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python3.5 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3.5 main.py' Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
@@ -537,89 +538,9 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 inoremap ~~ <Esc>viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>a
 nnoremap ~ viwy:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv<Esc>
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
 
-
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,eb
-" 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'make %:r 2>&1 \| egrep -i "warning\|error"' Enter <cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,eB
-" 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && make main' Enter <cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,er
-" 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && ./%:r' Enter <cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,eR
-" 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && ./main' Enter <cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,em
-" 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./%:r' Enter <cr><cr>
-" autocmd FileType c,cpp,objc nnoremap <buffer> ,eM
-" 			\ :w<cr>:!tmux send-keys -t 2 ':qa' Enter 'clear && drmem -- ./main' Enter <cr><cr>
-"
-"
-" function! RSendSubLine()
-" 	let line=getline('.')
-" 	let line=split(line, '%>%')[0]
-" 	let line=split(line, '%$%')[0]
-" 	let line=split(line, '->')[0]
-" 	call g:SendCmdToR(line)
-" endfunction
-" autocmd FileType R nnoremap <buffer> ,r<space> :call RSendSubLine()<CR>
-"
-" """ VIM-MARKDOWN
-" set conceallevel=1
-" let g:vim_markdown_toc_autofit = 1
-" " au BufNewFile,BufRead *.md set filetype=md
-" " au BufNewFile,BufRead *.mkd set filetype=md
-" autocmd FileType markdown map <buffer> <f2> :Toc <cr>
-" autocmd FileType markdown map <buffer> <f5> :!pandoc -s %
-"       \ --latex-engine=xelatex --filter pandoc-citeproc --bibliography %:r.bib
-"       \ -o %:r.pdf <cr>
-"       \ :!xdg-open %:r.pdf & <cr><cr>
-" autocmd FileType markdown map <buffer> <f6> :!pandoc -s % -o %:r.pdf <cr><cr>
-"
-"
-" """ UNICODE
-" "" au BufNewFile,BufRead *.md set filetype=md
-" "nmap ga <Plug>(UnicodeGA)
-" "" imap <C-X><C-u> <Plug>(DigraphComplete)
-" "" imap *& *<esc>viW<Plug>(MakeDigraph)a
-" "autocmd FileType text,markdown imap <buffer> u *<esc>vh<Plug>(MakeDigraph)a
-" "autocmd FileType text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
-"
-"
-" """ MATH
-" imap <silent> m        <c-o>:if &kmp == ""<bar>
-"       \set kmp=math<bar>
-"       \else<bar>
-"       \set kmp=<bar>
-"       \endif<bar>
-"       \echo "kmp<".&kmp.">"<cr>
-" nmap <silent> m        :if &kmp == ""<bar>
-"       \set kmp=math<bar>
-"       \else<bar>
-"       \set kmp=<bar>
-"       \endif<bar>
-"       \echo "kmp<".&kmp.">"<cr>
-"
-"
-"
-"
-" " Highlight all instances of word under cursor, when idle.
-" " Useful when studying strange source code.
-" " Type z/ to toggle highlighting on/off.
-" nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-" function! AutoHighlightToggle()
-"   let @/ = ''
-"   if exists('#auto_highlight')
-"     au! auto_highlight
-"     augroup! auto_highlight
-"     setl updatetime=4000
-"     echo 'Highlight current word: off'
-"     return 0
-"   else
-"     augroup auto_highlight
-"       au!
-"       au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-"     augroup end
-"     setl updatetime=500
-"     echo 'Highlight current word: ON'
-"     return 1
-"   endif
-" endfunction

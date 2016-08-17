@@ -196,8 +196,8 @@ function xo(){
 }
 
 
-function dvp(){
-  setxkbmap -layout us -variant dvp -option ctrl:swapcaps
+function mmm(){
+  setxkbmap -layout us ctrl:swapcaps
 }
 
 function aaa(){
