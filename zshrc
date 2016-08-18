@@ -43,8 +43,6 @@ export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export PATH=$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
-export LD_LIBRARY_PATH=/usr/lib/
-export LD_PRELOAD=/usr/lib/libstdc++.so.6
 autoload zmv
 
 #
