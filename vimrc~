@@ -19,7 +19,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'itchyny/calendar.vim'
 
 " Plug 'guns/xterm-color-table.vim'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Plug 'AndrewRadev/sideways.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
