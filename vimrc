@@ -64,7 +64,7 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 
-so ~/dotfiles/theme.vim
+source ~/dotfiles/theme.vim
 
 """ airline
 let g:airline_section_y = ''
