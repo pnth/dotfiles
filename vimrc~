@@ -19,7 +19,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'itchyny/calendar.vim'
 
 " Plug 'guns/xterm-color-table.vim'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Plug 'AndrewRadev/sideways.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
@@ -64,7 +64,7 @@ call plug#end()
 syntax enable
 filetype plugin indent on
 
-source ~/dotfiles/theme.vim
+so ~/dotfiles/theme.vim
 
 """ airline
 let g:airline_section_y = ''
