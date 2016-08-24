@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-scripts/math'
 " Plug 'vim-scripts/screen.vim'
-" Plug 'hdima/python-syntax'
+Plug 'hdima/python-syntax'
 " Plug 'nvie/vim-flake8'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'itchyny/calendar.vim'
@@ -181,7 +181,8 @@ nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 80
 " nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
 " nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
-nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 64<cr><cr><C-l>:set nonu<cr><C-l>:set nonu<cr><C-w>=
+nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
+nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 
 
@@ -380,7 +381,7 @@ autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux send-keys -t 2 'matlab -nodesktop' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>
+      \ tmux select-pane -t:.1 <cr><cr>,jj
 autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
@@ -513,9 +514,9 @@ nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 
 """ SIDEWAYS
-nnoremap ,ah :SidewaysLeft<cr>
-nnoremap ,al :SidewaysRight<cr>
-
+" nnoremap ,ah :SidewaysLeft<cr>
+" nnoremap ,al :SidewaysRight<cr>
+nnoremap ,a vip:s/^/'/g<cr>vip:s/$/',/g<cr>vip:s/\n/ /g<cr>$xx0C[]<esc>P/aaaaa<cr>0
 
 """ CPP
 autocmd BufWritePost *.cpp :!tmux send-keys -t 3 'g++ -std=c++14 -O2 -o ' %:r ' ' % Enter
