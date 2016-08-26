@@ -67,8 +67,8 @@ filetype plugin indent on
 source ~/dotfiles/theme.vim
 
 """ airline
-let g:airline_section_y = ''
-let g:airline_section_b = ''
+" let g:airline_section_y = ''
+" let g:airline_section_b = ''
 let g:airline_powerline_fonts = 0
 
 " │ ┆

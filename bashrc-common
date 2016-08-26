@@ -10,7 +10,7 @@ export i7='14:DD:A9:E6:2F:37'
 export xeon='44:39:C4:92:15:C1'
 export i4='50:7B:9D:11:30:13'
 export ubuntu='08:00:27:4a:53:ca'
-export devcube='10.116.42.176'
+export devcube='ssh -X phuoc@10.116.42.176'
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
