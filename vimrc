@@ -361,7 +361,9 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,r :wa<cr>:!tmux send-keys -t 3 'python3.5 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3.5 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3.5 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3.5 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3.5 main.py' Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
@@ -370,31 +372,39 @@ autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 
 
-autocmd FileType python,mongoql,matlab,perl,r,sh noremap <buffer> <silent> ,q
-      \ :!tmux kill-pane -t 3 && tmux kill-pane -t 2 <cr><cr>
+noremap ,q :!tmux kill-pane -t 2 && tmux kill-pane -t 2 && tmux kill-pane -t 2 && tmux kill-pane -t 2 <cr><cr>
+
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 64 && tmux select-pane -t:.1
       \ <cr><cr>
+
 autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux send-keys -t 2 'matlab -nodesktop' Enter &&
       \ tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>,jj
+
 autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux select-layout even-horizontal <cr><cr>
       \ :!tmux send-keys -t 2 'ipython3' Enter <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-autocmd FileType python,w3m,sh map <buffer> <f2> :!tmux split-window &&
+
+map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
-      \ tmux send-keys -t 2 'ipython' Enter &&
       \ tmux split-window -d -t 2 &&
-      \ tmux resize-pane -t 3 -x 30 -y 20 &&
-      \ tmux select-pane -t:.1 <cr><cr>,en
-      " \ tmux select-pane -t:.1 <cr><cr>:set nonu<cr>,en
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'ipython' Enter &&
+      \ tmux send-keys -t 3 'sshdevcube' Enter &&
+      \ tmux send-keys -t 4 'sshxeon' Enter &&
+      \ tmux send-keys -t 3 'cd ngphuoc/ml' Enter &&
+      \ tmux send-keys -t 4 'cd ngphuoc/ml' Enter &&
+      \ tmux resize-pane -t 2 -x 30 &&
+      \ tmux select-pane -t:.1 <cr><cr>,en,jj
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>

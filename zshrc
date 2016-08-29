@@ -25,11 +25,13 @@ bindkey "\e\e[D" backward-word
 
 # PS1='\h \W\$ '
 # PS1='\W\$ '
-source /etc/profile.d/autojump.bash
+# source /etc/profile.d/autojump.bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
 xset r rate 260 30
+source /home/phuoc/Dropbox/bin/ipa
+source /home/phuoc/Dropbox/bin/aliases
 source /home/phuoc/dotfiles/bashrc-common
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "

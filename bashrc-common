@@ -1,16 +1,16 @@
 #!/bin/bash
 alias ls='ls --color=auto'
-shopt -s autocd
-shopt -s checkwinsize
+# shopt -s autocd
+# shopt -s checkwinsize
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"
 export TERM=rxvt-unicode-256color
-export i7='14:DD:A9:E6:2F:37'
-export xeon='44:39:C4:92:15:C1'
-export i4='50:7B:9D:11:30:13'
-export ubuntu='08:00:27:4a:53:ca'
-export devcube='ssh -X phuoc@10.116.42.176'
+export maci7='14:DD:A9:E6:2F:37'
+export macxeon='44:39:C4:92:15:C1'
+export macdevcube='34:97:f6:00:51:5e'
+export maci4='50:7B:9D:11:30:13'
+export macubuntu='08:00:27:4a:53:ca'
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
@@ -214,14 +214,6 @@ function keycode(){
 function memfree(){
   awk '/MemFree/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
   awk '/MemAvailable/ {print $2}' /proc/meminfo | xargs -d '\n' printf '%sK' | numfmt --from=iec | numfmt --to=iec
-}
-
-function getip(){
-  a=`sudo nmap -sP 10.116.42.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
-  if [ "$a" = "" ]; then
-    a=`sudo nmap -sP 10.116.43.0/24 | grep -B2 $1 | head -n 1 | awk -F' ' '{print $NF}' | tr -d '()'`
-  fi
-  echo $a
 }
 
 function kmount(){
