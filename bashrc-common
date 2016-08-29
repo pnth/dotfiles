@@ -203,8 +203,8 @@ function mmm(){
 }
 
 function aaa(){
-  # setxkbmap -layout us -variant dvp -option ctrl:swapcaps
-  setxkbmap -layout us -variant dvp
+  setxkbmap -layout us -variant dvp -option ctrl:swapcaps
+  # setxkbmap -layout us -variant dvp
 }
 
 function keycode(){
