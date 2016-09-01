@@ -31,7 +31,7 @@ export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bi
 export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
 xset r rate 260 30
-source /home/phuoc/Dropbox/bin/ipa
-source /home/phuoc/Dropbox/bin/aliases
+source /home/phuoc/ngphuoc/bin/ipa
+source /home/phuoc/ngphuoc/bin/aliases
 source /home/phuoc/dotfiles/bashrc-common
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "

@@ -36,7 +36,7 @@ Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 " Plug 'NLKNguyen/c-syntax.vim'
 " Plug 'NLKNguyen/papercolor-theme'
-" Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 " Plug 'reedes/vim-lexical'
 " Plug 'reedes/vim-litecorrect'
 " Plug 'reedes/vim-wordy'
@@ -52,7 +52,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/python.vim'
-" Plug 'vim-scripts/summerfruit256.vim'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
@@ -361,7 +360,7 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3.5 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'sudo python3.5 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3.5 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3.5 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3.5 main.py' Enter <cr><cr>
