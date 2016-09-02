@@ -30,14 +30,14 @@ alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
 alias tf="source ~/tensorflow3.5/bin/activate"
 alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
-# alias mountn='sudo mount -t cifs //fst-shareg/FST ~/N -o username=ngphuoc,noexec'
-alias mountn='mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du'
-#alias vim='nvim'
-# alias pip35='sudo python3.5 -m pip'
-# alias python='python3.5'
+alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001'
+source ~/Dropbox/dropshare/bin/ipa
+source ~/Dropbox/dropshare/bin/aliases
+alias pip35='sudo python3.5 -m pip'
+alias python='python3.5'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 source "/usr/lib/python3.5/site-packages/powerline/bindings/tmux/powerline.conf"
-CYGWIN=winsymlinks:nativestrict
+# CYGWIN=winsymlinks:nativestrict
 
 # Phuoc's
 function gitp() {
