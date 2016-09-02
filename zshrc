@@ -32,7 +32,4 @@ export LD_LIBRARY_PATH=/usr/lib/
 export LD_PRELOAD=/usr/lib/libstdc++.so.6
 xset r rate 260 30
 source ~/dotfiles/bashrc-common
-# mountn
-source ~/ngphuoc/bin/ipa
-source ~/ngphuoc/bin/aliases
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
