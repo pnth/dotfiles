@@ -1,11 +1,12 @@
 #!/bin/bash
+set -o vi
 alias ls='ls --color=auto'
 # shopt -s autocd
 # shopt -s checkwinsize
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export SYSTEMD_EDITOR="vim"
-export TERM=rxvt-unicode-256color
+export TERM=xterm-256color
 export maci7='14:DD:A9:E6:2F:37'
 export macxeon='44:39:C4:92:15:C1'
 export macdevcube='34:97:f6:00:51:5e'
@@ -23,7 +24,7 @@ alias tmt="tmux select-layout tiled"
 alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
 alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
-alias vim="/usr/bin/nvim -O"
+#alias vim="/usr/bin/nvim -O"
 alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
@@ -31,10 +32,12 @@ alias tf="source ~/tensorflow3.5/bin/activate"
 alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
 # alias mountn='sudo mount -t cifs //fst-shareg/FST ~/N -o username=ngphuoc,noexec'
 alias mountn='mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du'
-alias vim='nvim'
-alias pip35='sudo python3.5 -m pip'
-alias python='python3.5'
+#alias vim='nvim'
+# alias pip35='sudo python3.5 -m pip'
+# alias python='python3.5'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+source "/usr/lib/python3.5/site-packages/powerline/bindings/tmux/powerline.conf"
+CYGWIN=winsymlinks:nativestrict
 
 # Phuoc's
 function gitp() {
