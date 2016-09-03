@@ -30,7 +30,9 @@ alias yano="yaourt --noconfirm -S "
 alias tf="source ~/tensorflow3.5/bin/activate"
 alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
 # alias mountn='sudo mount -t cifs //fst-shareg/FST ~/N -o username=ngphuoc,noexec'
-alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001 && source ~/ngphuoc/bin/ipa && source ~/ngphuoc/bin/aliases'
+alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001'
+source ~/Dropbox/dropshare/bin/ipa
+source ~/Dropbox/dropshare/bin/aliases
 alias vim='nvim'
 alias pip35='sudo python3.5 -m pip'
 alias python='python3.5'
