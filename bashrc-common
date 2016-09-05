@@ -50,6 +50,18 @@ function gitp() {
 	git push
 }
 
+function gitpushdot() {
+  cd ~/dotfiles
+  gitp
+  cd -
+}
+
+function gitpulldot() {
+  cd ~/dotfiles
+  git pull
+  cd -
+}
+
 function batt() {
 	if [ "$1" = "" ]; then
     a=40

@@ -23,14 +23,7 @@ bindkey "\e[5D" backward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 
-# PS1='\h \W\$ '
-# PS1='\W\$ '
-# source /etc/profile.d/autojump.bash
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
-export LD_LIBRARY_PATH=/usr/lib/
-export LD_PRELOAD=/usr/lib/libstdc++.so.6
 xset r rate 260 30
-source ~/dotfiles/bashrc-common
-source "/usr/lib/python3.5/site-packages/powerline/bindings/tmux/powerline.conf"
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
