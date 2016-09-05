@@ -206,9 +206,12 @@ function mmm(){
   setxkbmap -layout us ctrl:swapcaps
 }
 
-function aaa(){
+function AAA(){
   setxkbmap -layout us -variant dvp -option ctrl:swapcaps
-  # setxkbmap -layout us -variant dvp
+}
+
+function aaa(){
+  setxkbmap -layout us -variant dvp
 }
 
 function keycode(){
