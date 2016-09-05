@@ -360,13 +360,13 @@ autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3.5 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,2 :wa<cr>:!tmux send-keys -t 3 'python3.5 ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3.5 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,4 :wa<cr>:!tmux send-keys -t 4 'python3.5 ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3.5 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'python3.5 ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3.5 main.py' Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,2 :wa<cr>:!tmux send-keys -t 3 'python3 ' main.py Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,4 :wa<cr>:!tmux send-keys -t 4 'python3 ' main.py Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3 ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'python3 ' main.py Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3 main.py' Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
 autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
@@ -403,8 +403,8 @@ map <f2> :!tmux split-window &&
       \ tmux send-keys -t 2 'ipython' Enter &&
       \ tmux send-keys -t 3 'sshdevcube' Enter &&
       \ tmux send-keys -t 4 'sshxeon' Enter &&
-      \ tmux send-keys -t 3 'cd ngphuoc/ml' Enter &&
-      \ tmux send-keys -t 4 'cd ngphuoc/ml' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
+      \ tmux send-keys -t 4 'cd share/ml/sec' Enter &&
       \ tmux resize-pane -t 2 -x 30 &&
       \ tmux select-pane -t:.1 <cr><cr>,en,jj
 
