@@ -242,6 +242,6 @@ function kmount(){
 function savehist(){
   : ${1?"Usage: $0 ARGUMENT"}
   let a="$1+1"
-  tail -$a ~/.histfile | head -$1 >> ~/.savehist
+  tail -$a ~/.histfile | head -$1 >> ~/Dropbox/bin/.savehist
 }
 
