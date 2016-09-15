@@ -13,11 +13,11 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-scripts/math'
 " Plug 'vim-scripts/screen.vim'
+" Plug 'JuliaLang/julia-vim'
 Plug 'hdima/python-syntax'
 " Plug 'nvie/vim-flake8'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'itchyny/calendar.vim'
-
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'AndrewRadev/sideways.vim'
@@ -34,8 +34,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
-" Plug 'NLKNguyen/c-syntax.vim'
-" Plug 'NLKNguyen/papercolor-theme'
 Plug 'plasticboy/vim-markdown'
 " Plug 'reedes/vim-lexical'
 " Plug 'reedes/vim-litecorrect'
@@ -55,8 +53,12 @@ Plug 'vim-scripts/python.vim'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Yggdroot/indentLine'
-" Plug 'yuratomo/w3m.vim'
+Plug 'yuratomo/w3m.vim'
 Plug '~/.vim/manually/personal'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'benekastah/neomake'
+" Plug 'zyedidia/julialint.vim'
 
 call plug#end()
 
@@ -175,6 +177,9 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " vnoremap ,ct :call s:TexTabulify(0)
 " vnoremap ,ctt :<line1>,<line2>call s:TexTabulify(1)
 
+
+:nnoremap <F8> :setl noai nocin nosi inde=<CR>
+
 """ tmux
 nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 80<cr><cr><C-l><C-w>=<C-l>
 " nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
@@ -219,19 +224,6 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 let g:w3m#command = '/usr/bin/w3m'
 
 
-""" Tmux
-let g:tmux_navigator_no_mappings = 1
-let g:tmux_navigator_save_on_switch = 1
-" nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-nnoremap gh :bN<cr>
-nnoremap gl :bn<cr>
-nnoremap gW :bd<cr>:syn on<cr>
-nnoremap gw :bN<cr>:bd #<cr>
-
 """ Auto-pairs
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutToggle = ''
@@ -261,6 +253,7 @@ let NERDTreeMapJumpNextSibling=',j'
 let NERDTreeMapJumpPrevSibling=',k'
 " Winmanage hack
 nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
+
 function! ToggleNerdtreeTagbar()
 	" check if NERDTree and Tagbar are opened
 	let NERDTree_close = (bufwinnr('NERD_tree') == -1)
@@ -281,6 +274,14 @@ let g:tagbar_left = 1
 let g:tagbar_width = 18
 let g:tagbar_type_r = {
 			\ 'ctagstype' : 'r',
+			\ 'kinds'     : [
+			\ 'f:Functions',
+			\ 'g:GlobalVariables',
+			\ 'v:FunctionVariables',
+			\ ]
+			\ }
+let g:tagbar_type_julia = {
+			\ 'ctagstype' : 'julia',
 			\ 'kinds'     : [
 			\ 'f:Functions',
 			\ 'g:GlobalVariables',
@@ -353,24 +354,27 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": ".2"}
 let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 let g:slime_no_mappings = 1
-autocmd FileType python,sh,mongoql,matlab,w3m,perl xmap <buffer> <space> <Plug>SlimeRegionSend
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>SlimeLineSend<cr>
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
-autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
+autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl xmap <buffer> <space> <Plug>SlimeRegionSend
+autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>SlimeLineSend<cr>
+autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
+autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
-autocmd FileType python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
+autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
 autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,2 :wa<cr>:!tmux send-keys -t 3 'python3 ' main.py Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,4 :wa<cr>:!tmux send-keys -t 4 'python3 ' main.py Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'python3 ' main.py Enter <cr><cr>
+" autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'cgexec -g memory,cpuset:runex `which python3` ' % Enter <cr><cr>
+" autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'cgexec -g memory,cpuset:runex `which python3` ' main.py Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3 main.py' Enter <cr><cr>
+autocmd FileType julia nmap <buffer> ,r :!tmux send-keys -t 3 julia \ `realpath %` Enter<cr><cr>
+autocmd FileType julia nmap <buffer> ,R :!tmux send-keys -t 3 julia \ `realpath main.jl` Enter<cr><cr>
 " autocmd FileType python nmap <buffer> ,R
 "       \ :!tmux send-keys -t 3 'python ' % ' \| tee ' %:r '_output.txt' Enter <cr><cr>
-autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r
-      \ :!tmux send-keys -t 3 ./% Enter <cr><cr>
+autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r :!tmux send-keys -t 3 ./% Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 
 
@@ -380,6 +384,16 @@ autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux resize-pane -t 2 -x 64 && tmux select-pane -t:.1
       \ <cr><cr>
+
+autocmd FileType vim map <buffer> <f5> :w<cr>:so %<cr>:PlugInstall<cr>
+
+execute "nmap ,jl :!tmux send-keys -t 2 'cd(\"" . getcwd(). "\")' Enter<cr><cr>"
+
+autocmd FileType julia map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'julia' Enter<cr><cr>
+      \ :!tmux select-pane -t:.1 <cr><cr>,en,jj,jl
 
 autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -395,7 +409,7 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
 
-map <f2> :!tmux split-window &&
+autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux split-window -d -t 2 &&
       \ tmux split-window -d -t 2 &&
@@ -525,10 +539,15 @@ nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 :let g:easytags_dynamic_files = 2
 
 
+
+autocmd FileType julia noremap <buffer> ,pp <esc>_Daprintln("<esc>pa", <esc>pa)<esc>
+autocmd FileType python,sh,mongoql,matlab,w3m,perl noremap <buffer> ,pp <esc>_Daprint("<esc>pa", <esc>pa)<esc>
+
 """ SIDEWAYS
 " nnoremap ,ah :SidewaysLeft<cr>
 " nnoremap ,al :SidewaysRight<cr>
-nnoremap ,a vip:s/^/'/g<cr>vip:s/$/',/g<cr>vip:s/\n/ /g<cr>$xx0C[]<esc>P/aaaaa<cr>0
+nnoremap ,a vip:s/^/"/g<cr>vip:s/$/",/g<cr>vip:s/\n/ /g<cr>$xx0C[]<esc>P/aaaaa<cr>0
+nmap ,A :s/ /\r/g<cr>,a
 
 """ CPP
 autocmd BufWritePost *.cpp :!tmux send-keys -t 3 'g++ -std=c++14 -O2 -o ' %:r ' ' % Enter
@@ -557,3 +576,19 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
+""" Tmux
+" let g:tmux_navigator_no_mappings = 1
+" let g:tmux_navigator_save_on_switch = 1
+" " nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+" " nnoremap <silent> <c-h> <c-w>h
+" nunmap <c-h>
+" nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <c-d> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+" nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+" nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+nnoremap gh :bN<cr>
+nnoremap gl :bn<cr>
+nnoremap gW :bd<cr>:syn on<cr>
+nnoremap gw :bN<cr>:bd #<cr>
