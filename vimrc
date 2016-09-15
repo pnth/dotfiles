@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-scripts/math'
 " Plug 'vim-scripts/screen.vim'
-" Plug 'JuliaLang/julia-vim'
+Plug 'JuliaLang/julia-vim'
 Plug 'hdima/python-syntax'
 " Plug 'nvie/vim-flake8'
 " Plug 'altercation/vim-colors-solarized'
@@ -57,8 +57,8 @@ Plug 'yuratomo/w3m.vim'
 Plug '~/.vim/manually/personal'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-" Plug 'benekastah/neomake'
-" Plug 'zyedidia/julialint.vim'
+Plug 'benekastah/neomake'
+Plug 'zyedidia/julialint.vim'
 
 call plug#end()
 
