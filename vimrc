@@ -181,10 +181,10 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 :nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
 """ tmux
-nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 80<cr><cr><C-l><C-w>=<C-l>
+" nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 80<cr><cr><C-l><C-w>=<C-l>
 " nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
 " nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
-nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
+" nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
 nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
@@ -493,22 +493,24 @@ nnoremap <X1Mouse> <C-O>
 nnoremap <X2Mouse> <C-I>
 noremap gd :call Pjump()<cr><cr>
 function! Pjump()
-	:WincmdTag
-	if winnr() == winnr("$")
-		execute (winnr("$") - 1) . "WincmdW"
-	else
-		execute winnr("$") . "WincmdW"
-	endif
-	:norm ZZ
+  if winnr("$") == 4
+    :WincmdTag
+    if winnr() == winnr("$")
+      execute (winnr("$") - 1) . "WincmdW"
+    else
+      execute winnr("$") . "WincmdW"
+    endif
+    :norm ZZ
     :exe "normal :vs\<cr>"
-	:WincmdTag
-	if winnr() == winnr("$")
-		execute (winnr("$") - 1) . "WincmdW"
-	else
-		execute winnr("$") . "WincmdW"
-	endif
-    :exe "normal \<c-]>"
-    :norm z.
+    :WincmdTag
+    if winnr() == winnr("$")
+      execute (winnr("$") - 1) . "WincmdW"
+    else
+      execute winnr("$") . "WincmdW"
+    endif
+  endif
+  :exe "normal \<c-]>"
+  :norm z.
 endfunction
 
 
@@ -524,7 +526,7 @@ nmap ga <Plug>(EasyAlign)
 """ INDENT-LINE
 let g:indentLine_color_term = 10
 let g:indentLine_color_tty_dark = 10
-map ,iv :IndentLinesToggle<cr>
+" map ,iv :IndentLinesToggle<cr>
 let g:indentLine_enabled = 1
 
 
@@ -539,6 +541,15 @@ nnoremap gP :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 :let g:easytags_dynamic_files = 2
 
 
+""" JULIA
+autocmd FileType julia nmap <buffer> ,t :call Pinfo("typeof")<cr><cr>
+autocmd FileType julia nmap <buffer> ,s :call Pinfo("size")<cr><cr>
+autocmd FileType julia nmap <buffer> ,h :call Pinfo("head")<cr><cr>
+function! Pinfo(func)
+  let wordUnderCursor = expand("<cword>")
+  echo wordUnderCursor
+  :exe ":!tmux send-keys -t 2 '".a:func."(".wordUnderCursor.")' Enter"
+endfunction
 
 autocmd FileType julia noremap <buffer> ,pp <esc>_Daprintln("<esc>pa", <esc>pa)<esc>
 autocmd FileType python,sh,mongoql,matlab,w3m,perl noremap <buffer> ,pp <esc>_Daprint("<esc>pa", <esc>pa)<esc>
