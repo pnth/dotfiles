@@ -71,7 +71,7 @@ source ~/dotfiles/theme.vim
 """ airline
 " let g:airline_section_y = ''
 " let g:airline_section_b = ''
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " │ ┆
 let g:indentLine_char = '¦'
@@ -186,6 +186,7 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " nmap ,hh :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 70<cr><cr><C-l>:vertical resize 75<cr><C-l>
 " nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 " nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
+nmap ,jh :TagbarOpenAutoClose<cr>:vertical resize 20<cr>:!tmux resizep -t 2 -x 68<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
@@ -390,13 +391,13 @@ autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
 
 autocmd FileType vim map <buffer> <f5> :w<cr>:so %<cr>:PlugInstall<cr>
 
-execute "nmap ,jl :!tmux send-keys -t 2 'cd(\"" . getcwd(). "\")' Enter<cr><cr>"
+execute "autocmd FileType julia nmap <buffer> ,jl :!tmux send-keys -t 2 'cd(\"" . getcwd(). "\")' Enter<cr><cr>"
 
 autocmd FileType julia map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux split-window -d -t 2 &&
       \ tmux send-keys -t 2 'julia' Enter<cr><cr>
-      \ :!tmux select-pane -t:.1 <cr><cr>,en,jj,jl
+      \:!tmux select-pane -t:.1 <cr><cr>,en,jj,jl
 
 autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -635,33 +636,32 @@ autocmd FileType julia noremap <buffer> ,pp <esc>_Daprintln("<esc>pa", <esc>pa)<
 
 " GREEK
 " Letter   Name   Sound
-" Ancient[5]   Modern[6]
-" Α α α  A alpha, άλφα   [a] [aː]   [a]
-" Β β β  B beta, βήτα   [b]   [v]
-" Γ γ γ  G gamma, γάμμα   [ɡ], [ŋ][7]   [ɣ] ~ [ʝ], [ŋ] ~ [ɲ][9]
-" Δ δ δ  D delta, δέλτα   [d]   [ð]
-" Ε ε ε  E epsilon, έψιλον   [e]   [e]
-" Ζ ζ ζ  Z zeta, ζήτα   [zd]A   [z]
-" Η η η  Y eta, ήτα   [ɛː]   [i]
-" Θ θ θ  H theta, θήτα   [tʰ]   [θ]
-" Ι ι ι  I iota, ιώτα   [i] [iː]   [i], [ʝ],[10] [ɲ][11]
-" Κ κ κ  K kappa, κάππα   [k]   [k] ~ [c]
-" Λ λ λ  L lambda, λάμδα   [l]   [l]
-" Μ μ μ  M mu, μυ   [m]   [m]
-" Ν ν ν  N nu, νυ   [n]   [n]
-" Ξ ξ ξ  C xi, ξι   [ks]   [ks]
-" Ο ο ο  O omicron, όμικρον   [o]   [o]
-" Π π π  P pi, πι   [p]   [p]
-" Ρ ρ ρ  R rho, ρώ   [r]   [r]
-" Σ σ σ  S sigma, σίγμα   [s]   [s] ~ [z]
-" Τ τ τ  T tau, ταυ   [t]   [t]
-" Υ υ υ  U upsilon, ύψιλον   [y] [yː]   [i]
-" Φ φ φ  F phi, φι   [pʰ]   [f]
-" Χ χ χ  X chi, χι   [kʰ]   [x] ~ [ç]
-" Ψ ψ ψ  Q psi, ψι   [ps]   [ps]
-" Ω ω ω  W omega, ωμέγα   [ɔː]   [o]<Paste>
+" Α α α  A alpha
+" Β β β  B beta
+" Γ γ γ  G gamma
+" Δ δ δ  D delta
+" Ε ε ε  E epsilon
+" Ζ ζ ζ  Z zeta
+" Η η η  Y eta
+" Θ θ θ  H theta
+" Ι ι ι  I iota
+" Κ κ κ  K kappa
+" Λ λ λ  L lambda
+" Μ μ μ  M mu
+" Ν ν ν  N nu
+" Ξ ξ ξ  C xi
+" Ο ο ο  O omicron
+" Π π π  P pi
+" Ρ ρ ρ  R rho
+" Σ σ σ  S sigma
+" Τ τ τ  T tau
+" Υ υ υ  U upsilon
+" Φ φ φ  F phi
+" Χ χ χ  X chi
+" Ψ ψ ψ  Q psi
+" Ω ω ω  W omega
 "     ϊ  J
-"    ϋ  V
+"     ϋ  V
 
 " DIGRAPH
 " ≥ >=
