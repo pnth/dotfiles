@@ -40,7 +40,7 @@ alias python='python3.5'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # CYGWIN=winsymlinks:nativestrict
 alias julia4="$HOME/packages/julia4/bin/julia"
-export PATH=${PATH}:$HOME/packages/julia5/bin
+alias julia5="$HOME/packages/julia5/bin/julia"
 
 
 # Phuoc's
