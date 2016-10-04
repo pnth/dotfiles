@@ -36,7 +36,6 @@ alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o
 source ~/Dropbox/dropshare/bin/ipa
 source ~/Dropbox/dropshare/bin/aliases
 alias pip35='sudo python3.5 -m pip'
-alias python='python3.5'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # CYGWIN=winsymlinks:nativestrict
 alias julia4="$HOME/packages/julia4/bin/julia"
