@@ -59,7 +59,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
+Plug 'lervag/vimtex'
+" Plug 'drmikehenry/vim-fixkey'
 Plug '~/.vim/manually/personal'
+
 
 call plug#end()
 
@@ -107,13 +110,25 @@ set textwidth=0
 set wmw=0
 set wrap
 set wrapmargin=0
-" set clipboard=unnamed
+set clipboard=unnamed
 " set clipboard+=unnamedplus
 " vnoremap y ygv"+y
 
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
 " au FileType python setlocal shiftwidth=2 tabstop=2
+
+
+""" VIM_LEXICAL
+" augroup lexical
+"   autocmd!
+"   autocmd FileType markdown,mkd call lexical#init()
+"   autocmd FileType textile call lexical#init()
+"   autocmd FileType text call lexical#init({ 'spell': 1 })
+"   let g:lexical#dictionary = ['/usr/share/dict/words',]
+"   let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',]
+"   let g:lexical#thesaurus_key = '<leader>t'
+" augroup END
 
 " set autoread
 augroup checktime
@@ -132,8 +147,8 @@ augroup END
 
 map ,nw :set nowrap! <CR>
 nnoremap Q <nop>  "Ex mode
-nnoremap ' "
-nnoremap " '
+" nnoremap ' "
+" nnoremap " '
 nnoremap j gj
 nnoremap k gk
 imap <C-Space> <C-x><C-o>
@@ -144,7 +159,6 @@ inoremap AA <Esc>A
 inoremap OO <Esc>O
 inoremap Oo <Esc>o
 inoremap CC <Esc>C
-inoremap SS <Esc>S
 inoremap UU <Esc>ui
 inoremap PP <c-r>"
 inoremap hh <esc>
@@ -348,6 +362,20 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail"
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 
 
+""" JULIA
+autocmd FileType julia nmap <buffer> ,t :call Pinfo("typeof")<cr><cr>
+autocmd FileType julia nmap <buffer> ,s :call Pinfo("size")<cr><cr>
+autocmd FileType julia nmap <buffer> ,l :call Pinfo("length")<cr><cr>
+autocmd FileType julia nmap <buffer> ,h :call Pinfo("head")<cr><cr>
+autocmd FileType julia nmap <buffer> ,v :call Pinfo("")<cr><cr>
+function! Pinfo(func)
+  let wordUnderCursor = expand("<cword>")
+  echo wordUnderCursor
+  :exe ":!tmux send-keys -t 2 '".a:func."(".wordUnderCursor.")' Enter"
+endfunction
+autocmd FileType julia noremap <buffer> ,pr <esc>_Daprintln("<esc>pa = ", <esc>pa)<esc>
+
+
 """ VIM-SLIME, SH
 au BufNewFile,BufRead *.py set filetype=python
 au BufNewFile,BufReadPost *.mql setlocal filetype=mongoql
@@ -360,7 +388,7 @@ let g:slime_no_mappings = 1
 autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl xmap <buffer> <space> <Plug>SlimeRegionSend
 autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> <space> <Plug>SlimeLineSend<cr>
 autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,p <Plug>SlimeMotionSend
-autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pa ,p}}
+autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pp ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
@@ -368,10 +396,10 @@ autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3 '
 autocmd FileType python nmap <buffer> ,2 :wa<cr>:!tmux send-keys -t 3 'python3 ' main.py Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3 ' % Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,4 :wa<cr>:!tmux send-keys -t 4 'python3 ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'python3 ' main.py Enter <cr><cr>
-" autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'cgexec -g memory,cpuset:runex `which python3` ' % Enter <cr><cr>
-" autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'cgexec -g memory,cpuset:runex `which python3` ' main.py Enter <cr><cr>
+" autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3 ' % Enter <cr><cr>
+" autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'python3 ' main.py Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 ^c Enter 'cgexec -g memory,cpuset:runex `which python3` ' % Enter <cr><cr>
+autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 ^c Enter 'cgexec -g memory,cpuset:runex `which python3` ' main.py Enter <cr><cr>
 autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3 main.py' Enter <cr><cr>
 autocmd FileType julia nmap <buffer> ,r :!tmux send-keys -t 3 julia \ `realpath %` Enter<cr><cr>
 autocmd FileType julia nmap <buffer> ,R :!tmux send-keys -t 3 julia \ `realpath main.jl` Enter<cr><cr>
@@ -620,19 +648,6 @@ autocmd FileType julia,text,markdown,vim imap <buffer> <c-d> <esc>vh<Plug>(MakeD
 "       \set kmp=<bar>
 "       \endif<bar>
 
-
-""" JULIA
-autocmd FileType julia nmap <buffer> ,t :call Pinfo("typeof")<cr><cr>
-autocmd FileType julia nmap <buffer> ,s :call Pinfo("size")<cr><cr>
-autocmd FileType julia nmap <buffer> ,l :call Pinfo("length")<cr><cr>
-autocmd FileType julia nmap <buffer> ,h :call Pinfo("head")<cr><cr>
-autocmd FileType julia nmap <buffer> ,v :call Pinfo("")<cr><cr>
-function! Pinfo(func)
-  let wordUnderCursor = expand("<cword>")
-  echo wordUnderCursor
-  :exe ":!tmux send-keys -t 2 '".a:func."(".wordUnderCursor.")' Enter"
-endfunction
-autocmd FileType julia noremap <buffer> ,pp <esc>_Daprintln("<esc>pa", <esc>pa)<esc>
 
 " GREEK
 " Letter   Name   Sound

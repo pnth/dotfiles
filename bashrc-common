@@ -32,12 +32,14 @@ alias yano="yaourt --noconfirm -S "
 alias tf="source ~/tensorflow3.5/bin/activate"
 alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
 alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001'
+# alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001'
 source ~/Dropbox/dropshare/bin/ipa
 source ~/Dropbox/dropshare/bin/aliases
 alias pip35='sudo python3.5 -m pip'
 alias python='python3.5'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # CYGWIN=winsymlinks:nativestrict
+
 
 # Phuoc's
 function gitp() {
@@ -243,5 +245,15 @@ function savehist(){
   : ${1?"Usage: $0 ARGUMENT"}
   let a="$1+1"
   tail -$a ~/.histfile | head -$1 >> ~/Dropbox/bin/.savehist
+}
+
+function padbook(){
+  file="`realpath $1` "
+  shift
+  julia ~/Dropbox/bin/padbook.jl $file "$@"
+}
+
+function runex(){
+  sudo cgcreate -t phuoc:phuoc -a phuoc:phuoc  -g memory,cpu:runex
 }
 
