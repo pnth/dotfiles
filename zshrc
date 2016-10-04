@@ -27,7 +27,6 @@ bindkey "\e\e[D" backward-word
 source ~/dotfiles/bashrc-common
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin:$HOME/packages/julia5/bin
-alias julia4="$HOME/packages/julia4/bin/julia"
 
 # export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin:
 # export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin
