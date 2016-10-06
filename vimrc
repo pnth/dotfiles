@@ -44,10 +44,10 @@ call plug#begin('~/.vim/plugged')
 " Plug 'yuratomo/w3m.vim'
 " Plug 'zyedidia/julialint.vim'
 " Plug 'chrisbra/unicode.vim'
+" Plug 'drmikehenry/vim-fixkey'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ervandew/supertab'
 Plug 'jpalardy/vim-slime'
-Plug 'JuliaLang/julia-vim'
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -59,10 +59,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
-" Plug 'lervag/vimtex'
-" Plug 'drmikehenry/vim-fixkey'
+Plug 'lervag/vimtex'
 Plug '~/.vim/manually/personal'
 
+Plug 'JuliaLang/julia-vim'
 
 call plug#end()
 
@@ -201,9 +201,34 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 " nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
 nmap ,jh :TagbarOpenAutoClose<cr>:vertical resize 20<cr>:!tmux resizep -t 2 -x 68<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
-nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+
+" <C-l>:set number<cr><C-l>:set number<cr><C-w>=
+nmap ,jj :call Psplit(1)<cr><cr>
+nmap ,JJ :call Psplit(0)<cr><cr>
+function! Psplit(nu)
+  let wm = 21
+  exec '!tmux resizep -t 2 -x 2'
+  " line number
+  if a:nu
+    let ww = winwidth(0) + 2 - 8 - wm
+    let w2 = ww / 3
+    exec '!tmux resizep -t 2 -x ' . w2
+    call ToggleNerdtreeTagbar()
+    exec 'vertical resize ' . wm
+    exec "normal! \<C-w>l:set number\<cr>:vs\<cr>\<C-w>="
+  " no line number
+  else
+    let ww = winwidth(0) + 2 - wm
+    let w2 = ww / 3
+    exec '!tmux resizep -t 2 -x ' . w2
+    call ToggleNerdtreeTagbar()
+    exec 'vertical resize ' . wm
+    exec "normal! \<C-w>l:set nonu\<cr>:vs\<cr>\<C-w>="
+  endif
+endfunction
+
 
 
 """ folding
