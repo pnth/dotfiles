@@ -1,58 +1,12 @@
-URxvt*letterSpace: -1
-URxvt*boldFont:             xft:Monaco for Powerline:bold:size=11
-URxvt*boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=11
-URxvt*depth: 32
-URxvt*font:                 xft:Monaco for Powerline:regular:size=11
-URxvt*imFont:               xft:Monaco for Powerline:regular:size=11
-URxvt*italicFont:           xft:Monaco for Powerline:italic:size=11
-!URxvt*boldFont:             xft:Source Code Pro:Semibold:size=11
-!URxvt*boldItalicFont:       xft:Source Code Pro:Semibold:italic:size=11
-!URxvt*depth: 32
-!URxvt*font:                 xft:Source Code Pro:regular:size=11
-!URxvt*imFont:               xft:Source Code Pro:regular:size=11
-!URxvt*italicFont:           xft:Source Code Pro:italic:size=11
+URxvt*letterSpace: -1.8
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=10.5
+URxvt*imFont: xft:DejaVu Sans Mono for Powerline:size=10.5
+URxvt*boldFont: xft:DejaVu Sans Mono Bold for Powerline:size=10.5
+URxvt*italicFont: xft:DejaVu Sans Mono Oblique For Powerline:size=10.5
+URxvt*boldItalicfont: xft:DejaVu Sans Mono Bold Oblique For Powerline:size=10.5
 
-Xft.dpi: 96
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+UXTerm*faceName: DejaVu Sans Mono for Powerline
+UXTerm*faceSize: 10.5
+UXTerm.vt100.blink: false
+UXTerm.blink: false
+*cursorBlink: false
