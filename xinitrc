@@ -47,4 +47,5 @@ synclient TouchpadOff=1&
 # batt&
 
 exec cinnamon-session
+# exec gnome-session
 
