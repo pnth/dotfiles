@@ -34,10 +34,14 @@ fi
 
 xsetroot -cursor_name left_ptr
 # setxkbmap -layout us -variant dvp -option ctrl:swapcaps
-setxkbmap -layout "us,gr" -variant "dvp,dvpoly" -option "ctrl:swapcaps,grp:switch"
-# setxkbmap -layout us -variant dvp
+# setxkbmap -layout "us,gr" -variant "dvp,dvpoly" -option "ctrl:swapcaps,grp:switch"
 redshift -l -38.2025:144.3115&
 synclient TouchpadOff=1&
+# dropbox &
+# blueberry-tray &
+# indicator-stickynotes &
+# nm-applet &
+
 # xmodmap -e 'remove Mod1 = Alt_R'
 # xmodmap -e 'add Mod3 = Alt_R'
 # udiskie -2 &
@@ -47,5 +51,7 @@ synclient TouchpadOff=1&
 # batt&
 
 exec cinnamon-session
+# exec i3
+# exec cinnamon-session-i3
 # exec gnome-session
-
+# exec startkde

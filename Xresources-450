@@ -1,10 +1,9 @@
 URxvt*letterSpace: -2
 URxvt.lineSpace: 1
-URxvt*font: xft:DejaVu Sans Mono for Powerline:size=11
+URxvt*font: xft:DejaVu Sans Mono for Powerline:size=10.5:antialias=true
+URxvt.cursorBlink: 0
 
 UXTerm*faceName: DejaVu Sans Mono for Powerline
-UXTerm*faceSize: 11
-UXTerm.vt110.blink: false
+UXTerm*faceSize: 10.5
+UXTerm.vt10.50.blink: false
 UXTerm.blink: false
-*.blink: false
-*.cursorBlink: false

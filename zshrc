@@ -24,8 +24,7 @@ bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 
 source ~/dotfiles/bashrc-common
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-export PATH=$HOME/Dropbox/bin:$HOME/bin:/home/phuoc/.vim/plugged/perlomni.vim/bin:${PATH}:$JAVA_HOME/bin:$HOME/packages/julia5/bin
+source ~/.zshenv
 
 xset r rate 260 30
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
