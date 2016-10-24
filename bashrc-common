@@ -215,7 +215,7 @@ function downgrade(){
 }
 
 
-function mkgrub(){
+function grubmk(){
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 

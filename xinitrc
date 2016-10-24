@@ -50,8 +50,13 @@ synclient TouchpadOff=1&
 # ibus-daemon --xim &
 # batt&
 
+# export WINEARCH=win32
+# export WINEPREFIX=~/.wine
+
+# exec startxfce4
 exec cinnamon-session
 # exec i3
 # exec cinnamon-session-i3
 # exec gnome-session
 # exec startkde
+
