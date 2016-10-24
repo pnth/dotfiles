@@ -25,7 +25,6 @@ alias tmt="tmux select-layout tiled"
 alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
 alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
-alias vim="/usr/bin/nvim -O"
 alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
@@ -96,6 +95,15 @@ function batt() {
 }
 
 function x() {
+	if [ "$1" = "" ]; then
+		xrandr --output eDP1 --auto
+	else
+		xrandr --output eDP1 --off
+		xrandr --output $1:u --auto
+	fi
+}
+
+function x-old() {
 	if [ $1 = "1" ]; then
 		xrandr --output LVDS1 --off
 		xrandr --output VGA1 --auto
@@ -207,7 +215,7 @@ function downgrade(){
 }
 
 
-function mkgrub(){
+function grubmk(){
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
@@ -221,11 +229,11 @@ function mmm(){
   setxkbmap -layout us ctrl:swapcaps
 }
 
-function AAA(){
-  setxkbmap -layout us -variant dvp -option ctrl:swapcaps
+function aaa(){
+  setxkbmap -layout "us,gr" -variant "dvp,dvpoly" -option "ctrl:swapcaps,grp:switch"
 }
 
-function aaa(){
+function AAA(){
   setxkbmap -layout us -variant dvp
 }
 

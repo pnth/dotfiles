@@ -33,16 +33,30 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xsetroot -cursor_name left_ptr
-setxkbmap -layout us -variant dvp -option ctrl:swapcaps
+# setxkbmap -layout us -variant dvp -option ctrl:swapcaps
+# setxkbmap -layout "us,gr" -variant "dvp,dvpoly" -option "ctrl:swapcaps,grp:switch"
 redshift -l -38.2025:144.3115&
-xmodmap -e 'remove Mod1 = Alt_R'
-xmodmap -e 'add Mod3 = Alt_R'
-udiskie -2 &
-sudo ntpd -gq&
+synclient TouchpadOff=1&
+# dropbox &
+# blueberry-tray &
+# indicator-stickynotes &
+# nm-applet &
+
+# xmodmap -e 'remove Mod1 = Alt_R'
+# xmodmap -e 'add Mod3 = Alt_R'
+# udiskie -2 &
+# sudo ntpd -gq&
 # DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 # ibus-daemon --xim &
-synclient TouchpadOff=1&
-batt&
+# batt&
 
-# exec i3
+# export WINEARCH=win32
+# export WINEPREFIX=~/.wine
+
+# exec startxfce4
 exec cinnamon-session
+# exec i3
+# exec cinnamon-session-i3
+# exec gnome-session
+# exec startkde
+
