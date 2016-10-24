@@ -179,15 +179,16 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # set $ws2  "2:&#xf120;"
 # set $ws2  ""
-bar {
-        status_command i3status
-        font pango:DejaVu Sans Mono, Awesome 9
-        # position top
-        # tray_output primary
-}
 # bar {
-#     status_command $HOME/dotfiles/conky-i3bar
+#         status_command i3status
+#         font pango:DejaVu Sans Mono, Awesome 9
+#         # position top
+#         # tray_output primary
 # }
+bar {
+    status_command $HOME/dotfiles/conky-i3bar
+}
+
 # bar {
 #     status_command    python $HOME/dotfiles/i3pystatus_rc.py
 #     position          bottom

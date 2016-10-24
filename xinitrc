@@ -44,4 +44,5 @@ sudo ntpd -gq&
 synclient TouchpadOff=1&
 batt&
 
-exec i3
+# exec i3
+exec cinnamon-session
