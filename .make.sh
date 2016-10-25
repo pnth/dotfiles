@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="surfraw.conf tmux.conf vimrc xinitrc bashrc bash_profile zshrc zprofile inputrc"
+files="surfraw.conf tmux.conf vimrc xinitrc bashrc bash_profile zshrc zprofile inputrc ctags"
 ##########
 
 # create dotfiles_old in homedir
@@ -45,6 +45,7 @@ curl https://raw.githubusercontent.com/hut/ranger/master/ranger/colorschemes/sol
 ln -sf ~/dotfiles/vim/manually ~/.vim/manually
 ln -sf ~/dotfiles/w3m/config ~/.w3m/config
 ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
+ln -sf ~/dotfiles/juliarc.jl ./.juliarc.jl
 #ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
 #ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
 #ln -sf ~/dotfiles/config/i3status/config ~/.config/i3status/config
