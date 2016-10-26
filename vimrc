@@ -221,29 +221,21 @@ nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 8
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 
 " <C-l>:set number<cr><C-l>:set number<cr><C-w>=
-nmap ,jj :call Psplit(0)<cr><cr><cr>
-nmap ,JJ :call Psplit(1)<cr><cr><cr>
+nmap ,jj :call Psplit(0)<cr>,en
+nmap ,JJ :call Psplit(1)<cr>,en
 function! Psplit(nu)
-  let wm = 21
-  exec '!tmux resizep -t 2 -x 2'
   exec "normal! \<C-w>o"
-  " line number
+  exec 'silent !tmux resizep -t 2 -x 4'
+  let wm = 21
+  let ww = winwidth(0) + 2 - wm
+  set nonu
   if a:nu
     let ww = winwidth(0) + 2 - 8 - wm
-    let w2 = ww / 3
-    exec '!tmux resizep -t 2 -x ' . w2
-    call ToggleNerdtreeTagbar()
-    exec 'vertical resize ' . wm
-    exec "normal! \<C-w>l:set number\<cr>:vs\<cr>\<C-w>="
-  " no line number
-  else
-    let ww = winwidth(0) + 2 - wm
-    let w2 = ww / 3
-    exec '!tmux resizep -t 2 -x ' . w2
-    call ToggleNerdtreeTagbar()
-    exec 'vertical resize ' . wm
-    exec "normal! \<C-w>l:set nonu\<cr>:vs\<cr>\<C-w>="
+    set nu
   endif
+  let w2 = ww / 3
+  exec 'silent !tmux resizep -t 2 -x ' . w2
+  sleep 100m
 endfunction
 
 
@@ -311,7 +303,7 @@ let NERDTreeMapJumpNextSibling=',j'
 let NERDTreeMapJumpPrevSibling=',k'
 " Winmanage hack
 nmap ,em :call ToggleNerdtreeTagbar()<CR><c-l><cr>
-nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:set nu<cr>:vs<cr>
+nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:vs<cr>
 
 function! ToggleNerdtreeTagbar()
   " check if NERDTree and Tagbar are opened
@@ -380,18 +372,6 @@ au FileType R imap <buffer> <silent> <LocalLeader>ru <Plug>RCompleteArgs
 let g:r_hl_roxygen = 0
 let vimrplugin_vimpager = "tabnew"
 set completeopt-=preview
-" autocmd FileType r map <buffer> <f2> <Plug>RStart
-      " \ :!tmux select-layout even-horizontal <cr>
-      "       \ :!tmux split-window -t 2 -d <cr>
-      " \ :!tmux resize-pane -t 2 -x 64 <cr>
-      " \ :!tmux resize-pane -t 2 -y 20 <cr>
-      " \ <c-w>=
-" autocmd FileType r map <buffer> <f3>
-"       \ :!tmux select-layout even-horizontal <cr>
-"             \ :!tmux split-window -t 2 -d <cr>
-"       \ :!tmux resize-pane -t 2 -x 64 <cr>
-"       \ :!tmux resize-pane -t 2 -y 20 <cr>
-"       \ <c-w>=
 autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
@@ -473,11 +453,15 @@ autocmd FileType vim map <buffer> <f5> :w<cr>:so %<cr>:PlugInstall<cr>
 
 execute "autocmd FileType julia nmap <buffer> ,jl :!tmux send-keys -t 2 'cd(\"" . getcwd(). "\")' Enter<cr><cr>"
 
-" autocmd FileType julia map <buffer> <f2> :!tmux split-window &&
-"       \ tmux select-layout even-horizontal &&
-"       \ tmux split-window -d -t 2 &&
-"       \ tmux send-keys -t 2 'julia' Enter<cr><cr>
-"       \:!tmux select-pane -t:.1 <cr><cr>,jl,jj
+autocmd FileType python map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'ipython' Enter &&
+      \ tmux send-keys -t 3 'sshdevcube' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
+      \ tmux select-pane -t:.1 <cr><cr>,jj
 
 autocmd FileType julia map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -503,19 +487,6 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-
-autocmd FileType python map <buffer> <f2> :!tmux split-window &&
-      \ tmux select-layout even-horizontal &&
-      \ tmux split-window -d -t 2 &&
-      \ tmux split-window -d -t 2 &&
-      \ tmux split-window -d -t 2 &&
-      \ tmux send-keys -t 2 'ipython' Enter &&
-      \ tmux send-keys -t 3 'sshdevcube' Enter &&
-      \ tmux send-keys -t 4 'sshxeon' Enter &&
-      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
-      \ tmux send-keys -t 4 'cd share/ml/sec' Enter &&
-      \ tmux resize-pane -t 2 -x 30 &&
-      \ tmux select-pane -t:.1 <cr><cr>,en,jj
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
