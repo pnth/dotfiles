@@ -221,8 +221,8 @@ nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 8
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 
 " <C-l>:set number<cr><C-l>:set number<cr><C-w>=
-nmap ,jj :call Psplit(0)<cr><cr>
-nmap ,JJ :call Psplit(1)<cr><cr>
+nmap ,jj :call Psplit(0)<cr><cr><cr>
+nmap ,JJ :call Psplit(1)<cr><cr><cr>
 function! Psplit(nu)
   let wm = 21
   exec '!tmux resizep -t 2 -x 2'
@@ -311,7 +311,7 @@ let NERDTreeMapJumpNextSibling=',j'
 let NERDTreeMapJumpPrevSibling=',k'
 " Winmanage hack
 nmap ,em :call ToggleNerdtreeTagbar()<CR><c-l><cr>
-nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:set nonu<cr>:vs<cr>
+nmap ,en :call ToggleNerdtreeTagbar()<CR><c-l>:set nu<cr>:vs<cr>
 
 function! ToggleNerdtreeTagbar()
   " check if NERDTree and Tagbar are opened

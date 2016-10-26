@@ -13,6 +13,8 @@ export macxeon='44:39:C4:92:15:C1'
 export macdevcube='34:97:f6:00:51:5e'
 export maci4='50:7B:9D:11:30:13'
 export macubuntu='08:00:27:4a:53:ca'
+export MOCHA_USE_NATIVE_EXT=true
+
 alias vimm="vim -u ~/.vimrc0"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
