@@ -715,6 +715,8 @@ autocmd FileType julia,text,markdown,vim imap <buffer> <c-u> *<esc>vh<Plug>(Make
 " autocmd FileType julia,text,markdown,vim imap <buffer> <c-d> <esc>vh<Plug>(MakeDigraph)a
 " autocmd FileType julia,text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
 
+imap δδ ∇
+
 " """ MATH
 " imap <silent> m <c-o>:if &kmp == ""<bar>
 "       \set kmp=math<bar>
