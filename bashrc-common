@@ -34,8 +34,8 @@ alias tf="source ~/tensorflow3.5/bin/activate"
 alias tfdir="python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))'"
 alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe-research ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001'
 # alias mountn='sudo mount -t cifs //shares.deakin.edu.au/fac-sebe ~/N -o username=ngphuoc,domain=du,uid=1001,gid=1001'
-source ~/Dropbox/dropshare/bin/ipa
-source ~/Dropbox/dropshare/bin/aliases
+source ~/Dropbox/bin/ipa
+source ~/Dropbox/bin/aliases
 alias pip35='sudo python3.5 -m pip'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # CYGWIN=winsymlinks:nativestrict
