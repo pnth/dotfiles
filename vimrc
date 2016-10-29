@@ -230,7 +230,7 @@ function! Psplit(nu)
   let ww = winwidth(0) + 2 - wm
   set nonu
   if a:nu
-    let ww = winwidth(0) + 2 - 8 - wm
+    " let ww = winwidth(0) + 2 - 8 - wm
     set nu
   endif
   let w2 = ww / 3
