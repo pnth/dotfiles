@@ -1,21 +1,17 @@
 call plug#begin('~/.vim/plugged')
 
 " Plug 'airblade/vim-gitgutter'
-" Plug 'altercation/vim-colors-solarized'
 " Plug 'AndrewRadev/sideways.vim'
 " Plug 'benekastah/neomake'
-" Plug 'Chiel92/vim-autoformat' "autopep8 for python
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 " Plug 'dhruvasagar/vim-table-mode'
-" Plug 'epeli/slimux'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'hdima/python-syntax'
 " Plug 'itchyny/calendar.vim'
 " Plug 'itchyny/lightline.vim'
 " Plug 'ivalkeen/nerdtree-execute'
 " Plug 'jalvesaq/Nvim-R'
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 " Plug 'justinmk/vim-sneak'
 " Plug 'kien/ctrlp.vim'
 " Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
@@ -65,7 +61,6 @@ Plug 'mileszs/ack.vim'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'lervag/vimtex'
-Plug 'jiangmiao/auto-pairs'
 Plug 'JuliaLang/julia-vim'
 Plug 'milkypostman/vim-togglelist'
 
@@ -83,6 +78,8 @@ source ~/dotfiles/theme.vim
 " let g:airline_section_y = ''
 " let g:airline_section_b = ''
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 
 " │ ┆
 let g:indentLine_char = '¦'
@@ -181,7 +178,7 @@ inoremap hh <esc>
 cnoremap hh <c-c>
 vnoremap v <esc>
 nnoremap ,wd :windo diffthis<cr>
-map <c-s> :wa<cr>
+" map <c-s> :wa<cr>
 
 
 let mapleader = ","
@@ -264,10 +261,10 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 
 """ vim-surround
-" nmap '' ysiw'
-" nmap "" ysiw""
-" nmap ( ysiw)
-" nmap [ ysiw]
+nmap '' ysiw'
+nmap "" ysiw""
+nmap (( ysiw)
+nmap [[ ysiw]
 
 
 """ W3m
@@ -278,7 +275,7 @@ let g:w3m#command = '/usr/bin/w3m'
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutFastWrap = ',)'
-let g:AutoPairsShortcutJump = '<c-s>'
+" let g:AutoPairsShortcutJump = '<c-s>'
 let g:AutoPairsShortcutBackInsert = '<c-d>'
 " <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
 " <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
@@ -643,16 +640,15 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
 """ Tmux
-" let g:tmux_navigator_no_mappings = 1
-" let g:tmux_navigator_save_on_switch = 1
-" " nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-" " nnoremap <silent> <c-h> <c-w>h
-" nunmap <c-h>
-" nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <c-d> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-" nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-" nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+" nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+" nnoremap <silent> <c-h> <c-w>h
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 nnoremap gh :bN<cr>
 nnoremap gl :bn<cr>

@@ -16,6 +16,7 @@ export macubuntu='08:00:27:4a:53:ca'
 export MOCHA_USE_NATIVE_EXT=true
 
 alias vimm="vim -u ~/.vimrc0"
+alias vim="nvim"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
 alias cd=" cd"
