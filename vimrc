@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'airblade/vim-gitgutter'
 " Plug 'AndrewRadev/sideways.vim'
 " Plug 'benekastah/neomake'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'hdima/python-syntax'
@@ -11,13 +11,10 @@ Plug 'davidhalter/jedi-vim'
 " Plug 'itchyny/lightline.vim'
 " Plug 'ivalkeen/nerdtree-execute'
 " Plug 'jalvesaq/Nvim-R'
-Plug 'junegunn/vim-easy-align'
 " Plug 'justinmk/vim-sneak'
-" Plug 'kien/ctrlp.vim'
 " Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
 " Plug 'lervag/vimtex'
 " Plug 'nvie/vim-flake8'
-Plug 'plasticboy/vim-markdown'
 " Plug 'powerline/powerline'
 " Plug 'reedes/vim-lexical'
 " Plug 'reedes/vim-litecorrect'
@@ -42,6 +39,10 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'chrisbra/unicode.vim'
 " Plug 'drmikehenry/vim-fixkey'
 
+Plug 'kien/ctrlp.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'plasticboy/vim-markdown'
+Plug 'jiangmiao/auto-pairs'
 Plug '~/.vim/manually/personal'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ervandew/supertab'
@@ -261,10 +262,11 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 
 """ vim-surround
-nmap '' ysiw'
-nmap "" ysiw""
-nmap (( ysiw)
-nmap [[ ysiw]
+nmap s' ysiw'
+nmap s" ysiw""
+nmap s( ysiw)
+nmap s) ysiw)
+nmap s] ysiw]
 
 
 """ W3m
@@ -383,6 +385,7 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head"
 
 """ JULIA
 autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
+autocmd FileType julia imap <buffer> <c-\> <bar>><space>
 " autocmd FileType julia nmap <buffer> <c-@> <esc>_i@pipe<space><esc>
 " autocmd FileType julia imap <buffer> <c-@> @pipe<space>
 autocmd FileType julia nmap <buffer> ,t :call Pinfo("typeof")<cr><cr>

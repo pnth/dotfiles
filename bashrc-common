@@ -42,6 +42,7 @@ source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # CYGWIN=winsymlinks:nativestrict
 alias julia4="$HOME/packages/julia4/bin/julia"
 alias julia5="$HOME/share/bin/julia5/bin/julia"
+alias tmux0="tmux kill-session -t 0; tmux"
 
 
 # Phuoc's
