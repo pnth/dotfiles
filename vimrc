@@ -39,7 +39,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'chrisbra/unicode.vim'
 " Plug 'drmikehenry/vim-fixkey'
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
@@ -62,7 +63,8 @@ Plug 'mileszs/ack.vim'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'lervag/vimtex'
-Plug 'JuliaLang/julia-vim'
+Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaLang/julia-vim'
 Plug 'milkypostman/vim-togglelist'
 
 
@@ -385,7 +387,8 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head"
 
 """ JULIA
 autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
-autocmd FileType julia imap <buffer> <c-\> <bar>><space>
+autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
+autocmd FileType julia imap <buffer> <c-@> ∘
 " autocmd FileType julia nmap <buffer> <c-@> <esc>_i@pipe<space><esc>
 " autocmd FileType julia imap <buffer> <c-@> @pipe<space>
 autocmd FileType julia nmap <buffer> ,t :call Pinfo("typeof")<cr><cr>
@@ -406,6 +409,9 @@ autocmd Filetype *
     \       call SuperTabChain(&omnifunc, "<c-p>") |
     \       call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
     \   endif
+autocmd FileType julia :match NonText /|>\||>_->/
+autocmd FileType julia :match NonText /|>\||>_->/
+
 
 
 """ VIM-SLIME, SH
@@ -517,11 +523,13 @@ autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
 
 """ CTRLP
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_map = '<c-p>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_cmd = 'CtrlPBuffer'
 " nmap <c-p> :CtrlPBuffer<cr>
-nmap <c-\> :CtrlP<cr>
+" nmap <c-\> :CtrlP<cr>
 
 """ REMOVE TRAILING SPACES
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
