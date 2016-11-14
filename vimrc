@@ -1,27 +1,13 @@
 call plug#begin('~/.vim/plugged')
 
 " Plug 'airblade/vim-gitgutter'
-" Plug 'altercation/vim-colors-solarized'
 " Plug 'AndrewRadev/sideways.vim'
 " Plug 'benekastah/neomake'
-" Plug 'Chiel92/vim-autoformat' "autopep8 for python
 " Plug 'davidhalter/jedi-vim'
 " Plug 'dhruvasagar/vim-table-mode'
-" Plug 'epeli/slimux'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'hdima/python-syntax'
-" Plug 'itchyny/calendar.vim'
-" Plug 'itchyny/lightline.vim'
-" Plug 'ivalkeen/nerdtree-execute'
-" Plug 'jalvesaq/Nvim-R'
-" Plug 'jiangmiao/auto-pairs'
-" Plug 'junegunn/vim-easy-align'
-" Plug 'justinmk/vim-sneak'
-" Plug 'kien/ctrlp.vim'
-" Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
-" Plug 'lervag/vimtex'
-" Plug 'nvie/vim-flake8'
-" Plug 'plasticboy/vim-markdown'
+" Plug 'itchyny/calendar.vim' Plug 'itchyny/lightline.vim' Plug 'ivalkeen/nerdtree-execute' Plug 'jalvesaq/Nvim-R' Plug 'justinmk/vim-sneak' Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor' Plug 'lervag/vimtex' Plug 'nvie/vim-flake8'
 " Plug 'powerline/powerline'
 " Plug 'reedes/vim-lexical'
 " Plug 'reedes/vim-litecorrect'
@@ -34,7 +20,6 @@ call plug#begin('~/.vim/plugged')
 " Plug 'tomtom/tcomment_vim'
 " Plug 'tpope/vim-characterize'
 " Plug 'tpope/vim-fugitive'
-" Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'vim-scripts/math'
@@ -43,28 +28,43 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Yggdroot/indentLine'
 " Plug 'yuratomo/w3m.vim'
 " Plug 'zyedidia/julialint.vim'
-Plug 'chrisbra/unicode.vim'
+" Plug 'chrisbra/unicode.vim'
+" Plug 'drmikehenry/vim-fixkey'
+
+Plug 'Valloric/YouCompleteMe'
+" Plug 'brookhong/cscope.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ervandew/supertab'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'JCLiang/vim-cscope-utils'
+Plug 'jiangmiao/auto-pairs'
 Plug 'jpalardy/vim-slime'
-Plug 'JuliaLang/julia-vim'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'milkypostman/vim-togglelist'
 Plug 'morhetz/gruvbox'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
+
+Plug '~/.vim/manually/personal'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'lervag/vimtex'
-" Plug 'drmikehenry/vim-fixkey'
-Plug '~/.vim/manually/personal'
-
 
 call plug#end()
+
+
 
 syntax enable
 filetype plugin indent on
@@ -75,6 +75,8 @@ source ~/dotfiles/theme.vim
 " let g:airline_section_y = ''
 " let g:airline_section_b = ''
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 
 " │ ┆
 let g:indentLine_char = '¦'
@@ -84,6 +86,14 @@ let g:indentLine_color_term = 239
 " let g:indentLine_color_dark = 1 " (default: 2)
 let g:indentLine_concealcursor = 'vc'
 " let g:indentLine_conceallevel = 0
+
+let g:toggle_list_no_mappings = 1
+nmap <c-t><C-l> :call ToggleLocationList()<CR>
+nmap <c-t><C-q> :call ToggleQuickfixList()<CR>
+autocmd FileType python nmap ,* :call Pack('python', expand('<cword>'))<cr><cr>
+function! Pack(lang, word)
+  exec "Ack -w --" . a:lang . " " . a:word
+endfunction
 
 set autoindent
 set autoread
@@ -149,8 +159,8 @@ map ,nw :set nowrap! <CR>
 nnoremap Q <nop>  "Ex mode
 " nnoremap ' "
 " nnoremap " '
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
 inoremap II <Esc>I
@@ -165,7 +175,9 @@ inoremap hh <esc>
 cnoremap hh <c-c>
 vnoremap v <esc>
 nnoremap ,wd :windo diffthis<cr>
-map <c-s> :wa<cr>
+nmap <c-s> :wa<cr>
+imap <c-s> <esc>:wa<cr>a
+vmap <c-s> <esc>:wa<cr>gv
 
 
 let mapleader = ","
@@ -201,9 +213,27 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " nmap ,ll :TagbarOpenAutoClose<cr>:vertical resize 22<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 " nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
 nmap ,jh :TagbarOpenAutoClose<cr>:vertical resize 20<cr>:!tmux resizep -t 2 -x 68<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
-nmap ,jj :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
+
+" <C-l>:set number<cr><C-l>:set number<cr><C-w>=
+nmap ,jj :call Psplit(0)<cr>,en
+nmap ,JJ :call Psplit(1)<cr>,en
+function! Psplit(nu)
+  exec "normal! \<C-w>o"
+  exec 'silent !tmux resizep -t 2 -x 4'
+  let wm = 21
+  let ww = winwidth(0) + 2 - wm
+  set nonu
+  if a:nu
+    " let ww = winwidth(0) + 2 - 8 - wm
+    set nu
+  endif
+  let w2 = ww / 3
+  exec 'silent !tmux resizep -t 2 -x ' . w2
+  sleep 100m
+endfunction
+
 
 
 """ folding
@@ -230,22 +260,23 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 
 
 """ vim-surround
-" nmap '' ysiw'
-" nmap "" ysiw""
-" nmap ( ysiw)
-" nmap [ ysiw]
+nmap s' ysiw'
+nmap s" ysiw""
+nmap s( ysiw)
+nmap s) ysiw)
+nmap s] ysiw]
 
 
 """ W3m
 let g:w3m#command = '/usr/bin/w3m'
 
 
-""" Auto-pairs
+""" AUTO_PAIRS
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutToggle = ''
-let g:AutoPairsShortcutFastWrap = '<C-}>'
-let g:AutoPairsShortcutJump = ',m'
-let g:AutoPairsShortcutBackInsert = ',b'
+let g:AutoPairsShortcutFastWrap = ',)'
+" let g:AutoPairsShortcutJump = '<c-s>'
+let g:AutoPairsShortcutBackInsert = '<c-d>'
 " <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
 " <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
 " <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
@@ -259,6 +290,20 @@ let python_highlight_all=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " let g:ycm_python_binary_path = '/usr/bin/python2'
 " let b:python_version_2 = 1
+"
+""" YCM YOUCOMPLETEME
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_confirm_extra_conf = 0
+autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
+
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 """ Nerdtree and Tagbar
@@ -338,18 +383,6 @@ au FileType R imap <buffer> <silent> <LocalLeader>ru <Plug>RCompleteArgs
 let g:r_hl_roxygen = 0
 let vimrplugin_vimpager = "tabnew"
 set completeopt-=preview
-" autocmd FileType r map <buffer> <f2> <Plug>RStart
-      " \ :!tmux select-layout even-horizontal <cr>
-      "       \ :!tmux split-window -t 2 -d <cr>
-      " \ :!tmux resize-pane -t 2 -x 64 <cr>
-      " \ :!tmux resize-pane -t 2 -y 20 <cr>
-      " \ <c-w>=
-" autocmd FileType r map <buffer> <f3>
-"       \ :!tmux select-layout even-horizontal <cr>
-"             \ :!tmux split-window -t 2 -d <cr>
-"       \ :!tmux resize-pane -t 2 -x 64 <cr>
-"       \ :!tmux resize-pane -t 2 -y 20 <cr>
-"       \ <c-w>=
 autocmd FileType r vmap <buffer> <Space> <Plug>RDSendSelection
 autocmd FileType r nmap <buffer> <Space> <Plug>RDSendLine
 autocmd FileType r imap <buffer> ,> <space><esc>ciw<space>%>%<space>
@@ -362,18 +395,75 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail"
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 
 
+""" PRINT
+
+
+
 """ JULIA
+autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
+autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
+autocmd FileType julia imap <buffer> <c-@> ∘
+" autocmd FileType julia nmap <buffer> <c-@> <esc>_i@pipe<space><esc>
+" autocmd FileType julia imap <buffer> <c-@> @pipe<space>
 autocmd FileType julia nmap <buffer> ,t :call Pinfo("typeof")<cr><cr>
 autocmd FileType julia nmap <buffer> ,s :call Pinfo("size")<cr><cr>
 autocmd FileType julia nmap <buffer> ,l :call Pinfo("length")<cr><cr>
 autocmd FileType julia nmap <buffer> ,h :call Pinfo("head")<cr><cr>
-autocmd FileType julia nmap <buffer> ,v :call Pinfo("")<cr><cr>
+autocmd FileType julia,python nmap <buffer> ,v :call Pinfo("")<cr><cr>
 function! Pinfo(func)
   let wordUnderCursor = expand("<cword>")
   echo wordUnderCursor
   :exe ":!tmux send-keys -t 2 '".a:func."(".wordUnderCursor.")' Enter"
 endfunction
 autocmd FileType julia noremap <buffer> ,pr <esc>_Daprintln("<esc>pa = ", <esc>pa)<esc>
+"""Completions
+autocmd Filetype *
+    \   if &omnifunc == "" |
+    \       setlocal omnifunc=syntaxcomplete#Complete |
+    \       call SuperTabChain(&omnifunc, "<c-p>") |
+    \       call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+    \   endif
+" autocmd FileType julia :match NonText /|>\||>_->/
+autocmd FileType julia :match Comment /|>\||>_->/
+" autocmd FileType julia :match NonText /|>\||>_->/
+
+""" IABBREV
+function! s:Expr(default, repl)
+  if getline('.')[col('.')-2]=='\'
+    return "\<bs>".a:repl
+  else
+    return a:default
+  endif
+endfunction
+
+function! s:DefIab(nore, ...)
+  let opt = ''
+  let i = 0
+  while i != len(a:000)
+    let arg = a:000[i]
+    if arg !~? '<buffer>\|<silent>'
+      break
+    endif
+    let opt .= ' '.arg
+    let i += 1
+  endwhile
+
+  if i+2 != len(a:000)
+    throw "Invalid number of arguments"
+  endif
+  let lhs = a:000[i]
+  let rhs = a:000[i+1]
+
+  exe 'i'.a:nore.'ab'.opt.' '.lhs.' <c-r>=<sid>Expr('.string(lhs).', '.string(rhs).')<cr>'
+endfunction
+
+command! -nargs=+ InoreabBSlash call s:DefIab('nore', <f-args>)
+
+autocmd FileType julia iab >= ≥
+autocmd FileType julia iab <= ≤
+autocmd FileType julia iab != ≠
+InoreabBSlash in ε
+InoreabBSlash rt √
 
 
 """ VIM-SLIME, SH
@@ -392,15 +482,15 @@ autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,pp ,p}}
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viwe<space>
 " autocmd FileType python,sh,mongoql,matlab,w3m,perl nmap <buffer> ,rp viw<space>
 autocmd FileType julia,python,sh,mongoql,matlab,w3m,perl imap <buffer> <c-l> <Esc><Plug>SlimeLineSendo
-autocmd FileType python nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,2 :wa<cr>:!tmux send-keys -t 3 'python3 ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3 ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,4 :wa<cr>:!tmux send-keys -t 4 'python3 ' main.py Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,) :wa<cr>:!tmux send-keys -t 3 'python3 ' % Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,2 :wa<cr>:!tmux send-keys -t 3 'python3 ' main.py Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,+ :wa<cr>:!tmux send-keys -t 4 'python3 ' % Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,4 :wa<cr>:!tmux send-keys -t 4 'python3 ' main.py Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 'python3 ' % Enter <cr><cr>
 " autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 'python3 ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 ^c Enter 'cgexec -g memory,cpuset:runex `which python3` ' % Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 ^c Enter 'cgexec -g memory,cpuset:runex `which python3` ' main.py Enter <cr><cr>
-autocmd FileType python nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3 main.py' Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,] :wa<cr>:!tmux send-keys -t 5 ^c Enter 'cgexec -g memory,cpuset:runex `which python3` ' % Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,6 :wa<cr>:!tmux send-keys -t 5 ^c Enter 'cgexec -g memory,cpuset:runex `which python3` ' main.py Enter <cr><cr>
+autocmd FileType python,sh nmap <buffer> ,R :wa<cr>:!tmux send-keys -t 3 'python3 main.py' Enter <cr><cr>
 autocmd FileType julia nmap <buffer> ,r :!tmux send-keys -t 3 julia \ `realpath %` Enter<cr><cr>
 autocmd FileType julia nmap <buffer> ,R :!tmux send-keys -t 3 julia \ `realpath main.jl` Enter<cr><cr>
 " autocmd FileType python nmap <buffer> ,R
@@ -409,8 +499,8 @@ autocmd FileType sh,mongoql,matlab,w3m,perl nmap <buffer> ,r :!tmux send-keys -t
 " autocmd FileType python nmap <buffer> ,pa <Plug>SlimeParagraphSend }
 
 
-autocmd FileType python noremap <buffer> ,q :!tmux kill-pane -t 2 && tmux kill-pane -t 2 && tmux kill-pane -t 2 && tmux kill-pane -t 2<cr><cr>
-autocmd FileType julia noremap <buffer> ,q :!tmux kill-pane -t 2 && tmux kill-pane -t 2<cr><cr>
+autocmd FileType python,julia noremap <buffer> ,q :!tmux kill-pane -t 2 && tmux kill-pane -t 2 && tmux kill-pane -t 2 && tmux kill-pane -t 2<cr><cr>
+autocmd FileType matlab noremap <buffer> ,q :!tmux kill-pane -t 2 && tmux kill-pane -t 2<cr><cr>
 
 autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -421,11 +511,36 @@ autocmd FileType vim map <buffer> <f5> :w<cr>:so %<cr>:PlugInstall<cr>
 
 execute "autocmd FileType julia nmap <buffer> ,jl :!tmux send-keys -t 2 'cd(\"" . getcwd(). "\")' Enter<cr><cr>"
 
+autocmd FileType python map <buffer> <c-q> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'ipython' Enter &&
+      \ tmux send-keys -t 3 'sshdevcube' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
+      \ tmux select-pane -t:.1 <cr><cr>,jj
+
+autocmd FileType python map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'ipython' Enter &&
+      \ tmux send-keys -t 3 'sshdevcube' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
+      \ tmux select-pane -t:.1 <cr><cr>,jj
+
 autocmd FileType julia map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux split-window -d -t 2 &&
-      \ tmux send-keys -t 2 'julia' Enter<cr><cr>
-      \:!tmux select-pane -t:.1 <cr><cr>,en,jj,jl
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'julia' Enter &&
+      \ tmux send-keys -t 3 'sshdevcube' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/icu' Enter &&
+      \ tmux resize-pane -t 2 -x 30 &&
+      \ tmux select-pane -t:.1 <cr><cr>,jl,en,jj
+
 
 autocmd FileType matlab map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -440,19 +555,6 @@ autocmd FileType python map <buffer> <f3> ,en:!tmux split-window <cr><cr>
       \ :!tmux split-window -d -t 2 &&
       \ tmux resize-pane -t 3 -x 64 -y 20 &&
       \ tmux select-pane -t:.1 <cr><cr>
-
-autocmd FileType python map <buffer> <f2> :!tmux split-window &&
-      \ tmux select-layout even-horizontal &&
-      \ tmux split-window -d -t 2 &&
-      \ tmux split-window -d -t 2 &&
-      \ tmux split-window -d -t 2 &&
-      \ tmux send-keys -t 2 'ipython' Enter &&
-      \ tmux send-keys -t 3 'sshdevcube' Enter &&
-      \ tmux send-keys -t 4 'sshxeon' Enter &&
-      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
-      \ tmux send-keys -t 4 'cd share/ml/sec' Enter &&
-      \ tmux resize-pane -t 2 -x 30 &&
-      \ tmux select-pane -t:.1 <cr><cr>,en,jj
 
 autocmd FileType mongoql map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal <cr><cr>
@@ -476,18 +578,16 @@ autocmd FileType sh noremap <buffer> <silent> ,q
       \ tmux select-pane -t:.1 <cr><cr>
 
 
-""" YCM YOUCOMPLETEME
-let g:ycm_confirm_extra_conf = 0
-autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
-
 
 """ CTRLP
 let g:ctrlp_root_markers = ['NAMESPACE', 'main.cpp', 'Makefile', 'README.md']
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_map = '<c-p>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_follow_symlinks = 1
 " let g:ctrlp_cmd = 'CtrlPBuffer'
 " nmap <c-p> :CtrlPBuffer<cr>
-nmap <c-\> :CtrlP<cr>
+" nmap <c-\> :CtrlP<cr>
 
 """ REMOVE TRAILING SPACES
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
@@ -609,21 +709,37 @@ let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
 """ Tmux
-" let g:tmux_navigator_no_mappings = 1
-" let g:tmux_navigator_save_on_switch = 1
-" " nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
-" " nnoremap <silent> <c-h> <c-w>h
-" nunmap <c-h>
-" nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <c-d> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-" nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-" nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+" nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+" nnoremap <silent> <c-h> <c-w>h
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 nnoremap gh :bN<cr>
 nnoremap gl :bn<cr>
 nnoremap gW :bd<cr>:syn on<cr>
 nnoremap gw :bN<cr>:bd #<cr>
+
+
+" """ CSCOPE
+" " help cscope
+" " ctags -R
+" " cscope -Rb
+" " cscope add ...
+" nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+" nnoremap <leader>l :call ToggleLocationList()<CR>
+" nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+" nmap <C-s>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+" nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
 "" UNICODE
@@ -632,8 +748,12 @@ nmap gu <Plug>(UnicodeGA)
 " imap <C-X><C-u> <Plug>(DigraphComplete)
 " imap *& *<esc>viW<Plug>(MakeDigraph)a
 autocmd FileType julia,text,markdown,vim imap <buffer> <c-u> *<esc>vh<Plug>(MakeDigraph)a
-autocmd FileType julia,text,markdown,vim imap <buffer> <c-d> <esc>vh<Plug>(MakeDigraph)a
+" autocmd FileType julia,text,markdown,vim imap <buffer> <c-d> <esc>vh<Plug>(MakeDigraph)a
 " autocmd FileType julia,text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
+
+" imap δδ ∇
+imap « ≤
+imap » ≥
 
 " """ MATH
 " imap <silent> m <c-o>:if &kmp == ""<bar>
@@ -651,13 +771,13 @@ autocmd FileType julia,text,markdown,vim imap <buffer> <c-d> <esc>vh<Plug>(MakeD
 
 " GREEK
 " Letter   Name   Sound
-" Α α α  A alpha
-" Β β β  B beta
-" Γ γ γ  G gamma
-" Δ δ δ  D delta
-" Ε ε ε  E epsilon
-" Ζ ζ ζ  Z zeta
-" Η η η  Y eta
+" Α α α α A alpha
+" Β β β β B beta
+" Γ γ γ γ G gamma
+" Δ δ δ δ D delta
+" Ε ε ε ε E epsilon
+" Ζ ζ ζ ζ Z zeta
+" Η η η η Y eta
 " Θ θ θ  H theta
 " Ι ι ι  I iota
 " Κ κ κ  K kappa

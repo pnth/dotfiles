@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="surfraw.conf tmux.conf vimrc wallpaper xinitrc bashrc bash_profile zshrc zprofile inputrc"
+files="surfraw.conf tmux.conf vimrc xinitrc bashrc bash_profile zshrc zprofile inputrc ctags"
 ##########
 
 # create dotfiles_old in homedir
@@ -45,15 +45,16 @@ curl https://raw.githubusercontent.com/hut/ranger/master/ranger/colorschemes/sol
 ln -sf ~/dotfiles/vim/manually ~/.vim/manually
 ln -sf ~/dotfiles/w3m/config ~/.w3m/config
 ln -sf ~/dotfiles/w3m/keymap ~/.w3m/keymap
-ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
-ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
-ln -sf ~/dotfiles/config/i3status/config ~/.config/i3status/config
-ln -sf ~/dotfiles/conkyrc ~/.conkyrc
-ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
-ln -sf ~/dotfiles/config_Thunar_uca.xml ~/.config/Thunar/uca.xml
+ln -sf ~/dotfiles/juliarc.jl ./.juliarc.jl
+#ln -sf ~/dotfiles/ycm_extra_conf.py ~/.ycm_extra_conf.py
+#ln -sf ~/dotfiles/config/i3/config ~/.config/i3/config
+#ln -sf ~/dotfiles/config/i3status/config ~/.config/i3status/config
+#ln -sf ~/dotfiles/conkyrc ~/.conkyrc
+#ln -sf ~/dotfiles/bin/conky-i3bar ~/bin/conky-i3bar
+#ln -sf ~/dotfiles/config_Thunar_uca.xml ~/.config/Thunar/uca.xml
 
 # neovim
-mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-ln -s ~/.vim $XDG_CONFIG_HOME/nvim
-ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+#mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+#ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+#ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 # Xresources manually

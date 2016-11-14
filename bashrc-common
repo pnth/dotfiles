@@ -13,7 +13,10 @@ export macxeon='44:39:C4:92:15:C1'
 export macdevcube='34:97:f6:00:51:5e'
 export maci4='50:7B:9D:11:30:13'
 export macubuntu='08:00:27:4a:53:ca'
+export MOCHA_USE_NATIVE_EXT=true
+
 alias vimm="vim -u ~/.vimrc0"
+alias vim="nvim"
 alias gg="surfraw -browser=\"w3m -num\" google"
 alias ls=" ls -FGh "
 alias cd=" cd"
@@ -25,7 +28,6 @@ alias tmt="tmux select-layout tiled"
 alias tmv1="tmux select-layout main-vertical"
 alias tmv="tmux select-layout even-vertical"
 alias matlab="/usr/local/MATLAB/MATLAB_Production_Server/R2015a/bin/matlab"
-alias vim="/usr/bin/nvim -O"
 alias w3m="/usr/bin/w3m -M"
 alias matlab="/usr/local/matlab/R2015a/bin/matlab"
 alias yano="yaourt --noconfirm -S "
@@ -40,7 +42,9 @@ alias python='python3'
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 # CYGWIN=winsymlinks:nativestrict
 alias julia4="$HOME/packages/julia4/bin/julia"
-alias julia5="$HOME/packages/julia5/bin/julia"
+alias julia5="$HOME/share/bin/julia5/bin/julia"
+alias tmux0="tmux list-sessions | cut -d: -f1 | xargs -I{} tmux kill-session -t {} && tmux"
+alias mong="tmux list-sessions | cut -d: -f1 | xargs -I{} tmux kill-session -t {} && tmux"
 
 
 # Phuoc's
@@ -97,6 +101,15 @@ function batt() {
 }
 
 function x() {
+	if [ "$1" = "" ]; then
+		xrandr --output eDP1 --auto
+	else
+		xrandr --output eDP1 --off
+		xrandr --output $1:u --auto
+	fi
+}
+
+function x-old() {
 	if [ $1 = "1" ]; then
 		xrandr --output LVDS1 --off
 		xrandr --output VGA1 --auto
@@ -208,7 +221,7 @@ function downgrade(){
 }
 
 
-function mkgrub(){
+function grubmk(){
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
@@ -222,11 +235,15 @@ function mmm(){
   setxkbmap -layout us ctrl:swapcaps
 }
 
-function AAA(){
-  setxkbmap -layout us -variant dvp -option ctrl:swapcaps
+function AA(){
+  setxkbmap -layout "us" -variant "dvp" -option "ctrl:swapcaps,grp:switch"
 }
 
 function aaa(){
+  setxkbmap -layout "us,gr" -variant "dvp,dvpoly" -option "ctrl:swapcaps,grp:switch"
+}
+
+function AAA(){
   setxkbmap -layout us -variant dvp
 }
 

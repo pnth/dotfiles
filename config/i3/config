@@ -175,23 +175,57 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#
+#### RULES FOR SPECIFIC APPLICATIONS ####
+
+# by APPLICATION (WM_CLASS)
+# Note: class is typically useful for applying custom settings to
+#       to entire applications, including child windows. If this
+#       isn't want you want see the ROLE section, below.
+# Tip: To find out what these values might be run:
+#       xprop | grep -i 'class'
+# for_window [class="File-roller"] floating enable, border normal
+# for_window [class="Speedcrunch"] floating enable, border normal
+# for_window [class="Gloobus-preview"] floating enable, border none
+# for_window [class="Pavucontrol"] floating enable, border normal
+for_window [class="knotes"] floating enable, border none
+
+# by ROLE (WM_WINDOW_ROLE)
+# Note: window_role is Typically useful for effecting child windows
+#       such as instant messaging converstations, email composition
+#       windows, etc.
+# Tip: To find out what these values might be run:
+#       xprop | grep -i 'role'#
+# for_window [window_role="conversation"] floating enable, border normal
+# for_window [window_role="Msgcompose"] floating enable, border normal
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # set $ws2  "2:&#xf120;"
 # set $ws2  ""
-bar {
-        status_command i3status
-        font pango:DejaVu Sans Mono, Awesome 9
-        # position top
-        # tray_output primary
-}
 # bar {
-#     status_command $HOME/dotfiles/conky-i3bar
+#         status_command i3status
+#         font pango:DejaVu Sans Mono, Awesome 9
+#         # position top
+#         # tray_output primary
 # }
+bar {
+    status_command $HOME/dotfiles/conky-i3bar
+}
+
 # bar {
 #     status_command    python $HOME/dotfiles/i3pystatus_rc.py
 #     position          bottom
 #     workspace_buttons yes
 # }
 # exec --no-startup-id i3-msg 'workspace 2: code; exec thunar; exec firefox; exec urxvt -e tmux; workspace 4: chat; exec skype; workspace 10: file; exec jabref; '
-exec --no-startup-id i3-msg 'workspace 2: code; exec chromium; exec sleep 3 && urxvt -e tmux; exec sleep 4 && thunar'
+exec --no-startup-id i3-msg 'workspace 2: code; urxvt; nemo --no-desktop; '
+
+# I3_CINNAMON
+# 'exec cinnamon-session-quit --logout'    : logout dialog
+# 'exec cinnamon-session-quit --power-off' : shutdown menu
+# 'exec cinnamon-screensaver-command -l'   : locks the screen
+# 'exec cinnamon-screensaver-lock-dialog   : lockscreen with message
+
+
