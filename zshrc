@@ -30,5 +30,6 @@ xset r rate 260 30
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}%# "
 
 # export PATH=/tmp/yaourt-tmp-phuoc/aur-cuda-7.0/pkg/cuda-7.0/opt/cuda/bin:$PATH
+# export PATH=/tmp/yaourt-tmp-phuoc/aur-cuda-7.0/pkg/cuda-7.0/opt/cuda/bin:$PATH
 # export LD_LIBRARY_PATH=/tmp/yaourt-tmp-phuoc/aur-cuda-7.0/pkg/cuda-7.0/opt/cuda/lib64
 

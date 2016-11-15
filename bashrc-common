@@ -234,6 +234,10 @@ function mmm(){
   setxkbmap -layout us ctrl:swapcaps
 }
 
+function AA(){
+  setxkbmap -layout "us" -variant "dvp" -option "ctrl:swapcaps,grp:switch"
+}
+
 function aaa(){
   setxkbmap -layout "us,gr" -variant "dvp,dvpoly" -option "ctrl:swapcaps,grp:switch"
 }

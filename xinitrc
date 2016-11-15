@@ -45,7 +45,7 @@ synclient TouchpadOff=1&
 # xmodmap -e 'remove Mod1 = Alt_R'
 # xmodmap -e 'add Mod3 = Alt_R'
 # udiskie -2 &
-# sudo ntpd -gq&
+sudo ntpd -gq&
 # DISPLAY=:0.0 feh --bg-scale "$(find ~/.wallpaper/ |shuf -n1)"&
 # ibus-daemon --xim &
 # batt&

@@ -7,14 +7,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'hdima/python-syntax'
-" Plug 'itchyny/calendar.vim'
-" Plug 'itchyny/lightline.vim'
-" Plug 'ivalkeen/nerdtree-execute'
-" Plug 'jalvesaq/Nvim-R'
-" Plug 'justinmk/vim-sneak'
-" Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
-" Plug 'lervag/vimtex'
-" Plug 'nvie/vim-flake8'
+" Plug 'itchyny/calendar.vim' Plug 'itchyny/lightline.vim' Plug 'ivalkeen/nerdtree-execute' Plug 'jalvesaq/Nvim-R' Plug 'justinmk/vim-sneak' Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor' Plug 'lervag/vimtex' Plug 'nvie/vim-flake8'
 " Plug 'powerline/powerline'
 " Plug 'reedes/vim-lexical'
 " Plug 'reedes/vim-litecorrect'
@@ -27,7 +20,6 @@ call plug#begin('~/.vim/plugged')
 " Plug 'tomtom/tcomment_vim'
 " Plug 'tpope/vim-characterize'
 " Plug 'tpope/vim-fugitive'
-" Plug 'Valloric/YouCompleteMe'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'vim-scripts/math'
@@ -39,34 +31,36 @@ call plug#begin('~/.vim/plugged')
 " Plug 'chrisbra/unicode.vim'
 " Plug 'drmikehenry/vim-fixkey'
 
-Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'kien/ctrlp.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'plasticboy/vim-markdown'
-Plug 'jiangmiao/auto-pairs'
-Plug '~/.vim/manually/personal'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'brookhong/cscope.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ervandew/supertab'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'JCLiang/vim-cscope-utils'
+Plug 'jiangmiao/auto-pairs'
 Plug 'jpalardy/vim-slime'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'milkypostman/vim-togglelist'
 Plug 'morhetz/gruvbox'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
+
+Plug '~/.vim/manually/personal'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'brookhong/cscope.vim'
-Plug 'JCLiang/vim-cscope-utils'
-Plug 'mileszs/ack.vim'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'lervag/vimtex'
-Plug 'JuliaEditorSupport/julia-vim'
-" Plug 'JuliaLang/julia-vim'
-Plug 'milkypostman/vim-togglelist'
-
 
 call plug#end()
 
@@ -181,7 +175,9 @@ inoremap hh <esc>
 cnoremap hh <c-c>
 vnoremap v <esc>
 nnoremap ,wd :windo diffthis<cr>
-" map <c-s> :wa<cr>
+nmap <c-s> :wa<cr>
+imap <c-s> <esc>:wa<cr>a
+vmap <c-s> <esc>:wa<cr>gv
 
 
 let mapleader = ","
@@ -294,6 +290,20 @@ let python_highlight_all=1
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " let g:ycm_python_binary_path = '/usr/bin/python2'
 " let b:python_version_2 = 1
+"
+""" YCM YOUCOMPLETEME
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_confirm_extra_conf = 0
+autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
+
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 """ Nerdtree and Tagbar
@@ -385,6 +395,10 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>t :call RAction("tail"
 autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head")<CR>
 
 
+""" PRINT
+
+
+
 """ JULIA
 autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
 autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
@@ -409,9 +423,47 @@ autocmd Filetype *
     \       call SuperTabChain(&omnifunc, "<c-p>") |
     \       call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
     \   endif
-autocmd FileType julia :match NonText /|>\||>_->/
-autocmd FileType julia :match NonText /|>\||>_->/
+" autocmd FileType julia :match NonText /|>\||>_->/
+autocmd FileType julia :match Comment /|>\||>_->/
+" autocmd FileType julia :match NonText /|>\||>_->/
 
+""" IABBREV
+function! s:Expr(default, repl)
+  if getline('.')[col('.')-2]=='\'
+    return "\<bs>".a:repl
+  else
+    return a:default
+  endif
+endfunction
+
+function! s:DefIab(nore, ...)
+  let opt = ''
+  let i = 0
+  while i != len(a:000)
+    let arg = a:000[i]
+    if arg !~? '<buffer>\|<silent>'
+      break
+    endif
+    let opt .= ' '.arg
+    let i += 1
+  endwhile
+
+  if i+2 != len(a:000)
+    throw "Invalid number of arguments"
+  endif
+  let lhs = a:000[i]
+  let rhs = a:000[i+1]
+
+  exe 'i'.a:nore.'ab'.opt.' '.lhs.' <c-r>=<sid>Expr('.string(lhs).', '.string(rhs).')<cr>'
+endfunction
+
+command! -nargs=+ InoreabBSlash call s:DefIab('nore', <f-args>)
+
+autocmd FileType julia iab >= ≥
+autocmd FileType julia iab <= ≤
+autocmd FileType julia iab != ≠
+InoreabBSlash in ε
+InoreabBSlash rt √
 
 
 """ VIM-SLIME, SH
@@ -458,6 +510,16 @@ autocmd FileType c,cpp,java map <buffer> <f3> :!tmux split-window &&
 autocmd FileType vim map <buffer> <f5> :w<cr>:so %<cr>:PlugInstall<cr>
 
 execute "autocmd FileType julia nmap <buffer> ,jl :!tmux send-keys -t 2 'cd(\"" . getcwd(). "\")' Enter<cr><cr>"
+
+autocmd FileType python map <buffer> <c-q> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'ipython' Enter &&
+      \ tmux send-keys -t 3 'sshdevcube' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
+      \ tmux select-pane -t:.1 <cr><cr>,jj
 
 autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
@@ -515,10 +577,6 @@ autocmd FileType sh noremap <buffer> <silent> ,q
       \ :!tmux split-window -d -t 2 &&
       \ tmux select-pane -t:.1 <cr><cr>
 
-
-""" YCM YOUCOMPLETEME
-let g:ycm_confirm_extra_conf = 0
-autocmd FileType c,cpp,objc nnoremap <buffer> ,yf :YcmCompleter FixIt<CR>
 
 
 """ CTRLP
@@ -667,21 +725,21 @@ nnoremap gW :bd<cr>:syn on<cr>
 nnoremap gw :bN<cr>:bd #<cr>
 
 
-""" CSCOPE
-" help cscope
-" ctags -R
-" cscope -Rb
-" cscope add ...
-nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>l :call ToggleLocationList()<CR>
-nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-s>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+" """ CSCOPE
+" " help cscope
+" " ctags -R
+" " cscope -Rb
+" " cscope add ...
+" nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+" nnoremap <leader>l :call ToggleLocationList()<CR>
+" nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+" nmap <C-s>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+" nmap <C-s>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+" nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
 "" UNICODE
@@ -693,7 +751,9 @@ autocmd FileType julia,text,markdown,vim imap <buffer> <c-u> *<esc>vh<Plug>(Make
 " autocmd FileType julia,text,markdown,vim imap <buffer> <c-d> <esc>vh<Plug>(MakeDigraph)a
 " autocmd FileType julia,text,markdown imap <buffer> i <esc>vh<Plug>(MakeDigraph)a
 
-imap δδ ∇
+" imap δδ ∇
+imap « ≤
+imap » ≥
 
 " """ MATH
 " imap <silent> m <c-o>:if &kmp == ""<bar>
@@ -711,13 +771,13 @@ imap δδ ∇
 
 " GREEK
 " Letter   Name   Sound
-" Α α α  A alpha
-" Β β β  B beta
-" Γ γ γ  G gamma
-" Δ δ δ  D delta
-" Ε ε ε  E epsilon
-" Ζ ζ ζ  Z zeta
-" Η η η  Y eta
+" Α α α α A alpha
+" Β β β β B beta
+" Γ γ γ γ G gamma
+" Δ δ δ δ D delta
+" Ε ε ε ε E epsilon
+" Ζ ζ ζ ζ Z zeta
+" Η η η η Y eta
 " Θ θ θ  H theta
 " Ι ι ι  I iota
 " Κ κ κ  K kappa
