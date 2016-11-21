@@ -7,7 +7,14 @@ call plug#begin('~/.vim/plugged')
 " Plug 'dhruvasagar/vim-table-mode'
 " Plug 'guns/xterm-color-table.vim'
 " Plug 'hdima/python-syntax'
-" Plug 'itchyny/calendar.vim' Plug 'itchyny/lightline.vim' Plug 'ivalkeen/nerdtree-execute' Plug 'jalvesaq/Nvim-R' Plug 'justinmk/vim-sneak' Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor' Plug 'lervag/vimtex' Plug 'nvie/vim-flake8'
+" Plug 'itchyny/calendar.vim'
+" Plug 'itchyny/lightline.vim'
+" Plug 'ivalkeen/nerdtree-execute'
+" Plug 'jalvesaq/Nvim-R'
+" Plug 'justinmk/vim-sneak'
+" Plug 'LaTeX-Box-Team/LaTeX-BoxPaperColor'
+" Plug 'lervag/vimtex'
+" Plug 'nvie/vim-flake8'
 " Plug 'powerline/powerline'
 " Plug 'reedes/vim-lexical'
 " Plug 'reedes/vim-litecorrect'
@@ -176,7 +183,7 @@ cnoremap hh <c-c>
 vnoremap v <esc>
 nnoremap ,wd :windo diffthis<cr>
 nmap <c-s> :wa<cr>
-imap <c-s> <esc>:wa<cr>a
+imap <c-s> <esc>:wa<cr>
 vmap <c-s> <esc>:wa<cr>gv
 
 
@@ -214,7 +221,6 @@ nnoremap <C-ScrollWheelDown> :!xdotool key ctrl+Down<cr><cr>
 " nmap ,hl :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 65<cr><cr><C-l>:vertical resize 70<cr><C-l>
 nmap ,jh :TagbarOpenAutoClose<cr>:vertical resize 20<cr>:!tmux resizep -t 2 -x 68<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,js :TagbarOpenAutoClose<cr>:vertical resize 21<cr>:!tmux resizep -t 2 -x 84<cr><cr><C-l>:set number<cr><C-l>:set number<cr><C-w>=
-nmap ,kk :TagbarOpenAutoClose<cr>:vertical resize 2<cr>:!tmux resizep -t 2 -x 2<cr><cr><C-l><C-w>=
 
 " <C-l>:set number<cr><C-l>:set number<cr><C-w>=
 nmap ,jj :call Psplit(0)<cr>,en
@@ -398,6 +404,9 @@ autocmd FileType r noremap <buffer> <silent> <LocalLeader>h :call RAction("head"
 """ PRINT
 
 
+" nmap ,k :!pvim % \| pcrop \| xargs -I. cp . ~/kobo-vim
+nmap ,k :!tmux send-keys -t 4 "pvim % \| pcrop \| xargs -I. cp . ~/kobo-vim" Enter<cr><cr>
+
 
 """ JULIA
 autocmd FileType julia imap <buffer> <c-_> <bar>>_-><space>
@@ -521,6 +530,12 @@ autocmd FileType python map <buffer> <c-q> :!tmux split-window &&
       \ tmux send-keys -t 3 'cd share/ml/sec' Enter &&
       \ tmux select-pane -t:.1 <cr><cr>,jj
 
+autocmd FileType sh map <buffer> <f2> :!tmux split-window &&
+      \ tmux select-layout even-horizontal &&
+      \ tmux split-window -d -t 2 &&
+      \ tmux resize-pane -t 2 -x 30 &&
+      \ tmux select-pane -t:.1 <cr><cr>,en,jj
+
 autocmd FileType python map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux split-window -d -t 2 &&
@@ -613,8 +628,10 @@ noremap ,ed :Autoformat<CR>
 " inoremap <M-LeftDrag> <LeftDrag>
 " onoremap <M-LeftDrag> <C-C><LeftDrag>
 
-noremap <M-LeftMouse> <LeftMouse><Esc><C-V>
-noremap <M-LeftDrag> <LeftDrag>
+" noremap <M-LeftMouse> <LeftMouse><Esc><C-V>
+" noremap <M-LeftDrag> <LeftDrag>
+" set timeout ttimeoutlen=50
+" set ttimeout ttimeoutlen=50
 
 
 " view in kindle. A RESTART AND RECONNECT KINDLE MUST RERUN VIM
