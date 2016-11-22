@@ -1,3 +1,50 @@
+a - build/src/ndarray/ndarray_function_gpu.o
+a - build/src/optimizer/sgd_gpu.o
+a - build/src/operator/svm_output_gpu.o
+a - build/src/operator/correlation_gpu.o
+a - build/src/operator/elementwise_binary_scalar_op_gpu.o
+a - build/src/operator/lrn_gpu.o
+a - build/src/operator/fully_connected_gpu.o
+a - build/src/operator/reshape_gpu.o
+a - build/src/operator/pooling_gpu.o
+a - build/src/operator/block_grad_gpu.o
+a - build/src/operator/leaky_relu_gpu.o
+a - build/src/operator/embedding_gpu.o
+a - build/src/operator/identity_attach_KL_sparse_reg_gpu.o
+a - build/src/operator/activation_gpu.o
+a - build/src/operator/loss_binary_op_gpu.o
+a - build/src/operator/roi_pooling_gpu.o
+a - build/src/operator/cudnn_batch_norm_gpu.o
+a - build/src/operator/native_op_gpu.o
+a - build/src/operator/elementwise_unary_op_gpu.o
+a - build/src/operator/broadcast_reduce_op_gpu.o
+a - build/src/operator/regression_output_gpu.o
+a - build/src/operator/l2_normalization_gpu.o
+a - build/src/operator/batch_norm_gpu.o
+a - build/src/operator/concat_gpu.o
+a - build/src/operator/sample_op_gpu.o
+a - build/src/operator/cast_gpu.o
+a - build/src/operator/dropout_gpu.o
+a - build/src/operator/softmax_activation_gpu.o
+a - build/src/operator/matrix_op_gpu.o
+a - build/src/operator/softmax_output_gpu.o
+a - build/src/operator/slice_channel_gpu.o
+a - build/src/operator/smooth_l1_unary_gpu.o
+a - build/src/operator/elementwise_binary_broadcast_op_gpu.o
+a - build/src/operator/elementwise_sum_gpu.o
+a - build/src/operator/crop_gpu.o
+a - build/src/operator/spatial_transformer_gpu.o
+a - build/src/operator/deconvolution_gpu.o
+a - build/src/operator/swapaxis_gpu.o
+a - build/src/operator/elementwise_binary_op_gpu.o
+a - build/src/operator/broadcast_mask_op_gpu.o
+a - build/src/operator/make_loss_gpu.o
+a - build/src/operator/upsampling_gpu.o
+a - build/src/operator/rnn_gpu.o
+a - build/src/operator/convolution_gpu.o
+
+
+
 Real analysis and probability
 1
 24

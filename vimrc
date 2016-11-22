@@ -425,6 +425,8 @@ autocmd Filetype *
     \   endif
 " autocmd FileType julia :match NonText /|>\||>_->/
 autocmd FileType julia :match Comment /|>\||>_->/
+autocmd FileType julia :match Comment /∪/
+
 " autocmd FileType julia :match NonText /|>\||>_->/
 
 """ IABBREV
@@ -462,6 +464,8 @@ command! -nargs=+ InoreabBSlash call s:DefIab('nore', <f-args>)
 autocmd FileType julia iab >= ≥
 autocmd FileType julia iab <= ≤
 autocmd FileType julia iab != ≠
+autocmd FileType julia iab in ε
+autocmd FileType julia iab ø ∘
 InoreabBSlash in ε
 InoreabBSlash rt √
 
@@ -535,9 +539,10 @@ autocmd FileType julia map <buffer> <f2> :!tmux split-window &&
       \ tmux select-layout even-horizontal &&
       \ tmux split-window -d -t 2 &&
       \ tmux split-window -d -t 2 &&
+      \ tmux send-keys -t 2 'sshdevcube' Enter &&
       \ tmux send-keys -t 2 'julia' Enter &&
       \ tmux send-keys -t 3 'sshdevcube' Enter &&
-      \ tmux send-keys -t 3 'cd share/ml/icu' Enter &&
+      \ tmux send-keys -t 3 'cd share/ml/deep' Enter &&
       \ tmux resize-pane -t 2 -x 30 &&
       \ tmux select-pane -t:.1 <cr><cr>,jl,en,jj
 
